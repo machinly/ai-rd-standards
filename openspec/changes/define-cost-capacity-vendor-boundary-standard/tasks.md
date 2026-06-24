@@ -6,18 +6,18 @@
 - [x] 1.2 查证 Google SRE overload、cascading failures、capacity/design 相关内容。
 - [x] 1.3 查证 OpenAI rate limits、production billing limits、cost optimization、prompt caching 官方文档。
 - [x] 1.4 查证 OWASP API4/API10、Twelve-Factor Backing Services、AWS/Google Cloud 成本管理依据。
-- [x] 1.5 补充阶段 9 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W2 cost/capacity 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 成本容量规范
 
-- [x] 2.1 编写阶段 9 规范正文。
+- [x] 2.1 编写 W2 cost/capacity 规范正文。
 - [x] 2.2 定义 `cost/budgets`、`cost/vendors`、`cost/runbooks`、`cost/usage` artifacts。
 - [x] 2.3 定义预算阈值、AI token/tool/request 限制、overload 降级、供应商退出规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 9 change。
+- [x] 3.1 创建 W2 cost/capacity change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

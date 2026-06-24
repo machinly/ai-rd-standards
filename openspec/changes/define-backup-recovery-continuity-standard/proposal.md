@@ -7,14 +7,14 @@
 ## 范围
 
 - 新增 `backup-recovery-continuity-standard` spec。
-- 新增阶段 21 规范文档。
+- 新增 W7 备份恢复触发专项文档。
 - 创建 `backup-recovery-continuity-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
 ## 不做什么
 
-- 不替代阶段 5 SRE-lite incident response。
-- 不替代阶段 7 数据 migration / restore 文档；本阶段把跨资产连续性补齐。
+- 不替代 W7 SRE-lite incident response。
+- 不替代 W4 数据迁移专项的数据 migration / restore 文档；本阶段把跨资产连续性补齐。
 - 不要求一开始多区域 HA、复杂 DR 平台或 24/7 值班。
 - 不连接真实云账号、数据库、备份系统、供应商或生产环境。
 

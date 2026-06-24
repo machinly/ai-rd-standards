@@ -7,7 +7,7 @@
 ## 范围
 
 - 新增 `admin-ops-action-standard` spec。
-- 新增阶段 24 规范文档。
+- 新增 W7 后台运营触发专项文档。
 - 创建 `admin-ops-action-guard` skill 和 verifier。
 - 补充来源索引与 README。
 

@@ -13,7 +13,7 @@ The current bet is internal leverage: reduce solo-founder attention cost and Cod
 - Root entrypoint: `README.md`.
 - AI R&D workflow entrypoint: `docs/00-start-here.md`.
 - Workflow-to-standard index: `docs/00-standard-index.md`.
-- Canonical standards: `docs/Wx-*/NN-*.md`.
+- Canonical standards: `docs/Wx-*/main.md` plus semantic trigger-specific standards in the same W directory.
 - Specs and changes: `openspec/`.
 - Source map: `docs/sources/2026-06-23-source-map.md`.
 - Knowledge artifacts: `knowledge/`.
@@ -39,8 +39,8 @@ Codex should first read `README.md`, `docs/00-start-here.md`, and this context p
 
 ## Operational Links
 
-- Operating model: `docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md`.
-- Knowledge recovery: `docs/W9-maintain/16-knowledge-context-recovery-standard.md`.
+- Operating model: `docs/W2-openspec-risk/main.md`.
+- Knowledge recovery: `docs/W9-maintain/main.md`.
 - Prioritization: `docs/W0-intake/main.md`.
 - Workflow index: `docs/00-standard-index.md`.
 - Navigation change: `openspec/changes/improve-rd-standards-navigation/`.

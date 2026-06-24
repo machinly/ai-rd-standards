@@ -6,18 +6,18 @@
 - [x] 1.2 查证 ITIL 4 Incident Management、Google SRE Incident Response / Postmortem Culture。
 - [x] 1.3 查证 Atlassian incident communication、Zendesk / Intercom 支持队列与指标。
 - [x] 1.4 查证 OpenAI Safety Best Practices、Moderation、Safety Checks 和 NIST AI RMF Manage。
-- [x] 1.5 补充阶段 23 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W8 客户支持专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 客户支持信任运营规范
 
-- [x] 2.1 编写阶段 23 规范正文。
+- [x] 2.1 编写 W8 客户支持触发专项正文。
 - [x] 2.2 定义 intake、playbook、templates、feedback ledger、reviews artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 23 change。
+- [x] 3.1 创建 W8 客户支持 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

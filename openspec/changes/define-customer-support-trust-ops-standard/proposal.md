@@ -7,14 +7,14 @@
 ## 范围
 
 - 新增 `customer-support-trust-ops-standard` spec。
-- 新增阶段 23 规范文档。
+- 新增 W8 客户支持触发专项文档。
 - 创建 `customer-support-trust-ops-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
 ## 不做什么
 
 - 不引入大型客服平台、呼叫中心流程、客服团队排班或 QA 评分体系。
-- 不替代阶段 5 incident response、阶段 10 security/privacy、阶段 22 billing reconciliation 或阶段 11 product discovery。
+- 不替代 W7 incident response、W2 security/privacy、W4 billing reconciliation 或 W1 product discovery。
 - 不处理正式法律通知、监管问询、合规审计或合同谈判。
 - 不连接真实客服系统、真实客户消息、真实邮箱、工单平台或生产数据。
 

@@ -4,17 +4,17 @@
 
 - [x] 1.1 查证 Google SRE SLO、监控、告警、值班、事故响应、复盘、发布、toil。
 - [x] 1.2 查证 DORA 软件交付指标和 OpenTelemetry observability / Go 文档。
-- [x] 1.3 补充阶段 5 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.3 补充 W7 SRE-lite 专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. SRE-lite 运维规范
 
-- [x] 2.1 编写阶段 5 规范正文。
+- [x] 2.1 编写 W7 SRE-lite 触发专项正文。
 - [x] 2.2 定义 `ops/` artifact 目录、SLO JSON、runbook、release checklist、incident 模板。
 - [x] 2.3 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 5 change。
+- [x] 3.1 创建 W7 SRE-lite change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

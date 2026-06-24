@@ -6,18 +6,18 @@
 - [x] 1.2 查证 The Mom Test、Continuous Discovery / Opportunity Solution Tree。
 - [x] 1.3 查证 Shape Up、Google HEART/GSM、在线受控实验资料。
 - [x] 1.4 查证 OpenTelemetry events 和产品分析事件命名资料。
-- [x] 1.5 补充阶段 11 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W1 Discovery 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 产品发现规范
 
-- [x] 2.1 编写阶段 11 规范正文。
+- [x] 2.1 编写 W1 Discovery 规范正文。
 - [x] 2.2 定义 `product/bets`、`product/metrics`、`product/feedback`、`product/experiments`、`product/decisions` artifacts。
 - [x] 2.3 定义产品指标、事件、反馈、实验、AI 产品学习和人工 checkpoint 规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 11 change。
+- [x] 3.1 创建 W1 Discovery change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

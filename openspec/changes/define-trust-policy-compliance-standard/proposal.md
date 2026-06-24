@@ -7,7 +7,7 @@
 ## 范围
 
 - 新增 `trust-policy-compliance-standard` spec。
-- 新增阶段 25 规范文档。
+- 新增 W2 trust/policy/compliance 规范文档。
 - 创建 `trust-policy-compliance-guard` skill 和 verifier。
 - 补充来源索引与 README。
 

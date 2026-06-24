@@ -54,8 +54,8 @@
       "docs/00-standard-index.md"
     ],
     "explanation": [
-      "docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md",
-      "docs/W9-maintain/16-knowledge-context-recovery-standard.md",
+      "docs/W2-openspec-risk/main.md",
+      "docs/W9-maintain/main.md",
       "docs/W0-intake/main.md"
     ]
   },

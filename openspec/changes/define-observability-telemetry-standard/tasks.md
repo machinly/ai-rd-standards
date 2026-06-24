@@ -6,18 +6,18 @@
 - [x] 1.2 查证 OpenTelemetry signals、Go、JavaScript、logs、semantic conventions。
 - [x] 1.3 查证 W3C Trace Context、Prometheus naming。
 - [x] 1.4 查证 OpenAI Agents tracing / observability。
-- [x] 1.5 补充阶段 15 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W7 观测性专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 观测性规范
 
-- [x] 2.1 编写阶段 15 规范正文。
+- [x] 2.1 编写 W7 观测性触发专项正文。
 - [x] 2.2 定义 instrumentation、telemetry schema、dashboard、trace correlation、AI telemetry artifacts。
 - [x] 2.3 定义 Go/Kratos/gRPC/sqlc、Vite、AI workflow 默认遥测规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 15 change。
+- [x] 3.1 创建 W7 观测性 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

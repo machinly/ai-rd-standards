@@ -5,18 +5,18 @@
 - [x] 1.1 查证 PostgreSQL backup/restore、PITR、DDL 官方文档。
 - [x] 1.2 查证 sqlc schema/query/generate/vet 官方文档和 golang-migrate 文件约定。
 - [x] 1.3 查证 Evolutionary Database Design、DDIA、Database Reliability Engineering、OWASP/NIST/GDPR 数据安全与隐私依据。
-- [x] 1.4 补充阶段 7 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W4 数据迁移专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 数据迁移规范
 
-- [x] 2.1 编写阶段 7 规范正文。
+- [x] 2.1 编写 W4 数据迁移触发专项正文。
 - [x] 2.2 定义 `data/changes`、migrations、queries、backfills、restore、fixes artifacts。
 - [x] 2.3 定义 sqlc 同步、production migration、backfill、隐私、备份恢复规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 7 change。
+- [x] 3.1 创建 W4 数据迁移 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

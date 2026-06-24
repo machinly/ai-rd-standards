@@ -7,7 +7,7 @@
 ## 范围
 
 - 新增 `maintenance-dependency-debt-standard` spec。
-- 新增阶段 17 规范文档。
+- 新增 W9 维护债务触发专项文档。
 - 创建 `maintenance-dependency-debt-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
@@ -15,7 +15,7 @@
 
 - 不要求每周追新或自动合并依赖更新。
 - 不把所有 TODO 都升级为流程。
-- 不替代阶段 6 release、阶段 10 security、阶段 12 testing、阶段 13 architecture 或阶段 16 knowledge artifacts。
+- 不替代 W6 release、W2 security、W5 testing、W2 architecture 或 W9 knowledge artifacts。
 - 不连接真实 GitHub/Dependabot 或外部 issue tracker。
 
 ## 依据

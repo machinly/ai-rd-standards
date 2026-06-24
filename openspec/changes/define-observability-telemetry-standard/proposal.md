@@ -15,7 +15,7 @@
 ## 不做
 
 - 不采购或绑定商业 observability 平台。
-- 不替代阶段 5 SLO/alert/runbook，而是补充 instrumentation 标准。
+- 不替代 W7 SRE-lite SLO/alert/runbook，而是补充 instrumentation 标准。
 - 不默认采样原始 prompt、response、payload 或用户内容。
 - 不要求所有服务一开始拥有复杂 dashboard。
 

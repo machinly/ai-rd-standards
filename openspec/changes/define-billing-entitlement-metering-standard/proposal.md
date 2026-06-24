@@ -7,7 +7,7 @@
 ## 范围
 
 - 新增 `billing-entitlement-metering-standard` spec。
-- 新增阶段 22 规范文档。
+- 新增 W4 计费与权益触发专项文档。
 - 创建 `billing-entitlement-metering-guard` skill 和 verifier。
 - 补充来源索引与 README。
 

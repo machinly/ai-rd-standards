@@ -1,9 +1,9 @@
 # 供应商处理方、DPA、子处理方与数据出境治理规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 一人公司的 AI 产品很容易把客户数据交给外部供应商：模型 API、embedding、reranker、对象存储、日志、分析、客服、支付、邮件、错误追踪、托管数据库、云函数、浏览器录屏、数据标注、人工审核。本触发专项的目标是建立最小可执行的供应商数据处理治理：每个会处理客户数据的供应商都能回答“它是什么角色、处理什么数据、合同/DPA 覆盖什么、子处理方怎么变、跨境或区域边界是什么、删除和事故时怎么配合、什么时候必须人判断”。
@@ -155,9 +155,9 @@ DPA/合同检查清单必须包含：
 # <target> Subprocessor Watch
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Scope
 
 ## Vendor Sources
@@ -182,7 +182,7 @@ DPA/合同检查清单必须包含：
 - 对关键 AI、云、数据库、日志、分析、客服和支付供应商，记录其官方 subprocessor list、更新订阅或 changelog 来源。
 - 如果供应商新增子处理方会改变国家/地区、目的、数据类别、人工审核、模型训练、支持流程或安全边界，需要人审。
 - 如果无法反对或退出，也要写清楚可接受原因和替代方案；不要假装有不存在的合同权利。
-- 有客户合同或公开隐私承诺时，子处理方变更要连接阶段 25 的承诺注册表和阶段 35 的审计证据。
+- 有客户合同或公开隐私承诺时，子处理方变更要连接 W2 信任承诺注册表和 W9 审计证据。
 
 ### `vendor-risk/transfer-impact/<target>.json`
 
@@ -231,9 +231,9 @@ DPA/合同检查清单必须包含：
 # <target> Vendor Review
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“新供应商、DPA、子处理方、数据出境、供应商训练或保留条款”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Recent Changes
 
 ## New Vendors
@@ -270,7 +270,7 @@ DPA/合同检查清单必须包含：
 - gRPC/HTTP 调用必须有 deadline、retry budget、idempotency key、request id 和 vendor name 进入 trace/log；日志不得包含 raw prompt、raw response、customer file、secret 或敏感字段。
 - sqlc 默认表可以包含：`vendor_processors`、`vendor_agreements`、`vendor_transfers`、`vendor_subprocessor_events`、`vendor_reviews`，但早期可以先用 repo artifacts。
 - 新增供应商前，OpenSpec design 必须链接 `processor-register`、`dpa-checklist` 和 `transfer-impact`。
-- 删除、导出、更正、停止同步请求如果涉及供应商，必须连接阶段 40 的 deletion/rights policy 和阶段 35 的 evidence package。
+- 删除、导出、更正、停止同步请求如果涉及供应商，必须连接 W2 客户数据 deletion/rights policy 和 W9 evidence package。
 
 ## Vite 前端默认规则
 
@@ -320,6 +320,6 @@ DPA/合同检查清单必须包含：
 - 安全隐私角度：DPA、子处理方、跨境、删除协助、事故通知、训练/保留和敏感数据处理进入人工 checkpoint。
 - 成本角度：不默认多云/多供应商，只要求关键路径写清 fallback、退出触发和人工成本，避免早期过度架构。
 
-结论：可落地。阶段 41 把“供应商能不能处理我们的客户数据”变成工程化证据链，而不是临上线前翻合同和政策页面。
+结论：可落地。本专项把“供应商能不能处理我们的客户数据”变成工程化证据链，而不是临上线前翻合同和政策页面。
 
 

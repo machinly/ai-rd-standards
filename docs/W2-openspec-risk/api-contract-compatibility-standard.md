@@ -1,9 +1,9 @@
 # API 契约、兼容性与版本演进规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“API、Protobuf、错误语义、事件、webhook、AI tool schema 或兼容性变化”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“API、Protobuf、错误语义、事件、webhook、AI tool schema 或兼容性变化”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 一人公司的 API 风险不只在“接口能不能调通”，更在于未来是否能安全演进。gRPC/Protobuf 字段号、错误语义、前端客户端、AI tool schema、webhook、事件和数据库边界一旦被消费者依赖，破坏性变更会把一个人的注意力拖进迁移泥潭。本触发专项定义最小契约治理规范，让每个生产 target 知道有哪些契约、谁在用、什么变化安全、什么必须人审、怎么验证兼容性。
@@ -40,7 +40,7 @@
 
 - 未发布、无消费者、可随时删除的本地实验。
 - 纯内部实现函数，且没有被 proto、HTTP、event、AI tool、配置、前端或外部系统依赖。
-- 已被阶段 7 migration 或阶段 14 config change 覆盖的纯数据/配置变更，除非它改变外部契约。
+- 已被 W4 数据迁移或 W4 配置变更覆盖的纯数据/配置变更，除非它改变外部契约。
 
 ## 最小工件
 
@@ -245,6 +245,6 @@ AI tool / structured output 契约必须包含：
 - 安全隐私角度：auth/tenant metadata、permission errors、AI tool side effects 和敏感内容都进入契约边界。
 - 成本角度：兼容性检查比事故后迁移便宜；只对 stable/public 和高风险变化加门禁，避免过度流程。
 
-结论：可落地。第 18 阶段把“接口会被依赖”这件事前移到研发阶段，并与阶段 6 release、阶段 12 testing、阶段 17 deprecation 衔接。
+结论：可落地。本专项把“接口会被依赖”这件事前移到 W2，并与 W6 release、W5 testing、W9 deprecation 衔接。
 
 

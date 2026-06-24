@@ -7,14 +7,14 @@
 ## 范围
 
 - 新增 `dev-workspace-automation-standard` spec。
-- 新增阶段 19 规范文档。
+- 新增 W4 开发工作区触发专项文档。
 - 创建 `dev-workspace-automation-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
 ## 不做什么
 
 - 不强制使用 devcontainer、Docker Compose、Makefile、Taskfile 或特定 IDE。
-- 不替代阶段 6 CI/release、阶段 12 test strategy、阶段 16 context recovery。
+- 不替代 W6 release pipeline、W5 testing quality、W9 context recovery。
 - 不连接真实供应商、本地真实 secret 或生产数据。
 - 不要求本地验证等同完整 CI。
 

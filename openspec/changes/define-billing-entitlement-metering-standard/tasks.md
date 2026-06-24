@@ -5,18 +5,18 @@
 - [x] 1.1 查证 Stripe Billing subscriptions、Entitlements、Meter Events、Meters、Webhooks、Idempotent Requests 和 Integration Security。
 - [x] 1.2 查证 OpenAI Rate Limits、Projects budgets、Production Best Practices 和 Prompt Caching。
 - [x] 1.3 查证 Martin Fowler Accounting Patterns、Stripe Ledger 和 Monetizing Innovation。
-- [x] 1.4 补充阶段 22 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W4 计费与权益专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 计费权益用量规范
 
-- [x] 2.1 编写阶段 22 规范正文。
+- [x] 2.1 编写 W4 计费与权益触发专项正文。
 - [x] 2.2 定义 product catalog、entitlement policy、usage metering、webhook ledger、reconciliation artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 22 change。
+- [x] 3.1 创建 W4 计费与权益 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

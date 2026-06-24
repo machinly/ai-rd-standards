@@ -6,18 +6,18 @@
 - [x] 1.2 查证 Google Cloud / AWS RPO、RTO、DR planning 和恢复测试。
 - [x] 1.3 查证 NIST SP 800-34 contingency planning。
 - [x] 1.4 查证 PostgreSQL Backup and Restore、PITR、pg_dump、pg_restore。
-- [x] 1.5 补充阶段 21 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W7 备份恢复专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 备份恢复连续性规范
 
-- [x] 2.1 编写阶段 21 规范正文。
+- [x] 2.1 编写 W7 备份恢复触发专项正文。
 - [x] 2.2 定义 asset inventory、backup policy、restore runbook、recovery drill、continuity plan artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认恢复规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 21 change。
+- [x] 3.1 创建 W7 备份恢复 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

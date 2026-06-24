@@ -36,9 +36,9 @@
 - THEN 文档显示该阶段的主归属 workflow step
 - AND 文档显示该 workflow step 的主规范、触发专项、人审点和常用 skill
 
-### Requirement: 编号规范文件必须按 workflow step 目录存放
+### Requirement: Workflow 规范文件必须按 workflow step 目录存放
 
-编号规范文件 MUST 放在 `docs/Wx-*/NN-*.md` 目录结构下，且目录中的 W step 必须等于该规范在索引中的主归属。
+每个 workflow step 目录 MUST 有且只有一个 `main.md` 作为核心入口。触发型专项 MUST 使用语义化文件名，且不得以数字开头。目录中的 W step MUST 等于该规范在索引中的主归属。
 
 #### Scenario: 查看规范文件物理结构
 
@@ -65,9 +65,9 @@
 
 #### Scenario: 新增或重命名规范后校验索引
 
-- GIVEN 新增、删除或重命名 `docs/Wx-*/NN-*` 规范文件
+- GIVEN 新增、删除或重命名 `docs/Wx-*/*.md` 规范文件
 - WHEN 运行 `python tools\verify_workflow_index.py .`
-- THEN 每个编号规范恰好映射到一个 W0-W9 step
+- THEN 每个规范恰好映射到一个 W0-W9 step，并且每个 W 只有一个 `main.md`
 - AND 每个编号规范位于对应 W0-W9 目录
 - AND 索引引用的规范路径存在
 - AND README 未退化为平铺阶段清单

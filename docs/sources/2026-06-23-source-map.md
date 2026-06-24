@@ -1,6 +1,6 @@
 # 来源索引 - 2026-06-23 起持续维护
 
-本文件只记录各阶段要反复引用的高价值来源。阶段 12 于 2026-06-24 补充。具体规范正文只摘取可落地的原则，不复制大段原文。
+本文件只记录各 W 和触发专项要反复引用的高价值来源。W5 测试质量专项于 2026-06-24 补充。具体规范正文只摘取可落地的原则，不复制大段原文。
 
 ## 规格与 AI 辅助研发
 
@@ -43,7 +43,9 @@
   - https://www.skillsoft.com/book/project-management-for-small-projects-third-edition-ca85d9c4-0cc7-457f-af63-7771c846b675
   - https://www.amazon.com/Project-Management-Small-Projects-Sandra/dp/1567264743
 
-## 运维与可靠性
+## W7 Operate 触发专项：SRE-lite 运维与可靠性依据
+
+历史编号 05 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google SRE Book：后续运维规范的主参考，包括 SLO、toil、监控、发布、简化。
   - https://sre.google/sre-book/table-of-contents/
@@ -111,7 +113,9 @@
   - https://vercel.com/geist/colors
   - https://vercel.com/geist/grid
 
-## 阶段 3 前端体验与可访问性依据
+## W4 Build 触发专项：Vite 前端体验与可访问性依据
+
+历史编号 03 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Web Vitals：用 LCP、INP、CLS 衡量真实用户体验。
   - https://web.dev/articles/vitals
@@ -121,7 +125,9 @@
 - MDN Accessibility：语义化 HTML、表单标签、键盘可达性和源码顺序是前端可访问性的低成本起点。
   - https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/HTML
 
-## 阶段 2 额外 SRE 依据
+## W4 Build 触发专项：Go/Kratos 服务端最小 SRE 依据
+
+历史编号 02 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google SRE, Simplicity：可靠性来自简化、最小 API、模块化和小批量发布。
   - https://sre.google/sre-book/simplicity/
@@ -130,7 +136,9 @@
 - Google SRE, Monitoring Distributed Systems：最小监控优先看 latency、traffic、errors、saturation 四个黄金信号。
   - https://sre.google/sre-book/monitoring-distributed-systems/
 
-## 阶段 4 AI 研发补充依据
+## W3 AI Behavior 触发专项：AI prompt / eval / agent workflow 依据
+
+历史编号 4 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Anthropic, Building Effective Agents：优先简单可组合模式；workflows 适合固定路径，agents 适合开放任务；复杂度只有能证明改善结果时才增加。
   - https://www.anthropic.com/engineering/building-effective-agents
@@ -139,7 +147,9 @@
 - Google SRE Monitoring：AI 能力上线也要有 latency、traffic、errors、saturation 等用户可见信号。
   - https://sre.google/sre-book/monitoring-distributed-systems/
 
-## 阶段 6 发布流水线依据
+## W6 Release 触发专项：发布流水线依据
+
+历史编号 06 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Twelve-Factor App, Build/Release/Run：严格分离 build、release、run；release 是 append-only ledger，并应有唯一 release id。
   - https://12factor.net/build-release-run
@@ -167,7 +177,9 @@
   - https://vite.dev/guide/build
   - https://vercel.com/docs/deployments
 
-## 阶段 7 数据与数据库迁移依据
+## W4 Build 触发专项：数据与数据库迁移依据
+
+历史编号 07 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Designing Data-Intensive Applications：数据系统设计围绕可靠性、可维护性、可扩展性和工具权衡；一人公司应优先简单、清晰、可恢复的数据路径。
   - https://dataintensive.net/
@@ -197,7 +209,9 @@
   - https://www.nist.gov/privacy-framework
   - https://gdpr-info.eu/art-5-gdpr/
 
-## 阶段 8 身份认证、权限与租户边界依据
+## W2 OpenSpec / Risk 触发专项：身份认证、权限与租户边界依据
+
+历史编号 8 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Saltzer & Schroeder, The Protection of Information in Computer Systems：采用 fail-safe defaults、complete mediation、least privilege、economy of mechanism 约束一人公司权限设计。
   - https://web.mit.edu/saltzer/www/publications/protection/
@@ -233,9 +247,11 @@
   - https://grpc.io/docs/guides/metadata/
   - https://go-kratos.dev/docs/component/middleware/auth/
 
-## 阶段 9 成本、容量与供应商边界依据
+## W2 OpenSpec / Risk 触发专项：成本、容量与供应商边界依据
 
-- FinOps Framework：把技术花费管理成工程、财务和业务协作的操作模型；阶段 9 裁剪为预算、单位成本、成本驱动和可行动阈值。
+历史编号 9 只用于追溯旧资料，不再作为当前规范主身份。
+
+- FinOps Framework：把技术花费管理成工程、财务和业务协作的操作模型；W2 成本容量专项裁剪为预算、单位成本、成本驱动和可行动阈值。
   - https://www.finops.org/framework/
   - https://www.finops.org/framework/capabilities/planning-estimating/
   - https://www.finops.org/framework/capabilities/unit-economics/
@@ -257,9 +273,11 @@
   - https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html
   - https://docs.cloud.google.com/docs/costs-usage
 
-## 阶段 10 安全、隐私与供应链基线依据
+## W2 OpenSpec / Risk 触发专项：安全、隐私与供应链基线依据
 
-- Ross Anderson, Security Engineering / Saltzer & Schroeder：安全工程要把错误、攻击者、激励和人类误操作纳入系统设计；阶段 10 继续采用 least privilege、fail-safe defaults、complete mediation 和 economy of mechanism。
+历史编号 10 只用于追溯旧资料，不再作为当前规范主身份。
+
+- Ross Anderson, Security Engineering / Saltzer & Schroeder：安全工程要把错误、攻击者、激励和人类误操作纳入系统设计；W2 安全隐私专项继续采用 least privilege、fail-safe defaults、complete mediation 和 economy of mechanism。
   - https://www.cl.cam.ac.uk/archive/rja14/book.html
   - https://web.mit.edu/saltzer/www/publications/protection/
 - Threat Modeling Manifesto / OWASP Threat Modeling：威胁建模用于改进开发期安全隐私；最小四问是“在做什么、会出什么错、如何处理、是否足够”。
@@ -291,7 +309,9 @@
   - https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds
   - https://docs.npmjs.com/cli/v9/commands/npm-audit
 
-## 阶段 11 产品发现、实验与反馈闭环依据
+## W1 Discovery：产品发现、实验与反馈闭环依据
+
+历史编号 11 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Lean Startup Principles：用 build-measure-learn、MVP、validated learning、actionable metrics 和 pivot 约束产品研发循环。
   - https://theleanstartup.com/principles
@@ -314,7 +334,9 @@
   - https://posthog.com/tutorials/event-tracking-guide
   - https://posthog.com/docs/product-analytics/best-practices
 
-## 阶段 12 测试与质量策略依据
+## W5 Verify 触发专项：测试与质量策略依据
+
+历史编号 12 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Martin Fowler, Practical Test Pyramid / Test Pyramid：测试组合应有更多低层、快速、确定的测试，少量高层测试用于端到端信心。
   - https://martinfowler.com/articles/practical-test-pyramid.html
@@ -347,7 +369,9 @@
   - https://developers.openai.com/api/docs/guides/agent-evals
   - https://developers.openai.com/api/docs/guides/prompt-engineering
 
-## 阶段 13 架构决策、代码组织与模块边界依据
+## W2 OpenSpec / Risk 触发专项：架构决策、代码组织与模块边界依据
+
+历史编号 13 只用于追溯旧资料，不再作为当前规范主身份。
 
 - D. L. Parnas, On the Criteria To Be Used in Decomposing Systems into Modules：模块化用于提升灵活性、可理解性和并行开发效率，关键在于按什么标准分解模块。
   - https://wstomv.win.tue.nl/edu/2ip30/references/criteria_for_modularization.pdf
@@ -382,7 +406,9 @@
 - Google SRE Simplicity：最小 API、松耦合、删除死代码、清晰模块边界可以同时提升稳定性和敏捷性。
   - https://sre.google/sre-book/simplicity/
 
-## 阶段 14 配置、环境、Feature Flag 与运行时变更依据
+## W4 Build 触发专项：配置、环境、Feature Flag 与运行时变更依据
+
+历史编号 14 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Twelve-Factor App Config / Dev-Prod Parity：配置应和代码严格分离，环境之间的差异应明确且尽量缩小。
   - https://12factor.net/config
@@ -408,7 +434,9 @@
 - gRPC Service Config：gRPC service config 可配置 wait-for-ready、timeout、retry、hedging、load balancing 等 RPC 行为，属于生产风险配置。
   - https://grpc.io/docs/guides/service-config/
 
-## 阶段 15 观测性、遥测与 AI Trace 依据
+## W7 Operate 触发专项：观测性、遥测与 AI Trace 依据
+
+历史编号 15 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google SRE Monitoring Distributed Systems / Workbook Monitoring：监控应优先用户症状和四个黄金信号；dashboard 指标应围绕 latency、traffic、errors、saturation 和依赖行为。
   - https://sre.google/sre-book/monitoring-distributed-systems/
@@ -438,7 +466,9 @@
   - https://developers.openai.com/api/docs/guides/agents/integrations-observability
   - https://openai.github.io/openai-agents-python/tracing/
 
-## 阶段 16 知识管理、文档与上下文恢复依据
+## W9 Maintain 触发专项：知识管理、文档与上下文恢复依据
+
+历史编号 16 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Diátaxis：文档满足 tutorial、how-to、reference、explanation 四种不同用户需求，应按需求组织而不是混写。
   - https://diataxis.fr/
@@ -455,7 +485,9 @@
   - https://engineering.homeoffice.gov.uk/patterns/docs-as-code/
   - https://konghq.com/blog/learning-center/what-is-docs-as-code
 
-## 阶段 17 维护、依赖升级、技术债与弃用治理依据
+## W9 Maintain 触发专项：维护、依赖升级、技术债与弃用治理依据
+
+历史编号 17 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google Software Engineering at Google, Dependency Management：依赖管理是外部代码网络随时间变化的问题，必须考虑传递依赖、安全、弃用、版本冲突和升级级联。
   - https://abseil.io/resources/swe-book/html/ch21.html
@@ -491,7 +523,9 @@
   - https://vite.dev/guide/migration
   - https://vite.dev/blog/announcing-vite8
 
-## 阶段 18 API 契约、兼容性与版本演进依据
+## W2 OpenSpec / Risk 触发专项：API 契约、兼容性与版本演进依据
+
+历史编号 18 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Hyrum's Law：API 的所有可观察行为都可能被消费者依赖，契约治理必须限制未声明行为泄漏。
   - https://www.hyrumslaw.com/
@@ -517,7 +551,9 @@
 - Software Engineering at Google, Deprecation：移除旧系统和旧接口需要有序迁移，避免消费者隐式依赖导致删除失败。
   - https://abseil.io/resources/swe-book/html/ch15.html
 
-## 阶段 19 开发环境、命令自动化与本地可复现依据
+## W4 Build 触发专项：开发环境、命令自动化与本地可复现依据
+
+历史编号 19 只用于追溯旧资料，不再作为当前规范主身份。
 
 - The Joel Test：source control、一步构建和持续构建是高质量软件团队的基础信号；一人公司裁剪为一条本地黄金路径和 one-step verify。
   - https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
@@ -547,7 +583,9 @@
   - https://vite.dev/guide/
   - https://vite.dev/guide/cli
 
-## 阶段 20 AI 协作编码、变更批次与自审依据
+## W4 Build 触发专项：AI 协作编码、变更批次与自审依据
+
+历史编号 20 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：软件项目不能靠增加人手或 agent 数量自动获得进度；概念完整性和清晰边界仍然需要少数稳定判断。
   - https://martinfowler.com/bliki/MythicalManMonth.html
@@ -573,7 +611,9 @@
   - https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices
   - https://docs.github.com/en/copilot/tutorials/review-ai-generated-code
 
-## 阶段 21 备份、恢复、灾难演练与业务连续性依据
+## W7 Operate 触发专项：备份、恢复、灾难演练与业务连续性依据
+
+历史编号 21 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google SRE Data Integrity：备份和归档目的不同；备份的核心价值是能在服务可用性需求内恢复数据。
   - https://sre.google/sre-book/data-integrity/
@@ -595,7 +635,9 @@
   - https://www.postgresql.org/docs/current/app-pgdump.html
   - https://www.postgresql.org/docs/current/app-pgrestore.html
 
-## 阶段 22 计费、权益、用量计量与对账依据
+## W4 Build 触发专项：计费、权益、用量计量与对账依据
+
+历史编号 22 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Stripe Billing Subscriptions / Entitlements：订阅状态和 active entitlements 可用于授权功能，但应用后端仍需执行最终权益判断。
   - https://docs.stripe.com/billing/subscriptions/overview
@@ -629,7 +671,9 @@
   - https://www.amazon.com/Monetizing-Innovation-Companies-Design-Product/dp/1119240867
   - https://www.simon-kucher.com/en/insights/monetizing-innovation
 
-## 阶段 23 客户支持、反馈分流与信任运营依据
+## W8 Learn 触发专项：客户支持、反馈分流与信任运营依据
+
+历史编号 23 只用于追溯旧资料，不再作为当前规范主身份。
 
 - The Best Service is No Service：把客户联系支持视为产品或流程失效的数据点，目标是消除重复联系原因，而不是扩大人工支持。
   - https://books.google.li/books?id=1h71O9rpCIcC
@@ -656,7 +700,9 @@
   - https://airc.nist.gov/airmf-resources/airmf/5-sec-core/
   - https://airc.nist.gov/airmf-resources/playbook/manage/
 
-## 阶段 24 后台运营、人工操作与高风险动作依据
+## W7 Operate 触发专项：后台运营、人工操作与高风险动作依据
+
+历史编号 24 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Twelve-Factor App Admin Processes：one-off 管理任务应运行在与应用相同 release、codebase 和 config 中，管理代码应随应用代码发布。
   - https://12factor.net/admin-processes
@@ -679,7 +725,9 @@
 - Google SRE AI Engineering Reliable Operations：AI 运维自治应按 Monitoring、Investigation、Approval、Actuation、Self-Directed 逐级推进，高风险 actuation 需要更高安全控制和批准。
   - https://sre.google/resources/practices-and-processes/ai-engineering-reliable-operations/
 
-## 阶段 25 信任政策、用户承诺与合规声明依据
+## W2 OpenSpec / Risk 触发专项：信任政策、用户承诺与合规声明依据
+
+历史编号 25 只用于追溯旧资料，不再作为当前规范主身份。
 
 - NIST Privacy Framework：用于识别和管理隐私风险，在创新产品和服务中保护个人隐私。
   - https://www.nist.gov/privacy-framework
@@ -709,7 +757,9 @@
   - https://openai.com/index/gpt-4o-system-card/
   - https://openai.com/index/gpt-5-system-card/
 
-## 阶段 26 AI 数据集、评测样本、标注与刷新治理依据
+## W3 AI Behavior 触发专项：AI 数据集、评测样本、标注与刷新治理依据
+
+历史编号 26 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Evaluation Best Practices / Datasets / Graders：eval 应贴近真实任务分布，明确“好”的定义，使用可重复 datasets、graders 和持续评估。
   - https://developers.openai.com/api/docs/guides/evaluation-best-practices
@@ -729,7 +779,9 @@
   - https://www.nist.gov/itl/ai-risk-management-framework
   - https://doi.org/10.6028/NIST.AI.600-1
 
-## 阶段 27 AI 红队、滥用场景与对抗样本治理依据
+## W3 AI Behavior 触发专项：AI 红队、滥用场景与对抗样本治理依据
+
+历史编号 27 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Safety Best Practices / Red Teaming / Moderation / Safety Checks：AI 应用需要 moderation、adversarial testing、human oversight、输入输出约束、用户报告和 safety identifier。
   - https://developers.openai.com/api/docs/guides/safety-best-practices
@@ -756,7 +808,9 @@
 - MITRE ATLAS：AI 安全可借鉴 adversarial tactics、techniques 和 case studies 来组织红队发现和缓解。
   - https://atlas.mitre.org/
 
-## 阶段 28 内容安全、用户生成内容与审核策略依据
+## W3 AI Behavior 触发专项：内容安全、用户生成内容与审核策略依据
+
+历史编号 28 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Moderation / Safety Best Practices / Safety Checks / Usage Policies：应用应检测 harmful content，用 moderation 结果执行过滤、review、干预或账号处理，并结合人审、反馈、safety identifier 和使用政策。
   - https://developers.openai.com/api/docs/guides/moderation
@@ -781,7 +835,9 @@
 - Perspective API：可作为内容审核参考工具，但 2026-06-24 查到官网提示服务将在 2026 年后结束，因此不应作为长期唯一控制。
   - https://perspectiveapi.com/
 
-## 阶段 29 AI 记忆、用户偏好与长期上下文治理依据
+## W3 AI Behavior 触发专项：AI 记忆、用户偏好与长期上下文治理依据
+
+历史编号 29 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Conversation State / Responses / Conversations：多轮上下文可以由应用重发、用 `previous_response_id` 串联，或用 Conversations API 持久化；不同状态机制有不同应用状态边界。
   - https://developers.openai.com/api/docs/guides/conversation-state
@@ -810,7 +866,9 @@
   - https://arxiv.org/abs/2310.08560
   - https://arxiv.org/abs/2304.03442
 
-## 阶段 30 AI 模型、供应商路由与降级治理依据
+## W3 AI Behavior 触发专项：AI 模型、供应商路由与降级治理依据
+
+历史编号 30 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Model Selection / Models：模型选择应先达到准确率目标并建立 eval dataset，再在保持质量的前提下优化成本和延迟；最新模型推荐和模型族能力会变化，因此内部工件记录 route 决策和证据，不硬编码长期外部事实。
   - https://developers.openai.com/api/docs/guides/model-selection
@@ -840,7 +898,9 @@
 - OpenTelemetry GenAI Semantic Conventions：GenAI 调用应标准化记录 provider、request model、response model、token、stream、finish reason、tool call、retrieval 和 latency 等属性。
   - https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/
 
-## 阶段 31 可访问性、AI UX 与界面信任依据
+## W5 Verify 触发专项：可访问性、AI UX 与界面信任依据
+
+历史编号 31 只用于追溯旧资料，不再作为当前规范主身份。
 
 - WCAG 2.2 / WAI WCAG Overview：WCAG 2.2 是当前 W3C 推荐标准，覆盖广泛残障类型，使用可测试 success criteria，组织在 Perceivable、Operable、Understandable、Robust 四个原则下；W3C 鼓励采用当前版本。
   - https://www.w3.org/TR/WCAG22/
@@ -866,7 +926,9 @@
 - React accessibility docs：React UI 仍需语义 HTML、错误通知、键盘操作、焦点轮廓、skip links、landmarks 和焦点管理。
   - https://legacy.reactjs.org/docs/accessibility.html
 
-## 阶段 32 AI 工具运行时、外部连接器与沙箱治理依据
+## W3 AI Behavior 触发专项：AI 工具运行时、外部连接器与沙箱治理依据
+
+历史编号 32 只用于追溯旧资料，不再作为当前规范主身份。
 
 - OpenAI Function Calling / Tools / Structured Outputs：工具调用是应用侧多步执行流程；函数工具使用 schema，严格模式能提升参数约束；工具、tool search 和 remote MCP 会扩展模型能力，因此需要应用侧边界。
   - https://developers.openai.com/api/docs/guides/function-calling
@@ -896,7 +958,9 @@
   - https://grpc.io/docs/guides/metadata/
   - https://vercel.com/geist/introduction
 
-## 阶段 33 AI 异步任务、队列与后台 Worker 治理依据
+## W4 Build 触发专项：AI 异步任务、队列与后台 Worker 治理依据
+
+历史编号 33 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Enterprise Integration Patterns：消息、队列、竞争消费者、幂等接收者、消息存储和消息历史提供异步系统的经典设计词汇。
   - https://www.enterpriseintegrationpatterns.com/
@@ -925,7 +989,9 @@
   - https://grpc.io/docs/guides/metadata/
   - https://vercel.com/geist/introduction
 
-## 阶段 34 事件驱动、Webhook 与外部系统集成治理依据
+## W4 Build 触发专项：事件驱动、Webhook 与外部系统集成治理依据
+
+历史编号 34 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Enterprise Integration Patterns：事件、消息通道、幂等接收者、消息存储、消息历史、死信通道和竞争消费者提供外部集成的经典设计词汇。
   - https://www.enterpriseintegrationpatterns.com/
@@ -959,7 +1025,9 @@
   - https://grpc.io/docs/guides/metadata/
   - https://vercel.com/geist/introduction
 
-## 阶段 35 AI 产品审计、证据保全与合规证据包治理依据
+## W9 Maintain 触发专项：AI 产品审计、证据保全与合规证据包治理依据
+
+历史编号 35 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google SRE Incident Response / Postmortem Culture：事故处理需要结构化响应、边处理边记录、无责复盘、可读证据和可关闭的行动项。
   - https://sre.google/workbook/incident-response/
@@ -985,7 +1053,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 36 AI RAG、知识源、检索与引用治理依据
+## W3 AI Behavior 触发专项：AI RAG、知识源、检索与引用治理依据
+
+历史编号 36 只用于追溯旧资料，不再作为当前规范主身份。
 
 - RAG 原论文：RAG 将参数化模型与非参数化外部记忆结合，用于知识密集任务；provenance、知识更新和检索质量是核心问题。
   - https://arxiv.org/abs/2005.11401
@@ -1016,7 +1086,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 37 基础设施即代码、环境拓扑与云资源治理依据
+## W7 Operate 触发专项：基础设施即代码、环境拓扑与云资源治理依据
+
+历史编号 37 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Infrastructure as Code / Kief Morris：基础设施应像软件一样版本化、测试、审查、可重复创建和演进，避免手工环境和 snowflake infrastructure。
   - https://infrastructure-as-code.com/book/
@@ -1052,7 +1124,9 @@
   - https://vite.dev/guide/
   - https://vercel.com/design.md
 
-## 阶段 38 用户通知、邮件/SMS/Push 与触达治理依据
+## W4 Build 触发专项：用户通知、邮件/SMS/Push 与触达治理依据
+
+历史编号 38 只用于追溯旧资料，不再作为当前规范主身份。
 
 - FTC CAN-SPAM：商业邮件需要真实 header/subject、退订机制和及时处理；事务/关系消息也不能使用误导性路由信息。
   - https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business
@@ -1085,7 +1159,9 @@
   - https://vite.dev/guide/
   - https://vercel.com/design.md
 
-## 阶段 39 产品分析、事件埋点与隐私友好实验依据
+## W1 Discovery 触发专项：产品分析、事件埋点与隐私友好实验依据
+
+历史编号 39 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google HEART / GSM：产品度量先从目标、信号、指标映射开始，避免只看虚荣数字。
   - https://research.google.com/pubs/archive/36299.pdf
@@ -1117,7 +1193,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 40 客户数据导入、导出、同步与删除治理依据
+## W2 OpenSpec / Risk 触发专项：客户数据导入、导出、同步与删除治理依据
+
+历史编号 40 只用于追溯旧资料，不再作为当前规范主身份。
 
 - GDPR / EDPB 数据主体权利：访问、删除、限制处理、可携带性和反对处理要求系统能定位、导出、删除或说明例外。
   - https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
@@ -1149,7 +1227,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 41 供应商处理方、DPA、子处理方与数据出境治理依据
+## W2 OpenSpec / Risk 触发专项：供应商处理方、DPA、子处理方与数据出境治理依据
+
+历史编号 41 只用于追溯旧资料，不再作为当前规范主身份。
 
 - GDPR / EDPB：处理方合同、子处理方授权、跨境传输、SCC 和补充措施需要可验证记录；controller/processor 角色取决于实际处理目的和手段。
   - https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
@@ -1183,7 +1263,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 42 开源许可证、AI 生成内容与知识产权来源治理依据
+## W2 OpenSpec / Risk 触发专项：开源许可证、AI 生成内容与知识产权来源治理依据
+
+历史编号 42 只用于追溯旧资料，不再作为当前规范主身份。
 
 - SPDX / REUSE / OSI：许可证和 copyright 信息应使用标准化、机器可读表达；开源许可证必须明确授予使用、修改和分发权利。
   - https://spdx.org/licenses/
@@ -1222,7 +1304,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 43 客户合同、订单、SLA 与商业承诺治理依据
+## W6 Release 触发专项：客户合同、订单、SLA 与商业承诺治理依据
+
+历史编号 43 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Contract management / negotiation：合同治理要覆盖 pre-award、award、post-award，并在谈判前明确 BATNA、可接受范围和 walk-away 条件。
   - https://ncmahq.org/Web/Web/Standards---Practices/Contract-Management-Standard-Publication.aspx
@@ -1257,7 +1341,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 44 安全/隐私事故、漏洞披露与应急响应治理依据
+## W7 Operate 触发专项：安全/隐私事故、漏洞披露与应急响应治理依据
+
+历史编号 44 只用于追溯旧资料，不再作为当前规范主身份。
 
 - NIST SP 800-61 Rev. 3：事故响应建议嵌入 NIST CSF 2.0 风险管理活动，目标是提升准备、检测、响应、恢复和持续改进能力。
   - https://csrc.nist.gov/pubs/sp/800/61/r3/final
@@ -1296,7 +1382,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 45 开发者体验、API 文档、SDK 与示例治理依据
+## W4 Build 触发专项：开发者体验、API 文档、SDK 与示例治理依据
+
+历史编号 45 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Diátaxis / Google developer docs：开发者文档要区分 tutorial、how-to、reference、explanation，并保持清晰、一致、可执行。
   - https://diataxis.fr/
@@ -1340,7 +1428,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 46 对外承诺、声明与证据发布门禁依据
+## W6 Release 触发专项：对外承诺、声明与证据发布门禁依据
+
+历史编号 46 只用于追溯旧资料，不再作为当前规范主身份。
 
 - FTC claim substantiation / advertising basics：客观产品或服务声明需要合理依据；广告声明必须真实、不可欺骗且有证据。
   - https://www.ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation
@@ -1373,7 +1463,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 47 开源发布、社区贡献与维护边界依据
+## W9 Maintain 触发专项：开源发布、社区贡献与维护边界依据
+
+历史编号 47 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Open Source Guides / maintainer practices：维护者需要记录流程、学会说不、利用社区和自动化，也可在负担过高时暂停。
   - https://opensource.guide/best-practices/
@@ -1408,7 +1500,9 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 48 AI 质量回归、线上质量事故与回滚依据
+## W8 Learn 触发专项：AI 质量回归、线上质量事故与回滚依据
+
+历史编号 48 只用于追溯旧资料，不再作为当前规范主身份。
 
 - Google / ML production readiness：Hidden Technical Debt、ML Test Score 和 Rules of ML 强调 ML/AI 系统的隐性依赖、训练/服务偏移、监控、可调试和回滚。
   - https://research.google/pubs/hidden-technical-debt-in-machine-learning-systems/
@@ -1446,10 +1540,12 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 49 客户试点、上线导入与租户交付依据
+## W6 Release 触发专项：客户试点、上线导入与租户交付依据
+
+历史编号 49 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：客户上线中的每个特例都会增加沟通、协调和概念完整性成本；一人公司要把客户特例压到租户配置、flag、entitlement 和明确边界中。
-- 小型项目管理：小项目用清晰范围、责任、节奏和退出条件替代复杂流程；阶段 49 用五个工件控制客户上线。
+- 小型项目管理：小项目用清晰范围、责任、节奏和退出条件替代复杂流程；本专项用五个工件控制客户上线。
 - The Lean Startup / Customer Development / The Mom Test：试点应验证真实客户行为、业务结果和愿意投入，而不是验证礼貌性正反馈。
 - Crossing the Chasm：客户上线要交付 whole product，包括配置、数据、支持、培训、验收和退出路径。
 - Google SRE Reliable Product Launches：Google 将 launch 视为外部可见变化；launch process 应 lightweight、robust、thorough、scalable、adaptable，并通过可管理 checklist 降低失败。
@@ -1474,7 +1570,9 @@
   - https://www.gainsight.com/essential-guide/customer-success/
   - https://www.intercom.com/blog/onboarding-guide/
 
-## 阶段 50 路线图、工作入口与研发优先级依据
+## W0 Intake：路线图、工作入口与研发优先级依据
+
+对应规范：`docs/W0-intake/main.md`。历史编号 50 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：少数清晰判断保护概念完整性；把所有请求并行推进会增加协调成本和认知负担。
 - 小型项目管理：小项目只保留范围、责任、节奏、停止条件和可恢复记录；不需要企业级 PMO。
@@ -1502,10 +1600,12 @@
 - Linear Triage：triage 状态用于在接受进入 backlog/cycle 前先审查 issue，适合作为工作入口概念参考。
   - https://linear.app/docs/conceptual-model
 
-## 阶段 51 AI 模型优化、微调/蒸馏与训练运行依据
+## W3 AI Behavior 触发专项：AI 模型优化、微调/蒸馏与训练运行依据
+
+历史编号 51 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：模型优化不是银弹；真正困难的是让产品定义、数据、评测、运行和回滚边界保持一致。
-- 小型项目管理：一人公司不维护完整 MLOps 平台；阶段 51 只保留优化 brief、数据计划、运行记录、验证报告和 rollout 决策。
+- 小型项目管理：一人公司不维护完整 MLOps 平台；W3 模型优化专项只保留优化 brief、数据计划、运行记录、验证报告和 rollout 决策。
 - OpenAI Model Optimization：OpenAI 将优化描述为 eval、prompt engineering 和 fine-tuning 的反馈循环；应先建立 baseline eval，再调整 prompt、数据或候选模型。
   - https://developers.openai.com/api/docs/guides/model-optimization
 - OpenAI Optimizing LLM Accuracy：优化应先判断失败原因；RAG 解决上下文/知识问题，fine-tuning 更适合一致性、格式、风格或固定任务行为；不要为了 sophistication 直接上 RAG + fine-tuning。
@@ -1528,10 +1628,12 @@
   - https://www.nist.gov/itl/ai-risk-management-framework
   - https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
 
-## 阶段 52 性能预算、负载验证与性能回归依据
+## W5 Verify 触发专项：性能预算、负载验证与性能回归依据
+
+历史编号 52 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：性能优化不是银弹；真正困难的是在需求、接口、数据、运行环境和用户体验之间保持概念完整性。
-- 小型项目管理：一人公司不维护性能工程团队或完整压测平台；阶段 52 只保留预算、负载画像、benchmark 计划、回归报告和复盘。
+- 小型项目管理：一人公司不维护性能工程团队或完整压测平台；本专项只保留预算、负载画像、benchmark 计划、回归报告和复盘。
 - Google SRE Monitoring / Handling Overload：性能必须连接 latency、traffic、errors、saturation；过载时要用资源上限、优先级、降级、快速拒绝和 retry budget 保护系统。
   - https://sre.google/workbook/monitoring/
   - https://sre.google/sre-book/handling-overload/
@@ -1561,10 +1663,12 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 53 韧性演练、故障注入与降级验证依据
+## W5 Verify 触发专项：韧性演练、故障注入与降级验证依据
+
+历史编号 53 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：复杂系统没有银弹；韧性来自清晰接口、概念完整性和持续暴露隐藏耦合。
-- 小型项目管理：一人公司不维护重型 chaos program；阶段 53 只保留失败模式、实验计划、注入运行、降级证据和复盘。
+- 小型项目管理：一人公司不维护重型 chaos program；本专项只保留失败模式、实验计划、注入运行、降级证据和复盘。
 - Google SRE Testing for Reliability：可靠性测试用于减少变更后对未来行为的不确定性；没有尝试过的路径应假设可能损坏。
   - https://sre.google/sre-book/testing-reliability/
 - Google SRE Addressing Cascading Failures / Handling Overload：级联故障常由过载、无界重试、资源耗尽和依赖失败放大；需要 backoff、jitter、限流、降级和快速失败。
@@ -1596,10 +1700,12 @@
   - https://vercel.com/design.md
   - https://vercel.com/design.dark.md
 
-## 阶段 54 凭据、密钥与服务账号生命周期依据
+## W7 Operate 触发专项：凭据、密钥与服务账号生命周期依据
+
+历史编号 54 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：密钥治理的难点不是某个工具，而是凭据用途、owner、作用域、撤销路径和轮换证据的概念完整性。
-- 小型项目管理：一人公司不维护完整 PAM/KMS/GRC 平台；阶段 54 只保留清单、访问策略、轮换计划、轮换记录和泄露复盘。
+- 小型项目管理：一人公司不维护完整 PAM/KMS/GRC 平台；本专项只保留清单、访问策略、轮换计划、轮换记录和泄露复盘。
 - OWASP Secrets Management：secret 管理需要集中存储、访问控制、自动化、审计、生命周期、轮换、撤销、过期、policy、metadata 和 incident response。
   - https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
 - NIST SP 800-57 Part 1 Rev. 5：key management 需要保护 key material，定义 key 用途、生命周期、backup、compromise、inventory 和 policy。
@@ -1621,10 +1727,12 @@
   - https://grpc.io/docs/guides/auth/
   - https://vite.dev/guide/env-and-mode
 
-## 阶段 55 国际化、本地化、时区/货币与多语言 AI 体验依据
+## W3 AI Behavior 触发专项：国际化、本地化、时区/货币与多语言 AI 体验依据
+
+历史编号 55 只用于追溯旧资料，不再作为当前规范主身份。
 
 - 《人月神话》：本地化复杂度来自概念不一致；语言、时区、货币、AI 输出和错误文案必须共享同一套产品规则。
-- 小型项目管理：一人公司不维护完整翻译平台；阶段 55 只保留 locale policy、message catalog、time/currency rules、AI locale eval 和 localization review。
+- 小型项目管理：一人公司不维护完整翻译平台；W3 本地化专项只保留 locale policy、message catalog、time/currency rules、AI locale eval 和 localization review。
 - W3C Internationalization：Web 技术应支持不同语言、文字、书写方向和文化环境。
   - https://www.w3.org/International/
 - W3C String Metadata / Unicode Bidirectional Algorithm：字符串需要 language 与 direction metadata；RTL/BiDi 不能只靠猜测或 CSS 补丁。

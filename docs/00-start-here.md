@@ -45,9 +45,9 @@ W0 Intake
 
 只读：
 
-- `docs/W1-discovery/product-discovery-feedback-loop-standard.md`
+- `docs/W1-discovery/main.md`
 - 需要事件、指标或实验时读 `docs/W1-discovery/product-analytics-experiment-standard.md`
-- 支持反馈成为证据时读 `docs/W8-learn/23-customer-support-trust-ops-standard.md`
+- 支持反馈成为证据时读 `docs/W8-learn/customer-support-trust-ops-standard.md`
 
 最小产出：
 
@@ -66,11 +66,8 @@ W0 Intake
 
 只读：
 
-- `docs/W2-openspec-risk/one-person-ai-rd-operating-model.md`
-- `docs/W2-openspec-risk/architecture-boundary-standard.md`
-- `docs/W2-openspec-risk/api-contract-compatibility-standard.md`
-- `docs/W2-openspec-risk/security-privacy-supply-chain-standard.md`
-- 必要时读 `docs/W2-openspec-risk/auth-tenant-boundary-standard.md`、`docs/W2-openspec-risk/cost-capacity-vendor-boundary-standard.md`、`docs/W2-openspec-risk/customer-data-portability-lifecycle-standard.md`
+- `docs/W2-openspec-risk/main.md`
+- 必要时读架构、契约、安全隐私、auth、成本、客户数据、供应商、IP 或信任承诺专项。
 
 最小产出：
 
@@ -92,12 +89,8 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W3-ai-behavior/04-ai-prompt-eval-agent-workflow-standard.md`
-- `docs/W3-ai-behavior/26-ai-dataset-eval-data-standard.md`
-- `docs/W3-ai-behavior/27-ai-red-team-abuse-standard.md`
-- `docs/W3-ai-behavior/30-ai-model-routing-provider-standard.md`
-- 需要 RAG 时读 `docs/W3-ai-behavior/36-rag-retrieval-source-standard.md`
-- 需要工具调用时读 `docs/W3-ai-behavior/32-ai-tool-runtime-standard.md`
+- `docs/W3-ai-behavior/main.md`
+- 需要 prompt/eval、数据集、红队、内容安全、记忆、模型路由、工具、RAG、模型优化或本地化时，再读对应触发专项。
 
 最小产出：
 
@@ -117,24 +110,21 @@ openspec/changes/<change-id>/
 
 只读：
 
-- 后端：`docs/W4-build/02-go-kratos-sqlc-grpc-service-standard.md`
-- 前端：`docs/W4-build/03-vite-vercel-frontend-standard.md`
-- 数据：`docs/W4-build/07-data-migration-standard.md`
-- 配置：`docs/W4-build/14-configuration-feature-flag-standard.md`
-- 本地开发：`docs/W4-build/19-dev-workspace-automation-standard.md`
-- AI 协作编码：`docs/W4-build/20-ai-coding-workflow-standard.md`
+- `docs/W4-build/main.md`
+- 需要后端、前端、数据、配置、本地开发、AI 协作编码、计费、异步任务、事件/Webhook、通知或开发者体验时，再读对应 W4 触发专项。
 
 最小产出：
 
-- Go/Kratos/sqlc/gRPC 代码或 Vite 前端代码
-- migration / config / feature flag
-- AI coding batch log
+- 可 review 的实现批次
+- migration / config / feature flag / worker / integration 工件
+- 本地验证结果与 AI coding batch log
+- 交给 W5 的测试、风险和残余缺口
 
 需要你判断：
 
 - 不可逆数据迁移。
 - 生产配置默认值。
-- 会改变用户可见承诺的 UI 或 API 行为。
+- 会改变用户可见承诺的 UI、API、权限、计费、通知或外部副作用。
 
 ## W5：验证、安全门禁与质量回归
 
@@ -142,11 +132,9 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W5-verify/12-testing-quality-standard.md`
-- `docs/W5-verify/31-accessibility-ai-ux-standard.md`
-- `docs/W5-verify/52-performance-budget-load-regression-standard.md`
-- `docs/W5-verify/53-resilience-fault-injection-degradation-standard.md`
-- AI 输出变更时读 `docs/W8-learn/48-ai-quality-regression-incident-standard.md`
+- `docs/W5-verify/main.md`
+- 需要测试质量、可访问性/AI UX、性能回归或韧性演练时，再读对应 W5 触发专项。
+- AI 输出变更时读 `docs/W8-learn/ai-quality-regression-incident-standard.md`
 
 最小产出：
 
@@ -165,10 +153,8 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W6-release/06-release-pipeline-standard.md`
-- `docs/W6-release/49-customer-pilot-onboarding-launch-standard.md`
-- `docs/W6-release/46-external-claim-evidence-release-gate-standard.md`
-- 有合同或 SLA 时读 `docs/W6-release/43-commercial-contract-obligation-standard.md`
+- `docs/W6-release/main.md`
+- 需要发布流水线、客户上线、对外声明证据或合同/SLA 时，再读对应 W6 触发专项。
 
 最小产出：
 
@@ -187,11 +173,8 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W7-operate/05-sre-lite-operations-standard.md`
-- `docs/W7-operate/15-observability-telemetry-standard.md`
-- `docs/W7-operate/21-backup-recovery-continuity-standard.md`
-- `docs/W7-operate/44-security-privacy-incident-vulnerability-standard.md`
-- 凭据相关读 `docs/W7-operate/54-credential-secret-lifecycle-standard.md`
+- `docs/W7-operate/main.md`
+- 需要 SRE-lite、观测性、备份恢复、后台运营、基础设施、事故响应或凭据生命周期时，再读对应 W7 触发专项。
 
 最小产出：
 
@@ -210,11 +193,9 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W1-discovery/product-discovery-feedback-loop-standard.md`
-- `docs/W1-discovery/product-analytics-experiment-standard.md`
-- `docs/W8-learn/23-customer-support-trust-ops-standard.md`
-- `docs/W8-learn/48-ai-quality-regression-incident-standard.md`
-- `docs/W0-intake/main.md`
+- `docs/W8-learn/main.md`
+- 需要支持反馈、信任运营或 AI 质量回归时，再读对应 W8 触发专项。
+- 如果学习结果改变问题定义或优先级，再回到 `docs/W1-discovery/main.md` 或 `docs/W0-intake/main.md`。
 
 最小产出：
 
@@ -233,10 +214,8 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W9-maintain/16-knowledge-context-recovery-standard.md`
-- `docs/W9-maintain/17-maintenance-dependency-debt-standard.md`
-- `docs/W9-maintain/47-open-source-release-community-maintenance-standard.md`
-- `docs/W9-maintain/35-audit-evidence-compliance-standard.md`
+- `docs/W9-maintain/main.md`
+- 需要知识恢复、维护债务、审计证据或开源维护时，再读对应 W9 触发专项。
 
 最小产出：
 

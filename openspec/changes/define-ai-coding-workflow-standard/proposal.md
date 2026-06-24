@@ -7,13 +7,13 @@
 ## 范围
 
 - 新增 `ai-coding-workflow-standard` spec。
-- 新增阶段 20 规范文档。
+- 新增 W4 AI 协作编码触发专项文档。
 - 创建 `ai-coding-workflow-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
 ## 不做什么
 
-- 不替代阶段 4 AI prompt/eval、阶段 12 testing、阶段 18 API contract、阶段 19 dev workspace automation。
+- 不替代 W3 AI prompt/eval、W5 testing、W2 API contract、W4 dev workspace automation。
 - 不要求每次只读或解释代码时创建工件。
 - 不连接真实 GitHub、Codex cloud、Copilot、OpenAI API、供应商或生产环境。
 - 不规定必须使用某一个 AI coding agent；Codex 是默认优先适配对象。

@@ -4,7 +4,7 @@
 
 ### 1. 观测性工件和 SLO 工件分离
 
-阶段 5 定义 SLO、alert 和 runbook。阶段 15 只定义代码和系统必须发出的信号、字段和关联方式。这样避免把 dashboard 当成可靠性策略，也避免 SLO 没有数据来源。
+W7 SRE-lite 专项定义 SLO、alert 和 runbook。W7 观测性专项只定义代码和系统必须发出的信号、字段和关联方式。这样避免把 dashboard 当成可靠性策略，也避免 SLO 没有数据来源。
 
 ### 2. 用 OpenTelemetry 作为默认语义
 

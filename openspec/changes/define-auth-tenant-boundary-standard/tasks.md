@@ -5,18 +5,18 @@
 - [x] 1.1 查证 OWASP Authorization、Authentication、Session、Logging、Multi-Tenant、API Security Top 10。
 - [x] 1.2 查证 NIST SP 800-63-4、SP 800-207、RBAC、ABAC。
 - [x] 1.3 查证 IETF OAuth Security BCP、JWT、OpenID Connect、gRPC/Kratos auth 官方文档。
-- [x] 1.4 补充阶段 8 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W2 auth/tenant 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 身份权限规范
 
-- [x] 2.1 编写阶段 8 规范正文。
+- [x] 2.1 编写 W2 auth/tenant 规范正文。
 - [x] 2.2 定义 `auth/boundaries`、`auth/policies`、`auth/tests`、`auth/audit` artifacts。
 - [x] 2.3 定义 authn/authz/tenant context、token/session、审计和人工 checkpoint 规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 8 change。
+- [x] 3.1 创建 W2 auth/tenant change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

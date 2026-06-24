@@ -12,7 +12,7 @@ Vercel `design.md` 和 `design.dark.md` 提供了浅色/深色 token。规范只
 
 ### 3. 浏览器只接公开 HTTP/BFF 层
 
-阶段 2 已定义后端内部 gRPC first。前端运行在浏览器，默认不直接接内部 gRPC；公开 HTTP/BFF 是更简单、安全、可缓存、可调试的边界。gRPC-Web/Connect 必须单独说明。
+W4 Go/Kratos 服务端专项已定义后端内部 gRPC first。前端运行在浏览器，默认不直接接内部 gRPC；公开 HTTP/BFF 是更简单、安全、可缓存、可调试的边界。gRPC-Web/Connect 必须单独说明。
 
 ### 4. 质量门禁保持少而硬
 

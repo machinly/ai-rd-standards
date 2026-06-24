@@ -1,10 +1,10 @@
 # 一人公司 AI 研发操作系统规范
 
-## W2 定位
+## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的核心规范。W2 只回答一个问题：**这次变更的行为、边界、风险和退出条件是什么？**
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 `docs/W2-openspec-risk/main.md` 已经判断需要更细地定义 OpenSpec change、AI 研发操作系统、双重 review 或工作单元治理时，才读取本文件。
 
-默认每个超过 30 分钟，或影响用户、生产、数据、安全、成本、AI 行为的工作，都进入一个 OpenSpec change。W2 不负责实现；它负责让实现之前的行为、契约、风险、人工判断和验证出口先成形。
+如果当前只是判断 W2 应该先读哪个文件，或只需要定义变更的基本意图、行为、边界、风险和退出条件，先回到 `docs/W2-openspec-risk/main.md`。
 
 ## 场景触发规范
 
@@ -17,7 +17,7 @@
 - 客户数据导入、导出、同步、删除、备份、向量库或 AI 记忆数据流：进入 `docs/W2-openspec-risk/customer-data-portability-lifecycle-standard.md`。
 - 新供应商、DPA、子处理方、数据出境、供应商训练/保留条款：进入 `docs/W2-openspec-risk/processor-transfer-vendor-standard.md`。
 - 开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE/attribution：进入 `docs/W2-openspec-risk/ip-license-provenance-standard.md`。
-- 用户可见 AI 行为：下一步进入 `docs/W3-ai-behavior/04-ai-prompt-eval-agent-workflow-standard.md`。
+- 用户可见 AI 行为：下一步进入 `docs/W3-ai-behavior/prompt-eval-agent-workflow-standard.md`。
 
 ## 最小产出
 

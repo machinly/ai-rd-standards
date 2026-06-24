@@ -1,16 +1,16 @@
 # 身份认证、权限与租户边界规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“认证、授权、租户隔离、support/admin 访问或 AI 代用户操作”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“认证、授权、租户隔离、support/admin 访问或 AI 代用户操作”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 为一人公司定义一套可执行的身份、权限和租户隔离规范：每个用户可见服务都明确“谁在请求、代表哪个租户、能对哪些资源做什么、怎么审计、哪些动作必须人工确认”。目标不是搭完整 IAM 平台，而是避免最常见也最致命的安全事故：认证绕过、越权访问、跨租户数据泄露、管理员误用和 AI 工具越权。
 
 本阶段默认技术路径：Go/Kratos middleware 负责认证上下文，gRPC metadata 只传横切信息，业务层做授权判断，sqlc query 必须带租户/owner 条件。浏览器登录可以使用外部 IdP / OIDC / session cookie；服务间调用优先短期 token 或 mTLS/OIDC，由具体部署环境决定。
 
-## 本阶段只解决什么
+## 本专项只解决什么
 
 - 身份与权限边界的最小仓库工件。
 - authn / authz / tenant context 的默认实现顺序。
@@ -27,7 +27,7 @@
 
 - 《人月神话》：安全平台和权限框架不是银弹。权限复杂度来自业务对象、租户边界和例外，而不是缺一个更大的框架。
 - 小型项目管理：只保留能阻止高损失事故和恢复上下文的工件：身份边界、权限矩阵、隔离测试、审计说明。
-- Saltzer & Schroeder, The Protection of Information in Computer Systems：阶段 8 采用 fail-safe defaults、complete mediation、least privilege、economy of mechanism。默认拒绝、每次访问都检查、权限最小化、机制保持简单。
+- Saltzer & Schroeder, The Protection of Information in Computer Systems：本专项采用 fail-safe defaults、complete mediation、least privilege、economy of mechanism。默认拒绝、每次访问都检查、权限最小化、机制保持简单。
 - OWASP Authorization Cheat Sheet：权限设计阶段要枚举用户、资源、操作；默认拒绝；每个请求都验证权限；权限漂移需要复审。
 - OWASP API Security Top 10 2023：BOLA、Broken Authentication、BOPLA、Broken Function Level Authorization 是 API 的核心风险，尤其是用户可改对象 ID 或字段时。
 - OWASP Multi-Tenant Security：tenant context 必须早期建立并绑定到 authenticated session，不信任客户端随手传的 tenant id；需要防跨租户数据访问、缓存/会话/存储污染和 tenant context injection。
@@ -193,9 +193,9 @@ auth/
 # <service> Auth Audit
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“认证、授权、租户隔离、support/admin 访问或 AI 代用户操作”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“认证、授权、租户隔离、support/admin 访问或 AI 代用户操作”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Events
 
 ## Fields
@@ -237,7 +237,7 @@ auth/
 
 当前建议默认接受：所有用户可见服务必须有 `auth/boundaries/<service>.json`、`auth/policies/<service>.json`、`auth/tests/<service>.jsonl`、`auth/audit/<service>.md`；没有明确 allow 的动作默认 deny。
 
-## 本阶段 Review A：一人公司可落地性
+## 本专项 Review A：一人公司可落地性
 
 结论：可落地，但必须避免一开始搭完整 IAM 平台。
 
@@ -247,14 +247,14 @@ auth/
 - 最大摩擦是写权限测试；因此要求至少 4 条 JSONL case，并让 skill 脚本检查。
 - 下一步应在第一个真实服务上用 `auth-boundary-guard` 生成 artifacts。
 
-## 本阶段 Review B：产品/工程/运维风险
+## 本专项 Review B：产品/工程/运维风险
 
-结论：阶段 8 主要降低越权和跨租户泄露风险。
+结论：本专项主要降低越权和跨租户泄露风险。
 
 - 已把 deny-by-default、每次请求授权、tenant context 不信任客户端、object/property-level authorization 写成硬约束。
 - 已把 admin、support impersonation、service token、AI 写操作列为人工 checkpoint。
 - 已要求审计事件和权限拒绝日志，连接 SRE/incident 后续处理。
-- 已把 sqlc query 的 tenant/owner 条件纳入实现规则，连接阶段 7 数据规范。
+- 已把 sqlc query 的 tenant/owner 条件纳入实现规则，连接 W4 数据迁移与数据访问规范。
 - 仍不锁定具体 IdP 或 policy engine；真实项目可按成本和客户需求选择。
 
 

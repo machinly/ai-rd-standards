@@ -34,8 +34,8 @@
 - README 仍然是短入口，且链接 workflow entrypoint、workflow index 和 context pack。
 - `docs/00-start-here.md` 包含 W0-W9。
 - `docs/00-standard-index.md` 包含 W0-W9 详细段落和新增规范准入规则。
-- 每个 `docs/Wx-*/NN-*` 规范文件都恰好映射到一个 workflow step。
-- 每个编号规范的物理目录必须和主归属 step 一致。
+- 每个 `docs/Wx-*/main.md` 核心规范和语义化触发专项都恰好映射到一个 workflow step。
+- 每个规范的物理目录必须和主归属 step 一致。
 - 索引里的路径真实存在。
 
 ## 取舍

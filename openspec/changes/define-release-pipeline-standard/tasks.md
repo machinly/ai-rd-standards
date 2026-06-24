@@ -5,18 +5,18 @@
 - [x] 1.1 查证 Google SRE Release Engineering、Canarying Releases。
 - [x] 1.2 查证 Twelve-Factor build/release/run、DORA delivery metrics。
 - [x] 1.3 查证 GitHub Actions workflow/security/OIDC/artifact attestations、Docker multi-stage/SBOM/provenance、Go/sqlc/Vite/Vercel 官方文档。
-- [x] 1.4 补充阶段 6 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W6 发布流水线专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 发布流水线规范
 
-- [x] 2.1 编写阶段 6 规范正文。
+- [x] 2.1 编写 W6 发布流水线触发专项正文。
 - [x] 2.2 定义 `release/` artifact 目录、pipeline JSON、smoke、rollback、release log。
 - [x] 2.3 定义后端、前端、AI、SRE-lite、secrets、供应链、rollback gates。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 6 change。
+- [x] 3.1 创建 W6 发布流水线 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

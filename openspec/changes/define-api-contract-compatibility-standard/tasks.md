@@ -5,18 +5,18 @@
 - [x] 1.1 查证 Hyrum's Law、Software Engineering at Google deprecation。
 - [x] 1.2 查证 Google AIP-180、Protobuf proto3/best practices、Buf breaking。
 - [x] 1.3 查证 gRPC error/status、SemVer、OpenAI function calling/Structured Outputs、schema evolution。
-- [x] 1.4 补充阶段 18 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W2 API compatibility 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. API 契约规范
 
-- [x] 2.1 编写阶段 18 规范正文。
+- [x] 2.1 编写 W2 API compatibility 规范正文。
 - [x] 2.2 定义 surface map、compatibility policy、protobuf evolution、error model、contract tests、AI tool schema。
 - [x] 2.3 定义 Go/Kratos/gRPC/Protobuf、HTTP/Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 18 change。
+- [x] 3.1 创建 W2 API compatibility change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

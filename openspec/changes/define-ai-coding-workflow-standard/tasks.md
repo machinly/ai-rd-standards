@@ -6,18 +6,18 @@
 - [x] 1.2 查证 DORA small batches / trunk-based development。
 - [x] 1.3 查证 OpenAI Codex best practices、AGENTS.md、sandbox / approvals、skills。
 - [x] 1.4 查证 GitHub Copilot CLI best practices 与 AI-generated code review。
-- [x] 1.5 补充阶段 20 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W4 AI 协作编码专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. AI coding workflow 规范
 
-- [x] 2.1 编写阶段 20 规范正文。
+- [x] 2.1 编写 W4 AI 协作编码触发专项正文。
 - [x] 2.2 定义 implementation brief、batch log、review、verification artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 20 change。
+- [x] 3.1 创建 W4 AI 协作编码 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

@@ -1,19 +1,19 @@
 # 产品发现、实验与反馈闭环规范
 
-## W1 定位
+## W1 触发定位
 
-本文件是 W1 Discovery 的核心规范。W1 只回答一个问题：**我们要解决的是真问题，还是只是想做一个功能？**
+本文件是 W1 Discovery 的触发型专项规范，不是 W1 主入口。只有当 `docs/W1-discovery/main.md` 已经判断需要更细地组织产品赌注、用户证据、反馈、实验和学习决策时，才读取本文件。
 
-默认先写清目标用户、真实问题、产品赌注、唯一主指标、证据、实验和停止条件。其它 W1 规范和跨 W 规范只在场景触发时读取，不与本文件并列作为 W1 主入口。
+如果当前问题只是“这件事是否值得进入产品发现”或 W1 应该先读哪个文件，先回到 `docs/W1-discovery/main.md`。普通入口问题不要从本文件开始。
 
 ## 场景触发规范
 
 - 需要采集产品事件、分析漏斗、做 A/B、灰度或 instrumented beta：进入 `docs/W1-discovery/product-analytics-experiment-standard.md`。
-- 支持反馈、投诉、退款、信任请求构成产品证据：参考 `docs/W8-learn/23-customer-support-trust-ops-standard.md`。
-- 客户试点或设计伙伴反馈影响产品方向：参考 `docs/W6-release/49-customer-pilot-onboarding-launch-standard.md`。
-- 商业承诺、合同、SLA 或销售邮件正在影响产品 scope：参考 `docs/W6-release/43-commercial-contract-obligation-standard.md`。
-- 官网、文档、销售材料或 AI disclosure 里出现强承诺：参考 `docs/W6-release/46-external-claim-evidence-release-gate-standard.md`。
-- 用户可见 AI 能力进入设计：下一步进入 `docs/W3-ai-behavior/04-ai-prompt-eval-agent-workflow-standard.md`。
+- 支持反馈、投诉、退款、信任请求构成产品证据：参考 `docs/W8-learn/customer-support-trust-ops-standard.md`。
+- 客户试点或设计伙伴反馈影响产品方向：参考 `docs/W6-release/customer-pilot-onboarding-launch-standard.md`。
+- 商业承诺、合同、SLA 或销售邮件正在影响产品 scope：参考 `docs/W6-release/commercial-contract-obligation-standard.md`。
+- 官网、文档、销售材料或 AI disclosure 里出现强承诺：参考 `docs/W6-release/external-claim-evidence-release-gate-standard.md`。
+- 用户可见 AI 能力进入设计：下一步进入 `docs/W3-ai-behavior/prompt-eval-agent-workflow-standard.md`。
 
 ## 目标
 

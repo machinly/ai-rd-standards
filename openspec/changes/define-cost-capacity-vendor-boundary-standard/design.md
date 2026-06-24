@@ -20,7 +20,7 @@ OpenAI、云厂商和 SaaS 价格会变化。预算 artifact 只记录内部可�
 
 ### 5. 单供应商可以接受，但必须可解释
 
-早期强行多云会增加维护成本。阶段 9 接受托管服务和单供应商，但要求 critical path 记录 fallback、exit trigger、数据格式和人工迁移成本。
+早期强行多云会增加维护成本。W2 cost/capacity 专项接受托管服务和单供应商，但要求 critical path 记录 fallback、exit trigger、数据格式和人工迁移成本。
 
 ### 6. 只升级高影响支出决策
 

@@ -1,9 +1,9 @@
 # 架构决策、代码组织与模块边界规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“架构边界、模块职责、数据所有权或依赖方向变化”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“架构边界、模块职责、数据所有权或依赖方向变化”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 一人公司最容易累积的长期债务，是代码一开始跑得很快，几个月后所有东西互相依赖，任何改动都牵动后端、前端、数据库、prompt、权限和发布。本触发专项定义最小架构边界规范，让重要架构决策、模块职责、依赖方向、API/data/AI 边界能被记录和检查。
@@ -232,6 +232,6 @@ web/
 - 安全隐私角度：数据所有权、AI tool、tenant、auth boundary 在 architecture artifacts 中显式记录。
 - 成本角度：新服务、新供应商 SDK、新 agent runtime 都触发人工 checkpoint，避免架构性成本漂移。
 
-结论：可落地。第 13 阶段补上了“系统长期形状”的最小约束，并把架构例外交给人判断。
+结论：可落地。本专项补上了“系统长期形状”的最小约束，并把架构例外交给人判断。
 
 

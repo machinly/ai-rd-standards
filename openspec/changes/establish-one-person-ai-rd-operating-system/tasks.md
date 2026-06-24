@@ -7,7 +7,7 @@
 
 ## 2. 研发操作模型
 
-- [x] 2.1 编写阶段 1 操作模型。
+- [x] 2.1 编写 W2 OpenSpec operating model。
 - [x] 2.2 加入两轮一人公司落地 review。
 - [x] 2.3 只列出进入下一阶段前真正需要人的判断项。
 
@@ -23,5 +23,5 @@
 
 - [x] 4.1 在 Codex skills 目录创建 `one-person-openspec-rd`。
 - [x] 4.2 添加默认技术栈和 review rubric references。
-- [x] 4.3 用阶段 2 服务端规范 forward-test 该 skill。
+- [x] 4.3 用 W4 Go/Kratos 服务端专项 forward-test 该 skill。
 

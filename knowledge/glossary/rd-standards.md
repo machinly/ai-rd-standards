@@ -4,7 +4,7 @@
 
 - One-person company: A product company operated by one founder with AI assistance and low process overhead.
 - Standard: A durable rule set that changes how work is done.
-- Stage: A numbered standards document under `docs/Wx-*/NN-*`.
+- Historical stage: A previous numbered label retained only for source/history traceability; current standards live under `docs/Wx-*/main.md` plus semantic trigger files.
 - Navigation layer: The root README, start-here guide, full index, and knowledge context pack.
 - Workflow step: One of W0-W9 in the AI R&D lifecycle, from intake to context recovery.
 

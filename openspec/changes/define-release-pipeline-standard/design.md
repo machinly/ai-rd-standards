@@ -8,7 +8,7 @@
 
 ### 2. 复用 SRE-lite artifacts
 
-阶段 5 已有 `ops/slo`、`ops/release`、runbook 和 incident 工件。阶段 6 不再复制运维内容，只把 release pipeline 连接到这些文件。
+W7 SRE-lite 已有 `ops/slo`、`ops/release`、runbook 和 incident 工件。W6 发布流水线专项不再复制运维内容，只把 release pipeline 连接到这些文件。
 
 ### 3. CI 构建 artifact，本地只触发
 

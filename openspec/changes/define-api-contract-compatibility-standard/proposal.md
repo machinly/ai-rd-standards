@@ -7,14 +7,14 @@
 ## 范围
 
 - 新增 `api-contract-compatibility-standard` spec。
-- 新增阶段 18 规范文档。
+- 新增 W2 API compatibility 规范文档。
 - 创建 `api-contract-compatibility-guard` skill 和 verifier。
 - 补充来源索引与 README。
 
 ## 不做什么
 
 - 不搭建完整 API gateway、schema registry 或文档门户。
-- 不替代阶段 13 architecture、阶段 17 deprecation、阶段 12 testing、阶段 6 release。
+- 不替代 W2 architecture、W9 deprecation、W5 testing、W6 release。
 - 不要求所有 experimental/internal surface 都做完整 contract tests。
 - 不连接真实 CI、Buf registry、OpenAI eval 平台或外部 API 管理系统。
 

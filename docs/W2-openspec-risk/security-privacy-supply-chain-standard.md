@@ -1,16 +1,16 @@
 # 安全、隐私与供应链基线规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 为一人公司建立一套轻量但可检查的安全、隐私与软件供应链基线：每个生产服务或用户可见 AI workflow 都明确威胁模型、数据处理边界、依赖与构建来源、secrets 管理和高风险人工 checkpoint。目标不是做企业合规认证，而是避免一人公司最容易“看不见直到出事”的风险：泄露密钥、把用户数据发给未评估的外部服务、依赖漏洞进入生产、AI 被 prompt injection 或工具链攻击、构建 artifact 无来源可追。
 
 本阶段默认技术路径：Go/Kratos/sqlc/gRPC 服务使用 Go 官方 vulnerability tooling、最小权限 CI、可追踪 artifact；Vite 前端使用锁文件、依赖审计和构建产物记录；AI workflow 记录 prompt/data/tool 安全边界、外部处理方和安全测试。
 
-## 本阶段只解决什么
+## 本专项只解决什么
 
 - 最小 threat model：资产、入口、信任边界、滥用场景、控制、未决风险。
 - 最小 privacy record：数据分类、外部处理方、保留期、日志、删除/导出、AI 数据使用。
@@ -25,12 +25,12 @@
 
 - 《人月神话》：安全工具不是银弹。真正要降低的是概念复杂度：边界清楚、接口少、默认安全、例外可见。
 - 小型项目管理：一人公司只保留能阻止高损失事故和恢复上下文的工件：threat model、privacy record、supply-chain record、secrets runbook。
-- Ross Anderson, Security Engineering：安全工程关注系统在错误、攻击、激励和人类行为下是否仍可靠。阶段 10 因此把“攻击者会怎么绕过我们”和“人会怎么误操作”写进 artifacts。
+- Ross Anderson, Security Engineering：安全工程关注系统在错误、攻击、激励和人类行为下是否仍可靠。本专项因此把“攻击者会怎么绕过我们”和“人会怎么误操作”写进 artifacts。
 - Saltzer & Schroeder：继续采用 least privilege、fail-safe defaults、complete mediation、economy of mechanism。默认拒绝、最小权限、每条外部边界都要可解释。
 - Threat Modeling Manifesto / OWASP Threat Modeling：威胁建模用四个问题压缩：在做什么、会出什么错、怎么处理、做得够好吗。
 - NIST SSDF SP 800-218：安全实践应集成进 SDLC，用来减少已发布软件漏洞、降低未发现漏洞被利用的影响，并解决根因。
 - OWASP SAMM：安全保障应按组织风险迭代改进；一人公司使用最小 maturity slice，不照搬完整模型。
-- OWASP ASVS / Cheat Sheets：ASVS 提供应用安全验证基线；OWASP Cheat Sheets 提供高价值主题 guidance，阶段 10 只抽取与当前服务风险相关的控制。
+- OWASP ASVS / Cheat Sheets：ASVS 提供应用安全验证基线；OWASP Cheat Sheets 提供高价值主题 guidance，本专项只抽取与当前服务风险相关的控制。
 - OWASP Secrets Management：secrets 需要集中存储、访问控制、审计、轮换和泄露响应，不能散落在代码、配置、CI 日志或 prompt 中。
 - OWASP Top 10 for LLM Applications 2025：LLM 应用要关注 prompt injection、sensitive information disclosure、supply chain、不安全输出处理、模型 DoS、过度代理等风险。
 - OpenAI 官方 data controls / safety best practices：API 使用会涉及 abuse monitoring logs、应用状态和数据保留控制；AI 应用需要 moderation、adversarial testing、human oversight 和 prompt 边界。
@@ -66,9 +66,9 @@ security/
 # <service> Threat Model
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Scope
 
 ## Assets
@@ -169,9 +169,9 @@ AI workflow 的 threat model 还必须显式覆盖 prompt injection、sensitive 
 # <service> Secrets
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Storage
 
 ## Access
@@ -227,7 +227,7 @@ AI workflow 的 threat model 还必须显式覆盖 prompt injection、sensitive 
 
 当前建议默认接受：所有生产服务和用户可见 AI workflow 必须有 `security/threat-models/<service>.md`、`security/privacy/<service>.json`、`security/supply-chain/<service>.json`、`security/secrets/<service>.md`；没有这四个工件不得进入生产。
 
-## 本阶段 Review A：一人公司可落地性
+## 本专项 Review A：一人公司可落地性
 
 结论：可落地，但必须保持“薄安全层”。
 
@@ -237,14 +237,14 @@ AI workflow 的 threat model 还必须显式覆盖 prompt injection、sensitive 
 - 最大摩擦是 privacy record 容易被漏写；因此把新外部处理方和 AI 数据使用列为脚本检查项。
 - 下一步应在第一个真实服务上用 `security-privacy-supply-chain-guard` 生成 artifacts。
 
-## 本阶段 Review B：产品/工程/运维风险
+## 本专项 Review B：产品/工程/运维风险
 
-结论：阶段 10 主要降低泄密、隐私误用、依赖漏洞和供应链篡改风险。
+结论：本专项主要降低泄密、隐私误用、依赖漏洞和供应链篡改风险。
 
 - 已把 secret 泄露、第三方数据处理、critical 漏洞、未签名 release、AI 工具副作用列为人工 checkpoint。
 - 已把 OpenAI data controls 和安全实践转为内部 privacy/AI 安全记录，而不假设供应商设置永远不变。
 - 已连接 NIST SSDF、OWASP SAMM/ASVS 和 SLSA/CycloneDX，但只取一人公司可执行的最小 slice。
-- 已要求模型输出不可信、工具调用需授权，连接阶段 4 AI eval 和阶段 8 auth 边界。
+- 已要求模型输出不可信、工具调用需授权，连接 W3 AI eval 和 W2 auth 边界。
 - 仍不承诺合规认证；真实客户或行业要求出现时再单独开合规 change。
 
 

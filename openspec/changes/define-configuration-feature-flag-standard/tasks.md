@@ -6,18 +6,18 @@
 - [x] 1.2 查证 Google SRE Configuration Design / Specifics / Progressive Rollouts。
 - [x] 1.3 查证 Martin Fowler Feature Toggles 和 OpenFeature specification。
 - [x] 1.4 查证 Kratos Config、Vite Env and Modes、gRPC Service Config。
-- [x] 1.5 补充阶段 14 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W4 配置与 Feature Flag 专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 配置与 Flag 规范
 
-- [x] 2.1 编写阶段 14 规范正文。
+- [x] 2.1 编写 W4 配置与 Feature Flag 触发专项正文。
 - [x] 2.2 定义 config registry、environment matrix、flag registry、runtime changes、runbook artifacts。
 - [x] 2.3 定义 Go/Kratos、Vite、gRPC、AI 配置和 Feature Flag 生命周期规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 14 change。
+- [x] 3.1 创建 W4 配置与 Feature Flag change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

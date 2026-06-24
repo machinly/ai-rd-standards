@@ -1,16 +1,16 @@
 # 成本、容量与供应商边界规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 为一人公司建立最小成本与容量控制闭环：每个生产服务或用户可见 AI workflow 都明确预算、单位成本、限额、降级方式、供应商依赖、退出边界和超支处理。目标不是搭一套企业 FinOps 平台，而是避免三类高损失事故：账单突然失控、过载导致服务雪崩、关键供应商绑定后无法调整。
 
 本阶段默认技术路径：Go/Kratos/gRPC 服务在入口、中间件或 usecase 层做 request/token/tool iteration 限制；AI 能力必须记录 token/request/model 成本驱动；发布前检查预算和供应商边界；SRE-lite runbook 负责超支、限流、降级和恢复。
 
-## 本阶段只解决什么
+## 本专项只解决什么
 
 - 成本预算、单位成本、用量驱动和告警阈值的最小仓库工件。
 - AI token、请求、工具调用、agent loop 和批处理任务的硬限制。
@@ -26,7 +26,7 @@
 - 《人月神话》：成本与容量工具也不是银弹。真正困难的是把业务价值、系统容量、供应商约束和人的注意力放进同一组小决策。
 - 小型项目管理：只让人判断会改变现金流、可用性或供应商锁定的事项；文件命名、阈值小修正和普通告警文案默认由规范处理。
 - FinOps Framework：FinOps 是让工程、财务和业务围绕技术花费协作、及时决策和承担责任的操作模型。对一人公司，三件事足够：看见成本、知道单位成本、能对异常采取动作。
-- FinOps Planning / Unit Economics：估算应围绕场景和参数；单位指标要连接预算、预测、报告和 guardrails。阶段 9 因此要求每个服务有 `unit_metric` 和 `cost_drivers`。
+- FinOps Planning / Unit Economics：估算应围绕场景和参数；单位指标要连接预算、预测、报告和 guardrails。本专项因此要求每个服务有 `unit_metric` 和 `cost_drivers`。
 - Google SRE Handling Overload / Cascading Failures：可靠系统必须知道容量上限，在过载时提前拒绝、降级或减少工作量；降级路径也要被测试，否则真正过载时很可能不可用。
 - Google SRE NALSD：容量规划、组件隔离和 graceful degradation 应变成具体资源方案，而不是抽象愿望。
 - OpenAI 官方 Rate Limits / Production Best Practices / Cost Optimization / Prompt Caching：OpenAI API 同时受 RPM、TPM、RPD、TPD、模型、项目和月度 usage limit 等限制；生产应用要管理 billing limits；长公共 prompt 可以通过缓存降低成本和延迟；批处理或低优先级任务可考虑 Batch/Flex 等官方成本路径。
@@ -106,9 +106,9 @@ cost/
 # <service> Vendor Boundary
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Vendors
 
 ## Critical Paths
@@ -130,9 +130,9 @@ cost/
 # <service> Cost and Capacity Runbook
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“成本预算、容量、限流、供应商依赖、超支或降级”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Signals
 
 ## 50 Percent Budget Action
@@ -198,7 +198,7 @@ cost/
 
 当前建议默认接受：所有生产服务和用户可见 AI workflow 必须有 `cost/budgets/<service>.json`、`cost/vendors/<service>.md`、`cost/runbooks/<service>.md`；没有预算、没有硬限制、没有降级路径的功能不得进入生产。
 
-## 本阶段 Review A：一人公司可落地性
+## 本专项 Review A：一人公司可落地性
 
 结论：可落地，但要把 FinOps 压成三个文件和一次月度复审。
 
@@ -208,9 +208,9 @@ cost/
 - 最大摩擦是 AI 成本限制容易被忘记，因此必须由 skill 脚本检查 token/tool/request 限额。
 - 下一步应在第一个真实 AI workflow 上用 `cost-capacity-guard` 生成 artifacts。
 
-## 本阶段 Review B：产品/工程/运维风险
+## 本专项 Review B：产品/工程/运维风险
 
-结论：阶段 9 主要降低现金流失控、容量过载和供应商锁定风险。
+结论：本专项主要降低现金流失控、容量过载和供应商锁定风险。
 
 - 已把预算、硬限制、降级、供应商退出计划写成生产前置条件。
 - 已把 OpenAI rate/usage limits、token 成本、prompt caching、batch/flex 等官方约束转为内部工件，而不硬编码易过期价格。

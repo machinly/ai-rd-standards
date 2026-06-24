@@ -6,18 +6,18 @@
 - [x] 1.2 查证 OWASP SAMM、ASVS、Secrets Management、Threat Modeling、LLM Top 10。
 - [x] 1.3 查证 OpenAI Data Controls、Safety Best Practices。
 - [x] 1.4 查证 SLSA、CycloneDX、Go govulncheck、GitHub security docs。
-- [x] 1.5 补充阶段 10 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W2 security/privacy/supply-chain 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 安全隐私供应链规范
 
-- [x] 2.1 编写阶段 10 规范正文。
+- [x] 2.1 编写 W2 security/privacy/supply-chain 规范正文。
 - [x] 2.2 定义 `security/threat-models`、`security/privacy`、`security/supply-chain`、`security/secrets` artifacts。
 - [x] 2.3 定义 AI 安全、隐私、供应链、secrets、CI 权限和人工 checkpoint 规则。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 10 change。
+- [x] 3.1 创建 W2 security/privacy/supply-chain change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

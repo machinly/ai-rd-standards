@@ -6,18 +6,18 @@
 - [x] 1.2 查证 FTC AI guidance / enforcement、OECD AI Principles。
 - [x] 1.3 查证 NIST AI RMF / Generative AI Profile、Google People + AI Guidebook、OpenAI system cards。
 - [x] 1.4 查证 OpenAI Usage Policies、Safety Best Practices、Data Processing Addendum。
-- [x] 1.5 补充阶段 25 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W2 trust/policy/compliance 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 信任政策合规规范
 
-- [x] 2.1 编写阶段 25 规范正文。
+- [x] 2.1 编写 W2 trust/policy/compliance 规范正文。
 - [x] 2.2 定义 commitment register、policy surfaces、AI disclosure、data rights、compliance review artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 25 change。
+- [x] 3.1 创建 W2 trust/policy/compliance change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

@@ -17,7 +17,7 @@
 - 不引入大型企业架构流程。
 - 不强制完整 C4/UML 图。
 - 不默认微服务拆分。
-- 不替代阶段 2 后端、阶段 3 前端、阶段 4 AI、阶段 8 auth、阶段 10 security、阶段 12 testing 规范。
+- 不替代 W4 后端/前端、W3 AI、W2 auth/security、W5 testing 规范。
 
 ## 依据
 

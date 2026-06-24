@@ -5,18 +5,18 @@
 - [x] 1.1 查证 Software Engineering at Google 的 dependency management、deprecation、static analysis。
 - [x] 1.2 查证 Go modules / govulncheck、GitHub Dependabot、npm lockfile/audit/ci、Vite migration。
 - [x] 1.3 查证 Fowler technical debt/refactoring、Working Effectively with Legacy Code、Hidden Technical Debt in ML Systems。
-- [x] 1.4 补充阶段 17 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.4 补充 W9 维护债务专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 维护治理规范
 
-- [x] 2.1 编写阶段 17 规范正文。
+- [x] 2.1 编写 W9 维护债务触发专项正文。
 - [x] 2.2 定义 dependency inventory、update policy、upgrade plan、debt register、deprecation plan。
 - [x] 2.3 定义 Go/Vite/AI/Dependabot 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 17 change。
+- [x] 3.1 创建 W9 维护债务 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

@@ -4,17 +4,17 @@
 
 - [x] 1.1 查证 OpenAI Prompting、Evaluation、Agents、Tools、Structured Outputs、Safety、Production best practices。
 - [x] 1.2 查证 Anthropic agents、Google Rules of ML、Google SRE monitoring。
-- [x] 1.3 补充阶段 4 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.3 补充 W3 prompt/eval 来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. AI 研发规范
 
-- [x] 2.1 编写阶段 4 规范正文。
+- [x] 2.1 编写 W3 prompt/eval 规范正文。
 - [x] 2.2 定义 artifact 目录、prompt、eval、schema、workflow/agent、tool safety、最小运维要求。
 - [x] 2.3 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 4 change。
+- [x] 3.1 创建 W3 prompt/eval change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

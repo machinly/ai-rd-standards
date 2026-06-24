@@ -3,17 +3,17 @@
 ## 1. 来源与约束
 
 - [x] 1.1 查证 Vite、Vitest、Vercel Geist、WCAG、MDN、Web Vitals 官方资料。
-- [x] 1.2 补充阶段 3 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.2 补充 W4 Vite 前端专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 前端规范
 
-- [x] 2.1 编写阶段 3 规范正文。
+- [x] 2.1 编写 W4 Vite 前端触发专项正文。
 - [x] 2.2 定义项目结构、API 边界、配置安全、设计 token、可访问性、性能门禁。
 - [x] 2.3 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 3 change。
+- [x] 3.1 创建 W4 Vite 前端 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。

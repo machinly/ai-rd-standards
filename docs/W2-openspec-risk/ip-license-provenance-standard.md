@@ -1,9 +1,9 @@
 # 开源许可证、AI 生成内容与知识产权来源治理规范
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## 目标
 
 一人公司做 AI 产品时，知识产权风险往往不是来自“写了多少代码”，而是来自看似普通的复用：复制一段网上代码、引入 AGPL 依赖、把 CC-NC 素材放进商业页面、把客户内容塞进 eval、让 AI 生成营销图并声称完全拥有版权、把第三方品牌或人物风格做成模板、发布时忘记 NOTICE。本触发专项的目标是建立最小可执行的 IP / license / provenance 治理，让每个生产 target 都能回答：用到了哪些外部材料，它们的许可证和权利基础是什么，AI 生成内容能否商用/发布，是否需要 attribution/NOTICE/source offer，什么时候必须人判断或法律审阅。
@@ -16,7 +16,7 @@
 - 小型项目管理：一人公司不做大型 OSPO/GRC；只保留能阻止上线事故的五个工件：source register、license policy、AI output policy、notice attribution、IP review。
 - The Cathedral and the Bazaar / Producing Open Source Software：开源复用不是“免费拿来”，而是一组协作、许可、贡献、归因和分发约定。越是小团队，越要把许可证和社区预期写清楚。
 - Software Engineering at Google, Dependency Management：依赖是随时间变化的网络。许可证、来源、分发方式和 transitive dependency 会随着版本变化，因此 license 也要进入 review。
-- SPDX / REUSE：许可证信息应该机器可读、文件级可追踪、可随复制和再分发保留。阶段 42 默认使用 SPDX expression 和 REUSE 思路表达许可证。
+- SPDX / REUSE：许可证信息应该机器可读、文件级可追踪、可随复制和再分发保留。本专项默认使用 SPDX expression 和 REUSE 思路表达许可证。
 - OSI / npm / Go package ecosystem：开源许可证定义了使用、修改和分发权利；npm package license 字段使用 SPDX expression；Go module 依赖需要可追踪的模块和许可证信息。
 - GitHub Dependency Review：依赖变更可以在 PR 阶段检查漏洞和许可证；license gate 应该在引入依赖时运行，而不是发布前临时翻仓库。
 - U.S. Copyright Office AI guidance：美国版权登记要求人类作者身份；包含 AI 生成材料的作品需要区分人类贡献和 AI 生成部分。AI 输出的商业使用权和可版权性不是同一件事。
@@ -160,9 +160,9 @@ AI 输出策略必须包含：
 # <target> AI Output Policy
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Scope
 
 ## Output Ownership Boundary
@@ -204,9 +204,9 @@ NOTICE / attribution 文件必须包含：
 # <target> Notice And Attribution
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Scope
 
 ## Third Party Notices
@@ -243,9 +243,9 @@ IP 复盘必须包含：
 # <target> IP Review
 ## W2 触发定位
 
-本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
+本文件是 W2 OpenSpec / Risk 的触发型专项规范，不是 W2 主入口。只有当 docs/W2-openspec-risk/main.md 的场景触发规范命中“开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution”时，才读取本文件。
 
-如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/one-person-ai-rd-operating-model.md。
+如果当前只是定义变更的基本意图、行为、边界、风险和退出条件，先回到 W2 核心规范 docs/W2-openspec-risk/main.md。
 ## Recent Changes
 
 ## New Sources
@@ -331,6 +331,6 @@ IP 复盘必须包含：
 - 安全隐私角度：客户内容、个人数据、机密材料和无授权内容不会静默进入 eval/training/demo。
 - 成本角度：早期不买重型合规平台，只在高风险材料上付人工注意力；低风险依赖靠 SPDX/REUSE/GitHub gate/脚本处理。
 
-结论：可落地。阶段 42 把“我能不能用这个材料”变成研发前置条件，而不是等客户、平台或权利人质疑时再补证据。
+结论：可落地。本专项把“我能不能用这个材料”变成研发前置条件，而不是等客户、平台或权利人质疑时再补证据。
 
 

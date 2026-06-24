@@ -6,18 +6,18 @@
 - [x] 1.2 查证 Google SRE Automation / Eliminating Toil、Emergency Response、Reliable Product Launches。
 - [x] 1.3 查证 OWASP Authorization、Logging、Top 10 A09。
 - [x] 1.4 查证 NIST SP 800-53 Rev. 5、OpenAI Agent Builder Safety、Google SRE AI Engineering Reliable Operations。
-- [x] 1.5 补充阶段 24 来源到 `docs/sources/2026-06-23-source-map.md`。
+- [x] 1.5 补充 W7 后台运营专项来源到 `docs/sources/2026-06-23-source-map.md`。
 
 ## 2. 后台运营动作规范
 
-- [x] 2.1 编写阶段 24 规范正文。
+- [x] 2.1 编写 W7 后台运营触发专项正文。
 - [x] 2.2 定义 action registry、operator playbook、audit log schema、break-glass、ops review artifacts。
 - [x] 2.3 定义 Go/Kratos/sqlc/gRPC、Vite、AI workflow 默认规则和人审点。
 - [x] 2.4 添加两轮一人公司落地 review。
 
 ## 3. OpenSpec artifacts
 
-- [x] 3.1 创建阶段 24 change。
+- [x] 3.1 创建 W7 后台运营 change。
 - [x] 3.2 编写 proposal。
 - [x] 3.3 编写 design。
 - [x] 3.4 编写 tasks。
