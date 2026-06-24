@@ -1,0 +1,10 @@
+project: one-person-ai-rd-standards
+language: zh-CN
+profile: core
+principles:
+  - one-active-change-by-default
+  - minimize-human-attention
+  - review-intent-before-code
+  - prefer-go-kratos-sqlc-grpc-vite
+  - require-two-solo-company-reviews
+

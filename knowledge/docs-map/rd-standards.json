@@ -1,0 +1,94 @@
+{
+  "target": "rd-standards",
+  "owner": "solo-founder",
+  "audiences": [
+    "solo-founder",
+    "codex-agent"
+  ],
+  "canonical_entrypoints": [
+    {
+      "title": "Root entrypoint",
+      "path": "README.md",
+      "type": "reference",
+      "audience": "solo-founder",
+      "owner": "solo-founder",
+      "review_on": "2026-07-24",
+      "stale_after_days": 30
+    },
+    {
+      "title": "AI R&D workflow entrypoint",
+      "path": "docs/00-start-here.md",
+      "type": "how_to",
+      "audience": "solo-founder",
+      "owner": "solo-founder",
+      "review_on": "2026-07-24",
+      "stale_after_days": 30
+    },
+    {
+      "title": "Workflow-to-standard index",
+      "path": "docs/00-standard-index.md",
+      "type": "reference",
+      "audience": "solo-founder",
+      "owner": "solo-founder",
+      "review_on": "2026-07-24",
+      "stale_after_days": 30
+    },
+    {
+      "title": "Codex context pack",
+      "path": "knowledge/context-packs/rd-standards.md",
+      "type": "context_pack",
+      "audience": "codex-agent",
+      "owner": "solo-founder",
+      "review_on": "2026-07-24",
+      "stale_after_days": 30
+    }
+  ],
+  "diataxis_coverage": {
+    "tutorial": "Not required yet; this repository is a working operating manual, not external onboarding material.",
+    "how_to": [
+      "docs/00-start-here.md",
+      "knowledge/how-to/rd-standards.md"
+    ],
+    "reference": [
+      "README.md",
+      "docs/00-standard-index.md"
+    ],
+    "explanation": [
+      "docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md",
+      "docs/W9-maintain/16-knowledge-context-recovery-standard.md",
+      "docs/W0-intake/main.md"
+    ]
+  },
+  "context_pack": "knowledge/context-packs/rd-standards.md",
+  "glossary": "knowledge/glossary/rd-standards.md",
+  "how_to": "knowledge/how-to/rd-standards.md",
+  "linked_openspec_changes": [
+    "openspec/changes/establish-one-person-ai-rd-operating-system",
+    "openspec/changes/define-knowledge-context-standard",
+    "openspec/changes/define-roadmap-prioritization-work-intake-standard",
+    "openspec/changes/improve-rd-standards-navigation"
+  ],
+  "linked_runtime_artifacts": [
+    "docs/00-start-here.md",
+    "docs/00-standard-index.md",
+    "tools/verify_workflow_index.py",
+    "docs/sources/2026-06-23-source-map.md"
+  ],
+  "freshness_policy": "Review after any release of a new standards stage, incident, security change, schema or migration change, AI workflow change, config change, product pivot, or navigation cleanup.",
+  "freshness_log": "knowledge/freshness/rd-standards.jsonl",
+  "human_checkpoint": {
+    "required_for": [
+      "canonical_source_change",
+      "stale_doc_accepted",
+      "archive_or_delete_doc",
+      "terminology_change",
+      "context_pack_insufficient",
+      "high_risk_post_change_review"
+    ],
+    "default_owner": "solo-founder"
+  },
+  "review_cadence": "Review monthly, after any new standards stage, after an incident, and after a major navigation or OpenSpec structure change."
+}
+
+
+
