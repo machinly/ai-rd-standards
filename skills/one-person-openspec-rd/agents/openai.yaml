@@ -1,0 +1,4 @@
+interface:
+  display_name: "One-Person OpenSpec R&D"
+  short_description: "按 W0-W9 路由一人公司 AI 研发"
+  default_prompt: "Use $one-person-openspec-rd to classify this work into W0-W9, create the needed OpenSpec or workflow artifacts, and run two solo-company reviews."

@@ -55,6 +55,8 @@ python C:\Users\machinly\.codex\skills\knowledge-context-recovery-guard\scripts\
 
 本仓库已沉淀大量 skills，不需要人工记忆全部名字。按 AI 研发工作流触发即可；完整映射见 `docs/00-standard-index.md`。
 
+仓库内维护的 skill 本体放在 `skills/`。其中 `skills/one-person-openspec-rd/` 是本仓库 AI 研发工作流的 canonical skill；个人环境里的 `C:\Users\machinly\.codex\skills\one-person-openspec-rd\` 只作为本机可发现副本，更新时应以仓库版本为准。
+
 最常用入口：
 
 - `one-person-openspec-rd`：先把研发请求路由到 W0-W9，再创建需要的 OpenSpec 或 workflow artifacts，并执行两轮一人公司 review。
