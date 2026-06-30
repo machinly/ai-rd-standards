@@ -12,6 +12,8 @@
 
 W0-W9 是路由坐标，不是线性执行顺序。W0/W1/W2 先决定当前工作是否值得做、问题是否清楚、边界和风险是什么；进入同一个 OpenSpec change 后，W3 AI 行为、W4 实现、W5 验证、W6 发布准备、W7 运行准备可以并行推进。真正不能跳过的是高影响人工判断、OpenSpec 边界、AI eval、安全/质量门禁、发布/回滚门禁、运行后的学习回流，以及 W9 的上下文沉淀。
 
+角色入口在 `docs/03-role-index.md`。角色是泳道，不是替代生命周期：总控 Agent 仍然先定位 W0-W9，再按产品、Tech Lead、后端、前端、测试、运维、运营、安全合规调度角色 Agent。角色 Agent 只读自己的角色入口和当前 W 相关规范，不通读全库。
+
 ```text
 W0 Intake
   -> W1 Discovery when evidence is missing
@@ -52,7 +54,7 @@ W0 Intake
 只读：
 
 - `docs/W1-discovery/00-main.md`
-- 需要事件、指标或实验时读 `docs/W1-discovery/02-product-analytics-experiment-standard.md`
+- 需要事件、指标或实验时读 `docs/W1-discovery/01-product-analytics-experiment-standard.md`
 - 支持反馈成为证据时读 `docs/W8-learn/01-customer-support-trust-ops-standard.md`
 
 最小产出：
@@ -221,7 +223,7 @@ openspec/changes/<change-id>/
 只读：
 
 - `docs/W9-maintain/00-main.md`
-- 需要知识恢复、维护债务、审计证据或开源维护时，再读对应 W9 触发专项。
+- 需要知识恢复或维护债务时，再读对应 W9 触发专项；审计证据、开源维护和社区发布先由 W9 主入口判断是否需要单独 OpenSpec change。
 
 最小产出：
 
@@ -248,7 +250,8 @@ openspec/changes/<change-id>/
 ```text
 先读取 README.md、docs/00-start-here.md、knowledge/context-packs/rd-standards.md。
 先判断当前任务的主导 W，并标出是否有 W3-W7 并行支线。
-只读取主导 W、上一步输入、下一步门禁和必要并行支线对应的规范。
+如果需要角色视角，再读取 docs/03-role-index.md 和命中的 docs/roles/*.md。
+只读取主导 W、上一步输入、下一步门禁、必要并行支线和角色入口对应的规范。
 如果需要实现，创建或更新一个 OpenSpec change。
 只把高影响决策交给用户，其余按对应 skill、verifier 和两轮 review 落地。
 ```

@@ -4,10 +4,11 @@
 
 ## 先看哪里
 
-1. 不知道该读哪份规范：先看 `docs/00-start-here.md`，它按 AI 研发工作流组织。
-2. 想找完整映射：看 `docs/02-standard-index.md`，它把所有规范挂到 workflow step。
-3. 让 Codex 接手：先给它 `knowledge/context-packs/rd-standards.md`。
-4. 查来源依据：看 `docs/sources/2026-06-23-source-map.md`。
+1. 按流程读：先看 `docs/00-start-here.md`，它按 W0-W9 AI 研发工作流组织。
+2. 按角色读：看 `docs/03-role-index.md`，它把产品、Tech Lead、后端、前端、测试、运维、运营、安全合规映射到 W0-W9。
+3. 想找完整映射：看 `docs/02-standard-index.md`，它把主规范和触发专项挂到 workflow step。
+4. 让 Codex 接手：先给它 `knowledge/context-packs/rd-standards.md`。
+5. 查来源依据：看 `docs/sources/2026-06-23-source-map.md`。
 
 ## 当前默认路径
 
@@ -21,7 +22,15 @@ openspec/changes/<change-id>/
   specs/*/spec.md
 ```
 
-然后先定位当前处于 AI 研发工作流的哪一步，再只读取该 step 和相邻 step 的规范。不要一次阅读全部 55 个阶段。
+然后先定位当前处于 AI 研发工作流的哪一步，再选择需要的角色泳道，只读取该 step、相邻门禁和命中的角色入口。不要一次阅读全部规范。
+
+```text
+按流程读：
+README -> docs/00-start-here.md -> 当前 W -> 触发专项
+
+按角色读：
+README -> docs/03-role-index.md -> 角色入口 -> 当前 W 相关规范
+```
 
 ## 人只判断这些
 

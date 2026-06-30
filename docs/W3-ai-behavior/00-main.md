@@ -47,15 +47,12 @@ ai/
 
 若触发相应场景，再补：
 
-- `ai-data/`：dataset card、eval set、labeling guide、quality report、refresh review。
-- `ai-safety/`：abuse case、red-team plan、adversarial cases、mitigation map、safety release review。
-- `content-safety/`：policy、moderation rules、enforcement runbook、notice/appeal、moderation review。
-- `ai-memory/`：memory policy、preference schema、context source map、retrieval rules、memory review。
+- `ai-data/`、`ai-safety/`、`content-safety/`：eval 数据、红队、内容安全和发布安全门禁。
+- `ai-context/`：memory policy、preference schema、source registry、retrieval policy、citation grounding、context review。
 - `ai-routing/`：model registry、route policy、fallback runbook、eval gate、provider review。
 - `ai-tools/`：tool registry、permission policy、execution runbook、tool test plan、tool review。
-- `rag/`：source registry、ingestion pipeline、retrieval policy、citation grounding、RAG eval review。
-- `ai-optimization/`：optimization brief、training data plan、optimization run、validation report、rollout decision。
-- `localization/`：locale policy、message catalog、time/currency rules、AI locale eval、localization review。
+- `ai-optimization/`：低频模型优化主题，默认先作为本文件的触发提醒；需要真实训练/微调时单独开 OpenSpec change。
+- `localization/`：低频本地化主题，默认先作为本文件的触发提醒；正式支持新 locale、多币种或高风险翻译时单独开 OpenSpec change。
 
 最小 eval 要求：至少 3 条样例，包括 happy path、边界/失败、对抗或注入；高风险能力还必须包含安全、隐私、拒绝、降级和人工复核样例。
 
@@ -75,15 +72,11 @@ ai/
 ## 触发型专项
 
 - Prompt、eval、结构化输出、workflow/agent 升级和最小 AI 质量门禁：读 `docs/W3-ai-behavior/01-prompt-eval-agent-workflow-standard.md`。
-- Eval 数据集、样本来源、标注、train/eval 分离、质量报告和刷新：读 `docs/W3-ai-behavior/02-ai-dataset-eval-data-standard.md`。
-- 红队、滥用场景、对抗样本、mitigation 和安全发布审查：读 `docs/W3-ai-behavior/03-ai-red-team-abuse-standard.md`。
-- 内容安全、UGC、AI 生成内容审核、通知和申诉：读 `docs/W3-ai-behavior/04-content-safety-moderation-standard.md`。
-- AI 记忆、用户偏好、长期上下文、临时模式和删除控制：读 `docs/W3-ai-behavior/05-ai-memory-context-standard.md`。
-- 模型选择、供应商路由、fallback、成本/延迟和 route eval gate：读 `docs/W3-ai-behavior/06-ai-model-routing-provider-standard.md`。
-- AI 工具运行时、外部连接器、MCP、沙箱、审批、幂等和审计：读 `docs/W3-ai-behavior/07-ai-tool-runtime-standard.md`。
-- RAG 知识源、摄取、检索、引用、删除、prompt injection 和 grounding：读 `docs/W3-ai-behavior/08-rag-retrieval-source-standard.md`。
-- 微调、蒸馏、模型优化、训练数据计划、验证和 rollout：读 `docs/W3-ai-behavior/09-ai-model-optimization-training-standard.md`。
-- 国际化、本地化、时区/货币、多语言 AI 输出和 locale eval：读 `docs/W3-ai-behavior/10-localization-locale-time-ai-standard.md`。
+- Eval 数据、红队、滥用场景、内容安全、moderation、通知/申诉和 safety release review：读 `docs/W3-ai-behavior/02-ai-eval-safety-standard.md`。
+- AI 记忆、用户偏好、长期上下文、RAG 知识源、检索、引用、删除、prompt injection 和 grounding：读 `docs/W3-ai-behavior/03-ai-context-memory-retrieval-standard.md`。
+- 模型选择、供应商路由、fallback、工具运行时、外部连接器、MCP、沙箱、审批、幂等和审计：读 `docs/W3-ai-behavior/04-ai-runtime-routing-tools-standard.md`。
+- 微调、蒸馏、模型优化、训练数据计划、验证和 rollout：默认先用本文件确认 baseline eval、失败分类、数据边界和预算；真实训练再单独开 change。
+- 国际化、本地化、时区/货币、多语言 AI 输出和 locale eval：默认先用本文件记录 locale 风险；正式支持新 locale、多币种、RTL 或高风险翻译再单独开 change。
 
 ## 出口
 

@@ -59,8 +59,7 @@ W5 不是补写需求、重做实现或临时决定发布承诺的地方。发�
 
 - 通用测试策略、test matrix、test run、flaky、Go/Vite/sqlc/gRPC/AI eval 门禁：`docs/W5-verify/01-testing-quality-standard.md`
 - 用户界面、可访问性、AI UX、交互状态、键盘、焦点、AI disclosure、界面信任：`docs/W5-verify/02-accessibility-ai-ux-standard.md`
-- 核心路径延迟、负载、Web Vitals、bundle、DB query、AI latency/token、性能回归：`docs/W5-verify/03-performance-budget-load-regression-standard.md`
-- 依赖故障、429/5xx/timeout、重试风暴、降级 UI、fault injection、dead letter、blast radius：`docs/W5-verify/04-resilience-fault-injection-degradation-standard.md`
+- 核心路径性能、负载、Web Vitals、bundle、DB query、AI latency/token、容量、依赖失败、429/5xx/timeout、重试、降级 UI、fault injection、dead letter、blast radius：`docs/W5-verify/03-operational-risk-verification-standard.md`
 
 常见跨 W 触发：
 

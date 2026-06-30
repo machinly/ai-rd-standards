@@ -58,15 +58,13 @@ W4 不是重新决定产品方向、风险边界或上线许可的地方。发�
 - Vite、React/TypeScript、前端状态、设计 token、可访问交互或 preview：`docs/W4-build/02-vite-vercel-frontend-standard.md`
 - schema、migration、sqlc、backfill、数据修复、备份/恢复前置检查：`docs/W4-build/03-data-migration-standard.md`
 - 配置、环境变量、Feature Flag、kill switch、AI route/runtime change：`docs/W4-build/04-configuration-feature-flag-standard.md`
-- 本地命令、工具链、devcontainer/compose、seed fixtures、one-step verify：`docs/W4-build/05-dev-workspace-automation-standard.md`
-- AI 协作编码、变更批次、自审、verification JSON、agent stop condition：`docs/W4-build/06-ai-coding-workflow-standard.md`
-- 付费、套餐、权益、用量计量、Stripe、账本、对账：`docs/W4-build/07-billing-entitlement-metering-standard.md`
-- 异步 job、worker、队列、Batch/background、取消、重试、死信：`docs/W4-build/08-async-job-worker-standard.md`
-- 入站 webhook、出站事件、inbox/outbox、验签、重放和集成 schema：`docs/W4-build/09-event-webhook-integration-standard.md`
-- 邮件、SMS、push、通知模板、退订、偏好、送达事件：`docs/W4-build/10-user-notification-messaging-standard.md`
-- 对外 API 文档、SDK、示例、developer changelog、文档站：`docs/W4-build/11-developer-experience-api-docs-sdk-standard.md`
+- 本地命令、工具链、seed fixtures、one-step verify、AI 协作编码、变更批次、自审和 verification JSON：`docs/W4-build/05-dev-workspace-ai-coding-standard.md`
+- 计费/权益/用量、Webhook、事件、外部 provider、通知、退订、送达事件和开发者可依赖外部副作用：`docs/W4-build/06-external-side-effects-standard.md`
+- 异步 job、worker、队列、Batch/background、取消、重试、死信：`docs/W4-build/07-async-job-worker-standard.md`
 
-如果一个实现同时触发多个专项，先读最靠近副作用边界的专项。例如支付 webhook 同时读计费和事件；AI 长任务同时读异步 job 和 W3 相关专项。
+对外 API 文档、SDK、示例、developer changelog 和文档站默认降级到 W4 主入口、W2 API 契约、W6 对外声明和 W9 知识恢复共同承接；只有 public/stable 或客户依赖时再单独开 change。
+
+如果一个实现同时触发多个专项，先读最靠近副作用边界的专项。例如支付 webhook 读外部副作用；AI 长任务同时读异步 job 和 W3 相关专项。
 
 ## 进入 W5 的出口
 

@@ -13,9 +13,11 @@
 ## 本专项只解决什么
 
 - SLO / SLI / error budget policy 的最小仓库工件。
-- 监控、告警、runbook 的默认边界。
+- 监控、告警、runbook、dashboard 和 trace/log/metric 关联的默认边界。
 - 一人公司发布前后的安全检查。
 - incident response 和 postmortem 的轻量模板。
+- 备份/恢复、RPO/RTO、restore drill、业务连续性和供应商故障的最小提醒。
+- 环境拓扑、云资源、IaC drift、plan/apply 和 decommission 的最小运行准备。
 - toil 识别和每周运维复盘。
 - SRE-lite skill 与本地检查脚本。
 
@@ -52,7 +54,10 @@
 ```text
 ops/
   slo/<service>.json
+  observability/<service>.md
   runbooks/<service>.md
+  recovery/<service>.md
+  infra/<service>.md
   release/<service>-checklist.md
   incidents/README.md
   incidents/YYYY-MM-DD-<slug>.md
@@ -113,6 +118,14 @@ AI 能力额外记录：
 - eval pass rate 或人工抽检通过率。
 - token/cost、tool failure rate、structured output parse failure rate。
 - fallback、disable switch 或 rollback 方式。
+
+## 恢复与基础设施提醒
+
+备份、恢复和基础设施不再作为默认独立专项。只有出现真实合同、付费关键数据、生产 IaC apply、跨区域恢复、客户证据或高风险资源销毁时，才单独开 OpenSpec change。普通 W7 运行准备先在本文件留下最小事实：
+
+- `ops/recovery/<service>.md`：关键资产、RPO/RTO、备份来源、restore steps、验证命令、下一次演练日期。
+- `ops/infra/<service>.md`：环境、region、runtime、state backend、关键云资源、public exposure、backup_required、drift 处理。
+- 生产恢复、PITR、覆盖生产、丢弃数据、destroy/decommission、IAM 扩权、public ingress 和 state 操作仍然必须人审。
 
 ## 告警规范
 

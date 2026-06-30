@@ -13,6 +13,7 @@ The current bet is internal leverage: reduce solo-founder attention cost and Cod
 - Root entrypoint: `README.md`.
 - AI R&D workflow entrypoint: `docs/00-start-here.md`.
 - Workflow-to-standard index: `docs/02-standard-index.md`.
+- Role swimlane index: `docs/03-role-index.md`.
 - Canonical standards: `docs/Wx-*/00-main.md` plus `<local-order>-<semantic-name>.md` trigger standards in the same W directory.
 - Specs and changes: `openspec/`.
 - Source map: `docs/sources/2026-06-23-source-map.md`.
@@ -35,11 +36,12 @@ python C:\Users\machinly\.codex\skills\knowledge-context-recovery-guard\scripts\
 
 ## AI Behavior
 
-Codex should first read `README.md`, `docs/00-start-here.md`, and this context pack. It should identify the current W0-W9 workflow step, then read the current step, prior-step inputs, and next-step gates from `docs/02-standard-index.md`.
+Codex should first read `README.md`, `docs/00-start-here.md`, and this context pack. It should identify the current W0-W9 workflow step, then read the current step, prior-step inputs, and next-step gates from `docs/02-standard-index.md`. When role perspective is useful, read `docs/03-role-index.md` and only the matched `docs/roles/*.md` entries; roles are swimlanes, not a replacement lifecycle.
 
 ## Operational Links
 
-- Operating model: `docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md`.
+- Operating model: `docs/00-start-here.md` and `docs/W2-openspec-risk/00-main.md`.
+- Role swimlanes: `docs/03-role-index.md`.
 - Knowledge recovery: `docs/W9-maintain/00-main.md`.
 - Prioritization: `docs/W0-intake/00-main.md`.
 - Workflow index: `docs/02-standard-index.md`.
@@ -59,7 +61,7 @@ Codex should first read `README.md`, `docs/00-start-here.md`, and this context p
 ## Handoff Prompt
 
 ```text
-Use the rd-standards context pack. Start from README.md and docs/00-start-here.md, identify the current W0-W9 AI R&D workflow step, then use docs/02-standard-index.md to read only that step, its prior inputs, and next gate. Only escalate high-impact human decisions.
+Use the rd-standards context pack. Start from README.md and docs/00-start-here.md, identify the current W0-W9 AI R&D workflow step, then use docs/02-standard-index.md to read only that step, its prior inputs, and next gate. If a role view is needed, use docs/03-role-index.md and only the relevant docs/roles/*.md entry. Only escalate high-impact human decisions.
 ```
 
 

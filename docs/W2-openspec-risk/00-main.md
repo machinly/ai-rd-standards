@@ -78,16 +78,11 @@ openspec/changes/<change-id>/
 
 ## 触发型专项
 
-- OpenSpec change、AI 研发操作系统、双重 review 和工作单元治理细则：读 `docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md`。
-- 架构边界、模块职责、数据所有权、依赖方向、ADR 或服务拆分：读 `docs/W2-openspec-risk/02-architecture-boundary-standard.md`。
-- API、Protobuf、错误语义、事件、webhook、AI tool schema 或兼容性变化：读 `docs/W2-openspec-risk/03-api-contract-compatibility-standard.md`。
-- 威胁模型、数据处理、依赖供应链、secret、构建来源或安全隐私门禁：读 `docs/W2-openspec-risk/04-security-privacy-supply-chain-standard.md`。
-- 认证、授权、租户隔离、support/admin 访问或 AI 代用户操作：读 `docs/W2-openspec-risk/05-auth-tenant-boundary-standard.md`。
-- 成本预算、容量、限流、供应商依赖、超支或降级：读 `docs/W2-openspec-risk/06-cost-capacity-vendor-boundary-standard.md`。
-- 客户数据导入、导出、同步、删除、备份、向量库或 AI 记忆数据流：读 `docs/W2-openspec-risk/07-customer-data-portability-lifecycle-standard.md`。
-- 新供应商、DPA、子处理方、数据出境、供应商训练或保留条款：读 `docs/W2-openspec-risk/08-processor-transfer-vendor-standard.md`。
-- 开源许可证、第三方素材、AI 生成内容、客户内容复用、NOTICE 或 attribution：读 `docs/W2-openspec-risk/09-ip-license-provenance-standard.md`。
-- 隐私页、条款、AI disclosure、退款、安全、合规或用户承诺：读 `docs/W2-openspec-risk/10-trust-policy-compliance-standard.md`。
+- 架构边界、模块职责、数据所有权、依赖方向、ADR 或服务拆分：读 `docs/W2-openspec-risk/01-architecture-boundary-standard.md`。
+- API、Protobuf、错误语义、事件、webhook、AI tool schema 或兼容性变化：读 `docs/W2-openspec-risk/02-api-contract-compatibility-standard.md`。
+- 威胁模型、数据处理、认证授权、租户隔离、support/admin 访问、secret、依赖供应链、构建来源或 AI 工具权限：读 `docs/W2-openspec-risk/03-security-auth-supply-chain-standard.md`。
+- 成本预算、容量、客户数据生命周期、供应商处理方、数据出境、IP/license、AI 生成内容、隐私/条款/AI disclosure 或公开承诺：读 `docs/W2-openspec-risk/04-cost-data-vendor-trust-boundary-standard.md`。
+- OpenSpec change、AI 研发操作系统、双重 review 和工作单元治理细则：使用本文件和当前 change 的 `proposal.md`、`design.md`、`tasks.md`，不再保留独立操作系统专项。
 
 ## 出口
 

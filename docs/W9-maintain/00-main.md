@@ -57,8 +57,11 @@ W9 不是继续做新功能，也不是把所有遗留问题堆成 backlog。它
 
 - 文档入口、context pack、docs map、glossary、how-to、freshness、Codex handoff：`docs/W9-maintain/01-knowledge-context-recovery-standard.md`
 - 依赖升级、技术债、弃用、runtime/framework/AI SDK 维护、Dependabot、deprecation：`docs/W9-maintain/02-maintenance-dependency-debt-standard.md`
-- 审计证据、证据包、audit log、retention、customer/security evidence、SOC 2 readiness：`docs/W9-maintain/03-audit-evidence-compliance-standard.md`
-- 开源仓库、SDK/CLI/template、community health、贡献策略、security advisory、公开维护边界：`docs/W9-maintain/04-open-source-release-community-maintenance-standard.md`
+
+低频治理默认降级到本文件的触发提醒：
+
+- 审计证据、证据包、audit log、retention、customer/security evidence、SOC 2 readiness：先在 W9 最小产出的证据索引中登记；真实客户/审计导出时单独开 OpenSpec change。
+- 开源仓库、SDK/CLI/template、community health、贡献策略、security advisory、公开维护边界：先在 W9 维护事实和对外维护边界中登记；公开仓库或官方 SDK 发布时单独开 OpenSpec change。
 
 常见跨 W 触发：
 

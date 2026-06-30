@@ -34,6 +34,15 @@
       "stale_after_days": 30
     },
     {
+      "title": "Role swimlane index",
+      "path": "docs/03-role-index.md",
+      "type": "reference",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder",
+      "review_on": "2026-07-30",
+      "stale_after_days": 30
+    },
+    {
       "title": "Codex context pack",
       "path": "knowledge/context-packs/rd-standards.md",
       "type": "context_pack",
@@ -51,7 +60,8 @@
     ],
     "reference": [
       "README.md",
-      "docs/02-standard-index.md"
+      "docs/02-standard-index.md",
+      "docs/03-role-index.md"
     ],
     "explanation": [
       "docs/01-workflow-diagram.md",
@@ -67,12 +77,14 @@
     "openspec/changes/establish-one-person-ai-rd-operating-system",
     "openspec/changes/define-knowledge-context-standard",
     "openspec/changes/define-roadmap-prioritization-work-intake-standard",
-    "openspec/changes/improve-rd-standards-navigation"
+    "openspec/changes/improve-rd-standards-navigation",
+    "openspec/changes/add-role-swimlanes-and-simplify-standards"
   ],
   "linked_runtime_artifacts": [
     "docs/00-start-here.md",
     "docs/01-workflow-diagram.md",
     "docs/02-standard-index.md",
+    "docs/03-role-index.md",
     "tools/verify_workflow_index.py",
     "docs/sources/2026-06-23-source-map.md"
   ],

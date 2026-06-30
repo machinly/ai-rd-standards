@@ -21,11 +21,11 @@
 ## 场景触发规范
 
 - 产品机会、增长实验、用户问题不清：进入 `docs/W1-discovery/00-main.md`。
-- 需要采集指标、埋点或做实验：进入 `docs/W1-discovery/02-product-analytics-experiment-standard.md`。
+- 需要采集指标、埋点或做实验：进入 `docs/W1-discovery/01-product-analytics-experiment-standard.md`。
 - 工作会影响生产、数据、安全、成本、AI 行为或超过 30 分钟：进入 `docs/W2-openspec-risk/00-main.md`。
 - 支持反馈、投诉、退款、信任请求进入：参考 `docs/W8-learn/01-customer-support-trust-ops-standard.md`。
 - 客户试点、租户交付、真实客户上线进入：参考 `docs/W6-release/02-customer-pilot-onboarding-launch-standard.md`。
-- 安全/隐私事故、漏洞、凭据泄露进入：先走 `docs/W7-operate/05-security-privacy-incident-vulnerability-standard.md`，事后再回到 W0 复盘。
+- 安全/隐私事故、漏洞、凭据泄露进入：先走 `docs/W7-operate/03-security-privacy-incident-vulnerability-standard.md`，事后再回到 W0 复盘。
 - AI 质量回归或线上行为漂移进入：先走 `docs/W8-learn/02-ai-quality-regression-incident-standard.md`，事后再回到 W0 决定下一步。
 - 文档、索引、依赖、维护类请求进入：参考 `docs/W9-maintain/01-knowledge-context-recovery-standard.md` 或 `docs/W9-maintain/02-maintenance-dependency-debt-standard.md`。
 

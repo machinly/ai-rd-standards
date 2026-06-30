@@ -57,19 +57,16 @@ W7 不是重做发布、补实现或重新定义承诺的地方。发布决策�
 
 只在触发条件出现时读取对应文件：
 
-- SLO、告警、runbook、incident、postmortem、toil、发布后 watch：`docs/W7-operate/01-sre-lite-operations-standard.md`
-- metrics、traces、logs、dashboard、OpenTelemetry、AI trace、低基数 schema：`docs/W7-operate/02-observability-telemetry-standard.md`
-- 备份、恢复、RPO/RTO、restore drill、业务连续性、供应商故障：`docs/W7-operate/03-backup-recovery-continuity-standard.md`
-- Admin/support console、人工生产动作、dry-run、break-glass、审计日志：`docs/W7-operate/04-admin-ops-action-standard.md`
-- IaC、环境拓扑、云资源、state、plan/apply、drift、destroy/decommission：`docs/W7-operate/07-infra-iac-environment-standard.md`
-- 安全/隐私事故、漏洞披露、通知矩阵、AI 安全事故、advisory：`docs/W7-operate/05-security-privacy-incident-vulnerability-standard.md`
-- 凭据、密钥、服务账号、rotation、exposure review、OpenAI/provider key：`docs/W7-operate/06-credential-secret-lifecycle-standard.md`
+- SLO、告警、runbook、incident、postmortem、toil、发布后 watch、observability、restore drill、continuity、IaC drift 或基础设施运行准备：`docs/W7-operate/01-sre-lite-operations-standard.md`
+- Admin/support console、人工生产动作、dry-run、break-glass、审计日志：`docs/W7-operate/02-admin-ops-action-standard.md`
+- 安全/隐私事故、漏洞披露、通知矩阵、AI 安全事故、advisory：`docs/W7-operate/03-security-privacy-incident-vulnerability-standard.md`
+- 凭据、密钥、服务账号、rotation、exposure review、OpenAI/provider key：`docs/W7-operate/04-credential-secret-lifecycle-standard.md`
 
 常见跨 W 触发：
 
 - 用户或客户反馈进入产品决策：进入 W8。
 - AI 质量回归或线上输出事故：进入 `docs/W8-learn/02-ai-quality-regression-incident-standard.md`。
-- 审计证据包、长期证据保全或 trust center 证据：进入 `docs/W9-maintain/03-audit-evidence-compliance-standard.md`。
+- 审计证据包、长期证据保全或 trust center 证据：进入 `docs/W9-maintain/00-main.md`，由 W9 主入口判断是否需要单独证据 change。
 - 新合同/SLA/公开声明或客户上线承诺：回到 `docs/W6-release/00-main.md`。
 
 ## 进入 W8 或 W9 的出口

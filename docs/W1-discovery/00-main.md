@@ -68,11 +68,11 @@ product/
 
 ## 触发型专项
 
-- 需要采集产品事件、分析漏斗、做 A/B、灰度、instrumented beta、第三方 analytics、隐私 review 或数据质量复盘：读 `docs/W1-discovery/02-product-analytics-experiment-standard.md`。
-- 需要更细地组织访谈、产品赌注、反馈证据、实验和学习决策：读 `docs/W1-discovery/01-product-discovery-feedback-loop-standard.md`。
+- 需要采集产品事件、分析漏斗、做 A/B、灰度、instrumented beta、第三方 analytics、隐私 review 或数据质量复盘：读 `docs/W1-discovery/01-product-analytics-experiment-standard.md`。
+- 需要更细地组织访谈、产品赌注、反馈证据、实验和学习决策：先在本文件的最小产出里补齐，不再单独打开产品发现专项。
 - 支持反馈、投诉、退款或信任请求成为产品证据：读 `docs/W8-learn/01-customer-support-trust-ops-standard.md`。
 - 客户试点或设计伙伴反馈影响产品方向：读 `docs/W6-release/02-customer-pilot-onboarding-launch-standard.md`。
-- 商业承诺、合同、SLA 或销售邮件影响 scope：读 `docs/W6-release/04-commercial-contract-obligation-standard.md`。
+- 商业承诺、合同、SLA 或销售邮件影响 scope：回到 W2 的 `docs/W2-openspec-risk/04-cost-data-vendor-trust-boundary-standard.md` 和 W6 的对外声明门禁判断。
 - 官网、文档、销售材料或 AI disclosure 出现强承诺：读 `docs/W6-release/03-external-claim-evidence-release-gate-standard.md`。
 - 用户可见 AI 行为、prompt、工具、模型、RAG、记忆或安全边界进入设计：进入 W3。
 

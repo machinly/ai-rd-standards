@@ -60,12 +60,12 @@ W6 不是补测试、补实现或临时改产品边界的地方。发现验证�
 - CI/CD、release artifact、smoke、rollback、production deploy、post-deploy watch、provenance/SBOM：`docs/W6-release/01-release-pipeline-standard.md`
 - 客户试点、租户导入、客户上线、launch readiness、success plan、handoff/offboarding：`docs/W6-release/02-customer-pilot-onboarding-launch-standard.md`
 - 官网、docs、pricing、AI disclosure、trust/security/privacy、developer docs、support/sales claim：`docs/W6-release/03-external-claim-evidence-release-gate-standard.md`
-- 客户合同、订单、SLA、服务积分、红线、DPA、安全附件、商业承诺：`docs/W6-release/04-commercial-contract-obligation-standard.md`
+- 客户合同、订单、SLA、服务积分、红线、DPA、安全附件、商业承诺：默认由本文件的人审点、W2 `docs/W2-openspec-risk/04-cost-data-vendor-trust-boundary-standard.md` 和 W6 对外声明证据门禁承接；非标准条款或正式合同需要单独 OpenSpec change。
 
 常见跨 W 触发：
 
-- Billing launch 或 entitlement 执行：回到 `docs/W4-build/07-billing-entitlement-metering-standard.md` 补实现证据。
-- Audit evidence package：进入 `docs/W9-maintain/03-audit-evidence-compliance-standard.md`。
+- Billing launch、entitlement、Webhook 或通知执行：回到 `docs/W4-build/06-external-side-effects-standard.md` 补实现证据。
+- Audit evidence package：进入 `docs/W9-maintain/00-main.md`，由 W9 主入口判断是否需要证据索引或单独 change。
 - Trust/data/vendor claim 证据不足：回到 `docs/W2-openspec-risk/00-main.md`。
 - 发布后观测、告警、事故或凭据轮换：进入 W7。
 
