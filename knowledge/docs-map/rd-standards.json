@@ -26,7 +26,7 @@
     },
     {
       "title": "Workflow-to-standard index",
-      "path": "docs/00-standard-index.md",
+      "path": "docs/02-standard-index.md",
       "type": "reference",
       "audience": "solo-founder",
       "owner": "solo-founder",
@@ -51,12 +51,13 @@
     ],
     "reference": [
       "README.md",
-      "docs/00-standard-index.md"
+      "docs/02-standard-index.md"
     ],
     "explanation": [
-      "docs/W2-openspec-risk/main.md",
-      "docs/W9-maintain/main.md",
-      "docs/W0-intake/main.md"
+      "docs/01-workflow-diagram.md",
+      "docs/W2-openspec-risk/00-main.md",
+      "docs/W9-maintain/00-main.md",
+      "docs/W0-intake/00-main.md"
     ]
   },
   "context_pack": "knowledge/context-packs/rd-standards.md",
@@ -70,7 +71,8 @@
   ],
   "linked_runtime_artifacts": [
     "docs/00-start-here.md",
-    "docs/00-standard-index.md",
+    "docs/01-workflow-diagram.md",
+    "docs/02-standard-index.md",
     "tools/verify_workflow_index.py",
     "docs/sources/2026-06-23-source-map.md"
   ],

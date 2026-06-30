@@ -5,7 +5,7 @@
 ## 先看哪里
 
 1. 不知道该读哪份规范：先看 `docs/00-start-here.md`，它按 AI 研发工作流组织。
-2. 想找完整映射：看 `docs/00-standard-index.md`，它把所有规范挂到 workflow step。
+2. 想找完整映射：看 `docs/02-standard-index.md`，它把所有规范挂到 workflow step。
 3. 让 Codex 接手：先给它 `knowledge/context-packs/rd-standards.md`。
 4. 查来源依据：看 `docs/sources/2026-06-23-source-map.md`。
 
@@ -53,7 +53,7 @@ python C:\Users\machinly\.codex\skills\knowledge-context-recovery-guard\scripts\
 
 ## Codex skills
 
-本仓库已沉淀大量 skills，不需要人工记忆全部名字。按 AI 研发工作流触发即可；完整映射见 `docs/00-standard-index.md`。
+本仓库已沉淀大量 skills，不需要人工记忆全部名字。按 AI 研发工作流触发即可；完整映射见 `docs/02-standard-index.md`。
 
 仓库内维护的 skill 本体放在 `skills/`。其中 `skills/one-person-openspec-rd/` 是本仓库 AI 研发工作流的 canonical skill；个人环境里的 `C:\Users\machinly\.codex\skills\one-person-openspec-rd\` 只作为本机可发现副本，更新时应以仓库版本为准。
 

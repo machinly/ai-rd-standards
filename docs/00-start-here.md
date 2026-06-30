@@ -2,23 +2,29 @@
 
 ## 目标
 
-这份文档只回答一个问题：**当前工作处在 AI 研发工作流的哪一步？**
+这份文档只回答一个问题：**当前工作的主导 W 是哪一步，是否需要并行支线？**
 
-默认不要按“技术主题”或“阶段编号”读规范。先定位工作流 step，再读该 step、上一步输入、下一步门禁。人的注意力只用于高影响判断，细节由 OpenSpec、skill 和 verifier 承接。
+默认不要按“技术主题”或“文件编号”读规范。先定位主导 workflow step，再读该 step、上一步输入、下一步门禁；如果同一个 OpenSpec change 已经拆出实现、验证、发布或运行准备，再并行读取对应支线。人的注意力只用于高影响判断，细节由 OpenSpec、skill 和 verifier 承接。
 
 ## 工作流总览
 
+配套图示：`docs/01-workflow-diagram.md`。
+
+W0-W9 是路由坐标，不是线性执行顺序。W0/W1/W2 先决定当前工作是否值得做、问题是否清楚、边界和风险是什么；进入同一个 OpenSpec change 后，W3 AI 行为、W4 实现、W5 验证、W6 发布准备、W7 运行准备可以并行推进。真正不能跳过的是高影响人工判断、OpenSpec 边界、AI eval、安全/质量门禁、发布/回滚门禁、运行后的学习回流，以及 W9 的上下文沉淀。
+
 ```text
 W0 Intake
-  -> W1 Discovery
-  -> W2 OpenSpec / Risk Frame
-  -> W3 AI Behavior Design
-  -> W4 Product / System Build
-  -> W5 Verification / Safety Gates
-  -> W6 Release / Launch
-  -> W7 Operate / Observe
-  -> W8 Learn / Improve
-  -> W9 Maintain / Recover Context
+  -> W1 Discovery when evidence is missing
+  -> W2 OpenSpec / Risk Frame when work should proceed
+       -> W3 AI Behavior Design
+       -> W4 Product / System Build
+       -> W5 Verification / Safety Gates
+       -> W6 Release / Launch prep
+       -> W7 Operate / Observe prep
+  -> W8 Learn / Improve from production, support, eval, and incident signals
+       -> route back to W0-W7 or W9
+  -> W9 Maintain / Recover Context whenever context or evidence must persist
+       -> complete or route back when new work/risk is found
 ```
 
 ## W0：工作入口与当前焦点
@@ -27,7 +33,7 @@ W0 Intake
 
 只读：
 
-- `docs/W0-intake/main.md`
+- `docs/W0-intake/00-main.md`
 
 最小产出：
 
@@ -45,9 +51,9 @@ W0 Intake
 
 只读：
 
-- `docs/W1-discovery/main.md`
-- 需要事件、指标或实验时读 `docs/W1-discovery/product-analytics-experiment-standard.md`
-- 支持反馈成为证据时读 `docs/W8-learn/customer-support-trust-ops-standard.md`
+- `docs/W1-discovery/00-main.md`
+- 需要事件、指标或实验时读 `docs/W1-discovery/02-product-analytics-experiment-standard.md`
+- 支持反馈成为证据时读 `docs/W8-learn/01-customer-support-trust-ops-standard.md`
 
 最小产出：
 
@@ -66,7 +72,7 @@ W0 Intake
 
 只读：
 
-- `docs/W2-openspec-risk/main.md`
+- `docs/W2-openspec-risk/00-main.md`
 - 必要时读架构、契约、安全隐私、auth、成本、客户数据、供应商、IP 或信任承诺专项。
 
 最小产出：
@@ -89,7 +95,7 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W3-ai-behavior/main.md`
+- `docs/W3-ai-behavior/00-main.md`
 - 需要 prompt/eval、数据集、红队、内容安全、记忆、模型路由、工具、RAG、模型优化或本地化时，再读对应触发专项。
 
 最小产出：
@@ -110,7 +116,7 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W4-build/main.md`
+- `docs/W4-build/00-main.md`
 - 需要后端、前端、数据、配置、本地开发、AI 协作编码、计费、异步任务、事件/Webhook、通知或开发者体验时，再读对应 W4 触发专项。
 
 最小产出：
@@ -132,9 +138,9 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W5-verify/main.md`
+- `docs/W5-verify/00-main.md`
 - 需要测试质量、可访问性/AI UX、性能回归或韧性演练时，再读对应 W5 触发专项。
-- AI 输出变更时读 `docs/W8-learn/ai-quality-regression-incident-standard.md`
+- AI 输出变更时读 `docs/W8-learn/02-ai-quality-regression-incident-standard.md`
 
 最小产出：
 
@@ -153,7 +159,7 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W6-release/main.md`
+- `docs/W6-release/00-main.md`
 - 需要发布流水线、客户上线、对外声明证据或合同/SLA 时，再读对应 W6 触发专项。
 
 最小产出：
@@ -173,7 +179,7 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W7-operate/main.md`
+- `docs/W7-operate/00-main.md`
 - 需要 SRE-lite、观测性、备份恢复、后台运营、基础设施、事故响应或凭据生命周期时，再读对应 W7 触发专项。
 
 最小产出：
@@ -193,9 +199,9 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W8-learn/main.md`
+- `docs/W8-learn/00-main.md`
 - 需要支持反馈、信任运营或 AI 质量回归时，再读对应 W8 触发专项。
-- 如果学习结果改变问题定义或优先级，再回到 `docs/W1-discovery/main.md` 或 `docs/W0-intake/main.md`。
+- 如果学习结果改变问题定义或优先级，再回到 `docs/W1-discovery/00-main.md` 或 `docs/W0-intake/00-main.md`。
 
 最小产出：
 
@@ -214,7 +220,7 @@ openspec/changes/<change-id>/
 
 只读：
 
-- `docs/W9-maintain/main.md`
+- `docs/W9-maintain/00-main.md`
 - 需要知识恢复、维护债务、审计证据或开源维护时，再读对应 W9 触发专项。
 
 最小产出：
@@ -241,8 +247,8 @@ openspec/changes/<change-id>/
 
 ```text
 先读取 README.md、docs/00-start-here.md、knowledge/context-packs/rd-standards.md。
-先判断当前任务处在 W0-W9 哪一步。
-只读取该 step、上一步输入和下一步门禁对应的规范。
+先判断当前任务的主导 W，并标出是否有 W3-W7 并行支线。
+只读取主导 W、上一步输入、下一步门禁和必要并行支线对应的规范。
 如果需要实现，创建或更新一个 OpenSpec change。
 只把高影响决策交给用户，其余按对应 skill、verifier 和两轮 review 落地。
 ```
@@ -254,17 +260,17 @@ openspec/changes/<change-id>/
 - 调整：索引从“场景选择器”改为 W0-W9 工作流，新增规范必须挂靠某一步。
 - 风险：工作流看起来比场景表更长。缓解：实际使用只读当前一步和相邻一步。
 
-结论：可落地。它把规范变成一条 AI 研发流水线，而不是阶段仓库。
+结论：可落地。它把规范变成一套 AI 研发调度图，而不是阶段仓库。
 
 ## Review 2：产品、工程、运维、安全、成本审查
 
 - 产品角度：W0/W1/W8 防止一开始就写代码。
-- 工程角度：W2/W4/W5 把规格、实现和验证分清。
+- 工程角度：W2/W4/W5 把规格、实现和验证分清，同时允许同一个 change 下并行推进。
 - 运维角度：W6/W7 明确发布后才算进入真实运行。
 - 安全隐私角度：W2/W3/W5 把数据、模型和安全门禁提前。
 - 成本角度：工作流减少全库阅读和重复上下文恢复。
 
-结论：可落地。新增规范以后必须服务某个 workflow step，否则就不该加入主索引。
+结论：可落地。新增规范以后必须服务某个 workflow step 或并行支线，否则就不该加入主索引。
 
 
 

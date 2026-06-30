@@ -5,7 +5,7 @@
 1. Open `README.md`.
 2. Read `docs/00-start-here.md`.
 3. Identify the current W0-W9 workflow step.
-4. Use `docs/00-standard-index.md` only to find standards for that step.
+4. Use `docs/02-standard-index.md` only to find standards for that step.
 
 ## Develop
 
@@ -42,12 +42,12 @@ This repository is a documentation and OpenSpec repository. There is no app serv
 ## Debug
 
 1. If a task feels overloaded, reduce the path to three standards or fewer.
-2. If a standard cannot be found, search `docs/00-standard-index.md` by workflow step first, then by stage number.
+2. If a standard cannot be found, search `docs/02-standard-index.md` by workflow step first, then by stage number.
 3. If Codex scans too broadly, give it the handoff prompt from `knowledge/context-packs/rd-standards.md`.
 
 ## Update Knowledge
 
-1. Update `docs/00-standard-index.md` when adding or renaming standards.
+1. Update `docs/02-standard-index.md` when adding or renaming standards.
 2. Update `README.md` only when the first-click entrypoint changes.
 3. Update `knowledge/docs-map/rd-standards.json` when canonical entrypoints change.
 4. Append `knowledge/freshness/rd-standards.jsonl` after cleanup.

@@ -12,8 +12,8 @@ The current bet is internal leverage: reduce solo-founder attention cost and Cod
 
 - Root entrypoint: `README.md`.
 - AI R&D workflow entrypoint: `docs/00-start-here.md`.
-- Workflow-to-standard index: `docs/00-standard-index.md`.
-- Canonical standards: `docs/Wx-*/main.md` plus semantic trigger-specific standards in the same W directory.
+- Workflow-to-standard index: `docs/02-standard-index.md`.
+- Canonical standards: `docs/Wx-*/00-main.md` plus `<local-order>-<semantic-name>.md` trigger standards in the same W directory.
 - Specs and changes: `openspec/`.
 - Source map: `docs/sources/2026-06-23-source-map.md`.
 - Knowledge artifacts: `knowledge/`.
@@ -35,14 +35,14 @@ python C:\Users\machinly\.codex\skills\knowledge-context-recovery-guard\scripts\
 
 ## AI Behavior
 
-Codex should first read `README.md`, `docs/00-start-here.md`, and this context pack. It should identify the current W0-W9 workflow step, then read the current step, prior-step inputs, and next-step gates from `docs/00-standard-index.md`.
+Codex should first read `README.md`, `docs/00-start-here.md`, and this context pack. It should identify the current W0-W9 workflow step, then read the current step, prior-step inputs, and next-step gates from `docs/02-standard-index.md`.
 
 ## Operational Links
 
-- Operating model: `docs/W2-openspec-risk/main.md`.
-- Knowledge recovery: `docs/W9-maintain/main.md`.
-- Prioritization: `docs/W0-intake/main.md`.
-- Workflow index: `docs/00-standard-index.md`.
+- Operating model: `docs/W2-openspec-risk/01-one-person-ai-rd-operating-model.md`.
+- Knowledge recovery: `docs/W9-maintain/00-main.md`.
+- Prioritization: `docs/W0-intake/00-main.md`.
+- Workflow index: `docs/02-standard-index.md`.
 - Navigation change: `openspec/changes/improve-rd-standards-navigation/`.
 
 ## Current Risks
@@ -59,7 +59,7 @@ Codex should first read `README.md`, `docs/00-start-here.md`, and this context p
 ## Handoff Prompt
 
 ```text
-Use the rd-standards context pack. Start from README.md and docs/00-start-here.md, identify the current W0-W9 AI R&D workflow step, then use docs/00-standard-index.md to read only that step, its prior inputs, and next gate. Only escalate high-impact human decisions.
+Use the rd-standards context pack. Start from README.md and docs/00-start-here.md, identify the current W0-W9 AI R&D workflow step, then use docs/02-standard-index.md to read only that step, its prior inputs, and next gate. Only escalate high-impact human decisions.
 ```
 
 

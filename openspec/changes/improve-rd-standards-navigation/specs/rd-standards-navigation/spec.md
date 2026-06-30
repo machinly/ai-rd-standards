@@ -25,28 +25,28 @@
 - THEN 文档帮助用户定位 W0-W9 中的当前步骤
 - AND 每个步骤列出问题、只读规范、最小产出和人审点
 
-### Requirement: 完整索引必须把所有规范挂到 workflow step
+### Requirement: 完整索引必须按 workflow step 汇总规范
 
-完整索引 MUST 保留所有阶段入口，但必须以 W0-W9 为主组织方式，并为每个阶段给出主归属 workflow step。
+完整索引 MUST 以 W0-W9 为主组织方式，并在每个 workflow step 下列出主规范、触发专项、人审点和常用 skill。
 
-#### Scenario: 查找阶段规范
+#### Scenario: 查找 workflow 规范
 
-- GIVEN 用户需要查找某个阶段规范
-- WHEN 查看 `docs/00-standard-index.md`
-- THEN 文档显示该阶段的主归属 workflow step
-- AND 文档显示该 workflow step 的主规范、触发专项、人审点和常用 skill
+- GIVEN 用户需要查找某个 workflow step 的规范
+- WHEN 查看 `docs/02-standard-index.md`
+- THEN 文档显示该 workflow step 的主规范、触发专项、人审点和常用 skill
+- AND 文档不要求用户按其他编号体系阅读
 
 ### Requirement: Workflow 规范文件必须按 workflow step 目录存放
 
-每个 workflow step 目录 MUST 有且只有一个 `main.md` 作为核心入口。触发型专项 MUST 使用语义化文件名，且不得以数字开头。目录中的 W step MUST 等于该规范在索引中的主归属。
+每个 workflow step 目录 MUST 有且只有一个 `00-main.md` 作为核心入口。触发型专项 MUST 使用 `<local-order>-<semantic-name>.md` 文件名，使目录内按阅读顺序连续排序，也能读出主题。
 
 #### Scenario: 查看规范文件物理结构
 
 - GIVEN 仓库包含编号规范文件
 - WHEN 查看 `docs/` 目录
-- THEN `01` 到 `55` 等编号规范不直接平铺在 `docs/` 根目录
-- AND 每个编号规范位于对应的 `docs/Wx-*` 目录
-- AND `docs/00-start-here.md` 与 `docs/00-standard-index.md` 保留为入口文件
+- THEN 规范不直接平铺在 `docs/` 根目录
+- AND 每个规范位于对应的 `docs/Wx-*` 目录
+- AND `docs/00-start-here.md`、`docs/01-workflow-diagram.md` 与 `docs/02-standard-index.md` 保留为顶层导航文件
 
 ### Requirement: 新增规范必须声明 workflow 归属
 
@@ -67,8 +67,8 @@
 
 - GIVEN 新增、删除或重命名 `docs/Wx-*/*.md` 规范文件
 - WHEN 运行 `python tools\verify_workflow_index.py .`
-- THEN 每个规范恰好映射到一个 W0-W9 step，并且每个 W 只有一个 `main.md`
-- AND 每个编号规范位于对应 W0-W9 目录
+- THEN 每个 W 只有一个 `00-main.md`
+- AND 每个触发专项文件在所属 W 目录内使用连续编号
 - AND 索引引用的规范路径存在
 - AND README 未退化为平铺阶段清单
 

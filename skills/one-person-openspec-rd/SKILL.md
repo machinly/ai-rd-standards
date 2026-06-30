@@ -11,7 +11,7 @@ description: "Route one-person-company AI product R&D through the W0-W9 workflow
 
 ## Routing Workflow
 
-1. 在当前仓库定位 `README.md`、`docs/00-start-here.md`、`docs/00-standard-index.md` 和 `knowledge/context-packs/rd-standards.md`。如果这些文件不存在，读取 `references/workflow-map.md`。
+1. 在当前仓库定位 `README.md`、`docs/00-start-here.md`、`docs/02-standard-index.md` 和 `knowledge/context-packs/rd-standards.md`。如果这些文件不存在，读取 `references/workflow-map.md`。
 2. 先判断当前请求处于 W0-W9 哪一步，并用一句话告诉用户，例如：`当前处于 W3 AI Behavior`。
 3. 只读取当前 step、上一步输入和下一步门禁对应的规范；不要扫描全部阶段。
 4. W0/W1 默认先产出 planning 或 product discovery artifacts；当工作进入 W2 或会影响用户、生产、数据、安全、成本、AI 行为时，创建或更新 OpenSpec change。
@@ -47,7 +47,7 @@ description: "Route one-person-company AI product R&D through the W0-W9 workflow
 
 ## Workflow References
 
-- 如果仓库有 `docs/00-start-here.md` 和 `docs/00-standard-index.md`，优先使用仓库版本。
+- 如果仓库有 `docs/00-start-here.md` 和 `docs/02-standard-index.md`，优先使用仓库版本。
 - 如果仓库缺少 workflow 文档，读取 `references/workflow-map.md` 作为默认路由表。
 - 如果新增、删除或重命名编号规范，运行 `python tools\verify_workflow_index.py .`，若仓库没有该脚本则在 OpenSpec tasks 中记录跳过原因。
 

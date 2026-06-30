@@ -6,7 +6,7 @@
 
 1. `README.md`：只保留第一跳、默认技术偏好和少数高影响人工判断。
 2. `docs/00-start-here.md`：定义 W0-W9 AI 研发工作流。
-3. `docs/00-standard-index.md`：把每份规范挂到 workflow step，作为 reference 而非阅读顺序。
+3. `docs/02-standard-index.md`：把每份规范挂到 workflow step，作为 reference 而非阅读顺序。
 
 ## Workflow
 
@@ -33,9 +33,9 @@
 
 - README 仍然是短入口，且链接 workflow entrypoint、workflow index 和 context pack。
 - `docs/00-start-here.md` 包含 W0-W9。
-- `docs/00-standard-index.md` 包含 W0-W9 详细段落和新增规范准入规则。
-- 每个 `docs/Wx-*/main.md` 核心规范和语义化触发专项都恰好映射到一个 workflow step。
-- 每个规范的物理目录必须和主归属 step 一致。
+- `docs/02-standard-index.md` 包含 W0-W9 详细段落和新增规范准入规则。
+- 每个 `docs/Wx-*/00-main.md` 核心规范和带目录内顺序编号前缀的语义化触发专项都恰好映射到一个 workflow step。
+- 每个规范的物理目录必须和所属 workflow step 一致。
 - 索引里的路径真实存在。
 
 ## 取舍

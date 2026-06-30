@@ -1,6 +1,6 @@
 # W0-W9 AI R&D Workflow Map
 
-Use this reference when the repository does not provide `docs/00-start-here.md` and `docs/00-standard-index.md`. If the repository has its own workflow docs, prefer the repository version.
+Use this reference when the repository does not provide `docs/00-start-here.md` and `docs/02-standard-index.md`. If the repository has its own workflow docs, prefer the repository version.
 
 ## Steps
 

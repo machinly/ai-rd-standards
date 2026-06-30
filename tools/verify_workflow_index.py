@@ -9,13 +9,11 @@ from pathlib import Path
 from typing import Any
 
 WORKFLOW_STEPS = {f"W{index}" for index in range(10)}
-STAGE_DOC_RE = re.compile(r"^(\d{2})-.+\.md$")
+ORDERED_TRIGGER_DOC_RE = re.compile(r"^(\d{2})-.+\.md$")
 DOC_REF_RE = re.compile(r"docs/(?:W[0-9][^/]+/)?[0-9]{2}[^`\s|)]+\.md")
 WORKFLOW_DIR_RE = re.compile(r"^(W[0-9])-.+")
-INDEX_STAGE_ROW_RE = re.compile(
-    r"^\|\s*(?P<stage>\d{2})\s*\|\s*(?P<step>W[0-9])\s*\|\s*`(?P<path>docs/[^`]+\.md)`\s*\|",
-    re.MULTILINE,
-)
+WORKFLOW_MAIN_NAME = "00-main.md"
+WORKFLOW_INDEX_PATH = "docs/02-standard-index.md"
 START_STEP_HEADING_RE = re.compile(r"^##\s+(?P<step>W[0-9])[:：]", re.MULTILINE)
 INDEX_STEP_HEADING_RE = re.compile(r"^##\s+(?P<step>W[0-9])[:：]", re.MULTILINE)
 
@@ -36,13 +34,16 @@ def rel(path: Path, root: Path) -> str:
     return path.relative_to(root).as_posix()
 
 
-def stage_docs(root: Path) -> dict[str, str]:
-    docs: dict[str, str] = {}
-    for path in sorted((root / "docs").rglob("*.md")):
-        match = STAGE_DOC_RE.match(path.name)
-        if not match or match.group(1) == "00":
+def trigger_docs(root: Path) -> set[str]:
+    docs: set[str] = set()
+    for workflow_dir in sorted((root / "docs").iterdir()):
+        if not workflow_dir.is_dir() or not WORKFLOW_DIR_RE.match(workflow_dir.name):
             continue
-        docs[match.group(1)] = rel(path, root)
+        for path in sorted(workflow_dir.glob("*.md")):
+            match = ORDERED_TRIGGER_DOC_RE.match(path.name)
+            if not match or match.group(1) == "00":
+                continue
+            docs.add(rel(path, root))
     return docs
 
 
@@ -64,7 +65,7 @@ def check_readme(root: Path, issues: list[dict[str, str]]) -> None:
 
     required_links = [
         "docs/00-start-here.md",
-        "docs/00-standard-index.md",
+        "docs/02-standard-index.md",
         "knowledge/context-packs/rd-standards.md",
     ]
     for link in required_links:
@@ -79,7 +80,7 @@ def check_readme(root: Path, issues: list[dict[str, str]]) -> None:
             issues,
             "error",
             path,
-            "README appears to contain a flat stage list; keep stage mappings in docs/00-standard-index.md.",
+            "README appears to contain a flat standards list; keep detailed standard references in docs/02-standard-index.md.",
         )
 
 
@@ -99,8 +100,48 @@ def check_start_here(root: Path, issues: list[dict[str, str]]) -> None:
         add_issue(issues, "error", path, "Workflow entrypoint must include a Codex handoff prompt.")
 
 
+def check_workflow_files(root: Path, issues: list[dict[str, str]]) -> None:
+    docs_root = root / "docs"
+    for workflow_dir in sorted(docs_root.iterdir()):
+        if not workflow_dir.is_dir() or not WORKFLOW_DIR_RE.match(workflow_dir.name):
+            continue
+
+        main_file = workflow_dir / WORKFLOW_MAIN_NAME
+        if not main_file.exists():
+            add_issue(issues, "error", workflow_dir, f"{workflow_dir.name} must contain {WORKFLOW_MAIN_NAME}.")
+
+        legacy_main = workflow_dir / "main.md"
+        if legacy_main.exists():
+            add_issue(issues, "error", legacy_main, f"Use {WORKFLOW_MAIN_NAME} for workflow main entrypoints.")
+
+        order_numbers: list[int] = []
+        for path in sorted(workflow_dir.glob("*.md")):
+            if path.name == WORKFLOW_MAIN_NAME:
+                continue
+            match = ORDERED_TRIGGER_DOC_RE.match(path.name)
+            if not match or match.group(1) == "00":
+                add_issue(
+                    issues,
+                    "error",
+                    path,
+                    "Trigger standards must use '<local-order>-<semantic-name>.md'.",
+                )
+                continue
+            order_numbers.append(int(match.group(1)))
+
+        expected = list(range(1, len(order_numbers) + 1))
+        if sorted(order_numbers) != expected:
+            add_issue(
+                issues,
+                "error",
+                workflow_dir,
+                "Trigger standard prefixes must be consecutive within the directory: "
+                + ", ".join(f"{number:02d}" for number in expected),
+            )
+
+
 def check_index(root: Path, issues: list[dict[str, str]]) -> None:
-    path = root / "docs" / "00-standard-index.md"
+    path = root / WORKFLOW_INDEX_PATH
     text = read_text(path, issues, "workflow index")
     if not text:
         return
@@ -115,55 +156,16 @@ def check_index(root: Path, issues: list[dict[str, str]]) -> None:
     if missing_headings:
         add_issue(issues, "error", path, "Missing detailed workflow sections: " + ", ".join(missing_headings))
 
-    docs = stage_docs(root)
-    for stage, doc_path in docs.items():
-        actual_step = workflow_step_from_path(doc_path)
-        if actual_step not in WORKFLOW_STEPS:
-            add_issue(
-                issues,
-                "error",
-                path,
-                f"Stage {stage} must live under docs/Wx-* workflow directory: {doc_path}",
-            )
-
-    mapped_by_stage: dict[str, list[dict[str, str]]] = {}
-    mapped_steps: dict[str, set[str]] = {step: set() for step in WORKFLOW_STEPS}
-    for match in INDEX_STAGE_ROW_RE.finditer(text):
-        item = match.groupdict()
-        mapped_by_stage.setdefault(item["stage"], []).append(item)
-        mapped_steps[item["step"]].add(item["stage"])
-
-        ref_path = root / item["path"].replace("/", "\\")
+    docs = trigger_docs(root)
+    index_refs = set(DOC_REF_RE.findall(text))
+    for doc_path in sorted(index_refs):
+        ref_path = root / doc_path.replace("/", "\\")
         if not ref_path.exists():
-            add_issue(issues, "error", path, f"Mapped document does not exist: {item['path']}")
-        expected_path = docs.get(item["stage"])
-        if expected_path and item["path"] != expected_path:
-            add_issue(
-                issues,
-                "error",
-                path,
-                f"Stage {item['stage']} must map to {expected_path}, not {item['path']}.",
-            )
-        actual_step = workflow_step_from_path(item["path"])
-        if actual_step != item["step"]:
-            add_issue(
-                issues,
-                "error",
-                path,
-                f"Stage {item['stage']} path must live under docs/{item['step']}-*: {item['path']}",
-            )
+            add_issue(issues, "error", path, f"Referenced document does not exist: {doc_path}")
 
-    for stage, doc_path in docs.items():
-        rows = mapped_by_stage.get(stage, [])
-        if not rows:
-            add_issue(issues, "error", path, f"Stage {stage} is not mapped to any workflow step: {doc_path}")
-        elif len(rows) > 1:
-            steps = ", ".join(row["step"] for row in rows)
-            add_issue(issues, "error", path, f"Stage {stage} is mapped more than once: {steps}")
-
-    for step, stages in sorted(mapped_steps.items()):
-        if not stages:
-            add_issue(issues, "warning", path, f"{step} has no mapped numbered standard.")
+    for doc_path in sorted(docs):
+        if doc_path not in index_refs:
+            add_issue(issues, "error", path, f"Trigger standard is not referenced in the workflow index: {doc_path}")
 
 
 def main() -> int:
@@ -177,6 +179,7 @@ def main() -> int:
 
     check_readme(root, issues)
     check_start_here(root, issues)
+    check_workflow_files(root, issues)
     check_index(root, issues)
 
     errors = [issue for issue in issues if issue["level"] == "error"]
