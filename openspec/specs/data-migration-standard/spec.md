@@ -1,5 +1,7 @@
 # data-migration-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司数据与数据库迁移的最小规范，使 schema、query、migration、backfill、生产数据修复、备份恢复和隐私数据变更都可版本化、可检查、可恢复。

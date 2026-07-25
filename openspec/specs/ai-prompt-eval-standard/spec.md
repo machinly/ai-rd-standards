@@ -1,5 +1,7 @@
 # ai-prompt-eval-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司 AI prompt、eval、schema、tool 和 agent workflow 的默认研发规范，使用户可见 AI 行为能够版本化、回归测试、观测和回滚。
@@ -111,4 +113,3 @@ AI 工具调用 MUST 使用最小权限、结构化参数和可审计记录，�
 - THEN 包含 `ai_feature`、prompt version、model、schema version
 - AND 记录 latency、traffic、errors、token/cost 或采集计划
 - AND 记录 eval pass rate 或人工抽检通过率
-

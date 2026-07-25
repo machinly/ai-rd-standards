@@ -1,5 +1,7 @@
 # maintenance-dependency-debt-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司生产 target 的依赖清单、更新策略、重大升级计划、技术债登记和弃用计划，确保长期维护风险可见、可验证、可回滚。

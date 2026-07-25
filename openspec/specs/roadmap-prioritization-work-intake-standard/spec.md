@@ -1,92 +1,76 @@
 # roadmap-prioritization-work-intake-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
-Define the minimum roadmap, prioritization, work intake, Now/Next/Later planning, and focus-review standard for a one-person AI company.
+定义按需使用的轻量规划与优先级参考。它不得把任务时长、文件数量或 W 阶段当作强制 planning 触发器；产品方向和公开承诺始终由人决定。
 
 ## Requirements
 
-### Requirement: 超过半天或高影响研发工作必须进入 planning intake
+### Requirement: 规划重量必须由影响、可逆性和恢复需要决定
 
-Any work that may consume more than half a day, affect users, change production risk, or create an OpenSpec change MUST enter planning intake before implementation unless it is an active incident response.
+Work intake MUST 按用户/生产影响、可逆性、问责性、外部依赖和上下文恢复需要选择 Quick、Standard 或 High-risk。任务时长本身 MUST NOT 强制创建 planning 或 OpenSpec 工件。
 
-#### Scenario: 新研发请求进入系统
+#### Scenario: 较长但低风险的局部工作
 
-- GIVEN a product idea, customer request, bug, reliability issue, security/privacy item, compliance task, technical debt item, platform task, AI quality issue, cost item, or docs task is proposed
-- WHEN it may consume more than half a day or affect user-visible behavior, data, security, billing, contracts, operations, or production risk
-- THEN 创建 `planning/work-intake/<work-id>.json`
-- AND record id, title, source, request_type, target_user_or_system, problem, evidence_refs, value_hypothesis, risk_or_obligation, appetite, expected_scope, non_goals, dependencies, required_artifacts, human_checkpoint, status, and review_by
-- AND do not implement until the item has a decision or is explicitly marked as an active incident/emergency path
+- GIVEN 工作耗时可能超过半天
+- AND 不影响用户、生产、敏感数据、权限、付款或公开承诺
+- AND 失败后可以安全撤回并直接验证
+- WHEN 选择记录方式
+- THEN 可以使用 Quick
+- AND 不强制创建 work-intake JSON、roadmap 或 OpenSpec change
 
-### Requirement: 每个计划周期必须具备 strategy map、decision board、roadmap 和 focus review
+#### Scenario: 很短但高风险的动作
 
-Each planning period MUST preserve strategy, decisions, communication boundaries, and review state.
+- GIVEN 工作只需数分钟
+- AND 涉及生产删数、客户数据、凭据、付款或不可逆副作用
+- WHEN 选择记录方式
+- THEN 使用 High-risk
+- AND 在副作用前记录 owner、风险、批准、停止条件和回滚
 
-#### Scenario: 创建计划周期
+### Requirement: Planning 工件必须证明净收益并允许合并
 
-- GIVEN a planning period exists for roadmap or prioritization decisions
-- WHEN 创建 planning artifacts
-- THEN 创建 `planning/strategy-map/<period>.md`
-- AND 创建 `planning/decision-board/<period>.json`
-- AND 创建 `planning/roadmap/<period>.md`
-- AND 创建 `planning/focus-review/<period>.md`
-- AND link accepted or reviewed work items from `planning/work-intake/`
+Planning artifacts MUST 只在它们能减少优先级重议、跨会话恢复成本或外部承诺歧义时创建。一个 work brief 能承载所需事实时，流程 MUST NOT 强制拆成 strategy map、decision board、roadmap、focus review 和 intake 多份文件。
 
-### Requirement: Strategy map 必须定义诊断、结果、目标用户、指导方针、赌注、约束、非目标、风险和 capacity
+#### Scenario: 一份记录足够
 
-Strategy map MUST keep roadmap decisions tied to a diagnosis and coherent action.
+- GIVEN Standard 工作只有一个 owner 和一个清晰 outcome
+- AND 一份 brief 能记录 evidence、scope、non-goals、acceptance、risk、rollback、status 和 next
+- WHEN 保存规划状态
+- THEN 使用一份 brief
+- AND 不重复维护同一事实
 
-#### Scenario: 定义周期策略
+### Requirement: 产品取舍和承诺必须由人拥有
 
-- GIVEN a planning period is active
-- WHEN 创建 `planning/strategy-map/<period>.md`
-- THEN it includes Scope, Diagnosis, North Star Outcome, Target Segment, Guiding Policy, Strategic Bets, Constraints, Non Goals, Risk Appetite, Capacity Budget, Human Checkpoints, Linked Artifacts, and Review Cadence
-- AND capacity budget distinguishes focus work, maintenance or risk work, and interrupt buffer
+AI MUST NOT 自主决定目标用户、产品方向、定价、数据边界、公开日期、客户承诺、SLA 或长期架构锁定。
 
-### Requirement: Decision board 必须限制 now/expedite 并记录 evidence、appetite、confidence、risk 和 next review
+#### Scenario: 候选工作会改变产品方向
 
-Decision board MUST protect current focus and make prioritization recoverable.
+- GIVEN 候选项会改变目标市场、定价、数据用途或客户承诺
+- WHEN AI 分析优先级
+- THEN 提供证据、选项、代价和不确定性
+- AND 由人决定 start、narrow、defer、park 或 reject
 
-#### Scenario: 更新决策板
+### Requirement: Roadmap 必须区分内部预测和外部承诺
 
-- GIVEN work intake items are ready for prioritization
-- WHEN 创建 `planning/decision-board/<period>.json`
-- THEN it records period, owner, capacity, decision_policy, work_items, human_checkpoint, review_cadence, and status
-- AND each work item records id, lane, decision, request_type, appetite, evidence_strength, urgency, risk_reduction, value, effort, confidence, score_summary, linked_artifacts, next_review, human_checkpoint, and status
-- AND lane is now, next, later, parked, killed, expedite, or maintenance
-- AND decision is start_now, schedule_next, shape, needs_evidence, park, kill, expedite, or done
-- AND now lane defaults to at most two active items unless a human checkpoint accepts the focus cost
-- AND high-impact expedite decisions require a human checkpoint
+如果创建 roadmap，它 MUST 标明 Now/Next/Later 的不确定性、非承诺边界和证据日期；对外版本 MUST 经过人类确认。
 
-### Requirement: Roadmap 必须使用 Now/Next/Later 并明确非承诺边界
+#### Scenario: Roadmap 可能被客户看到
 
-Roadmap MUST communicate uncertainty without creating accidental customer commitments.
+- GIVEN roadmap 内容可能进入网站、销售、合同、支持或客户沟通
+- WHEN 准备发布或发送
+- THEN 明确哪些内容是计划、预测或承诺
+- AND 由人确认措辞、日期和责任边界
 
-#### Scenario: 更新路线图
+### Requirement: 无净收益的规划流程必须删除或降级
 
-- GIVEN a roadmap period is updated
-- WHEN 创建 `planning/roadmap/<period>.md`
-- THEN it includes Scope, Now, Next, Later, Parked / Killed, Explicit Non Commitments, Customer / Public Claim Boundary, Dependencies, Evidence Links, Change Log, and Review Cadence
-- AND roadmap content that may be shared with customers, sales, website, docs, contracts, or support links to external-claim or commercial-contract evidence gates
+Planning process MUST 记录其维护成本，并在重复事实、形式通过或维护时间高于决策价值时被合并、降级或删除。
 
-### Requirement: Focus review 必须记录近期工作、学习、请求、容量、决策、停止项、风险和一个下一步
+#### Scenario: 规划工件形成重复劳动
 
-Focus review MUST prevent roadmap drift and repeated re-discussion.
-
-#### Scenario: 周期复盘当前焦点
-
-- GIVEN a planning period reaches its review cadence
-- WHEN 创建 `planning/focus-review/<period>.md`
-- THEN it includes Recent Work, Shipped / Learned, Incoming Requests, Active Now Slots, Capacity / Energy, Decisions Made, Stopped / Parked, Risks, One Next Change, and Review Cadence
-- AND One Next Change records one highest-impact improvement to the planning or delivery system
-
-### Requirement: 高风险路线图和优先级动作必须保留人工 checkpoint
-
-High-risk roadmap actions MUST be reviewed by the maintainer before they consume focus or create commitments.
-
-#### Scenario: 高风险规划动作
-
-- GIVEN artifacts mention now, expedite, public roadmap, committed date, customer commitment, custom feature, SLA, pricing, target segment, data boundary, production, security, privacy, compliance, real customer data, live billing, vendor lock-in, or multi-week work
-- WHEN verifier checks planning artifacts
-- THEN the artifact records a human checkpoint or Human Checkpoints section
-- AND the maintainer decides whether to start, defer, narrow, park, kill, escalate, or create an OpenSpec/product bet
+- GIVEN 同一事实需要在两个以上 planning 文件重复更新
+- OR 连续两次 focus review 没有改变决定、风险或下一步
+- WHEN 复查流程成本
+- THEN 合并或停止相应工件
+- AND 不用新增文档解释原流程为何仍应保留

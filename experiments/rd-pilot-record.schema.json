@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/rd-pilot-record.schema.json",
+  "title": "R&D standards pilot task record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "project_id",
+    "comparison_group",
+    "source_evidence",
+    "toolchain_fingerprint",
+    "openspec",
+    "route",
+    "risk_path",
+    "task_type",
+    "status",
+    "started_at",
+    "finished_at",
+    "startup_minutes",
+    "context_amount",
+    "context_unit",
+    "human_interruptions",
+    "human_interruption_minutes",
+    "rework_count",
+    "first_pass",
+    "process_minutes",
+    "total_minutes",
+    "tool_calls",
+    "failed_retries",
+    "total_tokens",
+    "token_cost_usd",
+    "artifacts_created",
+    "high_risk_miss",
+    "verification",
+    "review",
+    "resume_drill",
+    "metrics_gaps",
+    "notes"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "comparison_group": {"type": "string", "minLength": 1},
+    "source_evidence": {"type": "string", "minLength": 1},
+    "toolchain_fingerprint": {"type": "string", "minLength": 1},
+    "route": {"enum": ["A", "B"]},
+    "risk_path": {"enum": ["Quick", "Standard", "High-risk"]},
+    "task_type": {"enum": ["docs", "code", "ai", "data", "release", "ops", "auth", "frontend", "backend", "other"]},
+    "status": {"enum": ["planned", "in-progress", "self-check-complete", "independent-review", "changes-requested", "completed", "terminated"]},
+    "openspec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["used", "change_id", "skip_approval", "reason"],
+      "properties": {
+        "used": {"type": "boolean"},
+        "change_id": {"type": ["string", "null"]},
+        "skip_approval": {"type": ["string", "null"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "started_at": {"type": "string", "format": "date-time"},
+    "finished_at": {"type": ["string", "null"], "format": "date-time"},
+    "startup_minutes": {"type": ["number", "null"], "minimum": 0},
+    "context_amount": {"type": ["number", "null"], "minimum": 0},
+    "context_unit": {"enum": ["lines", "tokens", "bytes", "unknown"]},
+    "human_interruptions": {"type": ["integer", "null"], "minimum": 0},
+    "human_interruption_minutes": {"type": ["number", "null"], "minimum": 0},
+    "rework_count": {"type": ["integer", "null"], "minimum": 0},
+    "first_pass": {"type": ["boolean", "null"]},
+    "process_minutes": {"type": ["number", "null"], "minimum": 0},
+    "total_minutes": {"type": ["number", "null"], "minimum": 0},
+    "tool_calls": {"type": ["integer", "null"], "minimum": 0},
+    "failed_retries": {"type": ["integer", "null"], "minimum": 0},
+    "total_tokens": {"type": ["integer", "null"], "minimum": 0},
+    "token_cost_usd": {"type": ["number", "null"], "minimum": 0},
+    "artifacts_created": {"type": ["integer", "null"], "minimum": 0},
+    "high_risk_miss": {"enum": ["no", "yes-producer-stage", "yes-reviewer-stage", "unknown"]},
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "command", "environment", "evidence_level", "result", "covered", "not_covered"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "command": {"type": ["string", "null"]},
+          "environment": {"type": "string", "minLength": 1},
+          "evidence_level": {"enum": ["unit", "component", "host-integration", "dependency-container", "complete-local-integration", "browser-e2e", "provider-sandbox", "production-observation", "manual"]},
+          "result": {"enum": ["pass", "fail", "skipped", "not-applicable"]},
+          "covered": {"type": "array", "items": {"type": "string"}},
+          "not_covered": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "review": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reviewer", "target", "decision", "findings"],
+          "properties": {
+            "reviewer": {"type": "string", "minLength": 1},
+            "target": {"type": "string", "minLength": 1},
+            "decision": {"enum": ["accepted", "changes-requested", "rejected"]},
+            "findings": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      ]
+    },
+    "resume_drill": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["delay_days", "resume_minutes", "success", "context_amount", "context_unit"],
+          "properties": {
+            "delay_days": {"type": "number", "minimum": 0},
+            "resume_minutes": {"type": "number", "minimum": 0},
+            "success": {"type": "boolean"},
+            "context_amount": {"type": "number", "minimum": 0},
+            "context_unit": {"enum": ["lines", "tokens", "bytes", "unknown"]}
+          }
+        }
+      ]
+    },
+    "metrics_gaps": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,5 +1,7 @@
 # trust-policy-compliance-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司 AI 产品的信任政策、用户承诺、AI 透明度、数据权利和合规复盘规则，确保对外声明能连接到代码、配置、eval、供应商条款、数据记录或人工流程，并避免未经证实的 AI、隐私、安全、退款或专业能力承诺。

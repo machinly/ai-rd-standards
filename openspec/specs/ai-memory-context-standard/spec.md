@@ -1,5 +1,7 @@
 # ai-memory-context-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 Define the minimum one-person-company governance for AI memory, user preferences, long-term context, RAG sources, context injection, user controls, deletion/export, and memory review.

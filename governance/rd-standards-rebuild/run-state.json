@@ -1,0 +1,906 @@
+{
+  "blockers": [],
+  "current_state": "approved_for_migration_design",
+  "evidence": {
+    "failure_report": "governance/rd-standards-rebuild/reports/2026-07-16-repository-verifier-blocked.json",
+    "openspec_change": "build-rd-rewrite-guardrails",
+    "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+    "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+    "tooling_bootstrap_manifest": "governance/rd-standards-rebuild/baseline-manifest.json"
+  },
+  "history": [
+    {
+      "decided_by": "user",
+      "decision": "approved",
+      "gate": "G0",
+      "scope_sha256": "e390d27f719b0b82dab482b9d7eb06318d8bd70ab6c1791ffa4f5ae5fb9c7448",
+      "state": "planned"
+    },
+    {
+      "check_results": {
+        "baseline-dry-run": {
+          "evidence": {
+            "command": "python tools/rd_rebuild.py baseline-create --root . --dry-run",
+            "exit_code": 0,
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+            "source_file_count": 40
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "tooling baseline dry-run completed without writes"
+        },
+        "baseline-verify": {
+          "evidence": {
+            "command": "python tools/rd_rebuild.py baseline-verify --root .",
+            "exit_code": 0,
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+            "source_file_count": 40,
+            "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "all 40 protected source files matched the G0 baseline"
+        },
+        "fixtures": {
+          "evidence": {
+            "fixture_count": 6,
+            "fixtures": [
+              "valid",
+              "source_changed",
+              "line_gap",
+              "duplicate_owner",
+              "unsupported_principle",
+              "unauthorized_write"
+            ],
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "all six plan-defined fixture families passed"
+        },
+        "openspec-strict": {
+          "evidence": {
+            "command": "openspec validate build-rd-rewrite-guardrails --strict --no-interactive",
+            "exit_code": 0,
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "Change A passed strict OpenSpec validation"
+        },
+        "scope-check": {
+          "evidence": {
+            "command": "python tools/rd_rebuild.py scope-check --root . --phase tooling",
+            "exit_code": 0,
+            "preserved_git_status_entry_count": 638,
+            "preserved_workspace_file_count": 639,
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "source, workspace bytes and Git status matched the tooling scope"
+        },
+        "unit-tests": {
+          "evidence": {
+            "command": "python -m unittest discover -s tools -p \"test_rd_rebuild_*.py\" -v",
+            "exit_code": 0,
+            "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+            "test_count": 62
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "62 unittest checks passed"
+        }
+      },
+      "gate": "G1",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "tooling_ready"
+    },
+    {
+      "check_results": {
+        "baseline-verify": {
+          "evidence": {
+            "expected_file_count": 40,
+            "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "protected source verification"
+        },
+        "scope-check": {
+          "evidence": {
+            "check_count": 5,
+            "results": [
+              {
+                "evidence": {
+                  "expected_file_count": 40,
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "protected source verification"
+              },
+              {
+                "evidence": {
+                  "allowed_rules": [
+                    "rebuild-draft/",
+                    "openspec/changes/rewrite-rd-standards-content/",
+                    "governance/rd-standards-rebuild/baseline-manifest.json",
+                    "governance/rd-standards-rebuild/tool-manifest.json",
+                    "governance/rd-standards-rebuild/run-state.json",
+                    "governance/rd-standards-rebuild/approvals.jsonl",
+                    "governance/rd-standards-rebuild/reports/"
+                  ],
+                  "baseline_file_count": 670,
+                  "current_file_count": 670
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace scope verification"
+              },
+              {
+                "evidence": {
+                  "baseline_status_count": 669,
+                  "current_status_count": 669
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace git status verification"
+              },
+              {
+                "evidence": {
+                  "tool_file_count": 23,
+                  "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool verification"
+              },
+              {
+                "evidence": {
+                  "actual_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                  "expected_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool manifest identity verification"
+              }
+            ]
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "scope check"
+        },
+        "tool-manifest": {
+          "evidence": {
+            "tool_file_count": 23,
+            "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "frozen tool verification"
+        }
+      },
+      "gate": "G2",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "sources_frozen"
+    },
+    {
+      "check_results": {
+        "baseline-verify": {
+          "evidence": {
+            "expected_file_count": 40,
+            "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "protected source verification"
+        },
+        "inventory-check": {
+          "evidence": {
+            "batch": null,
+            "inventory_row_count": 40,
+            "source_count": 40
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "source inventory check"
+        },
+        "rule-check": {
+          "evidence": {
+            "batch": null,
+            "rule_count": 5932
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "atomic rule check"
+        },
+        "scope-check": {
+          "evidence": {
+            "check_count": 5,
+            "results": [
+              {
+                "evidence": {
+                  "expected_file_count": 40,
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "protected source verification"
+              },
+              {
+                "evidence": {
+                  "allowed_rules": [
+                    "rebuild-draft/",
+                    "openspec/changes/rewrite-rd-standards-content/",
+                    "governance/rd-standards-rebuild/baseline-manifest.json",
+                    "governance/rd-standards-rebuild/tool-manifest.json",
+                    "governance/rd-standards-rebuild/run-state.json",
+                    "governance/rd-standards-rebuild/approvals.jsonl",
+                    "governance/rd-standards-rebuild/reports/"
+                  ],
+                  "baseline_file_count": 670,
+                  "current_file_count": 670
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace scope verification"
+              },
+              {
+                "evidence": {
+                  "baseline_status_count": 669,
+                  "current_status_count": 669
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace git status verification"
+              },
+              {
+                "evidence": {
+                  "tool_file_count": 23,
+                  "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool verification"
+              },
+              {
+                "evidence": {
+                  "actual_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                  "expected_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool manifest identity verification"
+              }
+            ]
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "scope check"
+        },
+        "segment-check": {
+          "evidence": {
+            "batch": null,
+            "covered_nonblank_line_count": 5142,
+            "segment_count": 573
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "source segment check"
+        }
+      },
+      "gate": "G3",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "sources_reviewed"
+    },
+    {
+      "check_results": {
+        "classification-check": {
+          "evidence": {
+            "classified_rule_count": 5956,
+            "review_required_count": 0,
+            "rule_count": 5956
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "classification check"
+        }
+      },
+      "gate": "G4",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "rules_classified"
+    },
+    {
+      "check_results": {
+        "rewrite-check": {
+          "evidence": {
+            "exact_copy_min_chars": 40,
+            "review_required_count": 0,
+            "rule_count": 5956,
+            "similarity_review_ratio": 0.9,
+            "target_marker_count": 2313,
+            "warning_count": 0
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "rewrite traceability and copy check"
+        }
+      },
+      "gate": "G5",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "rules_rewritten"
+    },
+    {
+      "check_results": {
+        "draft-check": {
+          "evidence": {
+            "canonical_target_count": 2313,
+            "category_count": 4,
+            "item_count": 11
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "draft structure and canonical reference check"
+        },
+        "principle-check": {
+          "evidence": {
+            "category_principle_count": 4,
+            "item_principle_count": 11,
+            "principle_count": 15,
+            "review_required_count": 0
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "principle traceability check"
+        }
+      },
+      "gate": "G6",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "principles_derived"
+    },
+    {
+      "check_results": {
+        "report-build": {
+          "evidence": {
+            "input_digest": "97c4f3843393129a8be9d214bb3a2535b6ea845fd7de8ebd7ef6ef5a64ba2dbb",
+            "output_count": 4
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "content report verification"
+        }
+      },
+      "gate": "G7",
+      "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+      "state": "audit_ready"
+    },
+    {
+      "check_results": {
+        "openspec-strict": {
+          "evidence": {
+            "change": "rewrite-rd-standards-content",
+            "exit_code": 0,
+            "output": "Change 'rewrite-rd-standards-content' is valid"
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "OpenSpec strict validation"
+        },
+        "verify-all": {
+          "evidence": {
+            "applicable_checks": [
+              "baseline-verify",
+              "scope-check",
+              "required-files",
+              "inventory-check",
+              "segment-check",
+              "rule-check",
+              "classification-check",
+              "rewrite-check",
+              "principle-check",
+              "draft-check",
+              "report-check"
+            ],
+            "not_applicable": [],
+            "results": [
+              {
+                "evidence": {
+                  "expected_file_count": 40,
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "protected source verification"
+              },
+              {
+                "evidence": {
+                  "check_count": 7,
+                  "results": [
+                    {
+                      "evidence": {
+                        "expected_file_count": 40,
+                        "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "protected source verification"
+                    },
+                    {
+                      "evidence": {
+                        "allowed_rules": [
+                          "rebuild-draft/",
+                          "openspec/changes/rewrite-rd-standards-content/",
+                          "governance/rd-standards-rebuild/baseline-manifest.json",
+                          "governance/rd-standards-rebuild/tool-manifest.json",
+                          "governance/rd-standards-rebuild/run-state.json",
+                          "governance/rd-standards-rebuild/approvals.jsonl",
+                          "governance/rd-standards-rebuild/reports/",
+                          "tools/rd_rebuild_core/gates.py",
+                          "tools/rd_rebuild_core/scope.py",
+                          "tools/test_rd_rebuild_gates.py",
+                          "tools/test_rd_rebuild_scope.py",
+                          "openspec/changes/build-rd-rewrite-guardrails/",
+                          "governance/rd-standards-rebuild/tool-manifest.json",
+                          "governance/rd-standards-rebuild/approvals.jsonl",
+                          "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-bootstrap.json",
+                          "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-manifest.json"
+                        ],
+                        "baseline_file_count": 661,
+                        "current_file_count": 661
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "workspace scope verification"
+                    },
+                    {
+                      "evidence": {
+                        "baseline_status_count": 660,
+                        "current_status_count": 660
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "workspace git status verification"
+                    },
+                    {
+                      "evidence": {
+                        "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                        "baseline_manifest_sha256": "ed321bd580495acc2bd28464d1665ed8b2061ec96e6e650ea377b615d88250c3",
+                        "bootstrap_sha256": "d72b427eb1a17a7390abe02b8b7c33b865d0cd1d7140b3a169a27a4a89ec28e6",
+                        "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "original G2 recovery anchor verification"
+                    },
+                    {
+                      "evidence": {
+                        "tool_file_count": 23,
+                        "tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5"
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "frozen tool verification"
+                    },
+                    {
+                      "evidence": {
+                        "actual_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                        "expected_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                        "recovery_id": "G1R-2026-07-19-windows-openspec-launcher"
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "frozen tool manifest identity verification"
+                    },
+                    {
+                      "evidence": {
+                        "approval_scope_sha256": "c48d017a6885e4294d58dc901e77f772308598e972b8b3b72c58b57389b4a6ba",
+                        "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                        "recovery_id": "G1R-2026-07-19-windows-openspec-launcher",
+                        "replacement_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                        "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                      },
+                      "exit_code": 0,
+                      "findings": [],
+                      "status": "PASS",
+                      "summary": "tool recovery validation"
+                    }
+                  ]
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "scope check"
+              },
+              {
+                "evidence": {
+                  "target_state": "awaiting_user_review"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "required tooling files"
+              },
+              {
+                "evidence": {
+                  "batch": null,
+                  "inventory_row_count": 40,
+                  "source_count": 40
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "source inventory check"
+              },
+              {
+                "evidence": {
+                  "batch": null,
+                  "covered_nonblank_line_count": 5142,
+                  "segment_count": 573
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "source segment check"
+              },
+              {
+                "evidence": {
+                  "batch": null,
+                  "rule_count": 5956
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "atomic rule check"
+              },
+              {
+                "evidence": {
+                  "classified_rule_count": 5956,
+                  "review_required_count": 0,
+                  "rule_count": 5956
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "classification check"
+              },
+              {
+                "evidence": {
+                  "exact_copy_min_chars": 40,
+                  "review_required_count": 0,
+                  "rule_count": 5956,
+                  "similarity_review_ratio": 0.9,
+                  "target_marker_count": 2313,
+                  "warning_count": 0
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "rewrite traceability and copy check"
+              },
+              {
+                "evidence": {
+                  "category_principle_count": 4,
+                  "item_principle_count": 11,
+                  "principle_count": 15,
+                  "review_required_count": 0
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "principle traceability check"
+              },
+              {
+                "evidence": {
+                  "canonical_target_count": 2313,
+                  "category_count": 4,
+                  "item_count": 11
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "draft structure and canonical reference check"
+              },
+              {
+                "evidence": {
+                  "input_digest": "1e9c9ab4aa6796748778b5e0858ca7f33856f1497819f63db15be95985b84136",
+                  "output_count": 4
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "content report verification"
+              }
+            ]
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "all applicable rebuild checks"
+        }
+      },
+      "gate": "G8",
+      "scope_sha256": "f2b92080f0169d805fce2339c71f200bf6e51489eab27b4d43e2b65b09eba520",
+      "state": "awaiting_user_review"
+    },
+    {
+      "check_results": {
+        "scope-check": {
+          "evidence": {
+            "check_count": 7,
+            "results": [
+              {
+                "evidence": {
+                  "expected_file_count": 40,
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "protected source verification"
+              },
+              {
+                "evidence": {
+                  "allowed_rules": [
+                    "rebuild-draft/",
+                    "openspec/changes/rewrite-rd-standards-content/",
+                    "governance/rd-standards-rebuild/baseline-manifest.json",
+                    "governance/rd-standards-rebuild/tool-manifest.json",
+                    "governance/rd-standards-rebuild/run-state.json",
+                    "governance/rd-standards-rebuild/approvals.jsonl",
+                    "governance/rd-standards-rebuild/reports/",
+                    "tools/rd_rebuild_core/gates.py",
+                    "tools/rd_rebuild_core/scope.py",
+                    "tools/test_rd_rebuild_gates.py",
+                    "tools/test_rd_rebuild_scope.py",
+                    "openspec/changes/build-rd-rewrite-guardrails/",
+                    "governance/rd-standards-rebuild/tool-manifest.json",
+                    "governance/rd-standards-rebuild/approvals.jsonl",
+                    "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-bootstrap.json",
+                    "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-manifest.json"
+                  ],
+                  "baseline_file_count": 661,
+                  "current_file_count": 661
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace scope verification"
+              },
+              {
+                "evidence": {
+                  "baseline_status_count": 660,
+                  "current_status_count": 660
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "workspace git status verification"
+              },
+              {
+                "evidence": {
+                  "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                  "baseline_manifest_sha256": "ed321bd580495acc2bd28464d1665ed8b2061ec96e6e650ea377b615d88250c3",
+                  "bootstrap_sha256": "d72b427eb1a17a7390abe02b8b7c33b865d0cd1d7140b3a169a27a4a89ec28e6",
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "original G2 recovery anchor verification"
+              },
+              {
+                "evidence": {
+                  "tool_file_count": 23,
+                  "tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool verification"
+              },
+              {
+                "evidence": {
+                  "actual_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                  "expected_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                  "recovery_id": "G1R-2026-07-19-windows-openspec-launcher"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "frozen tool manifest identity verification"
+              },
+              {
+                "evidence": {
+                  "approval_scope_sha256": "c48d017a6885e4294d58dc901e77f772308598e972b8b3b72c58b57389b4a6ba",
+                  "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                  "recovery_id": "G1R-2026-07-19-windows-openspec-launcher",
+                  "replacement_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                  "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+                },
+                "exit_code": 0,
+                "findings": [],
+                "status": "PASS",
+                "summary": "tool recovery validation"
+              }
+            ]
+          },
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "scope check"
+        },
+        "user-review": {
+          "evidence": {},
+          "exit_code": 0,
+          "findings": [],
+          "status": "PASS",
+          "summary": "human approval is evaluated by the gate"
+        }
+      },
+      "gate": "G9",
+      "scope_sha256": "f2b92080f0169d805fce2339c71f200bf6e51489eab27b4d43e2b65b09eba520",
+      "state": "approved_for_migration_design"
+    }
+  ],
+  "last_passed_gate": "G9",
+  "last_transition": {
+    "check_results": {
+      "scope-check": {
+        "evidence": {
+          "check_count": 7,
+          "results": [
+            {
+              "evidence": {
+                "expected_file_count": 40,
+                "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "protected source verification"
+            },
+            {
+              "evidence": {
+                "allowed_rules": [
+                  "rebuild-draft/",
+                  "openspec/changes/rewrite-rd-standards-content/",
+                  "governance/rd-standards-rebuild/baseline-manifest.json",
+                  "governance/rd-standards-rebuild/tool-manifest.json",
+                  "governance/rd-standards-rebuild/run-state.json",
+                  "governance/rd-standards-rebuild/approvals.jsonl",
+                  "governance/rd-standards-rebuild/reports/",
+                  "tools/rd_rebuild_core/gates.py",
+                  "tools/rd_rebuild_core/scope.py",
+                  "tools/test_rd_rebuild_gates.py",
+                  "tools/test_rd_rebuild_scope.py",
+                  "openspec/changes/build-rd-rewrite-guardrails/",
+                  "governance/rd-standards-rebuild/tool-manifest.json",
+                  "governance/rd-standards-rebuild/approvals.jsonl",
+                  "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-bootstrap.json",
+                  "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-manifest.json"
+                ],
+                "baseline_file_count": 661,
+                "current_file_count": 661
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "workspace scope verification"
+            },
+            {
+              "evidence": {
+                "baseline_status_count": 660,
+                "current_status_count": 660
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "workspace git status verification"
+            },
+            {
+              "evidence": {
+                "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                "baseline_manifest_sha256": "ed321bd580495acc2bd28464d1665ed8b2061ec96e6e650ea377b615d88250c3",
+                "bootstrap_sha256": "d72b427eb1a17a7390abe02b8b7c33b865d0cd1d7140b3a169a27a4a89ec28e6",
+                "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "original G2 recovery anchor verification"
+            },
+            {
+              "evidence": {
+                "tool_file_count": 23,
+                "tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5"
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "frozen tool verification"
+            },
+            {
+              "evidence": {
+                "actual_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                "expected_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                "recovery_id": "G1R-2026-07-19-windows-openspec-launcher"
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "frozen tool manifest identity verification"
+            },
+            {
+              "evidence": {
+                "approval_scope_sha256": "c48d017a6885e4294d58dc901e77f772308598e972b8b3b72c58b57389b4a6ba",
+                "base_tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+                "recovery_id": "G1R-2026-07-19-windows-openspec-launcher",
+                "replacement_tool_manifest_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+                "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+              },
+              "exit_code": 0,
+              "findings": [],
+              "status": "PASS",
+              "summary": "tool recovery validation"
+            }
+          ]
+        },
+        "exit_code": 0,
+        "findings": [],
+        "status": "PASS",
+        "summary": "scope check"
+      },
+      "user-review": {
+        "evidence": {},
+        "exit_code": 0,
+        "findings": [],
+        "status": "PASS",
+        "summary": "human approval is evaluated by the gate"
+      }
+    },
+    "gate": "G9",
+    "scope_sha256": "f2b92080f0169d805fce2339c71f200bf6e51489eab27b4d43e2b65b09eba520",
+    "target_state": "approved_for_migration_design"
+  },
+  "next_action": "Wait for separately approved migration planning",
+  "plan_path": "docs/superpowers/specs/2026-07-15-rd-standards-content-rewrite-plan.md",
+  "schema_version": "1.0"
+}

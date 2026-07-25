@@ -1,106 +1,90 @@
-# ai-coding-workflow-standard 规格
+# ai-coding-workflow-standard Specification
+
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
 
 ## Purpose
 
-定义一人公司 AI 协作编码、变更批次、自审、验证证据和人工 checkpoint 规则，确保 Codex/AI coding agent 的实现过程可计划、可 review、可恢复，并与 OpenSpec、测试、发布和安全边界衔接。
-
+定义 AI 辅助编码的最小边界：采用与普通研发相同的 Quick、Standard、High-risk 路径，保留真实验证和人的高影响决策，不为 AI 参与本身强制生成一套平行治理文件。
 ## Requirements
+### Requirement: AI 参与不得自动增加流程工件
 
-### Requirement: AI 协作编码变更必须具备会话工件
+AI-assisted work MUST 按影响、可逆性和恢复需要选择路径。AI 参与本身、任务时长或文件数量 MUST NOT 单独触发流程升级；Quick 不创建 OpenSpec，Standard/High-risk 实现性变更则因风险路径默认创建或继续 OpenSpec change。
 
-生产相关代码、prompt、配置、基础设施、测试、契约或发布流水线变更由 AI coding agent 参与实现时，MUST 创建 AI coding workflow artifacts。
+#### Scenario: 低风险 AI 辅助修改
 
-#### Scenario: 开始 AI 协作实现
+- GIVEN AI 修改低风险、局部、可逆的代码或文档
+- AND 不影响用户、生产、敏感数据、权限或外部承诺
+- WHEN 开始实现
+- THEN 可以走 Quick
+- AND 不创建 OpenSpec
+- AND 只需保留 diff、相关验证和剩余风险
 
-- GIVEN 一个 OpenSpec change 会产生生产相关仓库变更
-- WHEN AI coding agent 开始实现
-- THEN 创建 `ai-coding/implementation-brief/<change-id>.md`
-- AND 创建 `ai-coding/batch-log/<change-id>.md`
-- AND 创建 `ai-coding/review/<change-id>.md`
-- AND 创建 `ai-coding/verification/<change-id>.json`
+### Requirement: 长任务状态必须是事实记录而不是过程表演
 
-### Requirement: Implementation brief 必须界定目标、上下文、自治边界和停机条件
+跨会话或多批次工作 MUST 保留 changes made、commands run、decisions、assumptions、failures、current status 和 next；同一事实 MUST 有一个权威记录位置。
 
-Implementation brief MUST 记录 OpenSpec change、desired outcome、non-goals、context sources、target files/modules、allowed autonomy、human checkpoints、verification commands、stop conditions 和 handoff。
+#### Scenario: 完成一个实现批次
 
-#### Scenario: 创建实施 brief
+- GIVEN AI 完成一个可独立验证的批次
+- WHEN 更新状态记录
+- THEN 记录实际变更和真实命令结果
+- AND 披露失败、跳过、偏离和残余风险
+- AND 不为满足模板复制 proposal、design、tasks 和 batch log 中的相同文本
 
-- GIVEN 一个 AI coding session 准备修改仓库
-- WHEN 创建 `ai-coding/implementation-brief/<change-id>.md`
-- THEN 文档包含 OpenSpec Change、Desired Outcome、Non-Goals、Context Sources、Target Files / Modules、Allowed Autonomy、Human Checkpoints、Verification Commands、Stop Conditions、Handoff
-- AND OpenSpec Change 链接 `openspec/changes/<change-id>/`
+### Requirement: 生产者自检必须与独立最终审查分离
 
-### Requirement: Batch log 必须控制变更批次和记录偏离
+Producer Self-Check MUST 检查 outcome、acceptance、scope、用户已有修改、真实验证、失败披露和 High-risk 触发。Standard 与 High-risk 的 Independent Final Review MUST 由未参与产出的 reviewer 执行；两个自检镜头 MUST NOT 被称作两轮独立 review。
 
-Batch log MUST 记录 batch scope、changes made、commands run、decisions、assumptions、deviations 和 follow-up。
+#### Scenario: AI 实现已经自检
 
-#### Scenario: 完成一批 AI 实现
+- GIVEN 生产者完成 diff 和 self-check
+- WHEN 判断工作是否最终接受
+- THEN reviewer 使用目标版本、acceptance、diff 和验证证据重新检查
+- AND 记录 accept、changes-requested 或 reject
+- AND 生产者不得自行填写独立接受结论
 
-- GIVEN AI agent 完成一个实现批次
-- WHEN 更新 `ai-coding/batch-log/<change-id>.md`
-- THEN 文档包含 Batch Scope、Changes Made、Commands Run、Decisions、Assumptions、Deviations、Follow-Up
-- AND 如果批次超过 8 个核心文件或 2 个逻辑变更，Deviations 说明拆分理由
+### Requirement: 验证必须匹配实际变更风险
 
-### Requirement: Review artifact 必须覆盖功能、意图、AI 特有风险和合并判断
+AI-assisted work MUST 运行与变更相关的测试、构建、eval、contract、安全或人工验收；不存在或不适用的检查不得伪造为通过。
 
-Review artifact MUST 记录 diff summary、functional review、intent/architecture review、AI-specific review、dependency/security review、human checkpoints、两轮 review 和 merge decision。
+#### Scenario: 用户可见 AI 行为变化
 
-#### Scenario: AI 生成自审记录
+- GIVEN prompt、model、tool、route、memory 或 retrieval 变化会影响用户结果
+- WHEN 验证工作
+- THEN 使用代表、边界和失败/拒绝样例
+- AND 记录可复现的 eval 结果与回滚或降级路径
 
-- GIVEN AI coding session 有实现 diff
-- WHEN 创建 `ai-coding/review/<change-id>.md`
-- THEN 文档包含 Diff Summary、Functional Review、Intent / Architecture Review、AI-Specific Review、Dependency / Security Review、Human Checkpoints、Review 1、Review 2、Merge Decision
-- AND Merge Decision 为 ready、blocked、needs-human 或 needs-more-tests
+### Requirement: 高影响副作用必须停在人类批准前
 
-### Requirement: Verification JSON 必须记录可机器检查的验证证据
+Production deploy、real data/secret/vendor access、destructive operation、payment、external communication、auth/tenant boundary、test deletion 或 autonomy increase MUST 触发明确人类 checkpoint。
 
-Verification JSON MUST 记录 change_id、owner、openspec_change、stack、batch_size、commands、verification_results、human_checkpoint、residual_risks 和 status。
+#### Scenario: AI 准备执行高影响动作
 
-#### Scenario: 记录验证结果
+- GIVEN 工作将产生高影响副作用
+- WHEN 预检查完成
+- THEN 记录目标、影响范围、证据、停止条件和回滚
+- AND 在人类批准前不得执行真实副作用
 
-- GIVEN AI coding session 完成一批可 review 变更
-- WHEN 创建 `ai-coding/verification/<change-id>.json`
-- THEN 文件包含 `change_id`、`owner`、`openspec_change`、`stack`、`batch_size`、`commands`、`verification_results`、`human_checkpoint`、`residual_risks`、`status`
-- AND `verification_results` 包含 `openspec`、`tests`、`builds`、`evals`、`security_checks`、`contract_checks`、`release_mapping`
+### Requirement: 持久工件不得保存敏感原文
 
-### Requirement: Stack 相关验证命令必须与变更类型匹配
+AI coding artifacts MUST NOT 保存真实 secret、真实用户数据、供应商凭据、不必要的 raw prompt/response 或可识别个人信息。
 
-AI coding workflow MUST 根据 stack 记录对应验证命令和结果。
+#### Scenario: 保存协作证据
 
-#### Scenario: Go/Kratos/sqlc/gRPC 变更
+- GIVEN 需要记录上下文和验证
+- WHEN 写入仓库
+- THEN 保存可信来源链接、行为版本、脱敏 fixture、命令、结果和风险摘要
+- AND 对敏感字段删除、脱敏或只保存安全引用
 
-- GIVEN `stack` 包含 go、kratos、grpc、protobuf 或 sqlc
-- WHEN 记录 verification JSON
-- THEN `commands` 包含 `openspec validate`
-- AND Go 变更包含 `go test`
-- AND sqlc 变更包含 `sqlc generate`
-- AND gRPC/Protobuf 契约变更包含 breaking、lint、buf 或 contract check
+### Requirement: Standard 工作只维护一份可恢复状态
 
-#### Scenario: Vite 前端或 AI workflow 变更
+需要跨会话恢复、用户可见行为或独立验收的 AI-assisted implementation MUST 在 OpenSpec change 中记录 outcome、non-goals、scope、acceptance、context sources、risks、verification、rollback、decisions needed、status 和 next。同一事实 MUST NOT 再复制到平行 work brief。
 
-- GIVEN `stack` 包含 vite、frontend、react、ai、prompt、eval 或 agent
-- WHEN 记录 verification JSON
-- THEN Vite/frontend 变更包含 `npm run build` 或等价构建命令
-- AND AI workflow 变更包含 eval、fixture 或 dry-run 验证
+#### Scenario: AI 协作跨越一个会话
 
-### Requirement: 高影响 AI 自治越界必须人工 checkpoint
-
-Product scope change、real data/secret/vendor access、destructive operation、production deploy、new long-lived dependency、cost/autonomy increase、auth/tenant/API contract change、test deletion 或 multi-agent same-boundary change MUST 触发人工 checkpoint。
-
-#### Scenario: AI agent 需要越过低风险自治边界
-
-- GIVEN AI coding session 触发高影响条件
-- WHEN 准备继续实现、合并或发布
-- THEN `human_checkpoint.required_for` 包含对应触发项
-- AND implementation brief 或 review 记录需要人的判断
-
-### Requirement: AI coding artifacts 不得保存敏感内容或 raw prompt/response
-
-AI coding workflow artifacts MUST NOT 保存真实 secret、真实用户数据、供应商凭据、raw prompt、raw response 或可识别个人联系方式。
-
-#### Scenario: 记录 AI coding session 证据
-
-- GIVEN AI coding session 需要记录上下文和验证
-- WHEN 写入 `ai-coding/` artifacts
-- THEN 只保存可信上下文链接、行为版本、fixture、命令、结果和风险摘要
-- AND 不保存 raw prompt、raw response、真实 secret、真实用户数据或供应商凭据
+- GIVEN 工作属于 Standard implementation
+- WHEN 建立持久状态
+- THEN 创建或继续 OpenSpec change
+- AND 使用 `tasks.md` 记录当前状态和下一步
+- AND 链接产品输入、测试、review 和设计证据
+- AND 不创建内容重复的 work brief

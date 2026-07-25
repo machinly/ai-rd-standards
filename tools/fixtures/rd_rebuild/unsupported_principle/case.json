@@ -1,0 +1,28 @@
+{
+  "name": "unsupported_principle",
+  "purpose": "A principle cites a rule that does not exist.",
+  "expected_status": "BLOCKED",
+  "expected_finding_contains": "support rule does not exist",
+  "source_lines": [
+    "Principles need traceable support."
+  ],
+  "rules": [
+    {
+      "rule_id": "RULE-001",
+      "line": 1,
+      "category": "立项",
+      "item": "选题",
+      "cluster_id": "CLUSTER-001"
+    }
+  ],
+  "principles": [
+    {
+      "principle_id": "PRINCIPLE-ITEM-001",
+      "level": "item",
+      "category": "立项",
+      "item": "选题",
+      "supporting_cluster_ids": "CLUSTER-MISSING",
+      "supporting_rule_ids": "RULE-MISSING"
+    }
+  ]
+}

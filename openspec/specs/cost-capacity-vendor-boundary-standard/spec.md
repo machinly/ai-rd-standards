@@ -1,5 +1,7 @@
 # cost-capacity-vendor-boundary-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司成本、容量与供应商边界的最小规范，使生产服务、付费供应商集成和用户可见 AI workflow 都可预算、可限额、可降级、可退出、可复审。

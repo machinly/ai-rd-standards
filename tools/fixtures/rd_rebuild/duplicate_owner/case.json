@@ -1,0 +1,17 @@
+{
+  "name": "duplicate_owner",
+  "purpose": "One atomic rule declares more than one primary item owner.",
+  "expected_status": "BLOCKED",
+  "expected_finding_contains": "primary owner",
+  "source_lines": [
+    "A rule must have one primary owner."
+  ],
+  "rules": [
+    {
+      "rule_id": "RULE-001",
+      "line": 1,
+      "category": "立项",
+      "item": "选题;调研"
+    }
+  ]
+}

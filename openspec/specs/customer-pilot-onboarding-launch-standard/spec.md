@@ -1,5 +1,7 @@
 # customer-pilot-onboarding-launch-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 Define the minimum customer pilot, tenant provisioning, launch readiness, customer success handoff, and offboarding standard for a one-person AI company.

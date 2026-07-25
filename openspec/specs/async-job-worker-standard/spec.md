@@ -1,5 +1,7 @@
 # async-job-worker-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 Define the minimum one-person-company governance for long-running AI tasks, queues, background workers, scheduled jobs, leases, retries, dead letters, cancellation, status polling, user-visible progress, worker shutdown, and asynchronous AI provider boundaries.

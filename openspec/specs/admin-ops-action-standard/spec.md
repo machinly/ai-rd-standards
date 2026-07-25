@@ -1,5 +1,7 @@
 # admin-ops-action-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司生产后台运营、人工操作、高风险动作、审计、break-glass 和 AI operator 的安全边界，确保生产数据、计费、权限、配置、AI workflow 和外部副作用的人工变更可授权、可 dry-run、可审计、可回滚或可补偿。

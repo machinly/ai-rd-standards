@@ -1,5 +1,7 @@
 # vite-frontend-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司默认 Vite 前端研发规范，使新前端能以 TypeScript、清晰目录、公开 API 边界、Vercel Geist 风格 token、可访问性和最小发布门禁稳定落地。
@@ -102,4 +104,3 @@
 - GIVEN 某个门禁命令在当前环境不能运行
 - WHEN 交付总结
 - THEN 记录未运行命令、原因、风险和后续补救项
-

@@ -1,5 +1,7 @@
 # billing-entitlement-metering-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司付费 AI 产品的计费、权益、用量计量、Webhook 处理和对账规则，确保套餐、功能访问、AI 用量、支付平台状态、本地账本和客户账单能被服务端执行、幂等重试和周期性核对。

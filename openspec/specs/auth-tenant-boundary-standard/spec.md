@@ -1,5 +1,7 @@
 # auth-tenant-boundary-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司身份认证、授权和租户隔离的最小规范，使用户可见服务能明确 actor、tenant、resource、action、decision、audit 和 high-risk checkpoint，降低越权访问和跨租户数据泄露风险。

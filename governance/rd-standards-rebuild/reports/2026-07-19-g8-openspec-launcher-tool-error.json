@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "reported_at": "2026-07-19T00:48:19.1628275+08:00",
+  "phase": "content",
+  "gate": "G8",
+  "target_state": "awaiting_user_review",
+  "command": "python tools/rd_rebuild.py gate --root . --target awaiting_user_review --dry-run",
+  "dry_run": true,
+  "exit_code": 1,
+  "reported_status": "TOOL_ERROR",
+  "summary": "gate checks did not pass",
+  "finding": "openspec-strict: TOOL_ERROR",
+  "last_trustworthy_state": {
+    "current_state": "audit_ready",
+    "last_passed_gate": "G7"
+  },
+  "frozen_evidence": {
+    "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+    "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+    "protected_source_count": 40
+  },
+  "diagnosis": {
+    "standalone_openspec_strict_exit_code": 0,
+    "standalone_openspec_strict_output": "Change 'rewrite-rd-standards-content' is valid",
+    "powershell_resolution": "C:/Users/machinly/AppData/Roaming/npm/openspec.ps1",
+    "python_which_resolution": "C:/Users/machinly/AppData/Roaming/npm/openspec.CMD",
+    "internal_check_status": "TOOL_ERROR",
+    "internal_check_finding": "[WinError 2] system cannot find the specified file",
+    "root_cause": "The frozen gate invokes subprocess.run with the bare executable name openspec. Windows PowerShell resolves the npm wrapper, but shell-free CreateProcess cannot launch the .CMD wrapper by the bare name. Existing gate tests contain no OpenSpec process-launch coverage."
+  },
+  "state_mutated": false,
+  "workspace_writes_by_failed_command": [],
+  "content_or_source_failure": false,
+  "tool_modified": false,
+  "recovery_boundary": {
+    "required": "Return to Change A, add a Windows npm-wrapper regression test and the minimum cross-platform launcher fix, rerun all G1 evidence, obtain renewed human tool approval, and explicitly re-freeze the new tool digest before resuming G8.",
+    "not_authorized_yet": "The current plan does not define how a post-G2 tool revision is rebound to the existing content-frozen baseline, so no frozen tool, manifest, baseline, policy or state file may be changed without a narrow human-approved recovery protocol."
+  }
+}

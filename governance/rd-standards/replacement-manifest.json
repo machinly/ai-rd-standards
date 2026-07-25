@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "replacement_id": "rd-standards-formal-replacement-2026-07-19",
+  "status": "complete",
+  "authorization": {
+    "decision": "approved",
+    "decided_by": "user",
+    "decision_source": "current-codex-task:user-message:确认完全覆盖",
+    "scope": "Promote the four-category/eleven-item standards, delete the old W navigation and 54 retired R&D runtime skills, and keep one-person-openspec-rd as the only R&D runtime skill"
+  },
+  "formal_targets": {
+    "root_entry": "README.md",
+    "category_directories": [
+      "docs/01-initiation",
+      "docs/02-product-design",
+      "docs/03-engineering-delivery",
+      "docs/04-operations-maintenance"
+    ],
+    "category_count": 4,
+    "item_count": 11,
+    "rule_target_count": 2313,
+    "atomic_rule_count": 5956,
+    "review_evidence": "governance/rd-standards/review",
+    "runtime_skill": "one-person-openspec-rd"
+  },
+  "workspace_delete_allowlist": {
+    "legacy_standard_directories": [
+      "docs/W0-intake",
+      "docs/W1-discovery",
+      "docs/W2-openspec-risk",
+      "docs/W3-ai-behavior",
+      "docs/W4-build",
+      "docs/W5-verify",
+      "docs/W6-release",
+      "docs/W7-operate",
+      "docs/W8-learn",
+      "docs/W9-maintain"
+    ],
+    "legacy_navigation_files": [
+      "docs/00-start-here.md",
+      "docs/01-minimal-rd-kernel.md",
+      "docs/01-workflow-diagram.md",
+      "docs/02-standard-index.md",
+      "docs/03-role-index.md",
+      "docs/04-operating-model.md",
+      "docs/05-agent-orchestration.md"
+    ],
+    "parallel_normative_copy": "rebuild-draft"
+  },
+  "runtime_delete_allowlist": [
+    "accessibility-ai-ux-guard",
+    "admin-ops-action-guard",
+    "ai-coding-workflow-guard",
+    "ai-dataset-eval-data-guard",
+    "ai-memory-context-guard",
+    "ai-model-optimization-guard",
+    "ai-model-routing-guard",
+    "ai-prompt-eval-loop",
+    "ai-quality-regression-guard",
+    "ai-red-team-abuse-guard",
+    "ai-tool-runtime-guard",
+    "analytics-experiment-guard",
+    "api-contract-compatibility-guard",
+    "architecture-boundary-guard",
+    "async-job-worker-guard",
+    "audit-evidence-compliance-guard",
+    "auth-boundary-guard",
+    "backup-recovery-continuity-guard",
+    "billing-entitlement-metering-guard",
+    "commercial-contract-guard",
+    "config-flag-runtime-guard",
+    "content-safety-moderation-guard",
+    "cost-capacity-guard",
+    "credential-secret-lifecycle-guard",
+    "customer-data-lifecycle-guard",
+    "customer-launch-onboarding-guard",
+    "customer-support-trust-ops-guard",
+    "data-migration-guard",
+    "dev-workspace-automation-guard",
+    "developer-experience-docs-guard",
+    "event-webhook-integration-guard",
+    "external-claim-evidence-guard",
+    "go-kratos-sqlc-service",
+    "infra-iac-environment-guard",
+    "ip-license-provenance-guard",
+    "knowledge-context-recovery-guard",
+    "localization-locale-ai-guard",
+    "maintenance-dependency-debt-guard",
+    "notification-messaging-guard",
+    "observability-telemetry-guard",
+    "open-source-maintainer-guard",
+    "performance-load-regression-guard",
+    "processor-transfer-guard",
+    "product-discovery-learning-loop",
+    "quality-test-strategy-guard",
+    "rag-retrieval-source-guard",
+    "release-pipeline-gates",
+    "resilience-fault-injection-guard",
+    "roadmap-prioritization-guard",
+    "security-incident-response-guard",
+    "security-privacy-supply-chain-guard",
+    "sre-lite-ops",
+    "trust-policy-compliance-guard",
+    "vite-geist-frontend"
+  ],
+  "runtime_preserve_allowlist": [
+    ".system",
+    "one-person-openspec-rd",
+    "hatch-pet",
+    "tdx-automation"
+  ],
+  "preimage": {
+    "legacy_w_directories": {
+      "directory_count": 10,
+      "file_count": 40,
+      "sha256_tree": "702e0849801fd5c4b144a2faac8c2be1ebbcc1e1474eccacc013218ce3927d2e"
+    },
+    "legacy_navigation": {
+      "file_count": 7,
+      "sha256_tree": "a7c58dd58d3fde6e3a08e7d38d9f5bfabd7316df9abcb2a4b7db0a2dba8d5716"
+    },
+    "legacy_runtime_skills": {
+      "directory_count": 54,
+      "file_count": 240,
+      "sha256_tree": "53f39d0afae0491016bc3de81bee1720762b08941374a09560dd3dbef326c3ba"
+    },
+    "canonical_runtime_skill_candidate": {
+      "file_count": 5,
+      "sha256_tree": "99f8c0bd13bd51ecd917ead75a27751704cb8ff57d78b1eeda02eb2afb7e2558"
+    },
+    "formal_corpus_and_review_candidate": {
+      "file_count": 22,
+      "sha256_tree": "61108287bf688c979b92fcfa530b878f46efdc738de1b7c6f132df645839562a"
+    },
+    "parallel_normative_root_entry": {
+      "path": "rebuild-draft/README.md",
+      "file_count": 1,
+      "sha256": "73eba689edef461c79cb8629e49c9d837ff449ac7096adec2a6e914066859803"
+    },
+    "parallel_normative_copy_total": {
+      "file_count": 23
+    }
+  },
+  "stop_conditions": [
+    "Independent deletion-boundary review does not approve the remediated candidate",
+    "Protected W source baseline verification fails before deletion",
+    "Any delete target is missing from the exact allowlist, escapes its intended parent, or is a reparse point",
+    "The installed one-person-openspec-rd candidate fails validation or differs from the repository canonical copy",
+    "Any formal verifier, runtime verifier, unit test, active-reference scan, or strict OpenSpec validation fails"
+  ],
+  "recovery_boundary": "No second normative or legacy runtime copy will be retained. Recovery is forward-only from governance traceability evidence or repository history and requires a new explicit user decision.",
+  "preimplementation_review": {
+    "reviewer": "/root/replacement_boundary_audit",
+    "decision": "approved_with_notes",
+    "reviewed_on": "2026-07-20",
+    "candidate_sha256_tree": "921100d49f3cba0cd428670a51c60db7198f9503e8750e3453730df831b602a3",
+    "runtime_router_sha256_tree": "99f8c0bd13bd51ecd917ead75a27751704cb8ff57d78b1eeda02eb2afb7e2558",
+    "deletion_authorized": true,
+    "notes": [
+      "Run OpenSpec validation with --all --strict --no-interactive",
+      "The 22-file formal corpus and review digest excludes rebuild-draft/README.md; the full rebuild-draft delete target contains 23 files"
+    ]
+  },
+  "result": {
+    "executed_on": "2026-07-20",
+    "deletion_status": "pass",
+    "legacy_w_directories_removed": 10,
+    "legacy_navigation_files_removed": 7,
+    "parallel_normative_files_removed": 23,
+    "legacy_runtime_skills_removed": 54,
+    "verification_status": "pass",
+    "verification": {
+      "unit_tests": {
+        "passed": 100,
+        "failed": 0
+      },
+      "formal_verifier": {
+        "status": "pass",
+        "category_count": 4,
+        "item_count": 11,
+        "unique_rule_id_count": 2313,
+        "review_file_count": 7
+      },
+      "runtime_skill_sync": {
+        "status": "pass",
+        "legacy_present_count": 0,
+        "preserved_missing_count": 0
+      },
+      "skill_validation": "pass",
+      "active_retired_reference_count": 0,
+      "openspec_strict_validation": {
+        "passed": 58,
+        "failed": 0
+      }
+    }
+  }
+}

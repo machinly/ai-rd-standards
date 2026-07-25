@@ -1,5 +1,6 @@
 {
   "target": "rd-standards",
+  "status": "formal-four-category-eleven-item",
   "owner": "solo-founder",
   "audiences": [
     "solo-founder",
@@ -10,99 +11,85 @@
       "title": "Root entrypoint",
       "path": "README.md",
       "type": "reference",
-      "audience": "solo-founder",
-      "owner": "solo-founder",
-      "review_on": "2026-07-24",
-      "stale_after_days": 30
-    },
-    {
-      "title": "AI R&D workflow entrypoint",
-      "path": "docs/00-start-here.md",
-      "type": "how_to",
-      "audience": "solo-founder",
-      "owner": "solo-founder",
-      "review_on": "2026-07-24",
-      "stale_after_days": 30
-    },
-    {
-      "title": "Workflow-to-standard index",
-      "path": "docs/02-standard-index.md",
-      "type": "reference",
-      "audience": "solo-founder",
-      "owner": "solo-founder",
-      "review_on": "2026-07-24",
-      "stale_after_days": 30
-    },
-    {
-      "title": "Role swimlane index",
-      "path": "docs/03-role-index.md",
-      "type": "reference",
       "audience": "solo-founder and codex-agent",
-      "owner": "solo-founder",
-      "review_on": "2026-07-30",
-      "stale_after_days": 30
+      "owner": "solo-founder"
+    },
+    {
+      "title": "Initiation",
+      "path": "docs/01-initiation/README.md",
+      "type": "spec",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder"
+    },
+    {
+      "title": "Product design",
+      "path": "docs/02-product-design/README.md",
+      "type": "spec",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder"
+    },
+    {
+      "title": "Engineering delivery",
+      "path": "docs/03-engineering-delivery/README.md",
+      "type": "spec",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder"
+    },
+    {
+      "title": "Operations and maintenance",
+      "path": "docs/04-operations-maintenance/README.md",
+      "type": "spec",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder"
     },
     {
       "title": "Codex context pack",
       "path": "knowledge/context-packs/rd-standards.md",
       "type": "context_pack",
       "audience": "codex-agent",
-      "owner": "solo-founder",
-      "review_on": "2026-07-24",
-      "stale_after_days": 30
+      "owner": "solo-founder"
     }
   ],
-  "diataxis_coverage": {
-    "tutorial": "Not required yet; this repository is a working operating manual, not external onboarding material.",
-    "how_to": [
-      "docs/00-start-here.md",
-      "knowledge/how-to/rd-standards.md"
-    ],
-    "reference": [
-      "README.md",
-      "docs/02-standard-index.md",
-      "docs/03-role-index.md"
-    ],
-    "explanation": [
-      "docs/01-workflow-diagram.md",
-      "docs/W2-openspec-risk/00-main.md",
-      "docs/W9-maintain/00-main.md",
-      "docs/W0-intake/00-main.md"
-    ]
-  },
+  "normative_items": [
+    "docs/01-initiation/01-topic-selection.md",
+    "docs/01-initiation/02-research.md",
+    "docs/02-product-design/03-definition.md",
+    "docs/02-product-design/04-experience-design.md",
+    "docs/03-engineering-delivery/05-technical-design.md",
+    "docs/03-engineering-delivery/06-planning.md",
+    "docs/03-engineering-delivery/07-implementation.md",
+    "docs/03-engineering-delivery/08-verification.md",
+    "docs/03-engineering-delivery/09-release.md",
+    "docs/04-operations-maintenance/10-operation.md",
+    "docs/04-operations-maintenance/11-evaluation.md"
+  ],
+  "runtime_skill": "skills/one-person-openspec-rd/",
+  "governance_entry": "governance/README.md",
+  "current_status": "governance/current-status.json",
+  "traceability": "governance/rd-standards/review/",
   "context_pack": "knowledge/context-packs/rd-standards.md",
   "glossary": "knowledge/glossary/rd-standards.md",
   "how_to": "knowledge/how-to/rd-standards.md",
-  "linked_openspec_changes": [
-    "openspec/changes/establish-one-person-ai-rd-operating-system",
-    "openspec/changes/define-knowledge-context-standard",
-    "openspec/changes/define-roadmap-prioritization-work-intake-standard",
-    "openspec/changes/improve-rd-standards-navigation",
-    "openspec/changes/add-role-swimlanes-and-simplify-standards"
-  ],
   "linked_runtime_artifacts": [
-    "docs/00-start-here.md",
-    "docs/01-workflow-diagram.md",
-    "docs/02-standard-index.md",
-    "docs/03-role-index.md",
-    "tools/verify_workflow_index.py",
-    "docs/sources/2026-06-23-source-map.md"
+    "tools/verify_rd_standards.py",
+    "tools/check_runtime_skill_sync.py"
   ],
-  "freshness_policy": "Review after any release of a new standards stage, incident, security change, schema or migration change, AI workflow change, config change, product pivot, or navigation cleanup.",
-  "freshness_log": "knowledge/freshness/rd-standards.jsonl",
+  "linked_openspec_changes": [
+    "openspec/changes/build-rd-rewrite-guardrails",
+    "openspec/changes/rewrite-rd-standards-content"
+  ],
   "human_checkpoint": {
     "required_for": [
+      "product_direction",
+      "pricing_or_data_boundary",
+      "production_side_effect",
+      "irreversible_action",
+      "external_commitment",
+      "credential_action",
       "canonical_source_change",
-      "stale_doc_accepted",
-      "archive_or_delete_doc",
-      "terminology_change",
-      "context_pack_insufficient",
-      "high_risk_post_change_review"
+      "archive_or_delete_doc"
     ],
     "default_owner": "solo-founder"
   },
-  "review_cadence": "Review monthly, after any new standards stage, after an incident, and after a major navigation or OpenSpec structure change."
+  "freshness_log": "knowledge/freshness/rd-standards.jsonl"
 }
-
-
-

@@ -1,5 +1,7 @@
 # performance-budget-load-regression-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司性能预算、负载画像、benchmark 计划、性能回归报告和性能复盘的最小规范，使用户可见服务、前端路径、AI workflow、数据库重路径和后台任务能够在发布前发现、阻断或明确接受性能回归。
@@ -116,9 +118,9 @@ Go/Kratos/sqlc/gRPC target MUST 记录 RPC 延迟、deadline、retry/backpressur
 - THEN 包含 `go test -bench`、`go test`、pprof、RPC benchmark、staging load 或明确跳过原因中至少一项
 - AND Backend / RPC Checks 覆盖 deadline、retry budget、streaming/queueing/backpressure 中适用项
 
-#### Scenario: sqlc 或 PostgreSQL 查询风险
+#### Scenario: sqlc 或 MySQL 查询风险
 
-- GIVEN target 涉及 sqlc、PostgreSQL、schema、index、pagination、join、N+1 或数据规模变化
+- GIVEN target 涉及 sqlc、MySQL、schema、index、pagination、join、N+1 或数据规模变化
 - WHEN 定义 Database Checks
 - THEN 包含 `EXPLAIN`、`EXPLAIN ANALYZE`、query plan evidence 或明确跳过原因
 

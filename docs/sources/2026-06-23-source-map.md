@@ -1,5 +1,7 @@
 # 来源索引 - 2026-06-23 起持续维护
 
+> 状态：历史来源目录，不直接证明任何强制规则。证据等级、适用边界和关键声明登记见 `docs/sources/README.md` 与 `docs/sources/evidence-registry.jsonl`。
+
 本文件只记录各 W 和触发专项要反复引用的高价值来源。W5 测试质量专项于 2026-06-24 补充。具体规范正文只摘取可落地的原则，不复制大段原文。
 
 ## 规格与 AI 辅助研发
@@ -1706,3 +1708,126 @@
 - OpenAI Prompt Engineering / evaluation best practices：多语言 AI 行为要用明确指令、代表样例和 eval 验证，不假设模型稳定保持目标语言。
   - https://developers.openai.com/api/docs/guides/prompt-engineering
   - https://developers.openai.com/api/docs/guides/evaluation-best-practices
+
+## 2026-07-03 补充：操作模型与多 Agent 编排依据
+
+本章节支撑 `docs/04-operating-model.md` 与 `docs/05-agent-orchestration.md`。检索与原文核对日期 2026-07-03。
+
+### Anthropic agent 工程系列
+
+- Anthropic, Building Effective Agents：workflow 与 agent 的分界是"谁持有控制流"；五种可组合模式（prompt chaining、routing、parallelization、orchestrator-workers、evaluator-optimizer）；复杂度只有能证明改善结果时才增加；agent 必须每步从环境获取 ground truth。
+  - https://www.anthropic.com/engineering/building-effective-agents
+- Anthropic, How we built our multi-agent research system：token 用量解释 80% 的性能方差；multi-agent 约 15x 对话 token 成本；委派必须含 objective、output format、工具指引、边界四要素；effort scaling rules（简单 1 agent 3-10 次调用、对比 2-4 agent、复杂 10+ agent）；编码类任务可并行度低于研究类；checkpoint 恢复、rainbow deployment、工件直出。
+  - https://www.anthropic.com/engineering/multi-agent-research-system
+- Anthropic, Effective context engineering for AI agents：最小高信号 token 集；context rot 与 attention budget；长程三件套 compaction / structured note-taking / sub-agent 干净窗口；子代理万级 token 探索只回传 1-2K 摘要。
+  - https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- Anthropic, Effective harnesses for long-running agents：initializer + coding agent 双体 harness；feature 清单 JSON 全部初始 failing 且禁删改；一次只做一个 feature；每会话冷启动例程（定位、读进度、跑基线）；端到端验证必须以用户方式执行。
+  - https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+- Anthropic, Scaling managed agents：brain/hands/session 三分；一切状态入 append-only session log；组件崩溃后 wake(sessionId) 重放恢复；凭证经 broker 注入、永不进执行沙箱。
+  - https://www.anthropic.com/engineering/managed-agents
+- Anthropic, Writing effective tools for agents / Advanced tool use / Code execution with MCP：整合式工作流工具优于 API 包装；错误消息必须是可执行的下一步；工具多或定义大时按需加载；大数据流转走代码执行不过模型上下文。
+  - https://www.anthropic.com/engineering/writing-tools-for-agents
+  - https://www.anthropic.com/engineering/advanced-tool-use
+  - https://www.anthropic.com/engineering/code-execution-with-mcp
+- Anthropic, Demystifying evals for AI agents：从真实失败提炼 20-50 个任务起步；end-state 评估不锁路径；无人值守可靠性用 pass^k 而非 pass@k；trial 隔离防作弊；读 transcript 不可外包。
+  - https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- Anthropic, Trustworthy agents / Measuring AI agent autonomy：agent 行为由 model、harness、tools、environment 四组件共同决定；有效监督是"可干预"而非"逐动作审批"；自主度由模型、用户与产品共建，信任随证据渐进放权。
+  - https://www.anthropic.com/research/trustworthy-agents
+  - https://www.anthropic.com/research/measuring-agent-autonomy
+- Anthropic, Project Vend 一期/二期：模型智力不是瓶颈，scaffolding（CRM、流程强制、记忆、角色分工）才是；同一模型复制的"上级"不构成制衡；对外动作必须过确定性规则门；helpfulness 偏置会被对抗方系统性利用。
+  - https://www.anthropic.com/research/project-vend-1
+  - https://www.anthropic.com/research/project-vend-2
+- Claude Code 官方文档（best practices / workflows / agent teams）：验证 gate 四等级（同 prompt 迭代、goal 条件、Stop hook、fresh-context 审查）；要求证据而非声称成功；fan-out 先试 2-3 个样本再放量；编排进代码（脚本持有循环与中间结果）；共享任务清单用文件锁认领；teammate 消息不能绕过权限判定。
+  - https://code.claude.com/docs/en/best-practices
+  - https://code.claude.com/docs/en/workflows
+  - https://code.claude.com/docs/en/agent-teams
+- Anthropic, Building agents with the Claude Agent SDK：agent loop = gather context / take action / verify work；验证器优先级：确定性规则 > 视觉比对 > LLM judge。
+  - https://claude.com/blog/building-agents-with-the-claude-agent-sdk
+
+### 业界多 Agent 工程方案
+
+- Cognition, Don't Build Multi-Agents：共享完整 trace 而非单条消息；动作携带隐式决策，冲突决策产生坏结果；写路径单线程、读路径可并行（SWE-grep 只读检索子代理豁免）。
+  - https://cognition.com/blog/dont-build-multi-agents
+  - https://cognition.com/blog/swe-grep
+- Cognition, Devin annual performance review：最佳任务画像 = 需求清晰、结果可验证、初级工程师 4-8 小时粒度；Playbook 结构（Setup / Main steps / Delivery）；fleet 是同 playbook 数据并行而非子代理协作。
+  - https://cognition.com/blog/devin-annual-performance-review-2025
+  - https://docs.devin.ai/product-guides/creating-playbooks
+- OpenAI, A Practical Guide to Building Agents / Agents SDK：单 agent 优先；拆分触发条件是逻辑分支复杂与工具重叠；代码编排比 LLM 编排更确定；guardrails 分层 + 失败阈值升级 + 高风险动作人审。
+  - https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf
+  - https://openai.github.io/openai-agents-python/multi_agent/
+- HumanLayer, 12-Factor Agents：prompt/context/控制流全部自持；工具是结构化输出；agent 是无状态 reducer，可启动/暂停/恢复；联系人类是一种工具调用。
+  - https://github.com/humanlayer/12-factor-agents
+- LangChain/LangGraph：supervisor 模式存在"电话游戏"失真，修复靠转发原文而非转述；架构按任务实测选择；durable execution、checkpoint、human-in-the-loop 是生产设施。
+  - https://www.langchain.com/blog/how-to-think-about-agent-frameworks
+  - https://www.langchain.com/blog/benchmarking-multi-agent-architectures
+  - https://docs.langchain.com/oss/python/langchain/multi-agent
+- Factory / Amp / Google Jules / GitHub Copilot coding agent / Cursor：五家收敛的流水线 = 隔离环境、计划先行、自带验证、分支交付、独立评审后合并；agent 不合并自己的 PR；极简工具集，复杂 schema 指数放大错误率。
+  - https://factory.ai/news/code-droid-technical-report
+  - https://ampcode.com/manual
+  - https://blog.google/innovation-and-ai/models-and-research/google-labs/jules/
+  - https://docs.github.com/en/copilot/concepts/about-copilot-coding-agent
+  - https://cursor.com/docs/background-agent
+- MCP / Google A2A：agent-to-tool 与 agent-to-agent 协议分层；A2A 的任务生命周期（submitted/working/input-required/completed/failed）、Agent Card 与 artifact 语义可直接借用。
+  - https://modelcontextprotocol.io/docs/getting-started/intro
+  - https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/
+- METR, Measuring AI ability to complete long tasks：50% time horizon 每约 7 个月翻倍；80% horizon 约为 50% 的四分之一；任务粒度应参数化并按季度随模型代际重校。
+  - https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/
+  - https://metr.org/time-horizons/
+- Geoffrey Huntley, Ralph loop：状态外置文件系统 + 每轮干净上下文 + 测试作为背压的极简无人循环；读扇出 500、构建串行 1；只适合 greenfield。
+  - https://ghuntley.com/ralph/
+- Simon Willison：agent 定义与问责红线（"A computer can never be held accountable"）；lethal trifecta——私密数据、不可信内容、对外通信三者不可同时授予。
+  - https://simonwillison.net/2025/Sep/18/agents/
+  - https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/
+- Chip Huyen, Agents：误差按步数复利（95% 单步 10 步后 60%）；plan 生成与执行解耦；失败模式分规划/工具/效率三类度量。
+  - https://huyenchip.com/2025/01/07/agents.html
+- Armin Ronacher, Agentic coding：为 agent 重塑代码库——快测试、结构化错误、日志写文件、工具"崩溃可以、挂起不行"。
+  - https://lucumr.pocoo.org/2025/6/12/agentic-coding/
+
+### 学术：多 Agent 失败模式与可靠性
+
+- MAST 多 agent 失败分类学（1600+ trace）：系统设计缺陷 43.9%（步骤重复 15.7%、未察觉终止 12.4%）、agent 间失调 31.5%、验证缺陷 23.5%（"验证本身出错"高于"没验证"）；失败是组织设计问题。
+  - https://arxiv.org/abs/2503.13657
+- Microsoft Magentic-One：task ledger / progress ledger 双账本双循环；进度账本每轮五问；stall counter 阈值 2 触发重规划；无人值守事故实录（重试登录到账户冻结、试图对外求助）。
+  - https://arxiv.org/abs/2411.04468
+- MAKER：百万 LLM 步零错误 = 最大化分解 + 每步投票 + red-flagging；可靠性成本只随任务长度对数增长；选模型看成本/单步错误率比。
+  - https://arxiv.org/abs/2511.09030
+- MetaGPT / ChatDev：SOP 编码进 multi-agent、结构化文档通信对抗级联幻觉；角色消融证明上游角色价值在减少下游返工；防死循环硬规则（2 次无变化或 10 轮强制终止）；两者互评结果对调，自报基准不可直接采信。
+  - https://arxiv.org/abs/2308.00352
+  - https://arxiv.org/abs/2307.07924
+- TheAgentCompany：模拟公司 175 个任务最佳完成率 30.3%；自欺型 shortcut 实录（改用户名冒充完成）；瓶颈在读文档、社交协调与繁琐流程，不在写代码。
+  - https://arxiv.org/abs/2412.14161
+- SWE-agent / OpenHands / Agentless：ACI 设计（edit 同步 linter 硬拦截、窗口式文件查看、压缩检索输出）；event stream 状态日志；能写成确定性流水线的环节不要给自主性。
+  - https://arxiv.org/abs/2405.15793
+  - https://arxiv.org/abs/2407.16741
+  - https://arxiv.org/abs/2407.01489
+- Goal drift 度量：所有被测模型在长上下文与压力下都出现目标漂移——目标需随任务契约定期重注入。
+  - https://arxiv.org/abs/2505.02709
+- Springdrift（Erlang/OTP 监督树跑 agent 23 天）：714 次 LLM 超时全部由监督自动重启零人工；append-only JSONL 回放状态；git 定期自动 commit 支持整体回滚；let it crash 对 LLM agent 格外合适。
+  - https://arxiv.org/abs/2604.04660
+- 组织结构研究（OrgAgent、Drop-the-Hierarchy、MacNet）：层级要浅且随任务弹性；读密集可扇出、写密集单写者；agent 数量收益 logistic 饱和；弱模型固定角色、强模型才可自由裁量。
+  - https://arxiv.org/abs/2604.01020
+  - https://arxiv.org/abs/2603.28990
+  - https://arxiv.org/abs/2406.07155
+- Temporal / Restate durable execution：workflow 作确定性大脑、LLM 与工具调用作可重试 activity；崩溃后恢复到最后完成步。
+  - https://temporal.io/blog/build-resilient-agentic-ai-with-temporal
+  - https://www.restate.dev/blog/durable-ai-loops-fault-tolerance-across-frameworks-and-without-handcuffs
+- Backpressure in agent pipelines：planner 生成工作天然快于执行层；有界队列、三级预算、熔断、AIMD 并发、spawn 深度限制；实录两个 agent 互相对话 11 天烧掉 4.7 万美元。
+  - https://tianpan.co/blog/2026-04-12-backpressure-in-agent-pipelines-when-ai-generates-work-faster-than-it-can-execute
+- AutoGPT 失败根因案例库：终止判据不可测量、无进度识别、完美主义偏差、资源盲区。
+  - https://github.com/vectara/awesome-agent-failures
+
+## 2026-07-08 补充：小型项目管理资料吸收
+
+本章节支撑 W0-W9 主入口和 30 个触发专项中“小型项目管理”落地条款。资料整理见 `docs/sources/2026-07-08-small-project-management-operating-guide.md`。
+
+- 小型项目管理适合一人公司与 AI 辅助研发：先定义目标、交付物、验收标准、non-goals、appetite 和停止条件，再拆任务；工件少但必须能恢复上下文。
+- WBS 是交付物视图，OpenSpec `tasks.md` 是实现任务视图；二者不要重复维护。一级交付物过多、验收证据不清或范围无法一页说明时，先收窄、拆分或升级为更大 change。
+- 小项目控制节奏是 fixed time / variable scope、小批量交付、每个工作块记录 done/blocked/change/next；新增范围必须判断是否改变目标、验收、appetite、风险或客户承诺。
+- 收尾状态不只有 done，也可以 stopped、parked、split 或 escalated；W8/W9 必须回写验收证据、未完成项、剩余风险、后续项目、经验和 handoff 链接。
+- 触发专项吸收方式：每个专项只补“本专项如何执行”的短条款，说明哪些活动可只读并行、哪些写入/裁决必须串行，哪些生产、不可逆、对外、凭据、真实客户数据或高影响 AI 动作必须升级人审。
+- 主要外部依据：Sandra F. Rowe, *Project Management for Small Projects*；PMI *Managing and Leading Small Projects*；PMI WBS Practice Standard；APM 项目管理定义；UK Government *Guidelines for Managing Projects*。
+  - https://www.skillsoft.com/book/project-management-for-small-projects-third-edition-ca85d9c4-0cc7-457f-af63-7771c846b675
+  - https://www.pmi.org/learning/library/managing-leading-small-projects-7245
+  - https://www.pmi.org/learning/library/practice-standard-work-breakdown-structures-8063
+  - https://www.apm.org.uk/resources/what-is-project-management/
+  - https://assets.publishing.service.gov.uk/media/5a790afced915d0422067576/10-1257-guidelines-for-managing-projects.pdf

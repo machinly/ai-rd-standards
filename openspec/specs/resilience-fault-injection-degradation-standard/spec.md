@@ -1,8 +1,10 @@
 # resilience-fault-injection-degradation-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
-定义一人公司韧性演练、故障注入、降级验证和复盘的最小规范，使关键用户路径、Go/Kratos/gRPC 服务、sqlc/PostgreSQL 路径、Vite 降级 UI、AI workflow、worker、Webhook 和外部依赖能在低风险实验中证明 timeout、retry、circuit breaker、fallback、backpressure 和 degraded mode 真的可用。
+定义一人公司韧性演练、故障注入、降级验证和复盘的最小规范，使关键用户路径、Go/Kratos/gRPC 服务、sqlc/MySQL 路径、Vite 降级 UI、AI workflow、worker、Webhook 和外部依赖能在低风险实验中证明 timeout、retry、circuit breaker、fallback、backpressure 和 degraded mode 真的可用。
 
 ## Requirements
 
@@ -106,7 +108,7 @@ Go/Kratos/sqlc/gRPC targets MUST verify context cancellation, gRPC deadlines, re
 
 #### Scenario: Go/Kratos/gRPC 目标
 
-- GIVEN target 涉及 Go、Kratos、gRPC、sqlc、PostgreSQL、queue 或 worker
+- GIVEN target 涉及 Go、Kratos、gRPC、sqlc、MySQL、queue 或 worker
 - WHEN 编写 experiment plan 和 degradation check
 - THEN Injection Method 或 Verification Commands 包含 mock、test double、local proxy、staging config、contract test、integration test、gRPC deadline/cancel test、DB failure test 或 queue failure test 中适用项
 - AND Timeout / Retry / Backpressure 覆盖 deadline、cancel、max retries、backoff/jitter、circuit breaker、queue limit 或 load shedding 中适用项

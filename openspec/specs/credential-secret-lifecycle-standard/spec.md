@@ -1,5 +1,7 @@
 # credential-secret-lifecycle-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 Define the minimum credential, secret, service-account, API-key, signing-key, and connector-token lifecycle standard for a one-person AI company so production systems can inventory credentials, control access, rotate safely, prove old versions were revoked, and respond to exposure without storing real secret values in the repository.
@@ -105,7 +107,7 @@ Backend, frontend, and AI workflow implementations MUST align credential handlin
 - GIVEN target 使用 Go/Kratos/sqlc/gRPC、Vite 或 AI workflow
 - WHEN 实现或 review credential handling
 - THEN Go/Kratos 服务通过 typed config 或 runtime injection 获取 secret reference/value
-- AND sqlc/PostgreSQL connection strings 不进入日志、migration、fixtures 或 docs
+- AND sqlc/MySQL connection strings 不进入日志、migration、fixtures 或 docs
 - AND gRPC call credentials 不在未保护 channel 上发送
 - AND Vite `VITE_*` 与浏览器 bundle 不包含 secret
 - AND AI prompt、eval、trace、RAG source、memory 和 tool output 不包含真实 secret

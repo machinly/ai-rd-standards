@@ -1,5 +1,7 @@
 # security-privacy-supply-chain-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司安全、隐私与软件供应链的最小基线，使生产服务、付费供应商集成和用户可见 AI workflow 都可威胁建模、可记录数据处理、可追踪依赖与构建来源、可管理 secrets、可触发高风险人工判断。

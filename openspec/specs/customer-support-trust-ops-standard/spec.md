@@ -1,5 +1,7 @@
 # customer-support-trust-ops-standard 规格
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司生产产品的客户支持、反馈分流与信任运营规则，确保用户问题能被低成本接收、分类、回复、升级、脱敏记录并反哺产品、工程、AI eval、安全隐私、计费权益和事故沟通。

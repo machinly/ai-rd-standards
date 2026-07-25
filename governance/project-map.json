@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "domains": [
+    {
+      "id": "rd-standards",
+      "trigger": "Use, verification, maintenance, or replacement of the formal R&D standards",
+      "owner": "user",
+      "producer": "Codex",
+      "decision_or_gate": "User owns semantic, risk, deletion, and external-effect decisions",
+      "authoritative_entry": "README.md",
+      "current_status": "governance/current-status.json",
+      "evidence": "governance/rd-standards/",
+      "runtime_skill": "skills/one-person-openspec-rd/",
+      "retention": "Retain formal standards and traceability while they remain current"
+    },
+    {
+      "id": "rd-standards-rebuild",
+      "trigger": "Historical execution evidence for the approved R&D standards rewrite",
+      "owner": "user",
+      "producer": "Codex",
+      "decision_or_gate": "G0-G9 approvals and recorded rebuild checks",
+      "authoritative_entry": "governance/rd-standards-rebuild/run-state.json",
+      "policy": "governance/rd-standards-rebuild/policy.json",
+      "openspec_change": "openspec/changes/build-rd-rewrite-guardrails/",
+      "retention": "Retain as historical evidence; it is not the current standards runtime"
+    }
+  ]
+}

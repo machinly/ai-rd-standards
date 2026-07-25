@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "recovery_id": "G1R-2026-07-19-windows-openspec-launcher",
+  "status": "implementation_authorized",
+  "captured_at": "2026-07-19T15:36:29.9304440+08:00",
+  "authorization": {
+    "approval_id": "G1R-2026-07-19-user-approved-tool-recovery-protocol",
+    "decision_source": "current-codex-task:user-message:批准工具恢复方案",
+    "scope": "Begin the narrow Change A recovery only; renewed G1 acceptance of the resulting tool remains pending."
+  },
+  "base_state": {
+    "current_state": "audit_ready",
+    "last_passed_gate": "G7",
+    "gate_scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962",
+    "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+    "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+    "failure_report": "governance/rd-standards-rebuild/reports/2026-07-19-g8-openspec-launcher-tool-error.json"
+  },
+  "allowed_recovery_paths": [
+    "tools/rd_rebuild_core/gates.py",
+    "tools/rd_rebuild_core/scope.py",
+    "tools/test_rd_rebuild_gates.py",
+    "tools/test_rd_rebuild_scope.py",
+    "openspec/changes/build-rd-rewrite-guardrails/",
+    "governance/rd-standards-rebuild/tool-manifest.json",
+    "governance/rd-standards-rebuild/approvals.jsonl",
+    "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-bootstrap.json",
+    "governance/rd-standards-rebuild/reports/2026-07-19-tool-recovery-manifest.json"
+  ],
+  "protected_workspace_snapshot": {
+    "algorithm": "SHA-256 over canonical JSON records of every repository path outside allowed_recovery_paths, including exists, size and content SHA-256; Git status is separately canonicalized and hashed with the same exclusions.",
+    "file_count": 697,
+    "file_digest": "de7409e94875354b1570a3f8ca40b4db34111217b1dd1b97c6896dba99148569",
+    "missing_path_count": 232,
+    "git_status_count": 696,
+    "git_status_digest": "54f4fc6b3b5878e527553d9a7b41ea00ac403267cb316e9f191f32ef84228a64"
+  },
+  "hard_boundaries": [
+    "Do not overwrite or replace the original G2 content-frozen baseline.",
+    "Do not modify W0-W9, rebuild-draft content, Change B semantics, formal entry points or run-state during recovery.",
+    "Only the listed recovery paths may change before renewed G1 acceptance.",
+    "A replacement tool digest is usable by content scope only through an append-only approved recovery manifest linking the original and replacement digests.",
+    "Renewed G1 acceptance must follow tests, fixtures, real read-only checks, OpenSpec strict validation and independent review; implementation authorization is not acceptance."
+  ]
+}

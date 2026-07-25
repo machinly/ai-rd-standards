@@ -1,5 +1,7 @@
 # architecture-boundary-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司架构决策、代码组织与模块边界的最小基线，使生产服务、前端应用和用户可见 AI workflow 能记录重要架构决策、模块职责、依赖方向、API/data/AI 边界和架构例外人审点。

@@ -1,111 +1,81 @@
 # rd-standards-navigation Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
-定义一人公司 AI 研发规范仓库的 workflow-first 导航层，使大量规范可以按 AI 研发流程被使用，而不是按想到的主题平铺。
-
+定义最小默认入口和按需 playbook 导航，使人和 Codex 不需要先加载 W0-W9、角色、OpenSpec 或多 Agent 材料。
 ## Requirements
+### Requirement: 根入口必须指向最小三档路径
 
-### Requirement: 根入口必须指向 AI 研发工作流而不是平铺全部规范
+README MUST 指向 Quick、Standard、High-risk 快速分流和最小研发内核，说明 Standard/High-risk 实现性变更默认使用 OpenSpec，并明确当前没有无人值守公司 runtime。
 
-研发规范仓库的 README MUST 作为短入口，指向 AI 研发工作流入口、workflow-to-standard 索引、上下文包、来源索引和常用验证命令，而不是展开全部阶段清单。
+#### Scenario: 打开仓库
 
-#### Scenario: 打开仓库根入口
+- GIVEN 用户或 Codex 打开 README
+- WHEN 决定先读什么
+- THEN README 指向 docs/00-start-here.md
+- AND README 指向 docs/01-minimal-rd-kernel.md
+- AND 不要求先定位 W0-W9
+- AND Quick 不创建 OpenSpec，Standard/High-risk 实现性变更创建或继续 active change
 
-- GIVEN 用户打开 `README.md`
-- WHEN 用户需要决定下一步读什么
-- THEN README 指向 `docs/00-start-here.md`
-- AND README 说明先定位当前 W0-W9 workflow step
-- AND README 不要求用户通读所有阶段
+### Requirement: 默认读取集合必须保持小
 
-### Requirement: 工作流入口必须覆盖从想法到维护的 AI 研发生命周期
+README、快速分流和最小内核 MUST 合计不超过 350 行，每个文件 MUST 能独立说明自己的用途。
 
-工作流入口 MUST 定义 W0-W9，并覆盖 intake、discovery、OpenSpec/risk、AI behavior、build、verify、release、operate、learn、maintain。
+#### Scenario: 新任务冷启动
 
-#### Scenario: 定位当前 AI 研发步骤
+- GIVEN 一个普通研发请求
+- WHEN 读取默认入口
+- THEN 不需要读取完整 playbook index、角色文档或来源目录
+- AND 只有出现具体缺口时才加载一个 playbook
 
-- GIVEN 用户有一个研发请求、AI 行为变更、事故、客户反馈或文档维护任务
-- WHEN 查看 `docs/00-start-here.md`
-- THEN 文档帮助用户定位 W0-W9 中的当前步骤
-- AND 每个步骤列出问题、只读规范、最小产出和人审点
+### Requirement: W0-W9 和角色文档必须是可选 playbook
 
-### Requirement: 完整索引必须按 workflow step 汇总规范
+所有 docs/W* 文档 MUST 在顶部标明可选状态。角色文档 MUST 被描述为专业视角，而不是必设岗位或默认 Agent。
 
-完整索引 MUST 以 W0-W9 为主组织方式，并在每个 workflow step 下列出主规范、触发专项、人审点和常用 skill。
+#### Scenario: 选择专项资料
 
-#### Scenario: 查找 workflow 规范
+- GIVEN Standard 或 High-risk 工作出现具体专业问题
+- WHEN 查看 docs/02-standard-index.md
+- THEN 可以选择一个相关 playbook
+- AND playbook 与最小内核冲突时以最小内核为准
 
-- GIVEN 用户需要查找某个 workflow step 的规范
-- WHEN 查看 `docs/02-standard-index.md`
-- THEN 文档显示该 workflow step 的主规范、触发专项、人审点和常用 skill
-- AND 文档不要求用户按其他编号体系阅读
+### Requirement: 核心 skill 必须使用三档风险路由
 
-### Requirement: Workflow 规范文件必须按 workflow step 目录存放
+one-person-openspec-rd skill MUST 先选择 Quick、Standard 或 High-risk，不得默认扫描 W0-W9 或派生多 Agent；选择 Standard/High-risk 实现性变更后 MUST 默认创建或继续 OpenSpec change。
 
-每个 workflow step 目录 MUST 有且只有一个 `00-main.md` 作为核心入口。触发型专项 MUST 使用 `<local-order>-<semantic-name>.md` 文件名，使目录内按阅读顺序连续排序，也能读出主题。
+#### Scenario: 使用核心 skill
 
-#### Scenario: 查看规范文件物理结构
+- GIVEN 用户提出研发任务
+- WHEN skill 开始工作
+- THEN 按影响、可逆性和问责性分流
+- AND Quick 不创建 OpenSpec
+- AND Standard/High-risk 实现性变更创建或继续 active change
+- AND High-risk 副作用前要求明确人类批准
+- AND Standard/High-risk 要求独立最终审查
 
-- GIVEN 仓库包含编号规范文件
-- WHEN 查看 `docs/` 目录
-- THEN 规范不直接平铺在 `docs/` 根目录
-- AND 每个规范位于对应的 `docs/Wx-*` 目录
-- AND `docs/00-start-here.md`、`docs/01-workflow-diagram.md` 与 `docs/02-standard-index.md` 保留为顶层导航文件
+### Requirement: 知识地图必须反映真实默认入口
 
-### Requirement: 新增规范必须声明 workflow 归属
+docs map 和 context pack MUST 将 README、快速分流、最小内核和 context pack 作为 canonical entrypoints，将 W0-W9 和多 Agent 标为可选，并将 OpenSpec 标为 Standard/High-risk 实现性变更的默认 change 载体。
 
-任何新增规范 MUST 说明它服务 W0-W9 哪一步、补哪个缺口、最小 artifact 是什么，以及如何由 skill 或 verifier 承接。
+#### Scenario: 恢复上下文
 
-#### Scenario: 准备新增规范
+- GIVEN Codex 读取 knowledge/docs-map/rd-standards.json
+- WHEN 查找默认入口
+- THEN canonical entrypoints 与最小三档路径一致
+- AND 能识别 Quick 的无 OpenSpec 路径和 Standard/High-risk 的 active change
+- AND review、decision 和 experiment artifacts 可追溯
 
-- GIVEN Codex 或用户想添加新规范
-- WHEN 更新索引或 OpenSpec proposal
-- THEN 变更说明该规范的主 workflow step
-- AND 说明它不是另起一摊的主题清单
+### Requirement: 验证结果必须区分格式、治理和试验
 
-### Requirement: Workflow 索引必须可自动校验
+仓库 verifier MUST 分别输出 format_valid、governance_complete 和 pilot_verified，不得用格式 PASS 代表真实任务效果。
 
-导航层 MUST 提供本地校验命令，检查 README 短入口、W0-W9 完整性、规范到 workflow step 的唯一映射、物理目录归属和索引路径存在性。
+#### Scenario: 试验尚未完成
 
-#### Scenario: 新增或重命名规范后校验索引
-
-- GIVEN 新增、删除或重命名 `docs/Wx-*/*.md` 规范文件
-- WHEN 运行 `python tools\verify_workflow_index.py .`
-- THEN 每个 W 只有一个 `00-main.md`
-- AND 每个触发专项文件在所属 W 目录内使用连续编号
-- AND 索引引用的规范路径存在
-- AND README 未退化为平铺阶段清单
-
-### Requirement: 核心 R&D skill 必须先路由 workflow step
-
-`one-person-openspec-rd` MUST 在创建 OpenSpec 或实现前先判断请求处于 W0-W9 哪一步，并只读取当前 step、上一步输入和下一步门禁对应的规范。
-
-#### Scenario: 使用核心 skill 开始研发请求
-
-- GIVEN 用户请求规划、实现、验证、发布、运维、学习或维护 AI 产品研发工作
-- WHEN 使用 `one-person-openspec-rd`
-- THEN skill 先说明当前 W0-W9 workflow step
-- AND skill 根据 step 决定是否创建 planning、product discovery、OpenSpec、AI eval、build、release、ops、learning 或 knowledge artifacts
-- AND skill 只升级高影响人工判断
-
-### Requirement: 导航层必须具备知识恢复工件
-
-导航层 MUST 具备 docs map、context pack、glossary、how-to 和 freshness log，使 Codex 和人可以按工作流恢复上下文。
-
-#### Scenario: Codex 接手规范仓库
-
-- GIVEN Codex 需要继续整理或使用研发规范
-- WHEN 读取 `knowledge/docs-map/rd-standards.json`
-- THEN docs map 指向 README、工作流入口、workflow-to-standard 索引和 context pack
-- AND context pack 要求先定位 W0-W9
-
-### Requirement: 导航层必须避免制造新的注意力负担
-
-导航层 MUST 将完整清单作为 reference，把第一入口保持为 workflow step 选择，并明确哪些决策需要人工判断。
-
-#### Scenario: 用户只想开始当前工作
-
-- GIVEN 用户打开仓库准备开始一个具体任务
-- WHEN 阅读 README 和 `docs/00-start-here.md`
-- THEN 用户能在不通读完整索引的情况下定位当前 workflow step
-- AND 高影响人工判断被集中列出
+- GIVEN 文件和治理检查通过
+- AND 对照任务少于 10 个
+- WHEN 运行 python tools/verify_rd_standards.py .
+- THEN format_valid 可以 PASS
+- AND governance_complete 可以 PASS
+- AND pilot_verified 显示 PENDING

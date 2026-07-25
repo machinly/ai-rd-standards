@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "project": "rd-standards",
+  "status": "complete",
+  "current_gate": "G9",
+  "run_state": "formal_replacement_complete",
+  "authoritative_entry": "README.md",
+  "historical_rebuild_state": "governance/rd-standards-rebuild/run-state.json",
+  "user_authorization": {
+    "decision": "approved",
+    "decision_source": "current-codex-task:user-message:确认完全覆盖",
+    "scope": "Replace the formal standards with the four-category/eleven-item corpus, remove old W navigation and 54 retired R&D skills, and keep only one-person-openspec-rd as the R&D runtime skill"
+  },
+  "latest_evidence": {
+    "g9_scope_sha256": "f2b92080f0169d805fce2339c71f200bf6e51489eab27b4d43e2b65b09eba520",
+    "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+    "formal_rule_target_count": 2321,
+    "atomic_rule_count": 5956,
+    "latest_change": {
+      "id": "add-visual-ux-step-to-rd-standards",
+      "design": "docs/superpowers/specs/2026-07-24-rd-visual-ux-step-design.md",
+      "decision": "approved",
+      "formal_rule_target_count_before": 2313,
+      "formal_rule_target_count_after": 2321,
+      "atomic_rule_count": 5956
+    },
+    "preimplementation_review": "approved_with_notes",
+    "preimplementation_candidate_sha256_tree": "921100d49f3cba0cd428670a51c60db7198f9503e8750e3453730df831b602a3",
+    "runtime_router_sha256_tree": "99f8c0bd13bd51ecd917ead75a27751704cb8ff57d78b1eeda02eb2afb7e2558",
+    "deletion_execution": {
+      "status": "pass",
+      "legacy_w_directories_removed": 10,
+      "legacy_navigation_files_removed": 7,
+      "parallel_normative_files_removed": 23,
+      "legacy_runtime_skills_removed": 54
+    },
+    "final_verification": {
+      "status": "pass",
+      "verified_on": "2026-07-24",
+      "unit_tests": "102 passed",
+      "formal_verifier": "pass: 4 categories, 11 items, 2321 unique rule IDs, 7 review files",
+      "runtime_skill_sync": "pass: 0 retired skills present, 0 preserved skills missing",
+      "skill_validation": "pass",
+      "active_retired_reference_count": 0,
+      "openspec_strict_validation": "59 passed, 0 failed"
+    }
+  },
+  "blockers": [],
+  "next_action": "Maintain the standards through README.md and one-person-openspec-rd"
+}

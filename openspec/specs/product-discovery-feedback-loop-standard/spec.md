@@ -1,5 +1,7 @@
 # product-discovery-feedback-loop-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司产品发现、实验与反馈闭环的最小基线，使用户可见能力、付费能力、增长实验和 AI workflow 在进入实质研发前可说明目标用户、真实问题、成功指标、反馈证据、实验停止条件和学习决策。

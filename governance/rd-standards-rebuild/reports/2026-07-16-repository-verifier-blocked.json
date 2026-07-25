@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "event": "repository-verifier-blocked",
+  "phase": "tooling",
+  "last_trustworthy_gate": "G0",
+  "run_state": "planned",
+  "command": "python tools/verify_rd_standards.py .",
+  "exit_code": 1,
+  "result": {
+    "format_valid": "PASS",
+    "governance_complete": "FAIL",
+    "pilot_verified": "PENDING",
+    "runtime_skill_sync": "PASS",
+    "runtime_evidence_valid": "PASS",
+    "review_snapshot_valid": "FAIL",
+    "independent_review_verified": "PENDING"
+  },
+  "findings": [
+    "reviews/2026-07-10-rd-standards-snapshot-manifest.json expected snapshot d50e56c5778a3a46330d63683cd9e6a6729e4c41e3e05ff5de9cee017e2ef8ed with 403 files, but the actual tree was 38877fb854cfcbfeb9b518ba1666faea5f5575571c03acec7c21272d234d48df with 441 files",
+    "reviews/2026-07-10-rd-standards-independent-review-packet.md is not bound to the current snapshot",
+    "independent final review remains pending",
+    "pilot remains pending with 0/10 eligible records across 0 projects"
+  ],
+  "passing_change_a_evidence": {
+    "unit_tests": "62/62 PASS",
+    "fixtures": "6/6 named fixture families PASS",
+    "baseline_dry_run": "PASS",
+    "protected_sources": "40 files PASS",
+    "tooling_scope": "PASS",
+    "workflow_index": "PASS",
+    "openspec_strict": "PASS",
+    "openspec_status": "4/4 artifacts complete"
+  },
+  "protected_source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+  "tool_manifest_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f",
+  "authorized_response": "Save truthful evidence, keep G1 pending, do not start Change B, and wait for user direction.",
+  "scope_note": "The failing review snapshot, review packet, pilot and independent-review artifacts are outside Change A's exact write whitelist."
+}

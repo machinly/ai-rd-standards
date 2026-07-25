@@ -1,0 +1,665 @@
+{
+  "report_type": "g4-classification-review",
+  "change_id": "rewrite-rd-standards-content",
+  "task": "3.1-3.3 / G4 classification review and approved transition",
+  "generated_on": "2026-07-17",
+  "gate_advanced": true,
+  "total_rule_count": 5956,
+  "category_counts": {
+    "\u4ea7\u54c1\u8bbe\u8ba1": 481,
+    "\u5de5\u7a0b\u4ea4\u4ed8": 3773,
+    "\u7acb\u9879": 157,
+    "\u8fd0\u884c\u7ef4\u62a4": 1545
+  },
+  "item_counts": {
+    "\u4f53\u9a8c\u8bbe\u8ba1": 185,
+    "\u53d1\u5e03": 467,
+    "\u5b9a\u4e49": 296,
+    "\u5b9e\u73b0": 776,
+    "\u6280\u672f\u8bbe\u8ba1": 1393,
+    "\u8ba1\u5212": 41,
+    "\u8bc4\u4f30": 574,
+    "\u8c03\u7814": 86,
+    "\u8fd0\u884c": 971,
+    "\u9009\u9898": 71,
+    "\u9a8c\u8bc1": 1096
+  },
+  "classification_state": {
+    "classified_rule_count": 5956,
+    "review_required_count": 0,
+    "review_required_count_semantics": "structural classification checker count only; zero means no structurally unclassified row",
+    "human_review_required_count": 0,
+    "human_review_rule_ids": [],
+    "treatment_counts": {
+      "unreviewed": 5956
+    }
+  },
+  "secondary_semantics": {
+    "secondary_rule_count_definition": "number of atomic-rule rows whose secondary_impacts field is non-empty",
+    "secondary_impact_count_definition": "number of semicolon-delimited secondary item values across those rows",
+    "delimiter": ";"
+  },
+  "secondary_rule_count": 161,
+  "secondary_impact_count": 171,
+  "secondary_counts": {
+    "\u4f53\u9a8c\u8bbe\u8ba1": 3,
+    "\u53d1\u5e03": 10,
+    "\u5b9e\u73b0": 1,
+    "\u6280\u672f\u8bbe\u8ba1": 25,
+    "\u8ba1\u5212": 2,
+    "\u8fd0\u884c": 70,
+    "\u9a8c\u8bc1": 60
+  },
+  "secondary_rule_ids": [
+    "RULE-W3-002-069",
+    "RULE-W3-002-070",
+    "RULE-W3-002-071",
+    "RULE-W3-002-072",
+    "RULE-W3-002-073",
+    "RULE-W3-002-074",
+    "RULE-W3-002-075",
+    "RULE-W3-002-076",
+    "RULE-W3-002-175",
+    "RULE-W3-003-025",
+    "RULE-W3-004-042",
+    "RULE-W3-004-043",
+    "RULE-W3-004-044",
+    "RULE-W3-004-045",
+    "RULE-W3-005-087",
+    "RULE-W3-005-102",
+    "RULE-W3-005-166",
+    "RULE-W3-005-282",
+    "RULE-W3-005-283",
+    "RULE-W3-005-284",
+    "RULE-W3-005-285",
+    "RULE-W3-005-286",
+    "RULE-W3-005-287",
+    "RULE-W3-005-288",
+    "RULE-W3-005-289",
+    "RULE-W3-005-290",
+    "RULE-W3-005-291",
+    "RULE-W3-005-292",
+    "RULE-W3-005-293",
+    "RULE-W3-005-294",
+    "RULE-W3-005-295",
+    "RULE-W3-005-296",
+    "RULE-W3-005-297",
+    "RULE-W3-005-298",
+    "RULE-W3-005-299",
+    "RULE-W3-005-300",
+    "RULE-W3-005-301",
+    "RULE-W3-005-302",
+    "RULE-W3-005-303",
+    "RULE-W3-005-304",
+    "RULE-W3-005-305",
+    "RULE-W4-002-122",
+    "RULE-W4-002-123",
+    "RULE-W4-002-147",
+    "RULE-W4-002-158",
+    "RULE-W4-002-159",
+    "RULE-W4-002-160",
+    "RULE-W4-002-161",
+    "RULE-W4-002-162",
+    "RULE-W5-001-049",
+    "RULE-W5-003-152",
+    "RULE-W5-003-153",
+    "RULE-W6-001-024",
+    "RULE-W6-001-055",
+    "RULE-W6-002-006",
+    "RULE-W6-002-069",
+    "RULE-W6-002-100",
+    "RULE-W6-002-101",
+    "RULE-W6-002-102",
+    "RULE-W6-002-103",
+    "RULE-W6-002-104",
+    "RULE-W6-002-106",
+    "RULE-W6-002-130",
+    "RULE-W6-002-143",
+    "RULE-W6-002-144",
+    "RULE-W6-002-149",
+    "RULE-W6-002-169",
+    "RULE-W6-002-179",
+    "RULE-W6-003-167",
+    "RULE-W6-003-168",
+    "RULE-W6-003-169",
+    "RULE-W6-003-170",
+    "RULE-W6-003-171",
+    "RULE-W6-003-172",
+    "RULE-W6-003-173",
+    "RULE-W6-003-174",
+    "RULE-W6-003-175",
+    "RULE-W6-003-176",
+    "RULE-W6-003-177",
+    "RULE-W6-003-190",
+    "RULE-W6-003-310",
+    "RULE-W6-004-085",
+    "RULE-W6-004-105",
+    "RULE-W6-004-168",
+    "RULE-W7-001-066",
+    "RULE-W7-002-075",
+    "RULE-W7-003-141",
+    "RULE-W7-003-144",
+    "RULE-W7-003-145",
+    "RULE-W7-004-164",
+    "RULE-W7-004-166",
+    "RULE-W7-004-167",
+    "RULE-W7-004-168",
+    "RULE-W7-005-231",
+    "RULE-W7-005-233",
+    "RULE-W7-005-182",
+    "RULE-W7-005-183",
+    "RULE-W7-005-204",
+    "RULE-W8-001-021",
+    "RULE-W8-002-119",
+    "RULE-W8-002-120",
+    "RULE-W8-003-062",
+    "RULE-W8-003-063",
+    "RULE-W8-003-064",
+    "RULE-W8-003-065",
+    "RULE-W8-003-066",
+    "RULE-W8-003-071",
+    "RULE-W8-003-072",
+    "RULE-W8-003-074",
+    "RULE-W8-003-075",
+    "RULE-W8-003-076",
+    "RULE-W8-003-080",
+    "RULE-W8-003-081",
+    "RULE-W8-003-082",
+    "RULE-W8-003-083",
+    "RULE-W8-003-103",
+    "RULE-W8-003-110",
+    "RULE-W8-003-131",
+    "RULE-W8-003-132",
+    "RULE-W8-003-133",
+    "RULE-W8-003-134",
+    "RULE-W8-003-135",
+    "RULE-W8-003-136",
+    "RULE-W8-003-137",
+    "RULE-W8-003-138",
+    "RULE-W8-003-139",
+    "RULE-W8-003-143",
+    "RULE-W8-003-144",
+    "RULE-W8-003-146",
+    "RULE-W8-003-147",
+    "RULE-W9-002-107",
+    "RULE-W9-003-104",
+    "RULE-W7-003-165",
+    "RULE-W7-003-166",
+    "RULE-W7-003-167",
+    "RULE-W7-003-168",
+    "RULE-W7-003-169",
+    "RULE-W7-002-147",
+    "RULE-W8-003-173",
+    "RULE-W8-003-174",
+    "RULE-W8-003-175",
+    "RULE-W8-003-176",
+    "RULE-W8-003-177",
+    "RULE-W8-003-178",
+    "RULE-W8-003-179",
+    "RULE-W8-003-180",
+    "RULE-W7-002-174",
+    "RULE-W7-002-175",
+    "RULE-W7-002-176",
+    "RULE-W7-004-212",
+    "RULE-W7-004-213",
+    "RULE-W7-004-214",
+    "RULE-W8-003-186",
+    "RULE-W8-003-187",
+    "RULE-W7-005-224",
+    "RULE-W7-005-225",
+    "RULE-W7-004-234",
+    "RULE-W7-004-242",
+    "RULE-W7-004-247",
+    "RULE-W8-003-193",
+    "RULE-W8-003-196"
+  ],
+  "cluster_statistics": {
+    "cluster_count": 1256,
+    "maximum_cluster_size": 36,
+    "clusters_over_40_count": 0,
+    "cross_item_cluster_count": 0,
+    "singleton_cluster_count": 531,
+    "doubleton_cluster_count": 188,
+    "cluster_size_distribution": {
+      "1": 531,
+      "2": 188,
+      "3": 98,
+      "4": 76,
+      "5": 46,
+      "6": 48,
+      "7": 25,
+      "8": 25,
+      "9": 28,
+      "10": 19,
+      "11": 17,
+      "12": 21,
+      "13": 15,
+      "14": 12,
+      "15": 15,
+      "16": 8,
+      "17": 13,
+      "18": 5,
+      "19": 5,
+      "20": 16,
+      "21": 4,
+      "22": 6,
+      "23": 5,
+      "24": 3,
+      "27": 5,
+      "28": 2,
+      "29": 2,
+      "30": 5,
+      "31": 2,
+      "32": 2,
+      "33": 4,
+      "34": 2,
+      "35": 1,
+      "36": 2
+    }
+  },
+  "cluster_fingerprint_audit": {
+    "method": "rule-level shared-decision fingerprint plus directed semantic review of line-capacity and maximum clusters",
+    "ordinary_fingerprint_dimensions": [
+      "candidate_item",
+      "canonical decision objective",
+      "source_id context"
+    ],
+    "mixed_fingerprint_cluster_count": 0,
+    "mixed_fingerprint_clusters": [],
+    "cross_item_cluster_count": 0,
+    "clusters_over_40_count": 0,
+    "manual_equivalence_clusters": [
+      {
+        "cluster_id": "CLUSTER-DEFINITION-AI-DATA-RECIPIENT-BOUNDARY",
+        "rule_count": 9
+      },
+      {
+        "cluster_id": "CLUSTER-DEFINITION-AI-HIGH-IMPACT-DOMAIN",
+        "rule_count": 15
+      },
+      {
+        "cluster_id": "CLUSTER-DEFINITION-AI-SIDE-EFFECT-AUTHORIZATION",
+        "rule_count": 11
+      },
+      {
+        "cluster_id": "CLUSTER-TECH-DESIGN-AI-AUTONOMY-BOUNDARY",
+        "rule_count": 11
+      }
+    ]
+  },
+  "section_line_cluster_audit": {
+    "pattern": "SECTION-L####-L####",
+    "before_cluster_count": 10,
+    "before_rule_count": 117,
+    "after_cluster_count": 0,
+    "after_rule_count": 0,
+    "result": "all line-range/capacity cluster IDs were replaced by semantic artifact or decision objectives"
+  },
+  "w6_002_release_cluster_split": {
+    "source_id": "SRC-W6-002",
+    "former_cluster_id": "CLUSTER-RELEASE-RELEASE-READINESS-DEPLOYMENT-SRC-W6-002-ARTIFACT-OR-EVIDENCE-SECTION-L0144-L0208",
+    "former_rule_count": 39,
+    "semantic_clusters": [
+      {
+        "cluster_id": "CLUSTER-RELEASE-LOG-RECORD",
+        "resulting_full_cluster_rule_count": 6,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-GO-SQLC-GATES",
+        "resulting_full_cluster_rule_count": 4,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-FRONTEND-PREVIEW-DEPLOYMENT",
+        "resulting_full_cluster_rule_count": 7,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-AI-ARTIFACTS-AND-GATES",
+        "resulting_full_cluster_rule_count": 11,
+        "former_39_allocated_rule_count": 11
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-SUPPLY-CHAIN-ATTESTATION",
+        "resulting_full_cluster_rule_count": 3,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-HIGH-RISK-DEPLOY-ACTION",
+        "resulting_full_cluster_rule_count": 3,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-ROLLBACK-RUNBOOK",
+        "resulting_full_cluster_rule_count": 6,
+        "former_39_allocated_rule_count": 3
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-RUN-RECORD",
+        "resulting_full_cluster_rule_count": 10,
+        "former_39_allocated_rule_count": 10
+      }
+    ],
+    "count_semantics": "resulting_full_cluster_rule_count counts every rule now in the complete semantic cluster, including adjacent same-target rows; former_39_allocated_rule_count counts only rules reassigned from the former 39-rule SECTION-L cluster",
+    "resulting_full_cluster_rule_count_total": 50,
+    "former_39_allocated_rule_count_total": 39
+  },
+  "tool_registry_review": {
+    "source_id": "SRC-W3-005",
+    "tool_registry_cluster_id": "CLUSTER-TECH-DESIGN-AI-TOOL-REGISTRY-SCHEMA",
+    "tool_registry_rule_count": 11,
+    "provider_telemetry_cluster_id": "CLUSTER-TECH-DESIGN-AI-PROVIDER-CALL-TELEMETRY",
+    "provider_telemetry_rule_count": 9,
+    "resolution": "same-target fields were merged; auth, telemetry, eval-version, and fallback keywords no longer mechanically split schema/log field lists"
+  },
+  "maximum_cluster_manual_review": {
+    "reviewed_and_split": [
+      "CLUSTER-OPERATIONS-OBSERVABILITY-SLO-ALERT-SRC-W7-002",
+      "CLUSTER-TECH-DESIGN-ARCHITECTURE-BOUNDARY-SRC-W2-002-GENERAL",
+      "CLUSTER-OPERATIONS-CREDENTIAL-INVENTORY",
+      "CLUSTER-EXPERIENCE-UX-ERROR-AND-CONTRACT-PRESENTATION",
+      "CLUSTER-VERIFICATION-TEST-VERIFICATION-EVIDENCE-SRC-W6-004"
+    ],
+    "final_maximum_clusters": [
+      {
+        "cluster_id": "CLUSTER-VERIFICATION-AI-EVAL-FIXTURE-SRC-W3-005",
+        "rule_count": 36,
+        "review_result": "retained as one eval-gate or accessibility-test evidence objective"
+      },
+      {
+        "cluster_id": "CLUSTER-VERIFICATION-TEST-VERIFICATION-EVIDENCE-SRC-W5-003-ARTIFACT-OR-EVIDENCE",
+        "rule_count": 36,
+        "review_result": "retained as one eval-gate or accessibility-test evidence objective"
+      }
+    ],
+    "final_maximum_cluster_size": 36
+  },
+  "old_max_40_cluster_audit": {
+    "reviewed_cluster_count": 10,
+    "remaining_old_cluster_count": 0,
+    "result": [
+      {
+        "cluster_id": "CLUSTER-TECH-DESIGN-AI-MODEL-ROUTING-ARTIFACT",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-VERIFICATION-JOB-TEST-PLAN",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-VERIFICATION-GOVERNANCE-QUALITY-EVIDENCE",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-GOVERNANCE-RELEASE-PIPELINE",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RELEASE-GOVERNANCE-LAUNCH-CHECKLIST",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-IMPLEMENTATION-ADMIN-ACTION-RISK-REGISTRY",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RUN-SECURITY-INCIDENT-ARTIFACT",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RUN-SECURITY-INCIDENT-NORMATIVE",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RUN-SECURITY-CREDENTIAL-ROTATION-ARTIFACT",
+        "remaining_rule_count": 0
+      },
+      {
+        "cluster_id": "CLUSTER-RUN-AI-QUALITY-ARTIFACT",
+        "remaining_rule_count": 0
+      }
+    ]
+  },
+  "atomicity_audit": {
+    "required_splits": [
+      {
+        "source_rule_id": "RULE-W7-001-033",
+        "result_rule_ids": [
+          "RULE-W7-001-033",
+          "RULE-W7-001-065",
+          "RULE-W7-001-066",
+          "RULE-W7-001-067",
+          "RULE-W7-001-068",
+          "RULE-W7-001-069",
+          "RULE-W7-001-070"
+        ]
+      },
+      {
+        "source_rule_id": "RULE-W7-005-016",
+        "result_rule_ids": [
+          "RULE-W7-005-016",
+          "RULE-W7-005-228",
+          "RULE-W7-005-229"
+        ]
+      },
+      {
+        "source_rule_id": "RULE-W7-005-116",
+        "result_rule_ids": [
+          "RULE-W7-005-116",
+          "RULE-W7-005-230",
+          "RULE-W7-005-231",
+          "RULE-W7-005-232",
+          "RULE-W7-005-233",
+          "RULE-W7-005-234"
+        ],
+        "segment_id": "SEG-W7-005-009",
+        "all_result_ids_referenced_exactly_once": true
+      }
+    ],
+    "source_segment_refs_updated": true,
+    "sixth_round_rule_count_delta": 0
+  },
+  "sixth_round_resolutions": {
+    "w8_incident": {
+      "severity_classification_rule_ids": [
+        "RULE-W8-003-189",
+        "RULE-W8-003-192",
+        "RULE-W8-003-194"
+      ],
+      "severity_primary_item": "\u8fd0\u884c",
+      "recent_change_triage_rule_ids": [
+        "RULE-W8-003-062",
+        "RULE-W8-003-173",
+        "RULE-W8-003-174",
+        "RULE-W8-003-175",
+        "RULE-W8-003-176",
+        "RULE-W8-003-177",
+        "RULE-W8-003-178",
+        "RULE-W8-003-179",
+        "RULE-W8-003-180"
+      ],
+      "recent_change_primary_item": "\u8fd0\u884c",
+      "recent_change_secondary_impact": "\u9a8c\u8bc1"
+    },
+    "ui_user_control": {
+      "memory_control_rule_ids": [
+        "RULE-W3-004-042",
+        "RULE-W3-004-043",
+        "RULE-W3-004-044",
+        "RULE-W3-004-045"
+      ],
+      "error_ui_rule_ids": [
+        "RULE-W5-003-152",
+        "RULE-W5-003-153"
+      ],
+      "primary_item": "\u4f53\u9a8c\u8bbe\u8ba1",
+      "secondary_impact": "\u6280\u672f\u8bbe\u8ba1"
+    },
+    "continuous_technical_lists": [
+      "W3-004 memory/context defaults",
+      "W3-005 route selection and prompt runtime contract",
+      "W4-002 structured-log field contract",
+      "W4-008 queue indexes and claim transaction"
+    ]
+  },
+  "ownership_ambiguous_count": 0,
+  "ownership_ambiguities": [],
+  "resolved_ownership_decisions": [
+    {
+      "rule_id": "RULE-W7-001-061",
+      "source": "docs/W7-operate/00-main.md",
+      "candidates": [
+        "\u5de5\u7a0b\u4ea4\u4ed8/\u9a8c\u8bc1",
+        "\u8fd0\u884c\u7ef4\u62a4/\u8fd0\u884c"
+      ],
+      "selected_primary": "\u5de5\u7a0b\u4ea4\u4ed8/\u9a8c\u8bc1",
+      "decision": "approved",
+      "decided_by": "user",
+      "decided_at": "2026-07-17T16:44:41.6615592+08:00",
+      "decision_source": "current-codex-task:user-message:\u53ef\u4ee5\uff0c\u6279\u51c6",
+      "reason": "the user approved the presented classification in which the restore drill primarily proves recovery is executable and remains assigned to verification"
+    }
+  ],
+  "semantic_conflict_audit": {
+    "method": "group exact normalized subject + applies_when, then inspect groups containing both positive and negative modality terms",
+    "candidate_group_count": 38,
+    "candidate_rule_count": 199,
+    "confirmed_conflict_count": 0,
+    "result": "classification and cluster changes introduced no source-text decision conflict"
+  },
+  "semantic_conflict_count": 0,
+  "semantic_conflicts": [],
+  "user_decisions_required": [],
+  "verification": [
+    {
+      "command": "python tools/rd_rebuild.py baseline-verify --root .",
+      "status": "PASS",
+      "evidence": {
+        "expected_file_count": 40,
+        "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c"
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py scope-check --root . --phase content",
+      "status": "PASS",
+      "evidence": {
+        "check_count": 5,
+        "frozen_tool_sha256": "76c857c9187c03bf3b41e4e55f1cffd72862ac1824b31f7b8b78f0651082592f"
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py inventory-check --root .",
+      "status": "PASS",
+      "evidence": {
+        "inventory_row_count": 40,
+        "source_count": 40
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py segment-check --root . --batch w0-w2",
+      "status": "PASS",
+      "evidence": {
+        "covered_nonblank_line_count": 818,
+        "segment_count": 116
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py segment-check --root . --batch w3-w4",
+      "status": "PASS",
+      "evidence": {
+        "covered_nonblank_line_count": 1525,
+        "segment_count": 202
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py segment-check --root . --batch w5-w6",
+      "status": "PASS",
+      "evidence": {
+        "covered_nonblank_line_count": 1192,
+        "segment_count": 108
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py segment-check --root . --batch w7-w9",
+      "status": "PASS",
+      "evidence": {
+        "covered_nonblank_line_count": 1607,
+        "segment_count": 147
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py rule-check --root . --batch w0-w2",
+      "status": "PASS",
+      "evidence": {
+        "rule_count": 835
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py rule-check --root . --batch w3-w4",
+      "status": "PASS",
+      "evidence": {
+        "rule_count": 2054
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py rule-check --root . --batch w5-w6",
+      "status": "PASS",
+      "evidence": {
+        "rule_count": 1330
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py rule-check --root . --batch w7-w9",
+      "status": "PASS",
+      "evidence": {
+        "rule_count": 1737
+      }
+    },
+    {
+      "command": "python tools/rd_rebuild.py classification-check --root .",
+      "status": "PASS",
+      "evidence": {
+        "rule_count": 5956,
+        "classified_rule_count": 5956,
+        "review_required_count": 0
+      }
+    },
+    {
+      "command": "openspec validate rewrite-rd-standards-content --strict --no-interactive",
+      "status": "PASS",
+      "evidence": "Change rewrite-rd-standards-content is valid"
+    }
+  ],
+  "limitations": [
+    "Cluster fingerprinting groups shared decision objectives; it is not a claim that every rule text is a duplicate.",
+    "The sixth-round maximum-cluster review was bounded to the directed maxima and stopped after the final max=36 clusters were reviewed as coherent eval/accessibility evidence targets.",
+    "RULE-W7-001-061 was resolved by the user's explicit G4 approval; the selected primary remains verification."
+  ],
+  "human_review_required_count": 0,
+  "human_review_rule_ids": [],
+  "seventh_round_resolutions": {
+    "side_effect_taxonomy": {
+      "rule_ids": [
+        "RULE-W3-005-105",
+        "RULE-W3-005-106",
+        "RULE-W3-005-107",
+        "RULE-W3-005-108",
+        "RULE-W3-005-109",
+        "RULE-W3-005-110",
+        "RULE-W3-005-111",
+        "RULE-W3-005-112"
+      ],
+      "primary_category": "\u5de5\u7a0b\u4ea4\u4ed8",
+      "primary_item": "\u6280\u672f\u8bbe\u8ba1",
+      "secondary_impacts": "",
+      "cluster_id": "CLUSTER-TECH-DESIGN-AI-TOOL-SIDE-EFFECT-TAXONOMY",
+      "rule_count": 8
+    },
+    "report_semantics": [
+      "classification_state.review_required_count is explicitly structural-checker-only",
+      "human_review_required_count is zero after the user's explicit G4 decision for RULE-W7-001-061",
+      "W6 former-39 allocation counts are separated from resulting complete-cluster counts"
+    ]
+  }
+}

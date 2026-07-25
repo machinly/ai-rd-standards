@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "recorded_at": "2026-07-11T20:30:00+08:00",
+  "scope": "Installed Codex router, Go/Kratos service, Vite frontend, quality-test and knowledge-context skills used by future R&D sessions",
+  "router": {
+    "canonical_dir": "D:\\Workspace\\研发规范\\skills\\one-person-openspec-rd",
+    "installed_dir": "C:\\Users\\machinly\\.codex\\skills\\one-person-openspec-rd",
+    "all_files_match": true,
+    "files": [
+      {"path": "SKILL.md", "sha256": "F6ED8A84A31823668413BE6755D9FA36FFA20E15E6F6C132D687E6CD79B1DB23"},
+      {"path": "agents/openai.yaml", "sha256": "7857205686A1366E7C9AA6D306ECC25A8E870B402C50F1B611712003CBB8DB3C"},
+      {"path": "references/workflow-map.md", "sha256": "AD171098F72EBF63BA463F277C965403B48C8646CB007958A33287F255015D35"},
+      {"path": "references/stack-defaults.md", "sha256": "3CE91EAB2186BCBD0787247BBAB555D03FFA59A26D8C28CB10B085870B4A24C4"},
+      {"path": "references/review-rubric.md", "sha256": "588988A83CC225003D5BFFD385D40BE6F20B1EF3A93EE327702185DE70DA7E9A"}
+    ]
+  },
+  "go_service_skill": {
+    "installed_dir": "C:\\Users\\machinly\\.codex\\skills\\go-kratos-sqlc-service",
+    "files": [
+      {"path": "SKILL.md", "sha256": "28873D2783E023CB3F3C134CE6C84D0C5A6B67ED4B5F0FE687F1332F7A84AF12"},
+      {"path": "agents/openai.yaml", "sha256": "DAD01B4A9C1C5885FFC58E41FB905E621CE5D5EB387F941D8822990EF6F305D3"},
+      {"path": "references/service-workflow.md", "sha256": "0FE8BCD806E8F49BC0BAF58253B3BD0B845CB1925FA2379E17500A88652E496E"},
+      {"path": "references/release-gates.md", "sha256": "2B43F8A2CD43813346D9F0D243E46C52EA34CBEDFEF94C4F12805BAFD12E197C"},
+      {"path": "scripts/verify_service_layout.py", "sha256": "4B5D15E6E12F319F5631FBDC69A9BAE8817B69E829BD625657A4AF3749FB9679"}
+    ],
+    "contracts": [
+      "approved Kratos CLI or future versioned application template",
+      "Standard/High-risk implementation defaults to OpenSpec; Quick is exempt",
+      "MySQL + sqlc default, portable SQL and no foreign keys by default",
+      "complete local integration includes all required backends, frontends, database and dependencies",
+      "governance root, project map and command registry are required for multi-command projects",
+      "non-obvious design intent and protected invariants require comments"
+    ]
+  },
+  "vite_frontend_skill": {
+    "installed_dir": "C:\\Users\\machinly\\.codex\\skills\\vite-geist-frontend",
+    "files": [
+      {"path": "SKILL.md", "sha256": "3CF87E1C887F0474020AE1F5EF8DDD842E57A068277368649A7D0FCF3DD18A47"},
+      {"path": "agents/openai.yaml", "sha256": "1D0DACBCD411CD8F7235AE9A58DC9E09E8D026B71DBB17C6E1BCD1842041226F"},
+      {"path": "references/frontend-workflow.md", "sha256": "90836BD3E39DD4147F8452E1F92BD15ABE8EE8BBCB453C705CA60BBCC99BF94C"}
+    ],
+    "contracts": [
+      "Quick does not create OpenSpec",
+      "Standard/High-risk frontend implementation defaults to OpenSpec",
+      "skipping requires explicit user approval",
+      "task duration does not select the risk path"
+    ]
+  },
+  "quality_test_skill": {
+    "installed_dir": "C:\\Users\\machinly\\.codex\\skills\\quality-test-strategy-guard",
+    "files": [
+      {"path": "SKILL.md", "sha256": "5FE682E7C2F920B7915E4B5955F61937D9A290073E6B163E62DEE209CD029822"},
+      {"path": "agents/openai.yaml", "sha256": "DE7022DF4F38AB2BD8CF14A851F4DE78898A43E314E839B61EFE29774198F88E"},
+      {"path": "references/test-artifacts.md", "sha256": "263C88C59E75D29A03E1B55467103C31F60DCE2ECA105D147B5937D95FF7EA9A"},
+      {"path": "references/review-rubric.md", "sha256": "1B7146B0DE6B85C4C1D49CB7A4F98AE1E476C32D39CB9F0CAEF19ABC61B5FDEB"},
+      {"path": "scripts/verify_quality_testing.py", "sha256": "7871146C054FA21C4AAD388B657EEA9C9FE99E8698529D32ACA3D6359A553CA7"}
+    ],
+    "contracts": [
+      "quality evidence is under governance/quality",
+      "critical journeys are machine-readable",
+      "Browser E2E must drive the real UI and cannot be replaced by manual browser checks",
+      "skipped required E2E keeps the work unfinished"
+    ]
+  },
+  "knowledge_context_skill": {
+    "installed_dir": "C:\\Users\\machinly\\.codex\\skills\\knowledge-context-recovery-guard",
+    "files": [
+      {"path": "SKILL.md", "sha256": "948036E13FBC4CE3B187D04DCB59B235F176C684668D315B10E8CFE7632D1F4D"},
+      {"path": "agents/openai.yaml", "sha256": "A341ADBE91FAA042C2A253CEEF875BE1936428F871865E3DD503B75AE9EE0A00"},
+      {"path": "references/knowledge-artifacts.md", "sha256": "13068B2230365B1A5297A1DCC355D1AF001ECF5C76A7D41C010FF72441119967"},
+      {"path": "references/review-rubric.md", "sha256": "B69FA591FB1A704499F7B9F094C392A10F6D54D50C4B51AADECA6A0FBC2A7EE5"},
+      {"path": "scripts/verify_knowledge_context.py", "sha256": "7AD9B060C7994F859982D94840CA5C078A33FC60CA57EDA3110EE5182946B9BD"}
+    ],
+    "contracts": [
+      "knowledge artifacts are under governance/knowledge",
+      "governance/project-map.json is the machine-readable navigation source",
+      "governance/current-status.json is the single current-state source",
+      "legacy root layouts require an explicit compatibility flag"
+    ]
+  },
+  "validation": {
+    "runtime_sync": {"command": "python tools/check_runtime_skill_sync.py . --json", "exit_code": 0, "status": "synced"},
+    "skill_quick_validate": {"router": 0, "go": 0, "vite": 0, "quality": 0, "knowledge": 0},
+    "python_compile": {"project_verifier": 0, "go_verifier": 0, "quality_verifier": 0, "knowledge_verifier": 0},
+    "project_evidence_tests": {"command": "python tools/test_verify_project_evidence.py", "exit_code": 0, "tests": 4},
+    "pilot_record_tests": {"command": "python tools/test_verify_pilot_records.py", "exit_code": 0, "tests": 5},
+    "knowledge_legacy_validation": {"command": "verify_knowledge_context.py . --legacy-root --json", "exit_code": 0, "status": "ok"}
+  },
+  "limitations": [
+    "Installed skills are outside the repository snapshot and can drift later; rerun the runtime sync command before a pilot.",
+    "Static skill and layout verification does not prove build, test, start, readiness, Browser E2E or stop commands ran in a target project.",
+    "No user-service code, database or environment was modified; only the supplied retrospective was ingested."
+  ]
+}

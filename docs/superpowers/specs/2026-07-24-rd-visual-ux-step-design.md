@@ -1,6 +1,6 @@
 # 研发规范增加可视 UX 步骤设计
 
-状态：已按用户反馈收窄范围，待用户审阅
+状态：已实施并通过独立终审
 日期：2026-07-24
 适用对象：一名产品/研发负责人 + Codex
 实施路径：Standard；实施前创建 OpenSpec change
@@ -315,3 +315,4 @@ openspec validate --all --strict --no-interactive
 - 2026-07-23：覆盖关键路径及 loading、empty、error、success；移动端按布局差异触发。
 - 2026-07-24：任务收窄为调整研发规范，在现有“体验设计”中加入可视 UX 子步骤。
 - 2026-07-24：通用 UX Kit、catalog、schema、renderer 和专用 verifier 移出本轮。
+- 2026-07-24：用户认可收窄后的设计，可进入实施计划与 Standard change。

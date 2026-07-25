@@ -1,0 +1,237 @@
+{
+  "schema_version": "1.0",
+  "status": "verified",
+  "generated_at": "2026-07-19T19:36:23.9793577+08:00",
+  "aggregate_sha256": "2e7f308198a4959cfdea3e12c066fdaa3b386b8cd154c848bb1d4a644b9610f5",
+  "files": [
+    {
+      "path": "tools/fixtures/rd_rebuild/duplicate_owner/case.json",
+      "size": 388,
+      "sha256": "f0b620b57a49aaa6e60fa03678eded7c35219f2c214941b7d55a66a377891c85"
+    },
+    {
+      "path": "tools/fixtures/rd_rebuild/line_gap/case.json",
+      "size": 478,
+      "sha256": "123859073cfbfe7ee05466c19e5e32eb53500f2c86fe5863ab33f5bab1255bd2"
+    },
+    {
+      "path": "tools/fixtures/rd_rebuild/source_changed/case.json",
+      "size": 328,
+      "sha256": "75a14471055b799ad71233b3ebce3446c3c10294a933eeba6fdd06a25dbad446"
+    },
+    {
+      "path": "tools/fixtures/rd_rebuild/unauthorized_write/case.json",
+      "size": 360,
+      "sha256": "9d7249acbd9528f7d5d417ebde63b5cad04b639a4a71b6114b0ffcb6a43bbf6f"
+    },
+    {
+      "path": "tools/fixtures/rd_rebuild/unsupported_principle/case.json",
+      "size": 671,
+      "sha256": "5bbec64a6a1cbd14493e9a1044d908d60343fab148a625654ab8f49913b14c1e"
+    },
+    {
+      "path": "tools/fixtures/rd_rebuild/valid/case.json",
+      "size": 1564,
+      "sha256": "9ea010af43f310b4286f5ebd3e27413fd3ebfa3cf85ee2290021e0d0960f964f"
+    },
+    {
+      "path": "tools/rd_rebuild.py",
+      "size": 6095,
+      "sha256": "b51522b0ac1bf86ee69f4b8971a77207b896f281c062665984865dd1c7f50f7d"
+    },
+    {
+      "path": "tools/rd_rebuild_core/__init__.py",
+      "size": 187,
+      "sha256": "4bd1d05774a081e84e191bee1480e171398f2726379b070e9d1b75893dbaaec5"
+    },
+    {
+      "path": "tools/rd_rebuild_core/baseline.py",
+      "size": 13839,
+      "sha256": "421a40eec3b3f673031fffa37fef96665c89f9c86f59f7400f89ce5ce2d056b6"
+    },
+    {
+      "path": "tools/rd_rebuild_core/coverage.py",
+      "size": 5004,
+      "sha256": "ecc7c653c994dacac134f05ee3c17004ae16c73dd9ca44306e57063cb8912c3b"
+    },
+    {
+      "path": "tools/rd_rebuild_core/drafts.py",
+      "size": 4634,
+      "sha256": "81647f831bd6e6cd93fffbf84d49fb2d051396e7b7ef58f566d11e4e2d153671"
+    },
+    {
+      "path": "tools/rd_rebuild_core/gates.py",
+      "size": 22766,
+      "sha256": "f2ee1449465992ac372e25951f0e2a5273285206b5d041010c9faafe3467ba32"
+    },
+    {
+      "path": "tools/rd_rebuild_core/model.py",
+      "size": 2843,
+      "sha256": "ce35e5236cc742f248eb46f4f64f29ee8bc473bd0d176b76fce8146f93001c21"
+    },
+    {
+      "path": "tools/rd_rebuild_core/principles.py",
+      "size": 6222,
+      "sha256": "f9fc9757bab11974e10ecdd2cdc94691734d3e90f8ca1656cb7a0bad1dff1df7"
+    },
+    {
+      "path": "tools/rd_rebuild_core/records.py",
+      "size": 14942,
+      "sha256": "ba37e0275d9c2cec25900f662923952b0afa7aa0ff793c6f4af264bf1cd375a1"
+    },
+    {
+      "path": "tools/rd_rebuild_core/report.py",
+      "size": 14947,
+      "sha256": "6e2368c654015faed1c5449f3bc9f968b5f2ae80c77dc50f8762a9c427057f8e"
+    },
+    {
+      "path": "tools/rd_rebuild_core/scope.py",
+      "size": 33468,
+      "sha256": "3df392f63313c44dd8ab95205e2b67d912647056fe485539aa3930e80a673b61"
+    },
+    {
+      "path": "tools/test_rd_rebuild_baseline.py",
+      "size": 10928,
+      "sha256": "f6b7c523951fbbcf32a541d309171e0bf8105cc642499211717ae1787fc49de2"
+    },
+    {
+      "path": "tools/test_rd_rebuild_fixtures.py",
+      "size": 13125,
+      "sha256": "a6c987c5b530e6d2ac0ae5fbbb0c06bc38efe5936e4d76e9dc6549656c2421ee"
+    },
+    {
+      "path": "tools/test_rd_rebuild_gates.py",
+      "size": 26532,
+      "sha256": "e635447e593e13c5724cdbfb78c015488afce71d8b90c024f6a996adae12f8eb"
+    },
+    {
+      "path": "tools/test_rd_rebuild_records.py",
+      "size": 25313,
+      "sha256": "ca4d340c91383c5ad8563bb578cea3a853cd89e9593ef01e338d12f1d393d663"
+    },
+    {
+      "path": "tools/test_rd_rebuild_report.py",
+      "size": 10426,
+      "sha256": "0003bafb4c6cd9701a84d9c6fbadb3fe2ad658d573904106408376ac0f4322d5"
+    },
+    {
+      "path": "tools/test_rd_rebuild_scope.py",
+      "size": 35078,
+      "sha256": "d0ef013261dab00778c6e05ee991baa36c038be734ea46b1c8eb00b1f7b5654f"
+    }
+  ],
+  "verification": {
+    "checks": {
+      "unit-tests": {
+        "status": "PASS",
+        "summary": "62 unittest checks passed",
+        "findings": [],
+        "evidence": {
+          "command": "python -m unittest discover -s tools -p \"test_rd_rebuild_*.py\" -v",
+          "exit_code": 0,
+          "test_count": 62,
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "fixtures": {
+        "status": "PASS",
+        "summary": "all six plan-defined fixture families passed",
+        "findings": [],
+        "evidence": {
+          "fixture_count": 6,
+          "fixtures": [
+            "valid",
+            "source_changed",
+            "line_gap",
+            "duplicate_owner",
+            "unsupported_principle",
+            "unauthorized_write"
+          ],
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "baseline-dry-run": {
+        "status": "PASS",
+        "summary": "tooling baseline dry-run completed without writes",
+        "findings": [],
+        "evidence": {
+          "command": "python tools/rd_rebuild.py baseline-create --root . --dry-run",
+          "exit_code": 0,
+          "source_file_count": 40,
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "baseline-verify": {
+        "status": "PASS",
+        "summary": "all 40 protected source files matched the G0 baseline",
+        "findings": [],
+        "evidence": {
+          "command": "python tools/rd_rebuild.py baseline-verify --root .",
+          "exit_code": 0,
+          "source_file_count": 40,
+          "source_manifest_sha256": "ac382ac1d71fae8e012b543b173e2c6eba7c1dfaabd4701c8d3633d5af5f653c",
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "scope-check": {
+        "status": "PASS",
+        "summary": "source, workspace bytes and Git status matched the tooling scope",
+        "findings": [],
+        "evidence": {
+          "command": "python tools/rd_rebuild.py scope-check --root . --phase tooling",
+          "exit_code": 0,
+          "preserved_workspace_file_count": 639,
+          "preserved_git_status_entry_count": 638,
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "openspec-strict": {
+        "status": "PASS",
+        "summary": "Change A passed strict OpenSpec validation",
+        "findings": [],
+        "evidence": {
+          "command": "openspec validate build-rd-rewrite-guardrails --strict --no-interactive",
+          "exit_code": 0,
+          "scope_sha256": "761119503592150159985ff14f93d21950589af0e1858ab5c4819a73f7b0e962"
+        }
+      },
+      "repository-rd-standards": {
+        "status": "BLOCKED",
+        "summary": "repository-wide R&D standards governance verification did not pass",
+        "findings": [
+          "review snapshot expected 403 files but current tree has 441",
+          "independent final review remains pending",
+          "pilot remains pending"
+        ],
+        "evidence": {
+          "command": "python tools/verify_rd_standards.py .",
+          "exit_code": 1,
+          "failure_report": "governance/rd-standards-rebuild/reports/2026-07-16-repository-verifier-blocked.json"
+        }
+      },
+      "workflow-index": {
+        "status": "PASS",
+        "summary": "workflow index verification passed",
+        "findings": [],
+        "evidence": {
+          "command": "python tools/verify_workflow_index.py .",
+          "exit_code": 0,
+          "optional_playbooks": 39,
+          "default_openspec_entry": 1
+        }
+      },
+      "openspec-status": {
+        "status": "PASS",
+        "summary": "Change A has all four OpenSpec artifacts",
+        "findings": [],
+        "evidence": {
+          "command": "openspec status --change build-rd-rewrite-guardrails",
+          "exit_code": 0,
+          "artifact_progress": "4/4"
+        }
+      }
+    }
+  },
+  "frozen_for_content_phase": true,
+  "note": "The plan-defined G1 tool checks passed. The repository-wide legacy review snapshot check remains recorded as BLOCKED, but the user explicitly directed Codex on 2026-07-16 not to treat that unrelated verifier as a blocker to the overall rewrite. Tool files become frozen for content work when G2 creates the content baseline."
+}

@@ -1,5 +1,7 @@
 # product-analytics-experiment-standard Specification
 
+> 状态：可选历史主题规格，不是默认研发流程。只有主动选择本主题时，适用的 requirement 才作为检查清单；与 `docs/01-minimal-rd-kernel.md` 冲突时以最小内核为准。
+
 ## Purpose
 
 定义一人公司产品分析、事件埋点、隐私友好实验和数据质量复审的最小基线，使产品事件、指标、实验和第三方分析在进入生产前有可审查契约。

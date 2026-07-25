@@ -1,0 +1,9 @@
+{
+  "name": "source_changed",
+  "purpose": "A protected source differs from its frozen baseline.",
+  "expected_status": "BLOCKED",
+  "expected_finding_contains": "protected source changed",
+  "path": "docs/W0-intake/00-main.md",
+  "baseline_text": "original protected source\n",
+  "current_text": "changed protected source\n"
+}
