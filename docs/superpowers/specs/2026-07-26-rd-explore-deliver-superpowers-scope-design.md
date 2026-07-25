@@ -1,6 +1,6 @@
 # 研发适用性、Explore / Deliver 路由与 Superpowers 作用域调整设计
 
-状态：设计已获用户确认，待形成实施计划与独立的 Standard change
+状态：设计已获用户确认，实施计划已形成，待执行独立的 Standard change
 日期：2026-07-26
 适用对象：一名产品/研发负责人 + Codex
 依据：
