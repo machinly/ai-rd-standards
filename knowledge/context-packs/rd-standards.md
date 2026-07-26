@@ -2,7 +2,7 @@
 
 ## Mission
 
-帮助一个人和 AI 用足够而不过量的控制可靠交付产品。人的产品判断、价值边界、高影响批准和最终问责不可外包。
+帮助一个人和 AI 先排除非研发任务，再用足够而不过量的控制完成 Explore 或 Deliver。人的产品判断、价值边界、高影响批准和最终问责不可外包。
 
 ## Canonical Shape
 
@@ -17,17 +17,26 @@
 
 ## Default Reading
 
-1. 读根 `README.md`。
-2. 选择一个主要分类并读其 `README.md`。
-3. 只读一个或少数直接相关的项目正文。
+1. 只读根 `README.md` 的 R&D applicability，判断主要结果是否适用。
+2. Non-R&D 立即使用任务自身流程，不读取四分类十一项目，不调用研发 router。
+3. R&D 先选择 Explore 或 Deliver；只有 Deliver 再选择 Quick、Standard 或 High-risk。
+4. 选择一个主要分类并读其 `README.md`，再只读一个或少数直接相关项目正文。
 
 评估或验证推翻前提时，返回拥有该决定的项目，而不是在下游补写新的产品、风险或发布边界。
 
-## Risk Routes
+## Work Modes and Deliver Routes
 
-- Quick：低风险、可逆、无用户、生产或敏感数据影响；不强制流程文件或 OpenSpec。
-- Standard：用户可见、跨文件或跨会话、AI 行为变化、需要独立验收；实现性变更默认创建或继续 OpenSpec，完成前独立终审。
-- High-risk：生产、客户数据、安全、权限、凭据、付款、公开承诺、外部通信或不可逆动作；副作用前记录影响、停止与回滚，由独立者预审并取得用户明确批准。
+- Explore：关键未知仍主导；按 Product Discovery、UX Prototype 或 Technical Spike 维护一份短记录，在本地/隔离、合成、可重建 sandbox 中优先形成真实 Walking Skeleton 和 showcase。合法结果为 `validated | invalidated | revise | stopped | promote`。
+- Deliver：行为已经足够明确；只有这里再选择：
+  - Quick：低风险、可逆、无用户、生产或敏感数据影响；不强制流程文件或 OpenSpec。
+  - Standard：用户可见、跨文件或跨会话、AI 行为变化、需要独立验收；实现性变更默认创建或继续 OpenSpec，完成前独立终审。
+  - High-risk：生产、客户数据、安全、权限、凭据、付款、公开承诺、外部通信或不可逆动作；副作用前记录影响、停止与回滚，由独立者预审并取得用户明确批准。
+
+Prototype 是 Explore artifact，Walking Skeleton 是 tactic。Explore promote 时只把人选择的最小稳定增量转成 Deliver，并从转换点应用正式门禁。
+
+## Scoped Superpowers
+
+Superpowers 只在实质产品歧义、多种高返工方案、跨组件或难回退架构、复杂跨会话依赖、未知/首次修复失败的故障，或重大完成、合并、发布结论时选择一个或少数直接相关 skills。会话开始、AI 参与、创作性、时长和文件数不能单独触发；调用一个 skill 不授权或自动串联其他 skills。事实和状态只写入当前产品文档、技术设计、Explore record 或 OpenSpec 权威工件。
 
 ## Human Ownership
 
@@ -58,8 +67,11 @@ AI 可以准备证据、方案、实现和验证，但不会因 skill、角色�
 
 ## Handoff Prompt
 
-    Read README.md, then one relevant category README and one or a few directly relevant item documents.
-    Route the work as Quick, Standard, or High-risk with one-person-openspec-rd.
+    Read README.md and apply R&D applicability first.
+    Non-R&D work uses its own workflow and stops before the four-category R&D corpus.
+    For R&D, choose Explore or Deliver, then read one relevant category README and one or a few directly related item documents.
+    Use Quick, Standard, or High-risk only for Deliver.
+    Invoke only the smallest directly relevant Superpowers skill for a concrete complexity trigger; do not chain skills or duplicate authority artifacts.
     Return to the item that owns a decision when evidence invalidates an upstream assumption.
     Do not scan the full standards set by default.
     High-impact side effects require explicit human approval.

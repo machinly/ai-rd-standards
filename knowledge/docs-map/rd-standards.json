@@ -1,6 +1,6 @@
 {
   "target": "rd-standards",
-  "status": "formal-four-category-eleven-item",
+  "status": "formal-four-category-eleven-item-with-rd-applicability-and-explore-deliver",
   "owner": "solo-founder",
   "audiences": [
     "solo-founder",
@@ -72,9 +72,12 @@
   "how_to": "knowledge/how-to/rd-standards.md",
   "linked_runtime_artifacts": [
     "tools/verify_rd_standards.py",
-    "tools/check_runtime_skill_sync.py"
+    "tools/check_runtime_skill_sync.py",
+    "skills/one-person-openspec-rd/references/superpowers-scope.md"
   ],
   "linked_openspec_changes": [
+    "openspec/changes/archive/2026-07-26-add-visual-ux-step-to-rd-standards",
+    "openspec/changes/introduce-explore-deliver-and-scope-superpowers",
     "openspec/changes/build-rd-rewrite-guardrails",
     "openspec/changes/rewrite-rd-standards-content"
   ],

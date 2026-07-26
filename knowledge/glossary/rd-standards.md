@@ -2,19 +2,27 @@
 
 ## Domain Terms
 
-- Minimal kernel：默认加载的不超过 15 条硬规则。
-- Quick：低风险、可逆、无需持久治理工件的路径。
-- Standard：默认使用一个 OpenSpec change，并需要验证证据和独立审查的路径。
-- High-risk：副作用前需要明确人类批准、风险和回滚记录的路径。
-- Work brief：仅用于非实现性记录或经用户批准跳过 OpenSpec 的例外；不得与 active change 重复维护同一事实。
+- R&D applicability：在读取研发正文前判断任务主要结果是否改变、验证、发布、运行或直接决定产品/工程系统；不适用时直接使用任务自身流程。
+- Explore：关键未知仍主导、目标是用可证伪证据学习的研发工作模式；合法 outcome 为 `validated | invalidated | revise | stopped | promote`。
+- Product Discovery：围绕已识别产品/工程决定中的用户、问题、价值、范围或成功标准未知开展的 Explore 类型。
+- UX Prototype：比较关键任务流程、信息架构、交互或可理解性的 Explore 类型；可以是静态或可运行工件。
+- Technical Spike：降低架构、集成、契约或技术可行性未知的 Explore 类型。
+- Deliver：行为已经足够明确、目标是形成稳定可维护增量的研发工作模式；其子路由为 Quick、Standard、High-risk。
+- Quick：Deliver 中低风险、局部、可逆、无需持久治理工件的路径。
+- Standard：Deliver 中默认使用一个 OpenSpec change，并需要验证证据和独立审查的路径。
+- High-risk：Deliver 中在真实副作用前需要明确人类批准、风险和回滚记录的路径。
+- Prototype：Explore 中用于学习的 artifact，不是 Quick/Standard/High-risk 的同级 route。
+- Walking Skeleton：从实际产品入口贯通必要组件并形成一个可见业务结果的 tactic，不是 route。
+- Superpowers complexity gate：只有具体复杂问题命中时才选择最小直接相关 skill 集的门；会话开始、AI 参与、创作性、时长和文件数不能单独触发。
+- Work brief：仅用于没有其他权威记录的非实现性例外；不得与 Explore record 或 active OpenSpec change 重复维护同一事实。
 - Playbook：只在命中具体问题时读取的可选指导，不是默认规则。
 - Independent reviewer：未参与产出、基于目标和证据做最终审查的人或独立执行上下文。
 - Human decision owner：对高影响决定有真实权限并承担责任的人。
 
 ## Bounded Context Language
 
-- W0-W9：历史形成的十个主题/生命周期坐标；当前仅用于检索旧 playbook。
-- OpenSpec change：Standard/High-risk 实现性变更的默认规格与状态工件；由风险路径触发，不由任务时长单独触发。
+- W0-W9：历史来源的十个主题/生命周期标签；当前只存在于治理账本和 archive 追溯中，不是 live navigation 或可选操作入口。
+- OpenSpec change：Deliver Standard/High-risk 实现性变更的默认规格与状态工件；轻量 Explore 和 Deliver Quick 默认不创建。
 - Role lens：产品、工程、QA、运维或安全视角；不等于必须创建一个 Agent 岗位。
 - Multi-Agent orchestration：尚未产品化的实验性协作方式。
 - Canonical entrypoint：默认读取并决定当前行为的文件。
@@ -49,6 +57,9 @@
 
 - 不把“虚拟公司操作系统”描述为当前已实现能力。
 - 不把 W0-W9 描述为所有任务的自然或唯一流程。
+- 不把 Quick/Standard/High-risk 描述为所有任务或全部研发的第一层路由。
+- 不把 Prototype 或 Walking Skeleton 描述为路径。
+- 不把一次 Superpowers 调用解释为后续 skills 的自动授权。
 - 不把两个自检视角描述为两次独立 review。
 - 不把格式 PASS 描述为行为已验证。
 - 不把人的角色缩减为目标输入和异常审批。
