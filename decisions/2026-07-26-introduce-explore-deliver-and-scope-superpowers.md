@@ -3,6 +3,8 @@ decision_id: introduce-explore-deliver-and-scope-superpowers-2026-07-26
 decision: gate-rd-applicability-route-explore-deliver-and-scope-superpowers
 approved_by: user
 approved_at: 2026-07-26
+archive_decision: publish-structure-with-pilot-pending
+archive_decided_at: 2026-07-26
 partially_supersedes:
   - default-enable-openspec-2026-07-11:lightweight-explore
 conditions:
@@ -17,7 +19,7 @@ revisit_on: after-first-new-explore-pilot-or-2026-08-26
 # R&D Applicability、Explore / Deliver 与 Scoped Superpowers 决策记录
 
 日期：2026-07-26
-状态：accepted for implementation
+状态：structural implementation accepted；pilot pending
 决策人：用户
 执行范围：当前研发规范、`one-person-openspec-rd`、用户级 Codex Superpowers 作用域与后续本地合成试点
 
@@ -58,6 +60,12 @@ Deliver Quick 继续保持无 OpenSpec 默认路径；Deliver Standard/High-risk
 - 不降低真实 High-risk 的批准、回滚、验证和独立审查要求。
 - 不授权修改 Superpowers 插件缓存或自动启动子 Agent。
 - 不把结构校验 PASS 解释为 Explore 流程效果已验证。
+
+## Pilot pending 归档决定
+
+2026-07-26，用户明确选择“以 pilot pending 状态归档”。本次结构实施已经通过完整验证和未参与产出的 independent final review，可以合并到 OpenSpec base specs 并关闭 active change；由于没有执行新的本地合成 Explore 任务，流程效果继续记录为 `pending`，不得写成 `pass`、`validated` 或已证明能够缩短反馈时间。
+
+归档后若自然出现符合 sandbox boundary 的本地产品任务，可以另行记录真实 pilot 证据；若证据显示路由或 complexity gate 需要调整，使用新的 Standard change 修正规范，不改写本次归档的历史状态。
 
 ## 回滚
 

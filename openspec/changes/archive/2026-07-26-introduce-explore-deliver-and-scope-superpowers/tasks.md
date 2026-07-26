@@ -10,4 +10,4 @@
 - [x] 完成 15 个代表场景的 README、正式 rule-id 与 capability scenario 一致性审计。
 - [x] 完成完整结构验证与 producer self-check。
 - [x] 由未参与产出的 reviewer 完成 independent final review。
-- [ ] 在新的本地合成任务上完成 Explore 试点，或明确保持 pilot pending。
+- [x] 在新的本地合成任务上完成 Explore 试点，或明确保持 pilot pending。
