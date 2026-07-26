@@ -2,7 +2,7 @@
 
 状态：`planned`；等待用户复核后在新的 session 启动。
 日期：2026-07-26
-实验对象确认：用户明确纠正第四轮对象为用户服务，而不是 CSV import 产品。
+实验授权：用户确认开启用户服务第四轮实验。
 权威工件：本文既是第四轮方案，也是执行期间唯一的 Explore 短记录；它不是用户服务交付证明。
 
 ## 1. 路由与代码边界
@@ -14,8 +14,9 @@
 - Explore type：`UX Prototype`，同时保留最低身份与授权正确性；
 - Deliver route：promote 前不适用；
 - OpenSpec：promote 前不创建；
-- 目标目录：`D:\Workspace\user-center-service-pilot-4`；
-- 第一、二轮已删除的服务与第三轮 `D:\Workspace\user` 均只作历史证据，不恢复、复制或继续其代码、配置、数据库、OpenSpec tasks 和治理工件。
+- 目标仓库：继续使用 `D:\Workspace\user`；
+- 用户已确认该仓库中的历史实现文件已经清空。第四轮以清空后的当前 Git revision 和 worktree 状态为新基线，不新建另一个仓库；
+- 不从 Git 历史、备份或其他目录恢复前三轮代码、配置、数据库、OpenSpec tasks 和治理工件，也不续跑旧任务。
 
 本仓库的 `governance/current-status.json` 只链接本文，不复制 active tasks、showcase 或 outcome。执行事实、偏差和最终决定只写入本文。
 
@@ -67,7 +68,7 @@
 
 允许：
 
-- 全新的本地目录；
+- `D:\Workspace\user` 中历史文件清空后的当前本地基线；
 - Alice、Bob、Admin、Mock OIDC 和合成支出 fixture；
 - 内存或可确定性 reset/reseed 的临时状态；
 - 本机浏览器和只服务于本轮的本地端口；
@@ -136,8 +137,8 @@
 
 ## 8. 时间盒与 showcase cadence
 
-1. 用户批准本文后，新的 session 记录 `started_at`、工具版本、目标目录初始状态和实际读取上下文 byte 数；首个实现动作前不预填结果。
-2. Showcase 1 在 120 active minutes或第 5 次提交前进行，以先到者为准；最低可见事实是 Alice 从实际登录入口进入 Demo，并通过页面创建和看到 42.50 支出。
+1. 用户批准本文后，新的 session 记录 `started_at`、工具版本、目标仓库 baseline commit、初始 worktree 状态和实际读取上下文 byte 数；首个实现动作前不预填结果。
+2. Showcase 1 在 120 active minutes 或第 5 次提交前进行，以先到者为准；最低可见事实是 Alice 从实际登录入口进入 Demo，并通过页面创建和看到 42.50 支出。
 3. Showcase 2 在 240 active minutes 或第 10 次提交前进行；目标是完成 Admin 搜索/Disable、Alice 被拒绝、Bob 不受影响和 Reset。
 4. 连续 2 小时没有新增可见产品事实时，立即缩小 question/shortest slice 或停止；补文档和补测试数量不算可见事实。
 5. 本轮 active time 硬上限为 6 小时、提交上限为 15 次。到达任一上限时必须展示当前状态并选择真实 outcome，不能追溯性延长。
@@ -147,7 +148,7 @@ Showcase 必须复用实际产品入口，不另建静态展示站。第一次�
 
 ## 9. Superpowers complexity gate
 
-纠正本方案时，“继续第三轮实现、再次完整重建、全新最小用户服务切片”是三种会显著改变混杂因素和返工成本的合理方案，因此使用了一次 `brainstorming` 选择第三种。该调用只影响本文，不授权后续 skills，也不计入第四轮实施时间。
+本方案设计阶段需要在“复用旧实现、在同一仓库的清空基线上重启、另建仓库”三种会显著改变混杂因素和返工成本的方案中作出选择，因此使用了一次 `brainstorming` 选择同仓库清空基线。该调用只影响本文，不授权后续 skills，也不计入第四轮实施时间。
 
 第四轮实施不预先要求任何 Superpowers。只有出现具体复杂问题时，才在本文记录：触发器、选择的最小 skill、解决的问题、耗时、改变的决定和实际净收益。没有 trigger 而零调用是合法结果。
 
@@ -223,12 +224,12 @@ pilot assessment 只有在以下条件全部满足时才可记为 `supported`：
 
 ## 14. 新 session 启动指令
 
-新的 session 先读取本文，并明确复述：`Explore / UX Prototype`、目标目录、5 个 active tasks、Showcase 1/2 时限、sandbox boundary 和“promote 前无 OpenSpec”。随后确认目标目录是全新或为空，记录真实 `started_at` 和上下文量，再开始第一个实现动作。
+新的 session 先读取本文，并明确复述：`Explore / UX Prototype`、目标仓库、5 个 active tasks、Showcase 1/2 时限、sandbox boundary 和“promote 前无 OpenSpec”。随后确认 `D:\Workspace\user` 仍处于用户所述的历史文件清空基线，记录 baseline commit、初始 worktree 状态、真实 `started_at` 和上下文量，再开始第一个实现动作。若发现未预期文件，只报告并停止，不自行删除或覆盖。
 
-不得因为会话新开而重新生成产品方案、详细实施计划或调用整套 Superpowers。若本文与目标目录事实冲突，先记录冲突并停止，不自行扩大范围。
+不得因为会话新开而重新生成产品方案、详细实施计划或调用整套 Superpowers。若本文与目标仓库事实冲突，先记录冲突并停止，不自行扩大范围。
 
 ## 15. 当前状态与下一步
 
-当前状态为 `planned`：正确实验对象已恢复为用户服务；错误的 CSV import 方案已经撤销。尚未创建第四轮目标目录、尚未开始计时、没有实现或验证结果，也没有使用 OpenSpec。
+当前状态为 `planned`：目标仓库沿用 `D:\Workspace\user`，但尚未在清空后基线上开始第四轮计时或实现，没有验证结果，也没有使用 OpenSpec。
 
-下一步只有一个：用户复核并明确批准本文；批准后在新的 session 从全新目录启动第四轮 Explore。
+下一步只有一个：用户复核并明确批准本文；批准后在新的 session 从 `D:\Workspace\user` 的清空后基线启动第四轮 Explore。

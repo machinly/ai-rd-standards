@@ -32,11 +32,12 @@
       "round": 4,
       "target": "user-center-service",
       "plan": "experiments/user-center-service-pilot-4-plan.md",
-      "planned_workspace": "D:\\Workspace\\user-center-service-pilot-4",
+      "planned_workspace": "D:\\Workspace\\user",
+      "repository_reuse": "same-repository-cleared-baseline",
       "work_mode": "Explore",
       "explore_type": "UX Prototype",
-      "reason": "The user corrected the fourth-round target to the user service. The plan now uses a clean local user-service Walking Skeleton rather than the withdrawn CSV import experiment; implementation has not started.",
-      "decision_source": "current-codex-task:user-message:不对，我要开启的是用户服务的第四轮，不是 csv import 什么的，你看下前三轮的方案",
+      "reason": "The fourth-round experiment targets a local user-service Walking Skeleton in the same Git repository after historical implementation files were cleared; implementation has not started.",
+      "decision_source": "current-codex-task:user-confirmed-same-user-service-repository",
       "archived_active_change": true
     },
     "preimplementation_review": "approved_with_notes",
@@ -90,5 +91,5 @@
     }
   },
   "blockers": [],
-  "next_action": "User reviews and explicitly approves experiments/user-center-service-pilot-4-plan.md; then a new session starts the clean user-service Explore workspace and records evidence in that single experiment record"
+  "next_action": "User reviews and explicitly approves experiments/user-center-service-pilot-4-plan.md; then a new session starts Explore from the cleared baseline in D:\\Workspace\\user and records evidence in that single experiment record"
 }
