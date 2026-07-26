@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "rd-standards",
   "status": "complete",
-  "current_gate": "pilot-4-ready-to-run",
+  "current_gate": "pilot-4-user-service-plan-review",
   "run_state": "formal_replacement_complete",
   "authoritative_entry": "README.md",
   "historical_rebuild_state": "governance/rd-standards-rebuild/run-state.json",
@@ -28,15 +28,15 @@
       "archive_decision": "publish-structure-with-pilot-pending"
     },
     "pilot": {
-      "status": "approved",
+      "status": "planned",
       "round": 4,
-      "plan": "experiments/inventory-csv-import-pilot-4-plan.md",
+      "target": "user-center-service",
+      "plan": "experiments/user-center-service-pilot-4-plan.md",
+      "planned_workspace": "D:\\Workspace\\user-center-service-pilot-4",
       "work_mode": "Explore",
       "explore_type": "UX Prototype",
-      "reason": "The user approved the fourth-round plan and will start it in a new session; no implementation action or experiment timing has started in this session.",
-      "decision_source": "current-codex-task:user-message:让我们开启第四轮的实验，写一个实验方案出来",
-      "approved_at": "2026-07-26",
-      "approval_source": "current-codex-task:user-message:我回去一个新的session 开启这个实验，结束后我再回来",
+      "reason": "The user corrected the fourth-round target to the user service. The plan now uses a clean local user-service Walking Skeleton rather than the withdrawn CSV import experiment; implementation has not started.",
+      "decision_source": "current-codex-task:user-message:不对，我要开启的是用户服务的第四轮，不是 csv import 什么的，你看下前三轮的方案",
       "archived_active_change": true
     },
     "preimplementation_review": "approved_with_notes",
@@ -90,5 +90,5 @@
     }
   },
   "blockers": [],
-  "next_action": "In a new session, read experiments/inventory-csv-import-pilot-4-plan.md, start the clean local Explore workspace, and record all execution evidence in that single experiment record"
+  "next_action": "User reviews and explicitly approves experiments/user-center-service-pilot-4-plan.md; then a new session starts the clean user-service Explore workspace and records evidence in that single experiment record"
 }
