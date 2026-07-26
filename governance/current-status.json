@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "rd-standards",
   "status": "complete",
-  "current_gate": "representative-routing-and-structural-verification",
+  "current_gate": "new-local-synthetic-explore-pilot",
   "run_state": "formal_replacement_complete",
   "authoritative_entry": "README.md",
   "historical_rebuild_state": "governance/rd-standards-rebuild/run-state.json",
@@ -27,7 +27,7 @@
     },
     "pilot": {
       "status": "pending",
-      "reason": "Structural implementation is complete only after final review; effect requires a new local synthetic Explore task."
+      "reason": "Structural implementation passed independent final review; effect still requires a new local synthetic Explore task."
     },
     "preimplementation_review": "approved_with_notes",
     "preimplementation_candidate_sha256_tree": "921100d49f3cba0cd428670a51c60db7198f9503e8750e3453730df831b602a3",
@@ -38,6 +38,22 @@
       "legacy_navigation_files_removed": 7,
       "parallel_normative_files_removed": 23,
       "legacy_runtime_skills_removed": 54
+    },
+    "final_verification": {
+      "change_id": "introduce-explore-deliver-and-scope-superpowers",
+      "status": "pass",
+      "verified_on": "2026-07-26",
+      "target_revision": "9c1b7836c6653de07a688c01bb44e3ac35e8ab90",
+      "unit_tests": "107 passed",
+      "formal_verifier": "pass: 4 categories, 11 items, 2337 unique rule IDs, 7 review files",
+      "runtime_skill_sync": "pass: canonical/runtime six-file equality, 0 retired skills present, 0 preserved skills missing, global Superpowers scope synced",
+      "pilot_record_format": "pass",
+      "pilot_effect": "pending",
+      "openspec_strict_validation": "59 passed, 0 failed",
+      "representative_scenarios": "15 passed across README, formal rules, and capability scenarios",
+      "producer_self_check": "pass: 11 checks",
+      "independent_final_review": "accept: /root/independent_final_review at 2026-07-26T13:19:35.7799701+08:00; Critical 0, Important 0, Minor 0",
+      "review_artifact": "openspec/changes/introduce-explore-deliver-and-scope-superpowers/review.md"
     },
     "previous_final_verification": {
       "change_id": "add-visual-ux-step-to-rd-standards",
@@ -52,5 +68,5 @@
     }
   },
   "blockers": [],
-  "next_action": "Complete representative routing, full structural verification, producer self-check, and genuine independent final review; keep the new Explore pilot pending until the user selects a target"
+  "next_action": "Select and run a new local synthetic Explore pilot, or explicitly decide to archive this active change with pilot pending"
 }
