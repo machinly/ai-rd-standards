@@ -37,6 +37,13 @@
 - **THEN** 选择 Explore / Product Discovery
 - **AND** 不先选择 Quick、Standard 或 High-risk
 
+#### Scenario: 比较两个关键任务流程
+
+- **GIVEN** 两个关键任务流程、信息架构或交互方案需要通过静态或可运行工件比较
+- **WHEN** 选择工作模式
+- **THEN** 选择 Explore / UX Prototype
+- **AND** 只有存在多个合理方案且错误选择会造成显著返工时，才选择 `brainstorming`
+
 #### Scenario: 本地合成 auth spike
 
 - **GIVEN** gateway、OIDC 或 service identity 的学习任务只使用本地合成可重建数据和测试凭据
@@ -90,7 +97,7 @@ Explore MUST 只在真实 showcase 后由人选择最小稳定增量并 promote�
 
 ### Requirement: Superpowers 必须通过复杂度门按需选择
 
-Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、跨组件或难回退架构、复杂跨会话依赖、未知或首次修复失败的故障，或重大合并、发布、完成结论时，选择一个或少数直接相关 skills。会话开始、AI 参与、创作性、时长或文件数量 MUST NOT 单独触发；调用一个 skill MUST NOT 授权或自动串联其他 skills。
+Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、跨组件或难回退架构、复杂跨会话依赖、未知或首次修复失败的故障，或重大合并、发布、完成结论时，选择一个或少数直接相关 skills。会话开始、AI 参与、创作性、时长或文件数量 MUST NOT 单独触发；调用一个 skill MUST NOT 授权或自动串联其他 skills。多个高返工合理方案 MAY 只调用 `brainstorming` 并把决定写回产品定义、技术设计或 OpenSpec design；工具已直接证明根因的机械修正 MUST NOT 调用 `systematic-debugging`。parallel agents MUST 只在用户允许、任务独立、写域不重叠、没有顺序依赖且确有净收益时使用。
 
 #### Scenario: 已有 OpenSpec tasks 足够
 
@@ -105,6 +112,27 @@ Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、
 - **WHEN** 调用该 skill
 - **THEN** 只取得该 skill 所需的权限和方法
 - **AND** 不自动调用 brainstorming、writing-plans、worktree、subagents、review、verification 或 branch finishing
+
+#### Scenario: 跨服务数据所有权有三个合理方案
+
+- **GIVEN** 跨服务数据所有权存在三个合理方案且错误选择会造成显著返工
+- **WHEN** 需要比较方案
+- **THEN** 只调用 `brainstorming` 处理该架构歧义
+- **AND** 把决定写入技术设计或 OpenSpec design，不创建平行 Superpowers spec
+
+#### Scenario: 编译器明确指出漏 import
+
+- **GIVEN** 编译器诊断已直接证明失败原因是缺少一个 import
+- **WHEN** 修复该错误
+- **THEN** 直接执行机械修正和相关验证
+- **AND** 不调用 `systematic-debugging`
+
+#### Scenario: 多项任务不能安全并行
+
+- **GIVEN** 三项任务共享写域或存在顺序依赖
+- **WHEN** 判断是否调用 parallel-agent skills
+- **THEN** 保持单 Agent 顺序执行
+- **AND** 不调用 `dispatching-parallel-agents` 或 `subagent-driven-development`
 
 ## RENAMED Requirements
 
@@ -128,6 +156,14 @@ Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、
 - **AND** 不强制创建 OpenSpec 或治理文件
 - **AND** 交付时提供产物、验证和剩余风险
 
+#### Scenario: 修改不改变含义的按钮文案
+
+- **GIVEN** 已确认的新按钮文案不改变任务、含义、状态或用户控制
+- **AND** 修改低风险、局部且可逆
+- **WHEN** 开始稳定修改
+- **THEN** 选择 Deliver / Quick
+- **AND** 不调用 `brainstorming`
+
 #### Scenario: 高影响副作用
 
 - **GIVEN** Deliver 工作涉及生产、删数、客户数据、安全、凭据、付款、公开承诺或不可逆操作
@@ -135,6 +171,13 @@ Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、
 - **THEN** 选择 High-risk
 - **AND** 在副作用前记录风险、停止条件和回滚
 - **AND** 取得明确人类批准
+
+#### Scenario: 修改生产管理员权限或删除真实账号
+
+- **GIVEN** Deliver 工作将修改生产管理员权限或删除真实账号
+- **WHEN** 准备执行真实副作用
+- **THEN** 选择 Deliver / High-risk
+- **AND** 在独立预审和明确人类批准前停止副作用
 
 ### Requirement: Deliver Standard 和 High-risk 实现性变更必须默认使用 OpenSpec
 
@@ -147,6 +190,14 @@ Superpowers skill MUST 只在存在实质产品歧义、多种高返工方案、
 - **THEN** 创建或继续一个 OpenSpec change
 - **AND** proposal/specs/design/tasks 只承载本次 change 的增量
 - **AND** `tasks.md` 成为执行状态的权威来源
+
+#### Scenario: 实现已确认的用户资料编辑
+
+- **GIVEN** 用户资料编辑的目标行为、边界和验收已经确认
+- **AND** 工作会实质改变用户可见行为并需要独立验收
+- **WHEN** 准备进入实现
+- **THEN** 选择 Deliver / Standard
+- **AND** 默认创建或继续 OpenSpec change
 
 #### Scenario: 执行 Deliver Quick 局部修复
 

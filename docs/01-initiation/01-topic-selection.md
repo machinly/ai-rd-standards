@@ -17,10 +17,10 @@
 - 混合请求按结果拆分；只有研发部分进入本规范，非研发部分只消费已验证事实，不因与代码、部署或设计出现在同一请求中而创建独立 OpenSpec 或研发工件。
 
 <!-- rule-id: TOPIC-WORK-MODE-ROUTING -->
-- 进入研发后先选 Explore 或 Deliver。Explore 用于以可证伪证据减少关键未知，并按最高优先级问题标记为 Product Discovery、UX Prototype 或 Technical Spike；Deliver 用于稳定已经足够明确的行为。只有 Deliver 再选择 Quick、Standard 或 High-risk。
+- 进入研发后先选 Explore 或 Deliver。Explore 用于以可证伪证据减少关键未知：用户、问题或价值未知标记为 Product Discovery，关键任务流程、信息架构、交互或可理解性未知标记为 UX Prototype，架构、集成、契约或技术可行性未知标记为 Technical Spike；Deliver 用于稳定已经足够明确的行为。只有 Deliver 再选择 Quick、Standard 或 High-risk：不改变含义的局部按钮文案可走 Quick，已经确认的用户资料编辑等实质用户可见行为走 Standard，生产管理员权限或真实账号删除走 High-risk。
 
 <!-- rule-id: TOPIC-SUPERPOWERS-COMPLEXITY-GATE -->
-- Superpowers 只在存在实质产品歧义、多种高返工方案、跨组件/长期/难回退设计、未知复杂故障、复杂跨会话计划或重大完成结论时，选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长或文件数均不能单独触发，调用一个 skill 不授权或串联其他 skills。
+- Superpowers 只在存在实质产品歧义、多种高返工方案、跨组件/长期/难回退设计、未知或首次修复失败的复杂故障、复杂跨会话计划或重大完成结论时，选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长或文件数均不能单独触发，调用一个 skill 不授权或串联其他 skills。多个高返工合理方案可只用 `brainstorming`，并把产品事实写回产品定义、架构事实写回技术设计或 OpenSpec design；编译器等工具已直接证明根因的机械修正不调用 `systematic-debugging`。parallel agents 只在用户允许、任务独立、写域不重叠、没有顺序依赖且确有净收益时使用，否则保持单 Agent。
 
 <!-- rule-id: TOPIC-SELECTION-TRIGGER -->
 - 已通过研发适用性门的候选事项需要相互取舍，事故、客户请求、维护、收入、安全与合规事项争夺同一容量，决策需要跨中断恢复，路线图可能被外部使用，或重复讨论已产生明显注意力成本时，可以使用显式选题；任务持续多久、涉及多少文件、是否由 AI 参与或是否准备使用 OpenSpec，均不能单独成为触发理由。

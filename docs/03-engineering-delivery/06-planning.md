@@ -33,7 +33,7 @@
 - 计划规则与本规范的正式分类及项目原则冲突时，以正式规范为准。
 
 <!-- rule-id: PLAN-SINGLE-RECORD-DEFAULT -->
-- 一份记录足以支持取舍、跟踪和恢复时，禁止再平行拆出 strategy map、work-intake、decision board、roadmap 与 focus review。已有 OpenSpec `tasks.md` 足够时跳过 `writing-plans` 和 Superpowers plan；Explore 已有短记录时不再创建平行 work brief。
+- 一份记录足以支持取舍、跟踪和恢复时，禁止再平行拆出 strategy map、work-intake、decision board、roadmap 与 focus review。已有 OpenSpec `tasks.md` 足够时跳过 `writing-plans` 和 Superpowers plan；Explore 已有短记录时不再创建平行 work brief。多项任务共享写域或存在顺序依赖时保持单 Agent；只有用户允许、任务独立、写域不重叠且并行确有净收益时，才使用 parallel agents。
 
 <!-- rule-id: PLAN-EXPLORE-WIP-LIMIT -->
 - 轻量 Explore 同时最多 5 个 active tasks；其余进入 `Next` 或 `Later`。新任务进入 active 前必须完成、移出或让位一个现有任务。

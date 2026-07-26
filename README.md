@@ -25,6 +25,8 @@ Task → R&D applicability
 
 `Prototype` 是 Explore 中用于学习的 artifact，`Walking Skeleton` 是尽快贯通真实入口和可见结果的实施 tactic；两者都不是 route。混合请求按结果拆分，只有研发部分进入本规范。非研发部分不创建 OpenSpec、研发状态或 Superpowers 工件。
 
+Explore 类型跟随最高优先级未知：用户、问题或价值未知选 Product Discovery；关键任务流程、信息架构、交互或可理解性未知选 UX Prototype；架构、集成、契约或技术可行性未知选 Technical Spike。
+
 ## Explore 与 Deliver
 
 | 工作模式 | 适用情况 | 最小要求 |
@@ -36,11 +38,13 @@ Task → R&D applicability
 
 | 路径 | 适用情况 | 最小要求 |
 | --- | --- | --- |
-| Quick | 低风险、可逆、无用户、生产或敏感数据影响 | 产物或 diff、相关检查、剩余风险 |
-| Standard | 用户可见、跨文件或跨会话、AI 行为变化、需要独立验收 | 默认创建或继续 OpenSpec change，保留验收、验证与回滚，独立终审 |
+| Quick | 低风险、可逆、无实质用户行为、生产或敏感数据影响 | 产物或 diff、相关检查、剩余风险 |
+| Standard | 实质用户可见行为、跨文件或跨会话、AI 行为变化、需要独立验收 | 默认创建或继续 OpenSpec change，保留验收、验证与回滚，独立终审 |
 | High-risk | 生产、客户数据、安全、权限、凭据、付款、公开承诺、外部通信或不可逆动作 | 副作用前记录影响、停止条件和回滚，由独立者预审并取得用户明确批准 |
 
-具体路由和完成要求由唯一研发 skill [one-person-openspec-rd](skills/one-person-openspec-rd/SKILL.md) 承载。轻量 Explore 和 Deliver Quick 不强制创建 OpenSpec；Deliver Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。Superpowers 只在存在具体复杂问题时选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长和文件数都不能单独触发，也不能因调用一项而自动串联其他项。
+代表性边界是：不改变含义的局部按钮文案属于 Deliver Quick；已经确认的用户资料编辑属于 Deliver Standard；生产管理员权限或真实账号删除属于 Deliver High-risk。轻量 Explore 一旦准备接触真实客户数据、真实凭据或生产副作用，就停止轻量豁免并重新路由。
+
+具体路由和完成要求由唯一研发 skill [one-person-openspec-rd](skills/one-person-openspec-rd/SKILL.md) 承载。轻量 Explore 和 Deliver Quick 不强制创建 OpenSpec；Deliver Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。领域关键词不能单独决定风险路径：只使用本地合成数据和测试凭据的 gateway/OIDC/service identity 学习任务属于 Explore / Technical Spike，不因 `auth` 一词自动升级为 High-risk。Superpowers 只在存在具体复杂问题时选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长和文件数都不能单独触发，也不能因调用一项而自动串联其他项。已有 OpenSpec `tasks.md` 足以执行时只更新它，不再创建 Superpowers plan。产品或架构存在多个高返工合理方案时可只用 `brainstorming`，并把结论写回产品定义、技术设计或 OpenSpec design；编译器已直接证明漏 import 时直接机械修复和验证，不调用 `systematic-debugging`，根因未知或首次修复失败时才调用；只有用户允许、任务独立、写域不重叠、没有顺序依赖且确有净收益时才使用 parallel agents。
 
 ## 四分类与十一项
 
