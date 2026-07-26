@@ -8,6 +8,6 @@
 - [x] 更新 16 个新 rule-id、既有来源映射、verifier、decision、knowledge 与 current status。
 - [x] 更新并部署 one-person-openspec-rd 和用户级 Superpowers scope instruction。
 - [x] 完成 15 个代表场景的 README、正式 rule-id 与 capability scenario 一致性审计。
-- [ ] 完成完整结构验证与 producer self-check。
+- [x] 完成完整结构验证与 producer self-check。
 - [ ] 由未参与产出的 reviewer 完成 independent final review。
 - [ ] 在新的本地合成任务上完成 Explore 试点，或明确保持 pilot pending。
