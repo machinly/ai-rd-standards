@@ -31,6 +31,43 @@ VISUAL_UX_RULE_IDS_BY_FILE = {
     },
 }
 
+EXPLORE_DELIVER_RULE_IDS_BY_FILE = {
+    "docs/01-initiation/01-topic-selection.md": {
+        "TOPIC-RD-APPLICABILITY",
+        "TOPIC-MIXED-TASK-BOUNDARY",
+        "TOPIC-WORK-MODE-ROUTING",
+        "TOPIC-SUPERPOWERS-COMPLEXITY-GATE",
+    },
+    "docs/01-initiation/02-research.md": {
+        "RESEARCH-EXPLORE-SANDBOX-BOUNDARY",
+    },
+    "docs/02-product-design/03-definition.md": {
+        "DEFINITION-EXPLORE-PROMOTION",
+    },
+    "docs/02-product-design/04-experience-design.md": {
+        "EXPERIENCE-UX-PROTOTYPE-BOUNDARY",
+    },
+    "docs/03-engineering-delivery/05-technical-design.md": {
+        "TECH-EXPLORE-WALKING-SKELETON",
+    },
+    "docs/03-engineering-delivery/06-planning.md": {
+        "PLAN-EXPLORE-WIP-LIMIT",
+        "PLAN-EXPLORE-SHOWCASE-CADENCE",
+        "PLAN-EXPLORE-DELIVER-HANDOFF",
+    },
+    "docs/03-engineering-delivery/07-implementation.md": {
+        "IMPL-SELECTIVE-TEST-FIRST",
+    },
+    "docs/03-engineering-delivery/08-verification.md": {
+        "VERIFY-EXPLORE-HUMAN-READABLE-FIXTURES",
+        "VERIFY-EXPLORE-SHOWCASE-BOUNDARY",
+    },
+    "docs/04-operations-maintenance/11-evaluation.md": {
+        "EVALUATION-EXPLORE-OUTCOME",
+        "EVALUATION-PROCESS-NET-BENEFIT",
+    },
+}
+
 
 @contextmanager
 def workspace_temp_directory():
@@ -54,7 +91,7 @@ class CurrentStandardsTests(unittest.TestCase):
         self.assertEqual([], result["errors"])
         self.assertEqual(4, result["category_count"])
         self.assertEqual(11, result["item_count"])
-        self.assertEqual(2321, result["rule_id_count"])
+        self.assertEqual(2337, result["rule_id_count"])
 
     def test_visual_ux_step_has_one_owner_and_delivery_gates(self) -> None:
         expected_all: set[str] = set()
@@ -67,6 +104,34 @@ class CurrentStandardsTests(unittest.TestCase):
             expected_all.update(expected)
 
         self.assertEqual(8, len(expected_all))
+
+    def test_explore_deliver_rules_have_explicit_owners(self) -> None:
+        expected_all: set[str] = set()
+
+        for rel, expected in EXPLORE_DELIVER_RULE_IDS_BY_FILE.items():
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            actual = set(RULE_ID_RE.findall(text))
+            self.assertTrue(expected <= actual, f"{rel} missing {sorted(expected - actual)}")
+            self.assertTrue(expected_all.isdisjoint(expected))
+            expected_all.update(expected)
+
+        self.assertEqual(16, len(expected_all))
+
+    def test_applicability_precedes_explore_deliver_and_deliver_risk_routes(
+        self,
+    ) -> None:
+        root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        topic_selection = (
+            ROOT / "docs/01-initiation/01-topic-selection.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertLess(root_readme.index("R&D applicability"), root_readme.index("Quick"))
+        self.assertIn("Explore", root_readme)
+        self.assertIn("Deliver", root_readme)
+        self.assertIn("Product Discovery", topic_selection)
+        self.assertIn("UX Prototype", topic_selection)
+        self.assertIn("Technical Spike", topic_selection)
+        self.assertNotIn("Prototype | Quick | Standard | High-risk", root_readme)
 
     def test_component_reuse_does_not_wait_for_shared_abstraction(self) -> None:
         experience = (

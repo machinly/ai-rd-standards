@@ -1,6 +1,6 @@
 # 评估
 
-评估把运行后的真实信号转成一个可问责的判断：继续观察、改进、回滚、停止，或把长期事实沉淀为维护输入。它既覆盖用户与产品效果、AI 质量、支持和事故学习，也覆盖依赖、技术债、弃用与知识新鲜度；它不替代交付前验证、实时事故处置或下一轮实现。
+评估把运行后的真实信号或受控 Explore 结果转成一个可问责的判断。运行评估选择继续观察、改进、回滚、停止或维护；Explore 评估记录学习 outcome、证据限制和流程净收益。它不替代调研的 hypothesis owner、交付前验证、实时事故处置或下一轮实现。
 
 ## 项目目的与边界
 
@@ -87,6 +87,12 @@ UX review 每轮也只选择一个最高影响改进，避免一人执行者陷�
 
 <!-- rule-id: EVALUATION-ARTIFACT-001 -->
 某个 planning 工件若连续两次复盘都没有改变决定、风险或下一步，应合并或删除，避免评估仪式本身成为维护负担。
+
+<!-- rule-id: EVALUATION-EXPLORE-OUTCOME -->
+- Explore 结束时记录 `validated | invalidated | revise | stopped | promote`、showcase 观察、证据限制和一个 next；这些结果都不表示产品完成或生产就绪。调研的 question、hypothesis 与产品结论仍由其原始短记录拥有，本评估项目只引用而不复制第二份权威。
+
+<!-- rule-id: EVALUATION-PROCESS-NET-BENEFIT -->
+- 评估 Explore 与可选方法时记录 time to first visible fact、process minutes、showcase 次数、active-task 峰值、Superpowers 实际使用及其解决的问题、OpenSpec promote 边界、rework/恢复成本和未覆盖证据。文件数与提交数只作上下文，不能单独证明成功或浪费。
 
 ## 重新组织后的规范要求
 
@@ -406,11 +412,11 @@ OpenSpec、release、incident、migration 或 config 改变长期事实时，必
 
 ## 输入与产物
 
-评估输入来自已脱敏的用户反馈、产品与 AI 指标、eval 结果、支持记录、事故证据、运行复盘、客户上线事实、依赖清单、技术债、文档入口和 freshness 登记。输入不足时只允许形成“继续观察”和补证据动作，不得伪造确定结论。
+评估输入来自已脱敏的用户反馈、产品与 AI 指标、eval 结果、支持记录、事故证据、运行复盘、客户上线事实、依赖清单、技术债、文档入口和 freshness 登记，也可以链接一份受控 Explore canonical record。输入不足时只允许形成“继续观察”、revise、stopped 或补证据动作，不得伪造确定结论。
 
 ## 完成、停止或退出条件
 
-完成评估时必须留下可追溯的信号、单一决策、一个最高影响下一步、适用的人工判断，以及更新后的 canonical 入口。需要实时止血、交付前验证、新功能实现或对外承诺时，按上文路由交回相应权威流程；完成路由即停止继续扩张本轮评估。
+完成运行评估时必须留下可追溯的信号、单一决策、一个最高影响下一步、适用的人工判断，以及更新后的 canonical 入口。完成 Explore 评估时必须留下真实 outcome、showcase 观察、证据限制、流程净收益和一个 next；只有 `promote` 才进入 Deliver 重新路由。需要实时止血、交付前验证、新功能实现或对外承诺时，按上文路由交回相应权威流程；完成路由即停止继续扩张本轮评估。
 
 ## 相关项目引用
 

@@ -67,6 +67,12 @@
 
 ### 测试组合、记录与证据层级
 
+<!-- rule-id: VERIFY-EXPLORE-HUMAN-READABLE-FIXTURES -->
+- 用户可见 Explore 使用 Alice、Bob、Admin 等人类可识别 fixture 和可理解业务结果；opaque ID、API success、DOM 存在或数据库行本身不能证明用户理解和完成任务。
+
+<!-- rule-id: VERIFY-EXPLORE-SHOWCASE-BOUNDARY -->
+- Showcase 必须复用实际产品入口和真实页面动作，不另建掩盖当前状态的静态展示站。它记录 observed behavior、visible fact、limits 和 next decision；只有满足完整 Browser E2E 契约时才可命名为 Browser E2E，也不得作为 Deliver accepted、release-ready 或 production-ready 证据。
+
 <!-- rule-id: VERIFY-EVIDENCE-W0-001-L026 -->
 - 条件“任务仅包含所列局部修复时”成立时，应围绕“intake 排除条件”形成可核对结论：纯链接、拼写、格式或局部测试修复通常不用 “选题”。
 
@@ -77,7 +83,7 @@
 - 条件“缺乏产品证据但决定继续时”成立时，应围绕“证据例外”形成可核对结论：无证据继续须显式留存风险。
 
 <!-- rule-id: VERIFY-EVIDENCE-W1-001-L056 -->
-- 实验形成结果后，产品决策应基于证据选择 `keep`、`kill`、`pivot` 或 `iterate`；实验结束后不得继续凭感觉推进。
+- Explore 形成结果后，产品决策应基于证据选择 `validated`、`invalidated`、`revise`、`stopped` 或 `promote`；这些结论都不表示 Deliver accepted，结果可用后不得继续凭感觉推进。
 
 <!-- rule-id: VERIFY-EVIDENCE-W1-001-L086 -->
 - 条件“只需最小实现验证假设时”成立时，应围绕“调研出口”形成可核对结论：最小核验实现转交[实现](07-implementation.md)，且 scope 受 experiment 与 appetite 限制。
@@ -2117,13 +2123,13 @@
 
 ## 输入与产物
 
-输入至少包括已确认的产品行为与验收、技术与风险边界、实现差异、适用的 `visual_ux` 判定与已批准 UX、测试/eval 数据、环境与依赖说明。产物由上文各 canonical rule 定义，按触发条件形成 test strategy、matrix、journey、run record、eval gate、浏览器/截图对照、专项检查、失败证据及人工 checkpoint；相同事实只保留一个权威记录，其他项目引用其 target 或工件链接。
+Deliver 验证输入至少包括已确认的产品行为与验收、技术与风险边界、实现差异、适用的 `visual_ux` 判定与已批准 UX、测试/eval 数据、环境与依赖说明。Explore 验证只消费 question、hypothesis、sandbox boundary、shortest slice 与当前 showcase，并使用可理解 fixture 记录 observed behavior、visible fact、limits 和 next decision。产物由上文各 canonical rule 定义；相同事实只保留一个权威记录，其他项目引用其 target 或工件链接。
 
 证据记录必须如实标明层级。unit/component、宿主机 integration、仅依赖容器、完整本地集成、Browser E2E、provider sandbox 与生产观察互不冒充；格式校验、构建成功或 OpenSpec validation 也不等同于产品与语义验收。
 
 ## 完成、停止或退出条件
 
-完成意味着适用目标均有当前证据，命令、环境、启动组件、覆盖路径、结果与未覆盖项可定位，关键旅程达到要求的证据层级，required 可视 UX 与实现的一致性已核对，失败与例外已有真实处置。出现不可解释失败、关键证据缺失、需要改动上游定义、真实环境验证越界或需人接受的风险时停止推进，并按上文 target 返回相应项目或人工 checkpoint。
+Deliver 完成意味着适用目标均有当前证据，命令、环境、启动组件、覆盖路径、结果与未覆盖项可定位，关键旅程达到要求的证据层级，required 可视 UX 与实现的一致性已核对，失败与例外已有真实处置。Explore 可以合法以 `invalidated`、`revise` 或 `stopped` 结束；证据准确命名比通过数量更重要，showcase 不会自动产生 Deliver 完成结论。出现不可解释失败、关键证据缺失、需要改动上游定义、真实环境验证越界或需人接受的风险时停止推进，并按上文 target 返回相应项目或人工 checkpoint。
 
 验证通过且发布风险可解释时，转交“发布”；实现方向仍成立但测试失败时，退回“实现”修复；产品、契约、AI 行为或风险边界被推翻时，分别退回“定义/体验设计”“技术设计”或相关权威项目；运行观察和学习后续交给“运行”与“评估”。
 

@@ -36,16 +36,19 @@
 - 仅当相应实现面真实存在时，才须加载对应专项：Go/Kratos 服务、Protobuf/gRPC、sqlc、repository 或后端测试进入服务端专项；Vite、React/TypeScript、API adapter、设计 token、可访问交互、构建或预览进入前端专项；schema、query、migration、backfill、数据修复、恢复前置或隐私数据处理进入数据专项；配置注册表、环境差异、flag、kill switch、runtime 参数、前端公开 env 或 AI route 进入配置专项；本地工具链、命令、seed/fixture、one-step verify 或 AI coding 进入工作区专项；收费权益、Webhook、外部 provider、消息通知或对外开发者副作用进入外部副作用专项；长任务、队列、worker、Batch/background、RAG 入库、导入导出、重试、死信或异步状态进入 job 专项。
 
 <!-- rule-id: IMPL-SELECTED-STANDARD-HIGH-RISK-CHANGE -->
-- 被选事项进入 Standard/High-risk 实现时，须创建或继续 OpenSpec change；风险路径和变更性质触发该要求，不能用任务时长替代判断。
+- 被选事项进入 Deliver Standard/High-risk 实现时，须创建或继续 OpenSpec change；风险路径和变更性质触发该要求，不能用任务时长、文件数或领域关键词替代判断。轻量 Explore 默认只维护短记录。
 
 <!-- rule-id: IMPL-DISCOVERY-AND-SPEC-BOUNDARY -->
-- 调研与技术设计均不生产实现：调研不得替代 OpenSpec、AI eval、实现、验证或发布门禁；技术设计只把已确认事项压成可审查 change，并在实现前确认架构、契约、数据、安全、权限、成本、供应商、IP 与用户承诺边界。
+- Explore 可以在 sandbox 中形成不可发布的最小实现：Product Discovery 只实现验证 hypothesis 所需的 shortest slice，UX Prototype 只比较体验，Technical Spike 先关闭 Walking Skeleton。它们不得替代 promote 后的 OpenSpec、稳定契约、AI eval、Deliver 验证或发布门禁；横向框架、恢复矩阵、平台化和完整质量工件延后到出现首个可见产品事实并选定稳定增量之后。
 
 <!-- rule-id: IMPL-USER-VISIBLE-LONG-WORK-ENTRY -->
-- 用户可见能力要进入超过 1 个工作日的实现时，必须已有明确目标用户、真实问题、唯一主指标和停止条件。
+- 用户可见能力要进入 Deliver 且预计超过 1 个工作日的实现时，必须已有明确目标用户、真实问题、唯一主指标和停止条件。Explore 由 shortest slice、5 个 active tasks 和 showcase cadence 约束，不因预计时长自动转成 Deliver。
 
 <!-- rule-id: IMPL-SPEC-TO-TASKS-HANDOFF -->
-- 行为、边界和风险已经写清时，才进入实现，并以 OpenSpec `tasks.md` 作为执行清单。
+- Deliver 行为、边界和风险已经写清时，才进入稳定实现；Standard/High-risk 以 OpenSpec `tasks.md` 作为执行清单。Explore 只使用一份短记录并从实际入口实现 shortest slice。
+
+<!-- rule-id: IMPL-SELECTIVE-TEST-FIRST -->
+- 核心领域规则、服务端授权、安全边界、数据一致性、公共契约、bugfix 和危险重构优先测试先行；抛弃式 UI 脚手架、生成代码、简单配置和 UX/Technical Explore 可以先实现后补对 selected behavior 有价值的自动化。Explore promote 前必须为准备稳定的行为补齐与风险相称的回归证据，不追溯要求所有失败探索都采用 TDD。
 
 <!-- rule-id: IMPL-VISUAL-UX-GATE -->
 - 用户可见 Standard/High-risk 实现开始前须读取 proposal 的 `visual_ux` 判定；值为 `required` 时，只有计划引用当前 `flow.md`、关键 wireframes 和人类 `approved` review，且项目内组件复用选择已说明，才可开始相关生产性编码。缺失任一输入时返回体验设计或计划，不得用 OpenSpec、文字 brief 或已生成代码代替批准。

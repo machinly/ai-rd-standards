@@ -36,10 +36,13 @@
 - 架构专项的适用边界限定为所有权发生变化的下列表面：`api/`、`internal/`、`pkg/`、`web/src/features`、AI workflow 与数据库 schema。
 
 <!-- rule-id: TECH-201-ARCHITECTURE-SHARED-COUPLING-APPLICABILITY -->
-- 引入框架、跨服务调用或共享公共组件时纳入架构专项。
+- 引入框架、跨服务调用或共享公共组件时纳入架构专项。跨服务、数据所有权、权限模型、稳定 API、重大选型或难回退设计存在多个合理方案时，可以按复杂度门只使用 `brainstorming` 比较方案，并把结论写回技术设计或 OpenSpec design；沿用已批准模式的单组件变更默认跳过该 skill。
 
 <!-- rule-id: TECH-201-ARCHITECTURE-EXPERIMENT-EXCLUSION -->
-- 标有过期日期且不进生产的一次性实验代码无需应用架构专项。
+- 一次性 Technical Spike 只有在轻量 Explore sandbox boundary 成立、标有删除或过期边界且不进入生产时，才无需展开完整架构专项；一旦声明稳定接口、跨越真实数据/凭据/外部系统或准备 promote，须重新判断并应用实际命中的架构与风险控制。
+
+<!-- rule-id: TECH-EXPLORE-WALKING-SKELETON -->
+- Technical Spike 的第一轮优先形成一条 Walking Skeleton：从一个真实产品入口经过实际所需组件到达一个可见业务结果。多服务 Explore 仍提供一个用户入口，不以分别证明 API、数据库或服务启动代替端到端产品事实；横向加固、平台化和所有异常覆盖延后到该事实出现之后。
 
 <!-- rule-id: TECH-109-ARCHITECTURE-BOUNDARY-S01 -->
 - 适用情形：技术设计总入口触发所列架构变化时。只在架构边界、模块职责、数据所有权或依赖方向变化时读取本专项。

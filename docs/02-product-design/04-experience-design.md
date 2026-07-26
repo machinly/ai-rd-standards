@@ -2,7 +2,7 @@
 
 ## 项目目的与边界
 
-体验设计把已定义的产品行为组织成用户能够理解、完成、纠正和退出的任务路径。它负责界面状态、交互契约、可访问性、敏感输入、AI 披露与控制、高风险确认和用户可行动反馈；它不改变产品范围，不替代技术权限、运行处置、发布门禁或专业合规审查。
+体验设计把已定义的产品行为组织成用户能够理解、完成、纠正和退出的任务路径。Explore / UX Prototype 用于比较关键流程与可理解性；Deliver 的 formal visual UX 用于锁定生产性实现输入。两者都关注界面状态、交互契约、可访问性、敏感输入、AI 披露与控制、高风险确认和用户可行动反馈，但不改变产品范围，不替代技术权限、运行处置、发布门禁或专业合规审查。
 
 ## 根本原则
 
@@ -39,10 +39,15 @@
 
 ## 重新组织后的规范要求
 
+### Explore UX Prototype
+
+<!-- rule-id: EXPERIENCE-UX-PROTOTYPE-BOUNDARY -->
+- UX Prototype 属于 Explore，用于比较关键任务流程、信息架构、交互和可理解性；可以是静态或可运行工件，并应尽快从实际产品入口向人展示。它不自动要求 Deliver 的 `flow.md`、完整 state wireframes、`review.md` 或 production implementation approval，也不能冒充已批准的 formal visual UX。
+
 ### 开发前可视 UX
 
 <!-- rule-id: EXPERIENCE-VISUAL-UX-APPLICABILITY -->
-- 新增或实质改变关键用户任务、页面结构、信息架构、导航、关键 surface 关系、高影响交互、会显著影响用户下一步的 loading/empty/error/success，或 desktop/mobile 存在实质布局差异时，须在生产性实现前执行可视 UX。Standard/High-risk change 在 proposal 中记录 `visual_ux: required | not-required` 与理由；是否触发存在合理疑问时按 `required` 处理。不改变含义的文案、局部 token/间距/单控件外观，以及不改变任务、结构、状态和用户控制的低风险样式修复默认不触发。
+- 新增或实质改变关键用户任务、页面结构、信息架构、导航、关键 surface 关系、高影响交互、会显著影响用户下一步的 loading/empty/error/success，或 desktop/mobile 存在实质布局差异时，须在生产性实现前执行 formal visual UX。该 `visual_ux: required | not-required` 是 Deliver Standard/High-risk 的正式门禁，并在 proposal 中记录判定与理由；是否触发存在合理疑问时按 `required` 处理。Explore promote 后从转换点开始判断，不追溯伪造探索期批准。UX Prototype 与不改变含义的文案、局部 token/间距/单控件外观，以及不改变任务、结构、状态和用户控制的低风险样式修复都不会仅因存在视觉工件而自动触发。
 
 <!-- rule-id: EXPERIENCE-VISUAL-UX-ARTIFACTS -->
 - `visual_ux: required` 的 change 在 `ux/<change-id>/` 或项目既有的一个权威设计目录维护 `flow.md`、`wireframes/<surface>--<state>.html|svg` 与 `review.md`，其中 `<state>` 按适用范围覆盖 `success`、`loading`、`empty`、`error`。`flow.md` 记录用户目标、入口、正常步骤、error/retry/cancel/exit、non-goals 和线框索引；线框只表达布局、信息层级、内容与操作位置，不含业务脚本、真实 API、数据写入或仓库外资源。desktop 为默认，只有布局实质变化时才补 mobile；不适用状态须在 `flow.md` 说明理由。

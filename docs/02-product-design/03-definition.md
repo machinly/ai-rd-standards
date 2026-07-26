@@ -17,10 +17,13 @@
 - 定义本轮产品变化时，同时写明要改变的行为与明确不改变的部分，避免用功能名称代替范围。
 
 <!-- rule-id: DEFINITION-IMPLEMENTATION-READINESS -->
-- Standard 或 High-risk 的实现性工作只有在风险边界、验收要求和退出条件都已明确时才能进入实现。
+- Deliver Standard 或 High-risk 的实现性工作只有在风险边界、验收要求和退出条件都已明确时才能进入实现；轻量 Explore 可在 sandbox 内形成不可发布的 shortest slice，但不能借此声明实现就绪。
 
 <!-- rule-id: DEFINITION-PRODUCT-ROUTING -->
-- 目标用户、问题、证据、成功指标、学习决定或产品方向不清时返回调研；投入价值或 appetite 不成立时返回选题停车、终止或补证据。实现或质量结果推翻这些前提时同样回退，不得在定义、AI 或实现项目中继续猜测。
+- 目标用户、问题、证据、成功指标、学习决定或产品方向的关键未知仍主导时返回 Explore / Product Discovery；关键任务流程或可理解性未知时进入 Explore / UX Prototype，技术可行性未知时进入 Explore / Technical Spike。行为和边界已经足够明确时进入 Deliver，不得借 Explore 逃避交付门禁。投入价值或 appetite 不成立时返回选题停车、终止或补证据；实现或质量结果推翻前提时同样回退。
+
+<!-- rule-id: DEFINITION-EXPLORE-PROMOTION -->
+- Explore 只有经过真实 showcase 且由人选择的最小行为可以 promote。转换时明确 selected increment 与 excluded exploration，重新判断 Deliver 的 Quick、Standard 或 High-risk；Standard/High-risk OpenSpec 只描述稳定增量并链接 Explore 证据，不复制聊天、失败尝试或全部探索历史。
 
 <!-- rule-id: DEFINITION-AI-ENTRY -->
 - 只有已经确认会改变用户可见 AI 行为、相关输入或风险边界时才进入 AI 定义；AI 专项不取代前置风险判断。用户可见行为由本项目定义，交互感知转交[体验设计](04-experience-design.md)，模型、工具、RAG、记忆与 eval 方案转交[技术设计](../03-engineering-delivery/05-technical-design.md)，不再以旧阶段资料作为操作入口。
@@ -71,7 +74,7 @@
 ### 规格与权威边界
 
 <!-- rule-id: DEFINITION-OPENSPEC-CONTROL -->
-- Standard/High-risk 变更默认由 OpenSpec 承载，`proposal.md` 记录意图、范围、非范围、依据和待人工判断项，`tasks.md` 作为执行状态而不再复制 work brief。跳过 OpenSpec 只能由用户明确批准并记录理由。
+- Deliver Standard/High-risk 变更默认由 OpenSpec 承载，`proposal.md` 记录意图、范围、非范围、依据和待人工判断项，`tasks.md` 作为执行状态而不再复制 work brief。轻量 Explore 默认不创建 OpenSpec；promote 后只为 selected increment 建立 Deliver change。跳过 Deliver 默认规则只能由用户明确批准并记录理由。
 
 <!-- rule-id: DEFINITION-NORM-PRECEDENCE -->
 - 可选的 AI、外部声明等专项材料与本规范的正式分类及项目原则冲突时，以正式规范为准。
@@ -82,7 +85,7 @@
 ### AI 行为、证据与边界
 
 <!-- rule-id: DEFINITION-AI-ARTIFACT-CHOICE -->
-- AI 行为目标可放入 work brief 或 OpenSpec；AI playbook 与 OpenSpec 都不是所有 AI 工作的固定前置，只按工作风险和既有治理选择承载工件。
+- AI 行为目标写入当前权威产品记录、Explore iteration record 或 Deliver OpenSpec；AI/Superpowers playbook 与 OpenSpec 都不是所有 AI 工作的固定前置。只有存在实质产品歧义、多种高返工方案或其他具体复杂度触发时才选择最小相关方法，不复制权威事实或自动串联工件。
 
 <!-- rule-id: DEFINITION-AI-BEHAVIOR-RECORD -->
 - 选定承载工件后，记录用户可见行为与行为目标，并先把目标和 eval 写清，再进入模型、工具、结构化输出、trace 或安全实现。
@@ -201,7 +204,7 @@
 
 ## 完成、停止或退出条件
 
-定义在行为、范围与非范围、验收或成功标准、关键指标与 guardrails、风险边界、人工决定和退出路径均可追溯时完成。任何实现前置缺失按 `DEFINITION-IMPLEMENTATION-READINESS` 停止；产品输入不清按 `DEFINITION-PRODUCT-ROUTING` 回退；AI、商业、高影响或外部声明的人类决定未取得时，不得进入下一项目。
+定义在行为、范围与非范围、验收或成功标准、关键指标与 guardrails、风险边界、人工决定和退出路径均可追溯时完成。Explore 只有满足 `DEFINITION-EXPLORE-PROMOTION` 才能转换为 Deliver；任何 Deliver 实现前置缺失按 `DEFINITION-IMPLEMENTATION-READINESS` 停止，产品输入不清按 `DEFINITION-PRODUCT-ROUTING` 回退。AI、商业、高影响或外部声明的人类决定未取得时，不得进入下一项目。
 
 ## 相关项目引用
 

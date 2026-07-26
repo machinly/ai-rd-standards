@@ -53,7 +53,7 @@ EXPECTED_LEDGER_ROWS = {
     "principle-traceability.csv": 15,
 }
 
-EXPECTED_FORMAL_RULE_IDS = 2321
+EXPECTED_FORMAL_RULE_IDS = 2337
 
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 RULE_ID_RE = re.compile(r"<!--\s*rule-id:\s*([^\s]+)\s*-->")

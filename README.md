@@ -1,17 +1,38 @@
 # 一人公司研发规范
 
-这是本仓库唯一的正式研发规范入口。规范按立项、产品设计、工程交付、运行维护四个分类组织十一项研发活动；每项工作只读取一个相关分类和一个或少数相关项目，不扫描整套文档。
+这是本仓库唯一的正式研发规范入口，但它只适用于会改变、验证、发布、运行或直接决定产品/工程系统的工作。普通写作、翻译、摘要、内容制作、行政、一般查询和与具体产品/工程决定无关的研究使用任务自身流程，不需要套用本规范。
+
+适用的研发工作按立项、产品设计、工程交付、运行维护四个分类组织十一项活动；每项工作只读取一个相关分类和一个或少数相关项目，不扫描整套文档。
 
 人始终拥有产品方向、用户价值、风险接受、高影响副作用和最终问责。AI 可以准备分析、方案、实现与证据，但不会因流程、角色或 skill 名称获得额外授权。
 
 ## 使用方式
 
-1. 先说明要改变的结果、明确不做什么，并判断工作属于 Quick、Standard 还是 High-risk。
-2. 从下方选择一个主要分类，先读分类入口，再读直接相关的项目正文。
-3. 实现中发现上游前提不成立时，返回拥有该决定的项目；不得在下游静默改写产品、风险或发布边界。
-4. 结论必须带当前证据、剩余风险和下一步。失败、停止、回退和终止都是真实结果。
+1. **R&D applicability**：任务主要结果是否改变、验证、发布、运行、恢复或处置产品/工程系统，直接决定其产品/体验/技术/验收边界，或研究直接支持一个已识别产品/工程决定？否，则立即使用任务自身流程。
+2. **Work mode**：存在关键未知且目标是学习时选 Explore；行为已经足够明确且目标是稳定交付时选 Deliver。
+3. **Deliver route**：只有 Deliver 再按 Quick、Standard、High-risk 分流。
+4. 进入研发后，从下方选择一个主要分类，先读分类入口，再读一个或少数直接相关的项目正文。
+5. 实现中发现上游前提不成立时，返回拥有该决定的项目；不得在下游静默改写产品、风险或发布边界。
+6. 结论必须带当前证据、剩余风险和下一步。失败、停止、回退和终止都是真实结果。
 
-## 风险分流
+```text
+Task → R&D applicability
+       ├─ No  → use the task's own workflow
+       └─ Yes → Explore | Deliver
+                 Explore: Product Discovery | UX Prototype | Technical Spike
+                 Deliver: Quick | Standard | High-risk
+```
+
+`Prototype` 是 Explore 中用于学习的 artifact，`Walking Skeleton` 是尽快贯通真实入口和可见结果的实施 tactic；两者都不是 route。混合请求按结果拆分，只有研发部分进入本规范。非研发部分不创建 OpenSpec、研发状态或 Superpowers 工件。
+
+## Explore 与 Deliver
+
+| 工作模式 | 适用情况 | 最小要求 |
+| --- | --- | --- |
+| Explore | Product Discovery、UX Prototype 或 Technical Spike；关键未知仍主导，目标是学习 | 本地或隔离 sandbox、一份短记录、最短可见事实、真实 showcase、明确 outcome 与 next |
+| Deliver | 目标行为已经足够明确，准备形成稳定增量 | 再按下表选择 Quick、Standard 或 High-risk |
+
+### Deliver 风险分流
 
 | 路径 | 适用情况 | 最小要求 |
 | --- | --- | --- |
@@ -19,7 +40,7 @@
 | Standard | 用户可见、跨文件或跨会话、AI 行为变化、需要独立验收 | 默认创建或继续 OpenSpec change，保留验收、验证与回滚，独立终审 |
 | High-risk | 生产、客户数据、安全、权限、凭据、付款、公开承诺、外部通信或不可逆动作 | 副作用前记录影响、停止条件和回滚，由独立者预审并取得用户明确批准 |
 
-具体路由和完成要求由唯一研发 skill [one-person-openspec-rd](skills/one-person-openspec-rd/SKILL.md) 承载。Quick 不强制创建 OpenSpec；Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。
+具体路由和完成要求由唯一研发 skill [one-person-openspec-rd](skills/one-person-openspec-rd/SKILL.md) 承载。轻量 Explore 和 Deliver Quick 不强制创建 OpenSpec；Deliver Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。Superpowers 只在存在具体复杂问题时选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长和文件数都不能单独触发，也不能因调用一项而自动串联其他项。
 
 ## 四分类与十一项
 
@@ -52,7 +73,7 @@
 - [原则追溯表](governance/rd-standards/review/principle-traceability.csv)
 - [完全覆盖证据](governance/rd-standards/replacement-manifest.json)
 
-正式正文包含 2,321 个唯一稳定规则目标；5,956 条来源原子规则及其处理决定保留在治理账本中。账本负责历史来源追溯，不构成第二份正式规范。
+正式正文包含 2,337 个唯一稳定规则目标；5,956 条来源原子规则及其处理决定保留在治理账本中。账本负责历史来源追溯，不构成第二份正式规范。
 
 ## 验证
 
