@@ -68,6 +68,13 @@ EXPLORE_DELIVER_RULE_IDS_BY_FILE = {
     },
 }
 
+MANAGED_SCOPE_FIXTURE = """<!-- rd-standards:superpowers-scope:start -->
+## Scoped Superpowers
+
+Use one directly relevant skill.
+<!-- rd-standards:superpowers-scope:end -->
+"""
+
 
 @contextmanager
 def workspace_temp_directory():
@@ -191,6 +198,63 @@ class CurrentStandardsTests(unittest.TestCase):
             self.assertTrue(result["valid"])
             self.assertEqual([], result["legacy_present"])
             self.assertEqual([], result["preserved_missing"])
+
+    def test_runtime_router_exposes_explore_types_and_scoped_superpowers(
+        self,
+    ) -> None:
+        skill = (ROOT / "skills/one-person-openspec-rd/SKILL.md").read_text(
+            encoding="utf-8"
+        )
+        scope = (
+            ROOT
+            / "skills/one-person-openspec-rd/references/superpowers-scope.md"
+        ).read_text(encoding="utf-8")
+
+        for explore_type in (
+            "Product Discovery",
+            "UX Prototype",
+            "Technical Spike",
+        ):
+            self.assertIn(explore_type, skill)
+        self.assertIn("Deliver Standard/High-risk", skill)
+        self.assertNotIn("Quick 不创建 OpenSpec。Standard/High-risk", skill)
+        self.assertIn("does not authorize another", scope)
+        self.assertIn("Do not automatically chain", scope)
+
+    def test_global_superpowers_scope_rejects_missing_managed_block(self) -> None:
+        from check_runtime_skill_sync import validate_global_agents
+
+        with workspace_temp_directory() as root:
+            canonical_scope = root / "canonical-scope.md"
+            global_agents = root / "AGENTS.md"
+            canonical_scope.write_text(MANAGED_SCOPE_FIXTURE, encoding="utf-8")
+
+            global_agents.write_text("", encoding="utf-8")
+            empty_result = validate_global_agents(canonical_scope, global_agents)
+            self.assertFalse(empty_result["valid"])
+
+            global_agents.write_text("# Existing user instructions\n", encoding="utf-8")
+            missing_result = validate_global_agents(canonical_scope, global_agents)
+            self.assertFalse(missing_result["valid"])
+
+    def test_global_superpowers_scope_accepts_exact_managed_block(self) -> None:
+        from check_runtime_skill_sync import validate_global_agents
+
+        with workspace_temp_directory() as root:
+            canonical_scope = root / "canonical-scope.md"
+            global_agents = root / "AGENTS.md"
+            canonical_scope.write_text(MANAGED_SCOPE_FIXTURE, encoding="utf-8")
+            global_agents.write_text(
+                "# Existing user instructions\n\n"
+                + MANAGED_SCOPE_FIXTURE
+                + "\nKeep this unrelated footer.\n",
+                encoding="utf-8",
+            )
+
+            result = validate_global_agents(canonical_scope, global_agents)
+
+            self.assertTrue(result["valid"])
+            self.assertEqual("synced", result["status"])
 
 
 if __name__ == "__main__":

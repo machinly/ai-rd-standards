@@ -1,6 +1,6 @@
 # 可选技术栈偏好
 
-> 状态：按需参考，不是 Quick/Standard/High-risk 路由的默认前置条件。
+> 状态：按需参考。技术栈不是 R&D applicability、Explore/Deliver work mode 或 Deliver Quick/Standard/High-risk route 的前置条件。
 
 除非仓库或用户明确覆盖，否则使用这些默认值。
 

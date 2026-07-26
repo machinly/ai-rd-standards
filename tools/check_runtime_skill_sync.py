@@ -15,7 +15,11 @@ ROUTER_FILES = (
     "references/workflow-map.md",
     "references/stack-defaults.md",
     "references/review-rubric.md",
+    "references/superpowers-scope.md",
 )
+
+SUPERPOWERS_SCOPE_START = "<!-- rd-standards:superpowers-scope:start -->"
+SUPERPOWERS_SCOPE_END = "<!-- rd-standards:superpowers-scope:end -->"
 
 LEGACY_RD_SKILLS = (
     "accessibility-ai-ux-guard",
@@ -89,6 +93,70 @@ def normalized(path: Path) -> bytes:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(normalized(path)).hexdigest()
+
+
+def normalized_text(path: Path) -> str:
+    return normalized(path).decode("utf-8")
+
+
+def managed_scope_block(text: str) -> tuple[str | None, str | None]:
+    start_count = text.count(SUPERPOWERS_SCOPE_START)
+    end_count = text.count(SUPERPOWERS_SCOPE_END)
+    if start_count != 1 or end_count != 1:
+        return None, (
+            "Expected exactly one paired Superpowers scope marker block, "
+            f"found start={start_count} end={end_count}"
+        )
+
+    start = text.index(SUPERPOWERS_SCOPE_START)
+    end = text.index(SUPERPOWERS_SCOPE_END)
+    if end < start:
+        return None, "Superpowers scope end marker appears before start marker"
+    end += len(SUPERPOWERS_SCOPE_END)
+    return text[start:end], None
+
+
+def validate_global_agents(
+    canonical_scope: Path, global_agents: Path
+) -> dict[str, object]:
+    canonical_scope = canonical_scope.resolve()
+    global_agents = global_agents.expanduser().resolve()
+    errors: list[str] = []
+    canonical_block: str | None = None
+    global_block: str | None = None
+
+    if not canonical_scope.is_file():
+        errors.append(f"Missing canonical Superpowers scope: {canonical_scope}")
+    else:
+        canonical_block, marker_error = managed_scope_block(
+            normalized_text(canonical_scope)
+        )
+        if marker_error:
+            errors.append(f"Invalid canonical Superpowers scope: {marker_error}")
+
+    if not global_agents.is_file():
+        errors.append(f"Missing global AGENTS.md: {global_agents}")
+    else:
+        global_block, marker_error = managed_scope_block(normalized_text(global_agents))
+        if marker_error:
+            errors.append(f"Invalid global Superpowers scope: {marker_error}")
+
+    matches = (
+        canonical_block is not None
+        and global_block is not None
+        and canonical_block == global_block
+    )
+    if canonical_block is not None and global_block is not None and not matches:
+        errors.append("Global Superpowers scope differs from canonical managed block")
+
+    return {
+        "valid": not errors,
+        "status": "synced" if not errors else "invalid",
+        "canonical_scope": str(canonical_scope),
+        "global_agents": str(global_agents),
+        "matches": matches,
+        "errors": errors,
+    }
 
 
 def validate_runtime_skills(
@@ -165,20 +233,37 @@ def main() -> int:
         "--installed",
         help="Compatibility option: explicit installed one-person SKILL.md path.",
     )
+    parser.add_argument(
+        "--global-agents",
+        help="User-level AGENTS.md; defaults to CODEX_HOME/AGENTS.md.",
+    )
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
     canonical_dir = root / "skills" / "one-person-openspec-rd"
+    codex_home = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
     if args.runtime_skills_root:
         runtime_skills_root = Path(args.runtime_skills_root).expanduser().resolve()
     elif args.installed:
         runtime_skills_root = Path(args.installed).expanduser().resolve().parent.parent
     else:
-        codex_home = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
         runtime_skills_root = codex_home / "skills"
 
+    if args.global_agents:
+        global_agents = Path(args.global_agents).expanduser().resolve()
+    else:
+        global_agents = codex_home / "AGENTS.md"
+
     result = validate_runtime_skills(canonical_dir, runtime_skills_root)
+    global_result = validate_global_agents(
+        canonical_dir / "references" / "superpowers-scope.md",
+        global_agents,
+    )
+    result["global_superpowers_scope"] = global_result
+    result["errors"].extend(global_result["errors"])
+    result["valid"] = not result["errors"]
+    result["status"] = "synced" if result["valid"] else "invalid"
     if args.as_json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:
@@ -186,7 +271,8 @@ def main() -> int:
         print(
             f"RUNTIME_SKILL_SYNC={label} status={result['status']} "
             f"legacy_present={len(result['legacy_present'])} "
-            f"preserved_missing={len(result['preserved_missing'])}"
+            f"preserved_missing={len(result['preserved_missing'])} "
+            f"global_superpowers_scope={global_result['status']}"
         )
         for error in result["errors"]:
             print("ERROR " + str(error))

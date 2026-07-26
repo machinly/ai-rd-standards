@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Solo R&D"
-  short_description: "按风险分流并用关键旅程、OpenSpec 与单一状态管理研发变更"
-  default_prompt: "Use $one-person-openspec-rd to route the task, manage Standard/High-risk work in OpenSpec, keep guard artifacts under governance/, and prove critical user journeys before claiming completion."
+  display_name: "Explore / Deliver R&D"
+  short_description: "先判定研发适用性，再区分探索与交付，并按复杂度选择方法"
+  default_prompt: "Use $one-person-openspec-rd only after the R&D applicability gate. Route applicable work through Explore or Deliver, use Quick/Standard/High-risk only for Deliver, and invoke Superpowers only for a concrete complexity trigger without automatic chaining."

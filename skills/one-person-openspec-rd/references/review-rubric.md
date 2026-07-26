@@ -2,14 +2,33 @@
 
 这份文件区分“生产者自检”和“独立最终审查”。两者不能互相冒充。
 
+## Applicability and Work Mode Check
+
+- 任务主要结果是否真实改变、验证、发布、运行、恢复或直接决定产品/工程系统？Non-R&D 是否在读取研发正文前退出？
+- R&D 是否先选择 Explore 或 Deliver，Quick/Standard/High-risk 是否只出现在 Deliver？
+- Prototype 是否保持为 artifact、Walking Skeleton 是否保持为 tactic？
+- 混合请求是否只把 R&D 结果纳入本规范？
+
+## Explore Self-Check
+
+Explore 不默认要求独立终审。执行者在 showcase 或结束前核对：
+
+- 类型是否为 Product Discovery、UX Prototype 或 Technical Spike，并且只有一个 question、hypothesis 和 shortest slice？
+- sandbox 是否只含本地/隔离、合成、可重建数据，且没有生产、真实客户、真实凭据、未批准外部系统、付款、外部通信或不可逆动作？
+- 是否从 actual product entry 形成可见结果，使用 Alice/Bob/Admin 等 human-readable fixture，而不是只证明 API、DOM 或数据库行？
+- active-task peak 是否不超过 5；是否按 120 分钟或 5 commits 进行 showcase；2 小时无新 visible fact 时是否实际 shrink/stop？
+- outcome 是否准确记录为 `validated | invalidated | revise | stopped | promote`，并包含 observed behavior、evidence limits 和一个 next？
+- 每次 Superpowers 使用是否有一个具体 complexity trigger 和 solved problem；是否没有自动 chain 或重复 authority artifact？
+- promote 是否只带 selected increment，明确 excluded exploration，并重新判断 Deliver route？
+
 ## Producer Self-Check
 
 执行者在交付前回答：
 
 - 结果是否满足 outcome 和 acceptance？
 - 实现所依据的产品输入和体验设计是否真实存在并经人确认，而不是由 OpenSpec 代替？
-- 用户可见 Standard/High-risk 是否记录 `visual_ux` 判定；required 时，当前静态 UX 是否由人明确 `approved`，批准后实质偏差是否重新 review？
-- Standard/High-risk 实现是否有 active OpenSpec change、strict validation 和真实 tasks 状态；若跳过，是否有用户批准记录？
+- 用户可见 Deliver Standard/High-risk 是否记录 `visual_ux` 判定；required 时，当前静态 UX 是否由人明确 `approved`，批准后实质偏差是否重新 review？
+- Deliver Standard/High-risk 实现是否有 active OpenSpec change、strict validation 和真实 tasks 状态；若跳过，是否有用户批准记录？
 - 是否修改了范围外内容？
 - 是否保留用户已有工作？
 - 验证命令是否真实运行并记录结果？
@@ -34,7 +53,7 @@ auth、数据迁移、管理员权限、身份绑定、跨租户和难回退契�
 
 ## Independent Final Review
 
-Standard 和 High-risk 的最终 reviewer 必须：
+Deliver Standard 和 High-risk 的最终 reviewer 必须：
 
 - 未参与产出；
 - 使用干净上下文；
@@ -61,12 +80,19 @@ Standard 和 High-risk 的最终 reviewer 必须：
 
 ## 通过条件
 
+Explore：
+
+- sandbox 和风险边界没有被突破；
+- showcase 来自实际产品入口并准确命名证据；
+- outcome、limits 与 next 真实可追溯；
+- `promote` 时只转交 selected increment，其他结果不冒充交付完成。
+
 Quick：
 
 - 相关验证通过；
 - 没有隐藏 High-risk 副作用。
 
-Standard：
+Deliver Standard：
 
 - self-check 完成；
 - 独立 reviewer 接受；
@@ -74,7 +100,7 @@ Standard：
 - `visual_ux: required` 时有当前人类批准，且实现实质偏差已经重新 review；
 - 用户可见范围的阻断旅程具有最新 Browser E2E pass；人工检查或 skip_e2e 不能支持 accepted。
 
-High-risk：
+Deliver High-risk：
 
 - Standard 条件全部满足；
 - decision owner 已明确批准；

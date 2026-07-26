@@ -1,59 +1,56 @@
-# Minimal Solo R&D Fallback Map
+# Explore / Deliver R&D Fallback Map
 
-Use this reference only when the repository does not provide its own README and routing files.
+Only use this reference when a repository has no formal README and R&D routing files.
 
-## Quick
+## 1. R&D Applicability
 
-Choose Quick when the work is low-risk, reversible, local, and does not affect users, production, sensitive data, permissions, money, commitments, or external systems.
+Enter this workflow only when the primary result changes, verifies, releases, operates, recovers, or directly decides a product/engineering system, or when research directly supports an identified product/engineering decision.
 
-Required result:
+Writing, translation, summaries, content production, administration, general queries, general research, and unauthorized read-only reports are Non-R&D. Use their own workflow and do not create OpenSpec, R&D status, or Superpowers artifacts. Split mixed requests by result.
 
-- artifact or diff；
-- relevant check；
-- residual risk。
+## 2. Work Mode
 
-Do not require a process file or OpenSpec.
+- **Explore** when a falsifiable unknown still dominates and the goal is learning.
+- **Deliver** when behavior is clear enough and the goal is a stable increment.
 
-## Standard
+Prototype is an Explore artifact. Walking Skeleton is a tactic. Quick, Standard, and High-risk are Deliver routes only.
 
-Choose Standard when work is user-visible, crosses files/sessions, changes AI behavior, or needs independent acceptance.
+## 3. Explore
 
-Create or continue one OpenSpec change before implementation, with:
+Choose the highest-priority unknown:
 
-- outcome；
-- non-goals；
-- acceptance；
-- scope；
-- risks；
-- verification；
-- rollback；
-- decisions and next action。
+- Product Discovery: user, problem, value, scope, or success;
+- UX Prototype: task flow, information architecture, interaction, or comprehension;
+- Technical Spike: architecture, integration, contract, or feasibility.
 
-Use `tasks.md` as the implementation status source; do not duplicate a parallel work brief.
+Keep one local/isolated, synthetic, resettable sandbox with no production, real customer data, real credentials, unapproved external systems, payments, external communication, public commitment, or irreversible action. Maintain one short record: question, hypothesis, sandbox boundary, shortest slice, active tasks, showcase, evidence/limits, decision, next.
 
-For user-visible Standard/High-risk work, record `visual_ux: required | not-required` and the reason in the proposal. When required, link the current static UX artifacts and explicit human `approved` review before production implementation. Also define critical journeys in `governance/quality/user-journeys.json` and close one real Browser E2E early. Put guard artifacts under `governance/<registered-domain>/`; use `governance/current-status.json` as the only current completion state.
+Use at most 5 active tasks. Close a Walking Skeleton from an actual product entry to a visible business result. Showcase every 120 minutes or 5 commits, whichever comes first; shrink or stop after 2 hours without a new visible fact. Outcomes are `validated | invalidated | revise | stopped | promote`.
 
-Use an independent final reviewer.
+Explore does not default to OpenSpec, formal visual UX, a full quality matrix, Browser E2E, or independent final review. Actual safety, auth, data, and side-effect controls still apply. Promote only a human-selected stable increment and reroute it through Deliver.
 
-The reviewer must execute blocking user journeys from a clean complete local environment. Manual browser checks do not count as Browser E2E, and a newer changes-requested decision invalidates older completion summaries.
+## 4. Deliver
 
-## High-risk
+### Quick
 
-Choose High-risk for production, customer data, security, auth, credentials, payment, public commitments, external communication, irreversible changes, or unclear rollback.
+Choose for clear, local, reversible work without user, production, sensitive-data, permission, money, commitment, or external-system impact. Provide the artifact/diff, relevant check, and residual risk. Do not require OpenSpec.
 
-Before the side effect:
+### Standard
 
-- identify a human decision owner；
-- record blast radius, stop conditions and rollback；
-- obtain explicit approval；
-- verify the prepared action independently。
+Choose for clear user-visible, cross-file/session, AI-behavior, or independently accepted work. Create or continue one OpenSpec change before implementation; keep `tasks.md` as the status source. Link authoritative product/UX inputs, record `visual_ux: required | not-required`, define critical journeys, and obtain an independent final review.
 
-Stop when approval, permission, or rollback evidence is missing.
+### High-risk
 
-## Default and Optional Tools
+Choose for real production, customer data, security, auth, credentials, payment, public commitments, external communication, irreversible changes, or unclear rollback. Before side effects, identify a human owner, record blast radius/stop/rollback, obtain explicit approval, and independently review applicable auth/data/admin/irreversible design.
 
-- OpenSpec：default for Standard/High-risk implementation; skip only with explicit user approval and a recorded reason/scope/recovery path。
-- Multi-Agent：only for independent tasks with measured benefit and non-overlapping write scopes。
-- Role lenses：only when a specific professional perspective is needed。
+## 5. OpenSpec
 
-Time alone does not select a path.
+OpenSpec defaults only to Deliver Standard/High-risk implementation. It records the selected stable increment and links Explore evidence; it does not copy all exploration history. Skip only with explicit user approval and a recorded owner, reason, scope, and recovery path.
+
+## 6. Superpowers
+
+Read `superpowers-scope.md`. Select the smallest directly relevant skill only for a concrete complexity trigger. Invoking one skill does not authorize another and must not create a duplicate authority artifact.
+
+## 7. Review and Evidence
+
+All R&D work gets producer self-check. Explore checks sandbox, actual entry, human-readable fixture, showcase, outcome, evidence limits, active-task peak, and any Superpowers trigger. Deliver Standard/High-risk requires an independent final reviewer. Name unit, integration, dependency-container, complete local integration, Browser E2E, provider sandbox, and production evidence separately.
