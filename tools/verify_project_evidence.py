@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -24,6 +25,19 @@ MAP_FIELDS = {
     "canonical_sources",
     "governance_domains",
 }
+REPOSITORY_MODES = {"single-application", "multi-application"}
+APPLICATION_KINDS = {"go-service", "web-app"}
+APPLICATION_FIELDS = {"id", "kind", "path", "manifest"}
+MULTI_APP_ROOT_PRIVATE_DIRECTORIES = {
+    "api",
+    "cmd",
+    "configs",
+    "internal",
+    "migrations",
+    "queries",
+    "src",
+}
+MULTI_APP_ROOT_PRIVATE_FILES = {"go.mod", "sqlc.yaml"}
 COMMAND_FIELDS = {
     "path",
     "purpose",
@@ -77,7 +91,96 @@ def nonempty(value: Any) -> bool:
     return value not in (None, "", [], {})
 
 
-def check_project_map(root: Path, errors: list[str]) -> None:
+def check_application_layout(
+    root: Path,
+    data: dict[str, Any],
+    required: bool,
+    errors: list[str],
+) -> None:
+    mode = data.get("repository_mode")
+    applications = data.get("applications")
+    if not required and mode is None and applications is None:
+        return
+    if mode not in REPOSITORY_MODES:
+        errors.append(
+            "governance/project-map.json repository_mode must be "
+            "single-application or multi-application"
+        )
+    if not isinstance(applications, list) or not applications:
+        errors.append("governance/project-map.json applications must be a non-empty list")
+        return
+
+    seen_ids: set[str] = set()
+    seen_paths: set[str] = set()
+    for index, application in enumerate(applications):
+        if not isinstance(application, dict):
+            errors.append(f"project-map applications[{index}] must be an object")
+            continue
+        for field in APPLICATION_FIELDS:
+            if not nonempty(application.get(field)):
+                errors.append(f"project-map applications[{index}] missing {field}")
+        app_id = str(application.get("id", ""))
+        kind = str(application.get("kind", ""))
+        app_path = str(application.get("path", "")).replace("\\", "/").strip("/") or "."
+        manifest = str(application.get("manifest", "")).replace("\\", "/").strip("/")
+        if app_id in seen_ids:
+            errors.append(f"duplicate application id: {app_id}")
+        seen_ids.add(app_id)
+        if app_path in seen_paths:
+            errors.append(f"duplicate application path: {app_path}")
+        seen_paths.add(app_path)
+        if kind not in APPLICATION_KINDS:
+            errors.append(f"project-map applications[{index}] invalid kind: {kind}")
+        if not (root if app_path == "." else root / app_path).is_dir():
+            errors.append(f"application root does not exist: {app_path}")
+        if manifest and not (root / manifest).is_file():
+            errors.append(f"application manifest does not exist: {manifest}")
+        manifest_parent = Path(manifest).parent.as_posix() if manifest else ""
+        if manifest and manifest_parent != app_path:
+            errors.append(
+                f"application manifest must be directly inside its application root: {manifest}"
+            )
+        manifest_prefix = "" if app_path == "." else app_path + "/"
+        expected_manifest = {
+            "go-service": f"{manifest_prefix}go.mod",
+            "web-app": f"{manifest_prefix}package.json",
+        }.get(kind)
+        if manifest and expected_manifest and manifest != expected_manifest:
+            errors.append(
+                f"{kind} application manifest must be {expected_manifest}: {manifest}"
+            )
+        if mode == "single-application" and app_path != ".":
+            errors.append("single-application repository must declare application path .")
+        if mode == "multi-application":
+            if kind == "go-service" and not re.fullmatch(r"services/[^/]+", app_path):
+                errors.append(f"multi-application Go service must live at services/<service>: {app_path}")
+            if kind == "web-app" and not re.fullmatch(r"web/[^/]+", app_path):
+                errors.append(f"multi-application web app must live at web/<app>: {app_path}")
+
+    if mode == "multi-application":
+        for name in sorted(MULTI_APP_ROOT_PRIVATE_DIRECTORIES):
+            if (root / name).exists():
+                errors.append(
+                    f"multi-application repository root contains application-private path: {name}"
+                )
+        for name in sorted(MULTI_APP_ROOT_PRIVATE_FILES):
+            if (root / name).exists():
+                errors.append(
+                    f"multi-application repository root contains application-private file: {name}"
+                )
+
+
+def validate_application_layout(root: Path) -> list[str]:
+    errors: list[str] = []
+    if not root.is_dir():
+        return [f"project root is not a directory: {root}"]
+    data = load_json(root / "governance" / "project-map.json", errors)
+    if data is not None:
+        check_application_layout(root, data, True, errors)
+    return errors
+
+
+def check_project_map(root: Path, require_application_layout: bool, errors: list[str]) -> None:
     governance = root / "governance"
     if not (governance / "README.md").is_file():
         errors.append("missing governance/README.md")
@@ -88,6 +191,7 @@ def check_project_map(root: Path, errors: list[str]) -> None:
     for field in MAP_FIELDS:
         if not nonempty(data.get(field)):
             errors.append(f"governance/project-map.json missing {field}")
+    check_application_layout(root, data, require_application_layout, errors)
 
     top_level = data.get("top_level")
     mapped: dict[str, dict[str, Any]] = {}
@@ -265,13 +369,19 @@ def check_command_registry(root: Path, required: bool, errors: list[str]) -> Non
         errors.append(f"unregistered cmd entry: {missing}")
 
 
-def validate(root: Path, require_journeys: bool, require_browser_e2e: bool, require_commands: bool) -> list[str]:
+def validate(
+    root: Path,
+    require_journeys: bool,
+    require_browser_e2e: bool,
+    require_commands: bool,
+    require_application_layout: bool = False,
+) -> list[str]:
     errors: list[str] = []
     if not root.is_dir():
         return [f"project root is not a directory: {root}"]
     if not (root / "README.md").is_file():
         errors.append("missing root README.md")
-    check_project_map(root, errors)
+    check_project_map(root, require_application_layout, errors)
     check_current_status(root, errors)
     if require_journeys or require_browser_e2e:
         check_journeys(root, require_browser_e2e, errors)
@@ -285,20 +395,26 @@ def main() -> int:
     parser.add_argument("--require-user-journeys", action="store_true")
     parser.add_argument("--require-browser-e2e", action="store_true")
     parser.add_argument("--require-command-registry", action="store_true")
+    parser.add_argument("--require-application-layout", action="store_true")
+    parser.add_argument("--application-layout-only", action="store_true")
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args()
     root = Path(args.root).resolve()
-    errors = validate(
-        root,
-        args.require_user_journeys,
-        args.require_browser_e2e,
-        args.require_command_registry,
-    )
+    if args.application_layout_only:
+        errors = validate_application_layout(root)
+    else:
+        errors = validate(
+            root,
+            args.require_user_journeys,
+            args.require_browser_e2e,
+            args.require_command_registry,
+            args.require_application_layout,
+        )
     payload = {
         "ok": not errors,
         "root": str(root),
         "errors": errors,
-        "evidence_boundary": "static artifact/path/status contract only; does not prove browser execution, usability, code-comment quality, or independent review",
+        "evidence_boundary": "static artifact/path/status/application-root contract only; does not prove browser execution, usability, code-comment quality, or independent review",
     }
     if args.as_json:
         print(json.dumps(payload, ensure_ascii=False, indent=2))
@@ -311,4 +427,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

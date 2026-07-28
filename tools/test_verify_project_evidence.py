@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from verify_project_evidence import validate
+from verify_project_evidence import validate, validate_application_layout
 
 
 class ProjectEvidenceVerifierTests(unittest.TestCase):
@@ -14,23 +14,32 @@ class ProjectEvidenceVerifierTests(unittest.TestCase):
         root = Path(temp.name)
         (root / "README.md").write_text("# Test\n", encoding="utf-8")
         for path in (
-            "apps/api/cmd/api",
-            "apps/api/cmd/worker",
+            "services/api/cmd/api",
+            "services/api/cmd/worker",
+            "web/user/src",
             "governance/architecture",
             "governance/quality",
             "governance/reviews",
         ):
             (root / path).mkdir(parents=True, exist_ok=True)
         (root / "governance/README.md").write_text("# Governance\n", encoding="utf-8")
+        (root / "services/api/go.mod").write_text("module example.test/api\n", encoding="utf-8")
+        (root / "web/user/package.json").write_text("{}\n", encoding="utf-8")
         review = "governance/reviews/final.json"
         (root / review).write_text("{}\n", encoding="utf-8")
         project_map = {
             "top_level": [
-                {"path": "apps", "kind": "source", "purpose": "applications"},
+                {"path": "services", "kind": "source", "purpose": "backend applications"},
+                {"path": "web", "kind": "source", "purpose": "frontend applications"},
                 {"path": "governance", "kind": "governance", "purpose": "process evidence"},
             ],
+            "repository_mode": "multi-application",
+            "applications": [
+                {"id": "api", "kind": "go-service", "path": "services/api", "manifest": "services/api/go.mod"},
+                {"id": "user-web", "kind": "web-app", "path": "web/user", "manifest": "web/user/package.json"},
+            ],
             "read_first": ["README.md", "governance/README.md", "governance/current-status.json"],
-            "runtime_processes": [{"name": "api", "kind": "service", "path": "apps/api", "command": "go run ./cmd/api"}],
+            "runtime_processes": [{"name": "api", "kind": "service", "path": "services/api", "command": "go run ./cmd/api"}],
             "common_commands": [{"name": "test", "command": "go test ./..."}],
             "canonical_sources": ["README.md"],
             "governance_domains": [
@@ -65,7 +74,7 @@ class ProjectEvidenceVerifierTests(unittest.TestCase):
         commands = {"commands": []}
         for name, kind, lifecycle in (("api", "api", "long-running"), ("worker", "worker", "long-running")):
             commands["commands"].append({
-                "path": f"apps/api/cmd/{name}", "purpose": name, "kind": kind,
+                "path": f"services/api/cmd/{name}", "purpose": name, "kind": kind,
                 "environment": "production", "lifecycle": lifecycle, "starter": "service manager",
                 "dependencies": ["mysql"], "privileges": ["service"], "data_writes": ["users"],
                 "failure_recovery": "restart", "retirement": "remove deployment first"
@@ -78,6 +87,26 @@ class ProjectEvidenceVerifierTests(unittest.TestCase):
         self.addCleanup(temp.cleanup)
         errors = validate(Path(temp.name), True, True, True)
         self.assertEqual(errors, [])
+
+    def test_valid_multi_application_layout_passes(self) -> None:
+        temp = self.make_project()
+        self.addCleanup(temp.cleanup)
+        errors = validate(Path(temp.name), True, True, True, True)
+        self.assertEqual(errors, [])
+
+    def test_multi_application_layout_rejects_root_internal(self) -> None:
+        temp = self.make_project()
+        self.addCleanup(temp.cleanup)
+        (Path(temp.name) / "internal").mkdir()
+        errors = validate(Path(temp.name), True, True, True, True)
+        self.assertTrue(any("application-private path: internal" in item for item in errors))
+
+    def test_application_layout_only_rejects_root_go_mod(self) -> None:
+        temp = self.make_project()
+        self.addCleanup(temp.cleanup)
+        (Path(temp.name) / "go.mod").write_text("module wrong.root\n", encoding="utf-8")
+        errors = validate_application_layout(Path(temp.name))
+        self.assertTrue(any("application-private file: go.mod" in item for item in errors))
 
     def test_manual_browser_check_cannot_satisfy_e2e(self) -> None:
         temp = self.make_project()
@@ -112,4 +141,3 @@ class ProjectEvidenceVerifierTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
