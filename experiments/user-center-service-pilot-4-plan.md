@@ -1,6 +1,6 @@
 # 用户服务第四轮研发规范实验方案：Walking Skeleton Explore
 
-状态：`planned`；等待用户复核后在新的 session 启动。
+状态：`running`；已于 2026-07-27 在新的 session 启动。
 日期：2026-07-26
 实验授权：用户确认开启用户服务第四轮实验。
 权威工件：本文既是第四轮方案，也是执行期间唯一的 Explore 短记录；它不是用户服务交付证明。
@@ -230,6 +230,23 @@ pilot assessment 只有在以下条件全部满足时才可记为 `supported`：
 
 ## 15. 当前状态与下一步
 
-当前状态为 `planned`：目标仓库沿用 `D:\Workspace\user`，但尚未在清空后基线上开始第四轮计时或实现，没有验证结果，也没有使用 OpenSpec。
+当前状态为 `running`：目标仓库沿用 `D:\Workspace\user`，已在清空后基线上开始第四轮计时；尚无验证结果，也没有使用 OpenSpec。
 
-下一步只有一个：用户复核并明确批准本文；批准后在新的 session 从 `D:\Workspace\user` 的清空后基线启动第四轮 Explore。
+下一步：完成单进程、单端口、三表面入口与 Reset，然后从实际登录入口形成首个可见产品事实。
+
+## 16. Run log
+
+### 2026-07-27 启动
+
+- `started_at`：`2026-07-27T20:55:35+08:00`；`finished_at`、active minutes 与墙钟跨度待结束时记录；
+- 路由复核：`Explore / UX Prototype`；Walking Skeleton；promote 前不适用 Deliver route 与 OpenSpec；
+- 目标仓库：`D:\Workspace\user`；branch `main`；baseline commit `6b6fa577dc0c3423bc5dc004286be2d6be2111eb`（`clear all`）；
+- 初始 worktree：clean，tracked files 为 0，目录中除 `.git` 外无文件；`main` 相对 `origin/main` 为 `+0/-0`，与方案中的清空基线一致；
+- 工具版本：Go `1.26.1 windows/386`、Git `2.53.0.windows.1`、Node `24.13.1`、npm `11.8.0`；启动时未在 `PATH` 找到 `msedge`、`chrome` 或 `chromium`，浏览器实际路径待 showcase 前核验；
+- 启动时主动读取的文件上下文：31,059 bytes。其中本文 16,853 bytes、`one-person-openspec-rd/SKILL.md` 10,132 bytes、因目标仓库无 README/研发入口而读取的 fallback `workflow-map.md` 4,074 bytes；对话系统上下文与工具返回值无法可靠计量，未补造；
+- active tasks：5；当前 task 1 `in_progress`，tasks 2-5 `pending`；active-task peak 当前为 5；
+- commits since baseline：0；showcase 尚未执行；time to first visible fact 尚未产生；
+- Sandbox：仅本机端口、合成 Alice/Bob/Admin/支出与可 reset 内存状态；未接触生产、真实数据、真实 provider、真实凭据或外部副作用；
+- Superpowers：0 次；当前没有命中具体复杂问题；Multi-Agent：0 次；
+- OpenSpec：未创建，保持在 promote 边界之外；
+- 运行时 tool calls、token 与成本：当前运行环境未提供完整、可靠的会话级计量，结束时记录可得部分并明确缺口。
