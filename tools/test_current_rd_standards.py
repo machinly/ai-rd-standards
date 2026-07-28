@@ -7,7 +7,13 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from check_runtime_skill_sync import ROUTER_FILES, validate_runtime_skills
-from verify_rd_standards import RULE_ID_RE, parse_target_ids, validate_repository
+from verify_rd_standards import (
+    CATEGORY_LAYOUT,
+    RULE_ID_RE,
+    execution_detail_paths,
+    parse_target_ids,
+    validate_repository,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -76,6 +82,13 @@ Use one directly relevant skill.
 """
 
 
+def read_item_details(relative_item: str) -> str:
+    detail_dir = (ROOT / relative_item).with_suffix("")
+    return "\n".join(
+        path.read_text(encoding="utf-8") for path in sorted(detail_dir.glob("*.md"))
+    )
+
+
 @contextmanager
 def workspace_temp_directory():
     path = ROOT / (".runtime-sync-test-" + uuid.uuid4().hex)
@@ -98,13 +111,38 @@ class CurrentStandardsTests(unittest.TestCase):
         self.assertEqual([], result["errors"])
         self.assertEqual(4, result["category_count"])
         self.assertEqual(11, result["item_count"])
+        self.assertGreaterEqual(result["detail_file_count"], 22)
         self.assertEqual(2337, result["rule_id_count"])
+
+    def test_categories_and_items_contain_only_principles(self) -> None:
+        category_paths = [ROOT / rel / "README.md" for rel in CATEGORY_LAYOUT]
+        item_paths = [
+            ROOT / rel / item
+            for rel, item_names in CATEGORY_LAYOUT.items()
+            for item in item_names
+        ]
+
+        for path in category_paths + item_paths:
+            text = path.read_text(encoding="utf-8")
+            headings = [line for line in text.splitlines() if line.startswith("#")]
+            self.assertEqual(2, len(headings), path.as_posix())
+            self.assertEqual("## 根本原则", headings[1], path.as_posix())
+            self.assertNotIn("<!-- rule-id:", text, path.as_posix())
+
+    def test_execution_details_index_covers_every_split_file_once(self) -> None:
+        _, details = execution_detail_paths(ROOT)
+        index = (ROOT / "docs/execution-details.md").read_text(encoding="utf-8")
+
+        self.assertGreaterEqual(len(details), 22)
+        for detail in details:
+            relative = detail.relative_to(ROOT / "docs").as_posix()
+            self.assertEqual(1, index.count(f"]({relative})"), relative)
 
     def test_visual_ux_step_has_one_owner_and_delivery_gates(self) -> None:
         expected_all: set[str] = set()
 
         for rel, expected in VISUAL_UX_RULE_IDS_BY_FILE.items():
-            text = (ROOT / rel).read_text(encoding="utf-8")
+            text = read_item_details(rel)
             actual = set(RULE_ID_RE.findall(text))
             self.assertTrue(expected <= actual, f"{rel} missing {sorted(expected - actual)}")
             self.assertTrue(expected_all.isdisjoint(expected))
@@ -116,7 +154,7 @@ class CurrentStandardsTests(unittest.TestCase):
         expected_all: set[str] = set()
 
         for rel, expected in EXPLORE_DELIVER_RULE_IDS_BY_FILE.items():
-            text = (ROOT / rel).read_text(encoding="utf-8")
+            text = read_item_details(rel)
             actual = set(RULE_ID_RE.findall(text))
             self.assertTrue(expected <= actual, f"{rel} missing {sorted(expected - actual)}")
             self.assertTrue(expected_all.isdisjoint(expected))
@@ -128,9 +166,9 @@ class CurrentStandardsTests(unittest.TestCase):
         self,
     ) -> None:
         root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        topic_selection = (
-            ROOT / "docs/01-initiation/01-topic-selection.md"
-        ).read_text(encoding="utf-8")
+        topic_selection = read_item_details(
+            "docs/01-initiation/01-topic-selection.md"
+        )
 
         self.assertLess(root_readme.index("R&D applicability"), root_readme.index("Quick"))
         self.assertIn("Explore", root_readme)
@@ -141,17 +179,30 @@ class CurrentStandardsTests(unittest.TestCase):
         self.assertNotIn("Prototype | Quick | Standard | High-risk", root_readme)
 
     def test_component_reuse_does_not_wait_for_shared_abstraction(self) -> None:
-        experience = (
-            ROOT / "docs/02-product-design/04-experience-design.md"
-        ).read_text(encoding="utf-8")
-        implementation = (
-            ROOT / "docs/03-engineering-delivery/07-implementation.md"
-        ).read_text(encoding="utf-8")
+        experience = read_item_details(
+            "docs/02-product-design/04-experience-design.md"
+        )
+        implementation = read_item_details(
+            "docs/03-engineering-delivery/07-implementation.md"
+        )
 
         self.assertIn("重复交互只实现一次并通过组合复用", experience)
         self.assertIn("从第二个调用点起复用已有实现", implementation)
         self.assertIn("至少 3 个真实调用点且语义稳定", implementation)
         self.assertIn("不得为达到阈值复制实现", implementation)
+
+    def test_application_layout_distinguishes_repository_and_application_roots(self) -> None:
+        implementation = read_item_details(
+            "docs/03-engineering-delivery/07-implementation.md"
+        )
+        evaluation = read_item_details(
+            "docs/04-operations-maintenance/11-evaluation.md"
+        )
+
+        self.assertIn("多应用仓库的 Go 服务缺省位于 `services/<service>/`", implementation)
+        self.assertIn("多应用仓库的可部署前端缺省位于 `web/<app>/`", implementation)
+        self.assertIn("多应用仓库根不得出现归属于单个服务的 `internal/`", implementation)
+        self.assertIn("repository_mode: single-application | multi-application", evaluation)
 
     def test_runtime_validator_rejects_a_retired_rd_skill(self) -> None:
         with workspace_temp_directory() as root:

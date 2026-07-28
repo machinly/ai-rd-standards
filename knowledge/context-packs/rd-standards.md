@@ -11,6 +11,7 @@
 - 产品设计：`docs/02-product-design/README.md`，包含定义、体验设计
 - 工程交付：`docs/03-engineering-delivery/README.md`，包含技术设计、计划、实现、验证、发布
 - 运行维护：`docs/04-operations-maintenance/README.md`，包含运行、评估
+- 执行细节总索引：`docs/execution-details.md`，按项目、内容层和主题映射第三级文件
 - 唯一研发 skill：`skills/one-person-openspec-rd/`
 - 治理入口：`governance/README.md`、`governance/project-map.json`、`governance/current-status.json`
 - 追溯证据：`governance/rd-standards/review/`
@@ -20,7 +21,8 @@
 1. 只读根 `README.md` 的 R&D applicability，判断主要结果是否适用。
 2. Non-R&D 立即使用任务自身流程，不读取四分类十一项目，不调用研发 router。
 3. R&D 先选择 Explore 或 Deliver；只有 Deliver 再选择 Quick、Standard 或 High-risk。
-4. 选择一个主要分类并读其 `README.md`，再只读一个或少数直接相关项目正文。
+4. 选择一个主要分类并读其 `README.md`，再只读一个或少数直接相关项目原则。
+5. 只有需要落地规则时，才从 `docs/execution-details.md` 选择一个或少数命中的第三级细节文件。
 
 评估或验证推翻前提时，返回拥有该决定的项目，而不是在下游补写新的产品、风险或发布边界。
 
@@ -69,7 +71,8 @@ AI 可以准备证据、方案、实现和验证，但不会因 skill、角色�
 
     Read README.md and apply R&D applicability first.
     Non-R&D work uses its own workflow and stops before the four-category R&D corpus.
-    For R&D, choose Explore or Deliver, then read one relevant category README and one or a few directly related item documents.
+    For R&D, choose Explore or Deliver, then read one relevant category principle and one or a few directly related item principles.
+    When execution rules are needed, use docs/execution-details.md and load only the matching detail files.
     Use Quick, Standard, or High-risk only for Deliver.
     Invoke only the smallest directly relevant Superpowers skill for a concrete complexity trigger; do not chain skills or duplicate authority artifacts.
     Return to the item that owns a decision when evidence invalidates an upstream assumption.

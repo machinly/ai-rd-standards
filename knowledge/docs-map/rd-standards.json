@@ -1,6 +1,6 @@
 {
   "target": "rd-standards",
-  "status": "formal-four-category-eleven-item-with-rd-applicability-and-explore-deliver",
+  "status": "formal-three-tier-four-category-eleven-item-with-indexed-execution-details",
   "owner": "solo-founder",
   "audiences": [
     "solo-founder",
@@ -43,6 +43,13 @@
       "owner": "solo-founder"
     },
     {
+      "title": "Execution details index",
+      "path": "docs/execution-details.md",
+      "type": "index",
+      "audience": "solo-founder and codex-agent",
+      "owner": "solo-founder"
+    },
+    {
       "title": "Codex context pack",
       "path": "knowledge/context-packs/rd-standards.md",
       "type": "context_pack",
@@ -63,6 +70,7 @@
     "docs/04-operations-maintenance/10-operation.md",
     "docs/04-operations-maintenance/11-evaluation.md"
   ],
+  "execution_details_index": "docs/execution-details.md",
   "runtime_skill": "skills/one-person-openspec-rd/",
   "governance_entry": "governance/README.md",
   "current_status": "governance/current-status.json",
@@ -78,8 +86,8 @@
   "linked_openspec_changes": [
     "openspec/changes/archive/2026-07-26-add-visual-ux-step-to-rd-standards",
     "openspec/changes/archive/2026-07-26-introduce-explore-deliver-and-scope-superpowers",
-    "openspec/changes/build-rd-rewrite-guardrails",
-    "openspec/changes/rewrite-rd-standards-content"
+    "openspec/changes/archive/2026-07-28-build-rd-rewrite-guardrails",
+    "openspec/changes/archive/2026-07-28-rewrite-rd-standards-content"
   ],
   "human_checkpoint": {
     "required_for": [

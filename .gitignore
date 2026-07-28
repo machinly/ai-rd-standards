@@ -18,10 +18,11 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.agents/
+.superpowers/
 
 # Build / generated local output
 dist/
 build/
 coverage/
 *.log
-

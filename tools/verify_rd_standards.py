@@ -54,10 +54,13 @@ EXPECTED_LEDGER_ROWS = {
 }
 
 EXPECTED_FORMAL_RULE_IDS = 2337
+EXECUTION_DETAILS_INDEX = "docs/execution-details.md"
 
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 RULE_ID_RE = re.compile(r"<!--\s*rule-id:\s*([^\s]+)\s*-->")
 LEGACY_W_REF_RE = re.compile(r"docs/W[0-9]|\bW0(?:-|–)W9\b")
+HEADING_RE = re.compile(r"^#{1,6} .+$", re.MULTILINE)
+PRINCIPLE_ID_RE = re.compile(r"^- \*\*((?:CATEGORY|ITEM)-[A-Z0-9-]+)\*\*：.+$")
 
 
 def read_text(path: Path, errors: list[str], label: str) -> str:
@@ -91,6 +94,18 @@ def formal_paths(root: Path) -> tuple[list[Path], list[Path]]:
     return categories, items
 
 
+def execution_detail_paths(root: Path) -> tuple[dict[Path, list[Path]], list[Path]]:
+    by_item: dict[Path, list[Path]] = {}
+    all_details: list[Path] = []
+    for rel, item_names in CATEGORY_LAYOUT.items():
+        for item_name in item_names:
+            item = root / rel / item_name
+            details = sorted(item.with_suffix("").glob("*.md"))
+            by_item[item] = details
+            all_details.extend(details)
+    return by_item, all_details
+
+
 def parse_target_ids(value: str) -> set[str]:
     return {part.strip() for part in value.split(";") if part.strip()}
 
@@ -113,15 +128,117 @@ def check_markdown_links(root: Path, paths: list[Path], errors: list[str]) -> No
                 errors.append(f"Broken local link in {rel}: {target}")
 
 
+def check_principle_only(
+    root: Path, path: Path, expected_prefix: str, errors: list[str]
+) -> None:
+    rel = path.relative_to(root).as_posix()
+    text = read_text(path, errors, rel)
+    if not text:
+        return
+
+    headings = HEADING_RE.findall(text)
+    if len(headings) != 2 or not headings[0].startswith("# ") or headings[1] != "## 根本原则":
+        errors.append(
+            f"Principle file must contain only an H1 and 根本原则 section: {rel}"
+        )
+
+    content_lines = [
+        line
+        for line in text.splitlines()
+        if line.strip() and not line.startswith("# ") and line != "## 根本原则"
+    ]
+    principle_ids: list[str] = []
+    for line in content_lines:
+        match = PRINCIPLE_ID_RE.fullmatch(line)
+        if not match:
+            errors.append(f"Non-principle content remains in {rel}: {line[:80]}")
+            continue
+        principle_ids.append(match.group(1))
+    if not principle_ids:
+        errors.append(f"Principle file has no principle: {rel}")
+    for principle_id in principle_ids:
+        if not principle_id.startswith(expected_prefix):
+            errors.append(
+                f"Wrong principle ID kind in {rel}: expected {expected_prefix}, found {principle_id}"
+            )
+    if RULE_ID_RE.search(text):
+        errors.append(f"Execution rule remains in principle file: {rel}")
+
+
+def check_execution_index(
+    root: Path, index_path: Path, details: list[Path], errors: list[str]
+) -> None:
+    rel = index_path.relative_to(root).as_posix()
+    text = read_text(index_path, errors, rel)
+    if not text:
+        return
+    required_header = "| 分类 | 项目 | 项目原则 | 内容层 | 执行细节类型 | 细节文件 |"
+    if required_header not in text:
+        errors.append("Execution details index is missing the required classification header")
+    if RULE_ID_RE.search(text):
+        errors.append("Execution details index duplicates formal rule markers")
+
+    detail_set = {path.resolve() for path in details}
+    indexed: list[Path] = []
+    for target in MARKDOWN_LINK_RE.findall(text):
+        clean = target.strip().strip("<>").split("#", 1)[0]
+        if not clean or "://" in clean or clean.startswith("mailto:"):
+            continue
+        candidate = (index_path.parent / clean).resolve()
+        if candidate in detail_set:
+            indexed.append(candidate)
+
+    counts = Counter(indexed)
+    missing = sorted(
+        path.relative_to(root).as_posix()
+        for path in details
+        if counts[path.resolve()] == 0
+    )
+    duplicates = sorted(
+        path.relative_to(root).as_posix()
+        for path in details
+        if counts[path.resolve()] > 1
+    )
+    if missing:
+        errors.append(
+            "Execution details missing from the total index: " + ", ".join(missing[:10])
+        )
+    if duplicates:
+        errors.append(
+            "Execution details listed more than once in the total index: "
+            + ", ".join(duplicates[:10])
+        )
+
+
 def validate_repository(root: Path) -> dict[str, object]:
     root = root.resolve()
     errors: list[str] = []
     categories, items = formal_paths(root)
-    formal = [root / "README.md", *categories, *items]
+    details_by_item, details = execution_detail_paths(root)
+    details_index = root / EXECUTION_DETAILS_INDEX
+    formal = [root / "README.md", *categories, *items, details_index, *details]
 
-    for path in formal:
+    for path in [root / "README.md", *categories, *items, details_index]:
         if not path.is_file():
             errors.append(f"Missing formal standard: {path.relative_to(root).as_posix()}")
+
+    for category in categories:
+        if category.is_file():
+            check_principle_only(root, category, "CATEGORY-", errors)
+    for item in items:
+        if item.is_file():
+            check_principle_only(root, item, "ITEM-", errors)
+        detail_dir = item.with_suffix("")
+        if not detail_dir.is_dir():
+            errors.append(
+                f"Missing execution detail directory: {detail_dir.relative_to(root).as_posix()}"
+            )
+        elif len(details_by_item[item]) < 2:
+            errors.append(
+                f"Execution details must be split into multiple files: {detail_dir.relative_to(root).as_posix()}"
+            )
+
+    check_execution_index(root, details_index, details, errors)
 
     legacy_dirs = sorted(
         path.relative_to(root).as_posix()
@@ -141,9 +258,10 @@ def validate_repository(root: Path) -> dict[str, object]:
             errors.append(f"Missing governance review evidence: {name}")
 
     markers: list[str] = []
-    for path in items:
+    for path in details:
         if path.is_file():
-            markers.extend(RULE_ID_RE.findall(read_text(path, errors, str(path))))
+            detail_markers = RULE_ID_RE.findall(read_text(path, errors, str(path)))
+            markers.extend(detail_markers)
     marker_counts = Counter(markers)
     duplicates = sorted(name for name, count in marker_counts.items() if count > 1)
     if len(markers) != EXPECTED_FORMAL_RULE_IDS:
@@ -251,6 +369,7 @@ def validate_repository(root: Path) -> dict[str, object]:
         "docs/02-product-design/README.md",
         "docs/03-engineering-delivery/README.md",
         "docs/04-operations-maintenance/README.md",
+        "docs/execution-details.md",
         "references/workflow-map.md",
     ):
         if required not in skill:
@@ -264,6 +383,7 @@ def validate_repository(root: Path) -> dict[str, object]:
         "errors": errors,
         "category_count": sum(path.is_file() for path in categories),
         "item_count": sum(path.is_file() for path in items),
+        "detail_file_count": len(details),
         "rule_id_count": len(markers),
         "unique_rule_id_count": len(marker_counts),
         "legacy_directory_count": len(legacy_dirs),
@@ -286,7 +406,8 @@ def main() -> int:
         label = "PASS" if result["valid"] else "FAIL"
         print(
             f"RD_STANDARDS={label} categories={result['category_count']} "
-            f"items={result['item_count']} rule_ids={result['rule_id_count']} "
+            f"items={result['item_count']} details={result['detail_file_count']} "
+            f"rule_ids={result['rule_id_count']} "
             f"review_files={result['review_file_count']}"
         )
         for error in result["errors"]:

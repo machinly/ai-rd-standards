@@ -1,9 +1,11 @@
 # 研发规范内容重写执行方案
 
-状态：待执行的内容重写方案  
+状态：历史执行记录（2026-07-28 退役，不得再作为执行入口）
 日期：2026-07-15  
 适用范围：`docs/W0-*` 至 `docs/W9-*` 现有内容  
 目标使用者：用户本人 + Codex
+
+> 归档说明：本方案对应的重写工作已被当前正式三层规范取代；相关 OpenSpec 变更已归档至 `openspec/changes/archive/2026-07-28-build-rd-rewrite-guardrails/` 与 `openspec/changes/archive/2026-07-28-rewrite-rd-standards-content/`。`tools/rd_rebuild.py` 及其命令已经退役，本文中的命令仅保留为历史审计证据。当前入口以根 `README.md` 和 `tools/verify_rd_standards.py` 为准。
 
 ## 1. 方案定位
 

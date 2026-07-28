@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "rd-standards",
   "status": "complete",
-  "current_gate": "pilot-4-user-service-plan-review",
+  "current_gate": "pilot-5-plan-and-application-layout-review",
   "run_state": "formal_replacement_complete",
   "authoritative_entry": "README.md",
   "historical_rebuild_state": "governance/rd-standards-rebuild/run-state.json",
@@ -27,18 +27,28 @@
       "archive": "openspec/changes/archive/2026-07-26-introduce-explore-deliver-and-scope-superpowers",
       "archive_decision": "publish-structure-with-pilot-pending"
     },
+    "active_change": {
+      "id": "define-application-root-directory-contract",
+      "route": "Standard",
+      "visual_ux": "not-required",
+      "status": "producer-self-check-complete-review-pending",
+      "proposal": "openspec/changes/define-application-root-directory-contract/proposal.md",
+      "reason": "The standards defined service-internal paths without first binding them to a declared application root, allowing a multi-application repository root to be mistaken for a Go service root.",
+      "next_gate": "independent-final-review"
+    },
     "pilot": {
-      "status": "planned",
-      "round": 4,
+      "status": "draft-awaiting-review",
+      "round": 5,
       "target": "user-center-service",
-      "plan": "experiments/user-center-service-pilot-4-plan.md",
+      "plan": "experiments/user-center-service-pilot-5-plan.md",
       "planned_workspace": "D:\\Workspace\\user",
       "repository_reuse": "same-repository-cleared-baseline",
-      "work_mode": "Explore",
-      "explore_type": "UX Prototype",
-      "reason": "The fourth-round experiment targets a local user-service Walking Skeleton in the same Git repository after historical implementation files were cleared; implementation has not started.",
-      "decision_source": "current-codex-task:user-confirmed-same-user-service-repository",
-      "archived_active_change": true
+      "work_mode": "Deliver",
+      "deliver_route": "Standard",
+      "visual_ux": "required",
+      "repository_mode": "multi-application",
+      "reason": "The fifth-round experiment carries forward the stable user-service requirements but uses a new design-first execution: explicit Product Definition and UX approval, then OpenSpec and application-root review, then vertical implementation.",
+      "decision_source": "current-codex-task:user-requested-fifth-user-service-experiment"
     },
     "preimplementation_review": "approved_with_notes",
     "preimplementation_candidate_sha256_tree": "921100d49f3cba0cd428670a51c60db7198f9503e8750e3453730df831b602a3",
@@ -91,5 +101,5 @@
     }
   },
   "blockers": [],
-  "next_action": "User reviews and explicitly approves experiments/user-center-service-pilot-4-plan.md; then a new session starts Explore from the cleared baseline in D:\\Workspace\\user and records evidence in that single experiment record"
+  "next_action": "An independent reviewer checks the application-root standards change, while the user reviews experiments/user-center-service-pilot-5-plan.md. Plan approval opens Product Definition review only and does not authorize code."
 }

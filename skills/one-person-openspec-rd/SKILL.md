@@ -33,7 +33,8 @@ description: "Gate R&D applicability, route applicable work through Explore or D
    - `docs/02-product-design/README.md`
    - `docs/03-engineering-delivery/README.md`
    - `docs/04-operations-maintenance/README.md`
-3. 再读取该分类中一个或少数直接相关项目正文，不默认扫描全部十一项。
+3. 再读取该分类中一个或少数直接相关项目原则，不默认扫描全部十一项。
+4. 只有任务需要落地规则时，读取 `docs/execution-details.md`，再按其中的主题映射只加载一个或少数命中的执行细节文件；不得扫描整个第三级目录。
 
 如果仓库没有自己的正式研发入口，读取 `references/workflow-map.md` 作为明确 fallback；不要把 fallback 当作项目事实。只有实现确实需要确认 Go、前端或数据默认时，才读取 `references/stack-defaults.md`。
 

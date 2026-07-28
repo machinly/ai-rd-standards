@@ -68,13 +68,13 @@ Deliver Standard/High-risk 的代码、配置、schema、API、AI 行为、数�
     python tools/check_runtime_skill_sync.py .
     openspec validate --all --strict --no-interactive
 
-分别解释结果：formal verifier 只证明四分类十一项目、2,337 个 rule-id、追溯和链接；runtime checker 只证明 canonical/installed router 与用户级 scoped block 一致；OpenSpec validation 只证明规格结构。它们不能替代真实 Explore 效果、Deliver acceptance、独立审查或高风险批准。
+分别解释结果：formal verifier 只证明四个分类原则文件、十一个项目原则文件、第三级总索引、2,337 个 rule-id、追溯和链接；runtime checker 只证明 canonical/installed router 与用户级 scoped block 一致；OpenSpec validation 只证明规格结构。它们不能替代真实 Explore 效果、Deliver acceptance、独立审查或高风险批准。
 
 ## 5. 更新知识
 
 结构变化后：
 
-1. 更新根入口、受影响分类和项目正文。
+1. 更新根入口、受影响的分类原则或项目原则；执行规则只更新对应第三级文件及 `docs/execution-details.md` 映射。
 2. 更新 `knowledge/docs-map/rd-standards.json`、context pack、how-to 与 glossary。
 3. 向 `knowledge/freshness/rd-standards.jsonl` 追加事实记录。
 4. 更新 decision、approval 和 `governance/current-status.json`。

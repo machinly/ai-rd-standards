@@ -21,7 +21,10 @@
       "decision_or_gate": "G0-G9 approvals and recorded rebuild checks",
       "authoritative_entry": "governance/rd-standards-rebuild/run-state.json",
       "policy": "governance/rd-standards-rebuild/policy.json",
-      "openspec_change": "openspec/changes/build-rd-rewrite-guardrails/",
+      "historical_changes": [
+        "openspec/changes/archive/2026-07-28-build-rd-rewrite-guardrails/",
+        "openspec/changes/archive/2026-07-28-rewrite-rd-standards-content/"
+      ],
       "retention": "Retain as historical evidence; it is not the current standards runtime"
     }
   ]
