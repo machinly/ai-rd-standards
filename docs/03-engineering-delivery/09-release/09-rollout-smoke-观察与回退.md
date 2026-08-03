@@ -35,4 +35,4 @@ production deploy 后执行 smoke，并连续观察关键 SLI 15–30 分钟；�
 <!-- rule-id: RELEASE-ROLLBACK-001 -->
 ### 让 rollback runbook 可直接执行
 
-`release/rollback/<service>.md` 必须写明回到哪个 artifact 或上一 release、migration 是否可逆及不可逆时的降级/补偿、可用的 feature flag 或 disable switch、回退后的 smoke、谁能执行以及执行入口。pipeline 的 `rollback` 必须指向该可读文件；runbook 和 smoke 步骤要在发布前写好，而不是故障后临时补写。
+rollback runbook 必须写明回到哪个已验证且兼容的 release set，或在单应用场景回到哪个 artifact；同时写明各应用切换顺序、migration 是否可逆、不可逆时的停机/降级/补偿、可用的 feature flag 或 disable switch、回退后的 smoke、谁能执行以及唯一执行入口。数据库默认不隐式执行 down migration；上一代码/配置组合与当前 schema 不兼容时，先停止或降级并进入独立恢复决定，不能把链接切回称为完整回滚。pipeline 的 `rollback` 必须指向该可读文件；runbook 和 smoke 步骤要在发布前写好，而不是故障后临时补写。
