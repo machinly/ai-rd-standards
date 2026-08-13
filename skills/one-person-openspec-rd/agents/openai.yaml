@@ -1,4 +1,4 @@
 interface:
-  display_name: "Explore / Deliver R&D"
-  short_description: "先判定研发适用性，再区分探索与交付，并按复杂度选择方法"
-  default_prompt: "Use $one-person-openspec-rd only after the R&D applicability gate. Route applicable work through Explore or Deliver, use Quick/Standard/High-risk only for Deliver, and invoke Superpowers only for a concrete complexity trigger without automatic chaining."
+  display_name: "One-person R&D"
+  short_description: "仅在明确调用时使用的个人研发规范"
+  default_prompt: "Use $one-person-openspec-rd for this task. Start from the requested result, avoid default process artifacts or method chaining, and keep verification proportional to the actual change."
