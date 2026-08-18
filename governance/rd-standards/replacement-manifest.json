@@ -21,7 +21,7 @@
     "rule_target_count": 2313,
     "atomic_rule_count": 5956,
     "review_evidence": "governance/rd-standards/review",
-    "runtime_skill": "one-person-openspec-rd"
+    "runtime_skill": "opc-rd"
   },
   "workspace_delete_allowlist": {
     "legacy_standard_directories": [
@@ -105,7 +105,7 @@
   ],
   "runtime_preserve_allowlist": [
     ".system",
-    "one-person-openspec-rd",
+    "opc-rd",
     "hatch-pet",
     "tdx-automation"
   ],
@@ -145,7 +145,7 @@
     "Independent deletion-boundary review does not approve the remediated candidate",
     "Protected W source baseline verification fails before deletion",
     "Any delete target is missing from the exact allowlist, escapes its intended parent, or is a reparse point",
-    "The installed one-person-openspec-rd candidate fails validation or differs from the repository canonical copy",
+    "The installed opc-rd candidate fails validation or differs from the repository canonical copy",
     "Any formal verifier, runtime verifier, unit test, active-reference scan, or strict OpenSpec validation fails"
   ],
   "recovery_boundary": "No second normative or legacy runtime copy will be retained. Recovery is forward-only from governance traceability evidence or repository history and requires a new explicit user decision.",

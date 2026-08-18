@@ -71,7 +71,7 @@
     "docs/04-operations-maintenance/11-evaluation.md"
   ],
   "execution_details_index": "docs/execution-details.md",
-  "runtime_skill": "skills/one-person-openspec-rd/",
+  "runtime_skill": "skills/opc-rd/",
   "governance_entry": "governance/README.md",
   "current_status": "governance/current-status.json",
   "traceability": "governance/rd-standards/review/",
@@ -81,7 +81,7 @@
   "linked_runtime_artifacts": [
     "tools/verify_rd_standards.py",
     "tools/check_runtime_skill_sync.py",
-    "skills/one-person-openspec-rd/references/superpowers-scope.md"
+    "skills/opc-rd/references/superpowers-scope.md"
   ],
   "linked_openspec_changes": [
     "openspec/changes/archive/2026-07-26-add-visual-ux-step-to-rd-standards",

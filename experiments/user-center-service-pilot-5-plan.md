@@ -113,8 +113,10 @@ Product Definition 明确批准后，才开始 UX Design。UX 必须先形成静
 
 - `flow.md`：目标、入口、Alice/Admin/Bob 正常路径、retry/cancel/exit、non-goals 和线框索引；
 - `surface-map.md`：`oidc`、`user`、`finance`、`admin`、`disabled` 五个 surface 的关系；
-- `wireframes/<surface>--<state>.html|svg`：按适用范围覆盖 `success`、`loading`、`empty`、`error` 和 `disabled`；
-- `review.md`：Decision owner、Reviewed at、Artifacts reviewed、Decision 与 Notes。
+- `wireframes/<surface>--<state>.html|svg`：按适用范围覆盖 `success`、`loading`、`empty`、`error` 和 `disabled`，并能唯一定位两种 viewport 与两种主题的四种渲染；
+- `review.md`：Decision owner、Reviewed at、Artifacts reviewed、手机与桌面 viewport 的实际尺寸、`light`/`dark` 工件或证据引用、各组合结论、Decision 与 Notes。
+
+每个页面 surface 及其适用状态的设计固定覆盖手机竖屏 `mobile-portrait`（390 × 844 CSS px）和桌面横屏 `1080p-landscape`（1920 × 1080 CSS px），每种 viewport 均提供 `light` 与 `dark`，共四种组合。尺寸为浏览器 100% 缩放下的内容 viewport，不得用缩放同一张桌面画布代替独立布局。
 
 UX 必须让用户能判断：
 
@@ -125,7 +127,7 @@ UX 必须让用户能判断：
 5. Bob 的正常状态如何与 Alice 的禁用状态形成清楚对照；
 6. 键盘顺序、可见焦点、WCAG 2.2 AA 对比度和状态不只依赖颜色的基线。
 
-UX review 必须由用户写出或明确给出 `approved`。在 `review.md` 为 `approved` 前，禁止进行 Technical Design、OpenSpec 或任何应用代码生成。批准后若任务路径、信息架构、状态、权限含义或确认方式发生实质变化，必须更新 UX 并重新审批。
+UX review 必须由用户写出或明确给出 `approved`。批准前用一轮页面 review 覆盖手机竖屏和桌面横屏，两种 viewport 均分别检查 `light` 与 `dark`；同一窗口只改缩放、复用截图或漏审任一主题不得计为完成。四种组合全部通过且 `review.md` 为 `approved` 前，禁止进行 Technical Design、OpenSpec 或任何应用代码生成。批准后若任务路径、信息架构、状态、权限含义、确认方式、固定 viewport 或主题发生实质变化，必须更新 UX 并重新审批。
 
 UX review：`not-started`。
 

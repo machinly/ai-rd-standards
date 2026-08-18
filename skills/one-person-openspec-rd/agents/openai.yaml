@@ -1,4 +1,0 @@
-interface:
-  display_name: "One-person R&D"
-  short_description: "仅在明确调用时使用的个人研发规范"
-  default_prompt: "Use $one-person-openspec-rd for this task. Start from the requested result, avoid default process artifacts or method chaining, and keep verification proportional to the actual change."
