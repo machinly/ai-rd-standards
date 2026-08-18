@@ -1,0 +1,4 @@
+interface:
+  display_name: "OPC R&D"
+  short_description: "仅在明确调用时使用的 One Person Company 研发规范"
+  default_prompt: "Use $opc-rd for this task. Start from the requested result, avoid default process artifacts or method chaining, and keep verification proportional to the actual change."

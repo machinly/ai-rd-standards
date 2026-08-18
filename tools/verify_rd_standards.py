@@ -362,8 +362,8 @@ def validate_repository(root: Path) -> dict[str, object]:
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             errors.append(f"Invalid governance/project-map.json: {exc}")
 
-    skill_path = root / "skills" / "one-person-openspec-rd" / "SKILL.md"
-    skill = read_text(skill_path, errors, "skills/one-person-openspec-rd/SKILL.md")
+    skill_path = root / "skills" / "opc-rd" / "SKILL.md"
+    skill = read_text(skill_path, errors, "skills/opc-rd/SKILL.md")
     for required in (
         "docs/01-initiation/README.md",
         "docs/02-product-design/README.md",

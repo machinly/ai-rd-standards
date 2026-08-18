@@ -44,7 +44,7 @@ Explore 类型跟随最高优先级未知：用户、问题或价值未知选 Pr
 
 代表性边界是：不改变含义的局部按钮文案属于 Deliver Quick；已经确认的用户资料编辑属于 Deliver Standard；生产管理员权限或真实账号删除属于 Deliver High-risk。轻量 Explore 一旦准备接触真实客户数据、真实凭据或生产副作用，就停止轻量豁免并重新路由。
 
-具体路由和完成要求由唯一研发 skill [one-person-openspec-rd](skills/one-person-openspec-rd/SKILL.md) 承载。轻量 Explore 和 Deliver Quick 不强制创建 OpenSpec；Deliver Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。领域关键词不能单独决定风险路径：只使用本地合成数据和测试凭据的 gateway/OIDC/service identity 学习任务属于 Explore / Technical Spike，不因 `auth` 一词自动升级为 High-risk。Superpowers 只在存在具体复杂问题时选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长和文件数都不能单独触发，也不能因调用一项而自动串联其他项。已有 OpenSpec `tasks.md` 足以执行时只更新它，不再创建 Superpowers plan。产品或架构存在多个高返工合理方案时可只用 `brainstorming`，并把结论写回产品定义、技术设计或 OpenSpec design；编译器已直接证明漏 import 时直接机械修复和验证，不调用 `systematic-debugging`，根因未知或首次修复失败时才调用；只有用户允许、任务独立、写域不重叠、没有顺序依赖且确有净收益时才使用 parallel agents。
+具体路由和完成要求由唯一研发 skill [opc-rd](skills/opc-rd/SKILL.md) 承载。轻量 Explore 和 Deliver Quick 不强制创建 OpenSpec；Deliver Standard/High-risk 的实现性变更默认使用 OpenSpec，除非用户明确批准跳过并记录 owner、理由、范围和恢复方式。领域关键词不能单独决定风险路径：只使用本地合成数据和测试凭据的 gateway/OIDC/service identity 学习任务属于 Explore / Technical Spike，不因 `auth` 一词自动升级为 High-risk。Superpowers 只在存在具体复杂问题时选择一个或少数直接相关 skills；会话开始、AI 参与、创作性、时长和文件数都不能单独触发，也不能因调用一项而自动串联其他项。已有 OpenSpec `tasks.md` 足以执行时只更新它，不再创建 Superpowers plan。产品或架构存在多个高返工合理方案时可只用 `brainstorming`，并把结论写回产品定义、技术设计或 OpenSpec design；编译器已直接证明漏 import 时直接机械修复和验证，不调用 `systematic-debugging`，根因未知或首次修复失败时才调用；只有用户允许、任务独立、写域不重叠、没有顺序依赖且确有净收益时才使用 parallel agents。
 
 ## 四分类与十一项
 

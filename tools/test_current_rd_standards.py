@@ -6,7 +6,11 @@ import uuid
 from contextlib import contextmanager
 from pathlib import Path
 
-from check_runtime_skill_sync import ROUTER_FILES, validate_runtime_skills
+from check_runtime_skill_sync import (
+    ROUTER_FILES,
+    RUNTIME_SKILL_NAME,
+    validate_runtime_skills,
+)
 from verify_rd_standards import (
     CATEGORY_LAYOUT,
     RULE_ID_RE,
@@ -150,6 +154,28 @@ class CurrentStandardsTests(unittest.TestCase):
 
         self.assertEqual(8, len(expected_all))
 
+    def test_page_design_and_review_use_common_mobile_and_desktop_in_both_themes(
+        self,
+    ) -> None:
+        experience = read_item_details(
+            "docs/02-product-design/04-experience-design.md"
+        )
+        verification = read_item_details(
+            "docs/03-engineering-delivery/08-verification.md"
+        )
+        for text in (experience, verification):
+            self.assertIn("`mobile-portrait`（390 × 844 CSS px）", text)
+            self.assertIn("`1080p-landscape`（1920 × 1080 CSS px）", text)
+            self.assertIn("`light`", text)
+            self.assertIn("`dark`", text)
+            self.assertIn("四种组合", text)
+            self.assertNotIn("`4k-landscape`", text)
+            self.assertNotIn("三次页面 review", text)
+
+        self.assertIn("一轮页面 review", experience)
+        self.assertIn("一轮页面 review", verification)
+        self.assertIn("不要求按四种视觉组合重复执行完整 Browser E2E", verification)
+
     def test_explore_deliver_rules_have_explicit_owners(self) -> None:
         expected_all: set[str] = set()
 
@@ -204,11 +230,22 @@ class CurrentStandardsTests(unittest.TestCase):
         self.assertIn("多应用仓库根不得出现归属于单个服务的 `internal/`", implementation)
         self.assertIn("repository_mode: single-application | multi-application", evaluation)
 
+    def test_runtime_skill_identity_is_opc_rd(self) -> None:
+        self.assertEqual("opc-rd", RUNTIME_SKILL_NAME)
+        skill_dir = ROOT / "skills" / RUNTIME_SKILL_NAME
+        skill = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+        agent = (skill_dir / "agents/openai.yaml").read_text(encoding="utf-8")
+
+        self.assertIn("\nname: opc-rd\n", skill)
+        self.assertIn("$opc-rd", skill)
+        self.assertIn('display_name: "OPC R&D"', agent)
+        self.assertIn("$opc-rd", agent)
+
     def test_runtime_validator_rejects_a_retired_rd_skill(self) -> None:
         with workspace_temp_directory() as root:
-            canonical = root / "repo" / "skills" / "one-person-openspec-rd"
+            canonical = root / "repo" / "skills" / RUNTIME_SKILL_NAME
             runtime = root / "runtime" / "skills"
-            installed = runtime / "one-person-openspec-rd"
+            installed = runtime / RUNTIME_SKILL_NAME
 
             for rel in ROUTER_FILES:
                 canonical_file = canonical / rel
@@ -220,18 +257,18 @@ class CurrentStandardsTests(unittest.TestCase):
 
             for name in (".system", "hatch-pet", "tdx-automation"):
                 (runtime / name).mkdir(parents=True, exist_ok=True)
-            (runtime / "release-pipeline-gates").mkdir()
+            (runtime / "one-person-openspec-rd").mkdir()
 
             result = validate_runtime_skills(canonical, runtime)
 
             self.assertFalse(result["valid"])
-            self.assertEqual(["release-pipeline-gates"], result["legacy_present"])
+            self.assertEqual(["one-person-openspec-rd"], result["legacy_present"])
 
     def test_runtime_validator_accepts_only_the_new_rd_skill(self) -> None:
         with workspace_temp_directory() as root:
-            canonical = root / "repo" / "skills" / "one-person-openspec-rd"
+            canonical = root / "repo" / "skills" / RUNTIME_SKILL_NAME
             runtime = root / "runtime" / "skills"
-            installed = runtime / "one-person-openspec-rd"
+            installed = runtime / RUNTIME_SKILL_NAME
 
             for rel in ROUTER_FILES:
                 canonical_file = canonical / rel
@@ -253,12 +290,14 @@ class CurrentStandardsTests(unittest.TestCase):
     def test_runtime_router_exposes_explore_types_and_scoped_superpowers(
         self,
     ) -> None:
-        skill = (ROOT / "skills/one-person-openspec-rd/SKILL.md").read_text(
+        skill = (ROOT / "skills" / RUNTIME_SKILL_NAME / "SKILL.md").read_text(
             encoding="utf-8"
         )
         scope = (
             ROOT
-            / "skills/one-person-openspec-rd/references/superpowers-scope.md"
+            / "skills"
+            / RUNTIME_SKILL_NAME
+            / "references/superpowers-scope.md"
         ).read_text(encoding="utf-8")
 
         for explore_type in (

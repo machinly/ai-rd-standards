@@ -12,7 +12,7 @@
 - 工程交付：`docs/03-engineering-delivery/README.md`，包含技术设计、计划、实现、验证、发布
 - 运行维护：`docs/04-operations-maintenance/README.md`，包含运行、评估
 - 执行细节总索引：`docs/execution-details.md`，按项目、内容层和主题映射第三级文件
-- 唯一研发 skill：`skills/one-person-openspec-rd/`
+- 唯一研发 skill：`skills/opc-rd/`
 - 治理入口：`governance/README.md`、`governance/project-map.json`、`governance/current-status.json`
 - 追溯证据：`governance/rd-standards/review/`
 

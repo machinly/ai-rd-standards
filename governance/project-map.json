@@ -10,7 +10,7 @@
       "authoritative_entry": "README.md",
       "current_status": "governance/current-status.json",
       "evidence": "governance/rd-standards/",
-      "runtime_skill": "skills/one-person-openspec-rd/",
+      "runtime_skill": "skills/opc-rd/",
       "retention": "Retain formal standards and traceability while they remain current"
     },
     {

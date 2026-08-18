@@ -17,6 +17,7 @@ ROUTER_FILES = (
     "references/review-rubric.md",
     "references/superpowers-scope.md",
 )
+RUNTIME_SKILL_NAME = "opc-rd"
 
 SUPERPOWERS_SCOPE_START = "<!-- rd-standards:superpowers-scope:start -->"
 SUPERPOWERS_SCOPE_END = "<!-- rd-standards:superpowers-scope:end -->"
@@ -62,6 +63,7 @@ LEGACY_RD_SKILLS = (
     "maintenance-dependency-debt-guard",
     "notification-messaging-guard",
     "observability-telemetry-guard",
+    "one-person-openspec-rd",
     "open-source-maintainer-guard",
     "performance-load-regression-guard",
     "processor-transfer-guard",
@@ -80,7 +82,7 @@ LEGACY_RD_SKILLS = (
 
 PRESERVED_RUNTIME_SKILLS = (
     ".system",
-    "one-person-openspec-rd",
+    RUNTIME_SKILL_NAME,
     "hatch-pet",
     "tdx-automation",
 )
@@ -164,7 +166,7 @@ def validate_runtime_skills(
 ) -> dict[str, object]:
     canonical_dir = canonical_dir.resolve()
     runtime_skills_root = runtime_skills_root.resolve()
-    installed_dir = runtime_skills_root / "one-person-openspec-rd"
+    installed_dir = runtime_skills_root / RUNTIME_SKILL_NAME
     errors: list[str] = []
     file_results: list[dict[str, object]] = []
 
@@ -231,7 +233,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--installed",
-        help="Compatibility option: explicit installed one-person SKILL.md path.",
+        help="Compatibility option: explicit installed opc-rd SKILL.md path.",
     )
     parser.add_argument(
         "--global-agents",
@@ -241,7 +243,7 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    canonical_dir = root / "skills" / "one-person-openspec-rd"
+    canonical_dir = root / "skills" / RUNTIME_SKILL_NAME
     codex_home = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
     if args.runtime_skills_root:
         runtime_skills_root = Path(args.runtime_skills_root).expanduser().resolve()
