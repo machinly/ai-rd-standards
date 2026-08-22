@@ -1,3 +1,0 @@
-# Retirement candidates
-
-None recorded.

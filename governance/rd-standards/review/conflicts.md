@@ -1,3 +1,0 @@
-# Conflicts
-
-None recorded.
