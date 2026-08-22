@@ -32,10 +32,8 @@ RETIRED_PATHS = (
     "docs/execution-details.md",
     "docs/roles",
     "docs/sources",
-    "docs/superpowers/specs",
     "skills/opc-rd/references/workflow-map.md",
     "skills/opc-rd/references/review-rubric.md",
-    "skills/opc-rd/references/superpowers-scope.md",
     "tools/verify_rd_standards.py",
     "tools/test_current_rd_standards.py",
     "tools/check_runtime_skill_sync.py",
@@ -63,8 +61,8 @@ def physical_lines(text: str) -> int:
 
 
 def is_under_ignored_tree(root: Path, path: Path) -> bool:
-    relative = path.relative_to(root).as_posix()
-    return relative == ".git" or relative.startswith(".git/") or relative == ".superpowers" or relative.startswith(".superpowers/")
+    relative = path.relative_to(root)
+    return bool(relative.parts and relative.parts[0].startswith("."))
 
 
 def is_under_retired_path(root: Path, path: Path) -> bool:

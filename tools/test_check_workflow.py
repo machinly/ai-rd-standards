@@ -120,7 +120,7 @@ class WorkflowCheckerTests(unittest.TestCase):
 
     def test_old_rule_counts_are_not_a_success_condition(self) -> None:
         def mutate(root: Path) -> None:
-            plan = root / "docs/superpowers/plans/history.md"
+            plan = root / "docs/history/old-rule-count.md"
             plan.parent.mkdir(parents=True)
             plan.write_text(
                 "# Historical note\n\nThe old corpus had 2,337 rule IDs.\n",

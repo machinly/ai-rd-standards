@@ -16,7 +16,6 @@
 - [skills/opc-rd/SKILL.md](skills/opc-rd/SKILL.md)：显式调用时使用的薄运行时入口。
 - [可选技术栈偏好](skills/opc-rd/references/stack-defaults.md)：个人偏好，不是通用流程规则，项目或用户决定优先。
 - [OpenSpec](openspec/README.md)：只保存确有长期契约价值的活动变更。
-- [实施计划](docs/superpowers/plans/2026-08-22-simplify-rd-standards.md)：本次整改记录，不是长期规范。
 
 旧四分类十一项、规则账本、历史审查和实验状态不再构成活动入口；需要追溯时使用 Git 历史。
 
