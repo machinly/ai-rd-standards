@@ -1,9 +1,9 @@
 project: one-person-ai-rd-standards
 language: zh-CN
-profile: core
+profile: minimal-explicit
 principles:
-  - minimal-kernel-by-default
-  - route-by-impact-reversibility-and-accountability
-  - human-owns-product-direction-and-high-impact-decisions
-  - openspec-default-for-standard-and-high-risk-implementation
-  - independent-final-review-for-standard-and-high-risk
+  - explicit-opt-in
+  - direct-execution-by-default
+  - one-current-authority
+  - proportional-verification
+  - explicit-authorization-before-high-impact-effects
